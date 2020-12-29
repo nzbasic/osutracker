@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textContainer {
+    padding: 0px 0px 5px 0px;
+}
+
+#outlined-basic {
+    width:33vw;
+}

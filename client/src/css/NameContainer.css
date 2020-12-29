@@ -1,0 +1,10 @@
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 350px;
+}
+
+#elipses {
+    font-size: 30px;
+}
