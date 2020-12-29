@@ -1,13 +1,6 @@
 # osuTracker
 > A statistics tracker for the game osu!
 
-## Table of contents
-* [General info](#general-info)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Features](#features)
-* [Status](#status)
-
 ## General info
 osuTracker collects data from the osu! API, allowing users to track their progress (or other peoples) in the game. 
 
