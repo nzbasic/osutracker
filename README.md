@@ -11,9 +11,9 @@
 ## General info
 osuTracker collects data from the osu! API, allowing users to track their progress (or other peoples) in the game. 
 
-The REST API is currently public, so you may request data from the current endpoints which can be seen in the routes folder. Documentation for the API is in progress.\
-For Example:\
-`axios.get('osutracker.com/players/ningalu').then(response => console.log(response))`
+The REST API is currently public, so you may request data from the current endpoints which can be seen in the routes folder. Documentation for the API is in progress.\\
+For Example:\\
+`axios.get('https://osutracker.com/players/ningalu').then(response => console.log(response))`
 
 ## Screenshots
 ![Example user profile](https://media.discordapp.net/attachments/627267590862929961/793289830757826590/unknown.png?width=926&height=468)
