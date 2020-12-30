@@ -18,7 +18,7 @@ export default function ProtectedRoute(props) {
         setIsLoading(false);
       }
     });
-  });
+  },[]);
 
   return isLoggedIn ? (
     <Component />

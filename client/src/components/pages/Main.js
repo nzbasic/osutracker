@@ -12,7 +12,7 @@ export default function Main() {
     axios.get("/players").then((response) => {
       setPlayers(response.data.map((user) => user.name));
     });
-  });
+  },[]);
 
   const editSearchTerm = (e) => {
     setSearchTerm(e.target.value);
