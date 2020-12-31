@@ -93,6 +93,7 @@ export default function EnhancedTable() {
 
   return (
     <div className="bg-gray-200 h-screen">
+      <Header />
       <div className="m-10">
         <MaterialTable
           title="New Users"
