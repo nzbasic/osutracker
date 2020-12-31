@@ -3,7 +3,7 @@ import Login from "../atoms/Login";
 
 export default function Header() {
   return (
-    <div className="lg:px-16 px-6 h-12 bg-blue-400 shadow-md flex flex-wrap items-center py-0">
+    <div className="lg:px-16 px-6 h-12 bg-blue-500 shadow-md flex flex-wrap items-center py-0">
       <div className="flex-1 flex justify-between items-center">
         <a href="/" className="flex flex-row">
           <img
