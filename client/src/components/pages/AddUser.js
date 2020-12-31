@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
-import Header from "./../molecules/Header";
+import Footer from "../molecules/Footer"
+import Header from "../molecules/Header"
 
 export default class AddUser extends Component {
   constructor() {
@@ -68,6 +69,8 @@ export default class AddUser extends Component {
     );
   }
 
+
+
   render() {
     return (
       <div className="bg-gray-200 h-screen">
@@ -108,6 +111,9 @@ export default class AddUser extends Component {
             Stats are updated hourly, so you will not see any data until the
             next hour passes.
           </h1>
+        </div>
+        <div className="absolute bottom-0 w-screen">
+          <Footer />  
         </div>
       </div>
     );

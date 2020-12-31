@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "../molecules/Header"
 import AccGraph from "./../atoms/graphs/AccGraph";
 import PpGraph from "./../atoms/graphs/PpGraph";
 import RankGraph from "./../atoms/graphs/RankGraph";
 import PlayGraph from "./../atoms/graphs/PlayGraph";
 import Loader from "react-loader-spinner";
-import Header from "../molecules/Header";
 import User from "../molecules/User";
 import "../../css/Graph.css";
 
