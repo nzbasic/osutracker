@@ -5,7 +5,6 @@ import Header from "../molecules/Header";
 export default function Admin() {
   return (
     <div>
-      <Header />
       <EnhancedTable />
     </div>
   );
