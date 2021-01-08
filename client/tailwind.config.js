@@ -7,6 +7,14 @@ module.exports = {
         inner: ['2px solid #000000', '-2px']
       }
     },
+    colors: {
+      main: {
+        one: '#222831',
+        two: '#393e46',
+        three: '#3282b8',
+        four: '#eeeeee',
+      }
+    }
   },
   variants: {
     extend: {},
