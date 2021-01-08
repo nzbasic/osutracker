@@ -3,36 +3,7 @@ import Header from "./../molecules/Header";
 import Footer from './../molecules/Footer'
 import NamesContainer from "../molecules/NamesContainer";
 import axios from "axios";
-import TextField from "@material-ui/core/TextField";
-import { withStyles } from '@material-ui/styles'
-
-const CssTextField = withStyles({
-  root: {
-    '& label.Mui-focused': {
-      color: 'white',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'white',
-    },
-    '& .MuiInputBase-root': {
-      color: 'white',
-    },
-    '& .MuiFormHelperText': {
-      color: 'white'
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'white',
-      },
-      '&:hover fieldset': {
-        borderColor: 'lightblue',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'lightblue',
-      },
-    },
-  },
-})(TextField);
+import CssTextField from '../atoms/CssTextField'
 
 export default function Main() {
   const [players, setPlayers] = useState([]);
@@ -60,12 +31,7 @@ export default function Main() {
       <div className="w-screen flex flex-col self-center items-center py-10">
         <div>
           <CssTextField
-            id="textfield"
             label="Search for a Player"
-            variant="outlined"
-            InputLabelProps={{
-              style: { color: 'white' },
-            }}
             onChange={editSearchTerm}
             value={searchTerm}
           />

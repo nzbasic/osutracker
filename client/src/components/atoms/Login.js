@@ -2,10 +2,9 @@ import React from "react";
 import { GoogleLogin } from "react-google-login";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
-import { useStyles } from '../../Style';
 
 export default function Login() {
-  const classes = useStyles()
+  
   const responseGoogle = (response) => {
     let id = response.tokenId;
     console.log(id);
@@ -29,12 +28,12 @@ export default function Login() {
         clientId="652614744493-0sd7cu5ldroucb4c041ub3i4sjiocmvl.apps.googleusercontent.com"
         render={(renderProps) => (
           <Button
-            className={classes.secondary}
+            color="secondary"
             variant="contained"
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
           >
-            <text className="text-main-four">Admin Login</text>
+            Admin Login
           </Button>
         )}
         buttonText="Admin Login"
