@@ -8,6 +8,8 @@ const height = {
 export default class AccGraph extends Graph {
   render() {
     const options = {
+      zoomEnabled: true,
+      exportEnabled: true,
       theme: 'dark2',
       colorSet: 'colorSet3',
       backgroundColor: '#222831',
