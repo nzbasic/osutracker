@@ -10,7 +10,7 @@ export default class AccGraph extends Graph {
     const options = {
       theme: 'dark2',
       colorSet: 'colorSet3',
-      backgroundColor: '#393e46',
+      backgroundColor: '#222831',
       animationEnabled: true,
       title: {
         text: "acc Graph",

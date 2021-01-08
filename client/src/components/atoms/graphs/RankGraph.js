@@ -7,7 +7,7 @@ export default class RankGraph extends Graph {
     const options = {
       theme: 'dark2',
       colorSet: 'colorSet3',
-      backgroundColor: '#393e46',
+      backgroundColor: '#222831',
       animationEnabled: true,
       title: {
         text: "Rank Graph",
