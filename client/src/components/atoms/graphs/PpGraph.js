@@ -5,7 +5,9 @@ const height = {
 export default class PpGraph extends Graph {
   render() {
     const options = {
-      theme: "light2",
+      theme: 'dark2',
+      colorSet: 'colorSet3',
+      backgroundColor: '#393e46',
       animationEnabled: true,
       title: {
         text: "pp Graph",
@@ -18,6 +20,8 @@ export default class PpGraph extends Graph {
       data: [
         {
           type: "line",
+          lineColor: '#00ff5e',
+          lineThickness: '3',
           yValueFormatString: "#### pp",
           dataPoints: this.props.points,
         },

@@ -61,11 +61,13 @@ export default function UserGraph(props) {
   }, [props.match.params.name]);
 
   return loading ? (
-    <div className="load">
-      <Loader id="spinner" type="ThreeDots" />
+    <div className="h-screen bg-main-two">
+      <div className="load ">
+        <Loader id="spinner" type="ThreeDots" />
+      </div>
     </div>
   ) : (
-    <div className="flex flex-col h-screen bg-gray-200">
+    <div className="flex flex-col h-screen bg-main-two text-main-four">
       <Header />
       <User data={userData} />
       <div className="grid grid-cols-2 h-full gap-y-1 gap-x-1">

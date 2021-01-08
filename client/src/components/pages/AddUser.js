@@ -5,6 +5,36 @@ import Button from "@material-ui/core/Button";
 import Footer from "../molecules/Footer"
 import Header from "../molecules/Header"
 
+import { withStyles } from '@material-ui/styles'
+
+const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: 'white',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'white',
+    },
+    '& .MuiInputBase-root': {
+      color: 'white',
+    },
+    '& .MuiFormHelperText': {
+      color: 'white'
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
+      },
+      '&:hover fieldset': {
+        borderColor: 'lightblue',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'lightblue',
+      },
+    },
+  },
+})(TextField);
+
 export default class AddUser extends Component {
   constructor() {
     super();
@@ -73,12 +103,12 @@ export default class AddUser extends Component {
 
   render() {
     return (
-      <div className="bg-gray-200 h-screen">
+      <div className="bg-main-two h-screen text-main-four">
         <Header />
         <div className="flex flex-col py-20 items-center">
           <h1>Add a new user</h1>
           <div className="py-5">
-            <TextField
+            <CssTextField
               id="textfield"
               label="Player to Add"
               variant="outlined"
@@ -91,13 +121,15 @@ export default class AddUser extends Component {
               onKeyDown={this.keyPress}
               onChange={this.handleChange}
               value={this.state.searchTerm}
+              InputLabelProps={{
+                style: { color: 'white' },
+              }}
             />
           </div>
           <div className="">
             <Button
               id="submit"
               variant="contained"
-              color="primary"
               onClick={() => this.addUser(this.state.searchTerm)}
             >
               Submit

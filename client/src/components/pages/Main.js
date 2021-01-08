@@ -4,6 +4,35 @@ import Footer from './../molecules/Footer'
 import NamesContainer from "../molecules/NamesContainer";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
+import { withStyles } from '@material-ui/styles'
+
+const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: 'white',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'white',
+    },
+    '& .MuiInputBase-root': {
+      color: 'white',
+    },
+    '& .MuiFormHelperText': {
+      color: 'white'
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
+      },
+      '&:hover fieldset': {
+        borderColor: 'lightblue',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'lightblue',
+      },
+    },
+  },
+})(TextField);
 
 export default function Main() {
   const [players, setPlayers] = useState([]);
@@ -26,22 +55,25 @@ export default function Main() {
   };
 
   return (
-    <div className="bg-gray-200 h-screen">
+    <div className="bg-main-two h-screen">
       <Header />
       <div className="w-screen flex flex-col self-center items-center py-10">
         <div>
-          <TextField
+          <CssTextField
             id="textfield"
             label="Search for a Player"
             variant="outlined"
+            InputLabelProps={{
+              style: { color: 'white' },
+            }}
             onChange={editSearchTerm}
             value={searchTerm}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center py-2">
           <NamesContainer names={dynamicSearch()} />
         </div>
-        <h1>Stats for all users are updated hourly.</h1>
+        <h1 className="text-main-four py-2">Stats for all users are updated hourly.</h1>
       </div>
       <div className="absolute bottom-0 w-screen">
         <Footer />  
