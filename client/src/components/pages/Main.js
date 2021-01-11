@@ -40,6 +40,7 @@ export default function Main() {
           <NamesContainer names={dynamicSearch()} />
         </div>
         <h1 className="text-main-four py-2">Stats for all users are updated every three hours.</h1>
+        <h1 className="text-main-four py-2">Currently tracking {players.length} users.</h1>
       </div>
       <div className="absolute bottom-0 w-screen">
         <Footer />  
