@@ -3,6 +3,15 @@ import Image from "../atoms/Image";
 import Text from "../atoms/Text";
 
 export default function User(props) {
+
+  if (!props.data) {
+    return (
+      <div>
+        Error loading user info! Please refresh.
+      </div>
+    )
+  }
+
   return (
     <div>
       <div className="flex flex-row px-1">
