@@ -4,7 +4,7 @@ import Text from "../atoms/Text";
 
 export default function User(props) {
 
-  if (!props.data) {
+  if (props.data[0] === undefined) {
     return (
       <div>
         Error loading user info! Please refresh.
