@@ -39,7 +39,7 @@ export default function Main() {
         <div className="flex flex-col items-center py-2">
           <NamesContainer names={dynamicSearch()} />
         </div>
-        <h1 className="text-main-four py-2">Stats for all users are updated hourly.</h1>
+        <h1 className="text-main-four py-2">Stats for all users are updated every three hours.</h1>
       </div>
       <div className="absolute bottom-0 w-screen">
         <Footer />  
