@@ -27,8 +27,11 @@ export default function User(props) {
           </div>
           <div>
             <Text text={props.data[0].pp + "pp  "} />
-            <div className="py-1">
+            <div className="py-1 flex flex-row">
               <Text text={"#" + props.data[0].rank} />
+              <div className="px-2">
+                <Text text={"Last updated " + new Date(props.data[0].date)} />
+              </div>
             </div>
           </div>
         </div>
