@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "../atoms/Login";
+import Button from "@material-ui/core/Button"
 
 export default function Header() {
   return (
@@ -14,8 +15,12 @@ export default function Header() {
           <h1 className="self-center px-5 text-main-four">osuTracker</h1>
         </a>
       </div>
-      <div className="">
-        <Login />
+      <div className="flex flex-row justify-center">
+        <Button color="primary" href="/all" variant="contained">All Users</Button>
+        <div className="self-center px-2">
+          <Login />
+        </div>
+        
       </div>
     </div>
   );
