@@ -4,6 +4,7 @@ import Footer from './../molecules/Footer'
 import NamesContainer from "../molecules/NamesContainer";
 import axios from "axios";
 import CssTextField from '../atoms/CssTextField'
+import Button from '@material-ui/core/Button'
 
 export default function Main() {
   const [players, setPlayers] = useState([]);
@@ -41,6 +42,9 @@ export default function Main() {
         </div>
         <h1 className="text-main-four py-2">Stats for all users are updated every three hours.</h1>
         <h1 className="text-main-four py-2">Currently tracking {players.length} users.</h1>
+        <div className="py-2">
+          <Button color="primary" href="/all" variant="contained">View All Users</Button>
+        </div>
       </div>
       <div className="absolute bottom-0 w-screen">
         <Footer />  
