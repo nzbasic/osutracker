@@ -44,10 +44,17 @@ const tableIcons = {
   CheckCircle: forwardRef((props, ref) => <CheckCircle {...props} ref={ref} />),
 };
 
-export default function UserTable() {
+export default function UserTable(props) {
+
     return (
         <MaterialTable
-          title="All Users + Weekly Change"
+          title="All Users"
+          options={{
+            paging:true,
+            pageSize:10,
+            emptyRowsWhenPaging: true,
+            pageSizeOptions:[5, 10, 20]   
+          }}
           icons={tableIcons}
           columns={[
             {   title: 'Name', 
@@ -56,24 +63,17 @@ export default function UserTable() {
             },
             {   title: 'Rank', 
                 field: 'rank', 
-                render: rowData => <h1>{rowData.rank + " (" + rowData.rankChange + ")"}</h1>
+                render: rowData => <h1>{rowData.rank}</h1>,
+                type: 'numeric',
+                defaultSort: 'asc'
             },
-            {   title: 'Pp', 
+            {   title: 'pp', 
                 field: 'pp', 
-                render: rowData => <h1>{rowData.pp + " (" + rowData.ppChange + ")"}</h1>
-            },
-            {   title: 'Acc', 
-                field: 'acc', 
-                render: rowData => <h1>{rowData.acc + " (" + rowData.accChange + ")"}</h1>
-            },
-            {   title: 'Play Count', 
-                field: 'plays', 
-                render: rowData => <h1>{rowData.plays + " (" + rowData.playsChange + ")"}</h1> 
+                render: rowData => <h1>{rowData.pp}</h1>,
+                type: 'numeric'
             },
           ]}
-          data={[
-            { name: 'YEP', pp: 6701, rank: 14000, acc: 98.71, plays: 71000, ppChange: '+5', rankChange: '-100', accChange: '-0.5%', playsChange: '+200' },
-          ]}        
+          data={props.data}        
         />
       )
 }
