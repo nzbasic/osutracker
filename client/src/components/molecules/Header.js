@@ -16,7 +16,6 @@ export default function Header() {
         </a>
       </div>
       <div className="flex flex-row justify-center">
-        <Button color="primary" href="/all" variant="contained">All Users</Button>
         <div className="self-center px-2">
           <Login />
         </div>
