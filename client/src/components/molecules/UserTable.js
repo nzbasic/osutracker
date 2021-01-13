@@ -48,7 +48,7 @@ export default function UserTable(props) {
 
     return (
         <MaterialTable
-          title="All Users"
+          title="All"
           options={{
             paging:true,
             pageSize:10,
