@@ -39,7 +39,7 @@ export default function User(props) {
             <div className="py-1 flex flex-row">
               <Text text={"#" + props.data[0].rank} />
               <div className="px-2">
-                <Text text={"Last updated " + new Date(props.data[0].date)} />
+                <Text text={"Last updated " + new Date(props.data[0].date).toDateString()} />
               </div>
             </div>
           </div>
