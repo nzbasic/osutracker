@@ -91,6 +91,7 @@ export default class AddUser extends Component {
           <div className="">
             <Button
               id="submit"
+              disabled={this.errorState(this.state.searchTerm)}
               variant="contained"
               color="primary"
               onClick={() => this.addUser(this.state.searchTerm)}
