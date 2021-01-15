@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "./../molecules/Header";
+import Footer from './../molecules/Footer'
 import NamesContainer from "../molecules/NamesContainer";
 import axios from "axios";
-import TextField from "@material-ui/core/TextField";
+import CssTextField from '../atoms/CssTextField'
+import Button from '@material-ui/core/Button'
 
 export default function Main() {
   const [players, setPlayers] = useState([]);
@@ -25,22 +27,27 @@ export default function Main() {
   };
 
   return (
-    <div className="bg-gray-200 h-screen">
+    <div className="bg-main-two h-screen">
       <Header />
-      <div className="w-screen flex flex-col self-center items-center py-20">
+      <div className="w-screen flex flex-col self-center items-center py-10">
         <div>
-          <TextField
-            id="textfield"
+          <CssTextField
             label="Search for a Player"
-            variant="outlined"
             onChange={editSearchTerm}
             value={searchTerm}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center py-2">
           <NamesContainer names={dynamicSearch()} />
         </div>
-        <h1>Stats for all users are updated hourly.</h1>
+        <h1 className="text-main-four py-2">Stats for all users are updated every three hours.</h1>
+        <h1 className="text-main-four py-2">Currently tracking {players.length} users.</h1>
+        <div className="py-2">
+          <Button color="primary" href="/all" variant="contained">View All Users</Button>
+        </div>
+      </div>
+      <div className="absolute bottom-0 w-screen">
+        <Footer />  
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
-import Header from "./../molecules/Header";
-
+import Footer from "../molecules/Footer"
+import Header from "../molecules/Header"
+import CssTextField from '../atoms/CssTextField'
 export default class AddUser extends Component {
   constructor() {
     super();
@@ -70,15 +70,13 @@ export default class AddUser extends Component {
 
   render() {
     return (
-      <div className="bg-gray-200 h-screen">
+      <div className="bg-main-two h-screen text-main-four">
         <Header />
         <div className="flex flex-col py-20 items-center">
-          <h1>Add a new user</h1>
+          <h1 className="text-2xl">Add a new user</h1>
           <div className="py-5">
-            <TextField
-              id="textfield"
+            <CssTextField
               label="Player to Add"
-              variant="outlined"
               error={this.errorState(this.state.searchTerm)}
               helperText={
                 this.errorState(this.state.searchTerm)
@@ -93,6 +91,7 @@ export default class AddUser extends Component {
           <div className="">
             <Button
               id="submit"
+              disabled={this.errorState(this.state.searchTerm)}
               variant="contained"
               color="primary"
               onClick={() => this.addUser(this.state.searchTerm)}
@@ -100,14 +99,17 @@ export default class AddUser extends Component {
               Submit
             </Button>
           </div>
-          <h1 className="py-5">
+          <h1 className="py-5 px-2">
             All users will be manually approved by an admin, usually within 24
             hours, unless your request is denied.
           </h1>
-          <h1>
+          <h1 className="px-2">
             Stats are updated hourly, so you will not see any data until the
             next hour passes.
           </h1>
+        </div>
+        <div className="absolute bottom-0 w-screen">
+          <Footer />  
         </div>
       </div>
     );

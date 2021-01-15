@@ -1,0 +1,5 @@
+@media screen and (max-height: 700px) {
+    .main {
+        display: none;
+    }
+}

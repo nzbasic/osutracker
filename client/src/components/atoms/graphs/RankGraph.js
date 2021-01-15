@@ -5,7 +5,11 @@ const height = {
 export default class RankGraph extends Graph {
   render() {
     const options = {
-      theme: "light2",
+      zoomEnabled: true,
+      exportEnabled: true,
+      theme: 'dark2',
+      colorSet: 'colorSet3',
+      backgroundColor: '#222831',
       animationEnabled: true,
       title: {
         text: "Rank Graph",
@@ -18,6 +22,8 @@ export default class RankGraph extends Graph {
       data: [
         {
           type: "line",
+          lineColor: '#00ff5e',
+          lineThickness: '3',
           yValueFormatString: "####",
           dataPoints: this.props.points,
         },

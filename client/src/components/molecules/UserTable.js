@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-import axios from "axios";
-import MaterialTable from "material-table";
-import { forwardRef } from "react";
-import Header from "./Header";
+import React from 'react'
+import MaterialTable from 'material-table'
+import { forwardRef } from "react"
 
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
@@ -46,76 +44,36 @@ const tableIcons = {
   CheckCircle: forwardRef((props, ref) => <CheckCircle {...props} ref={ref} />),
 };
 
-function createData(name) {
-  return { name };
-}
+export default function UserTable(props) {
 
-function arrayRemove(arr, value) {
-  return arr.filter(function (ele) {
-    return ele != value;
-  });
-}
-
-export default function EnhancedTable() {
-  const [rows, setRows] = React.useState([]);
-
-  useEffect(() => {
-    axios.get("/newplayer").then((response) => {
-      setRows(response.data.map((user) => createData(user.name)));
-    });
-  }, []);
-
-  function handleAdd(evt, data) {
-    let newRows = rows;
-    data.forEach((element) => {
-      newRows = arrayRemove(newRows, element);
-
-      axios.post("/newplayer/change", {
-        token: localStorage.getItem("token"),
-        player: element.name,
-      });
-    });
-    setRows(newRows);
-  }
-
-  function handleDelete(evt, data) {
-    let newRows = rows;
-    data.forEach((element) => {
-      newRows = arrayRemove(newRows, element);
-
-      axios.post("/newplayer/remove", {
-        token: localStorage.getItem("token"),
-        player: element.name,
-      });
-    });
-    setRows(newRows);
-  }
-
-  return (
-    <div className="bg-gray-200 h-screen">
-      <div className="m-10">
+    return (
         <MaterialTable
-          title="New Users"
-          icons={tableIcons}
-          columns={[{ title: "Name", field: "name" }]}
-          data={rows}
+          title="All"
           options={{
-            selection: true,
+            paging:true,
+            pageSize:10,
+            emptyRowsWhenPaging: true,
+            pageSizeOptions:[5, 10, 20]   
           }}
-          actions={[
-            {
-              tooltip: "Remove All Selected Users",
-              icon: tableIcons.Delete,
-              onClick: handleDelete,
+          icons={tableIcons}
+          columns={[
+            {   title: 'Name', 
+                field: 'name', 
+                render: rowData => <a style={{color: '#3282b8'}} href={"http://osutracker.com/user/" + rowData.name}>{rowData.name}</a> 
             },
-            {
-              tooltip: "Approve All Selected Users",
-              icon: tableIcons.CheckCircle,
-              onClick: handleAdd,
+            {   title: 'Rank', 
+                field: 'rank', 
+                render: rowData => <h1>{rowData.rank}</h1>,
+                type: 'numeric',
+                defaultSort: 'asc'
+            },
+            {   title: 'pp', 
+                field: 'pp', 
+                render: rowData => <h1>{rowData.pp}</h1>,
+                type: 'numeric'
             },
           ]}
+          data={props.data}        
         />
-      </div>
-    </div>
-  );
+      )
 }
