@@ -49,30 +49,9 @@ export default function UserTable(props) {
     return (
         <MaterialTable
           title="All"
-          options={{
-            paging:true,
-            pageSize:10,
-            emptyRowsWhenPaging: true,
-            pageSizeOptions:[5, 10, 20]   
-          }}
+          columns={props.columns}
+          options={props.options}
           icons={tableIcons}
-          columns={[
-            {   title: 'Name', 
-                field: 'name', 
-                render: rowData => <a style={{color: '#3282b8'}} href={"http://osutracker.com/user/" + rowData.name}>{rowData.name}</a> 
-            },
-            {   title: 'Rank', 
-                field: 'rank', 
-                render: rowData => <h1>{rowData.rank}</h1>,
-                type: 'numeric',
-                defaultSort: 'asc'
-            },
-            {   title: 'pp', 
-                field: 'pp', 
-                render: rowData => <h1>{rowData.pp}</h1>,
-                type: 'numeric'
-            },
-          ]}
           data={props.data}        
         />
       )
