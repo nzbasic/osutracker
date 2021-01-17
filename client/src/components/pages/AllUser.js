@@ -30,7 +30,32 @@ export default function AllUser() {
         <div className="h-screen bg-main-two">
             <Header />
             <div className="py-2 flex flex-col px-2 bg-main-two">
-                <UserTable data={players}/>
+                <UserTable 
+                data={players}
+                columns={[
+                    {   title: 'Name', 
+                        field: 'name', 
+                        render: rowData => <a style={{color: '#3282b8'}} href={"http://osutracker.com/user/" + rowData.name}>{rowData.name}</a> 
+                    },
+                    {   title: 'Rank', 
+                        field: 'rank', 
+                        render: rowData => <h1>{rowData.rank}</h1>,
+                        type: 'numeric',
+                        defaultSort: 'asc'
+                    },
+                    {   title: 'pp', 
+                        field: 'pp', 
+                        render: rowData => <h1>{rowData.pp}</h1>,
+                        type: 'numeric'
+                    },
+                ]}
+                options={{
+                    paging:true,
+                    pageSize:10,
+                    emptyRowsWhenPaging: true,
+                    pageSizeOptions:[5, 10, 20]   
+                }}
+                />
             </div>
         </div>
     )
