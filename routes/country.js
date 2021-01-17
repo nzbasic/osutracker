@@ -7,6 +7,12 @@ router.route("/names").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/abbreviation/:country").get((req, res)=>{
+    Country.find({ name: req.params.country }, { abbreviation: 1 })
+        .then((country) => res.json(country))
+        .catch(err => res.status(400).json("error: " + err))
+})
+
 router.route("/data/:country").get((req, res) => {
   Country.find({ name: req.params.country })
     .then((country) => {
