@@ -17,7 +17,8 @@ let countrySchema = new mongoose.Schema({
                 mods: Array,
                 pp: String,
                 missCount: String,
-                acc: Number
+                acc: Number,
+                player: String
             }
         ]
     ],
