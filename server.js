@@ -34,11 +34,13 @@ const playRouter = require("./routes/plays");
 const statRouter = require("./routes/stats");
 const userRouter = require("./routes/user");
 const newPlayerRouter = require("./routes/newplayer");
+const countryRouter = require("./routes/country")
 app.use("/players", playersRouter);
 app.use("/plays", playRouter);
 app.use("/stats", statRouter);
 app.use("/login", userRouter);
 app.use("/newplayer", newPlayerRouter);
+app.use("/country", countryRouter)
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"), function (err) {
