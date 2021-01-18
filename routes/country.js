@@ -7,6 +7,29 @@ router.route("/names").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/nameAbr").get((req, res) => {
+    Country.find({}, {name: 1, abbreviation: 1})
+        .then(countries => res.json(countries))
+        .catch(err => res.status(400).json("error: " + err))
+})
+
+router.route("/namePpAbr").get((req, res) => {
+    Country.find({}, {name: 1, ppHistory: 1, abbreviation: 1})
+        .then(countries => {
+            let response = []
+            countries.forEach(country => {
+                let data = { 
+                    name: country.name,
+                    pp: country.ppHistory[country.ppHistory.length-1].total,
+                    abbreviation: country.abbreviation
+                }
+                response.push(data)
+            })
+            res.json(response)
+        })
+        .catch(err => res.status(400).json("error :" + err))
+})
+
 router.route("/abbreviation/:country").get((req, res)=>{
     Country.find({ name: req.params.country }, { abbreviation: 1 })
         .then((country) => res.json(country))
