@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../molecules/Header";
 import UserTable from "../molecules/UserTable";
+import Loader from 'react-loader-spinner'
+import "../../css/Graph.css";
 import { Column, Table } from 'react-virtualized'
 import Image from '../atoms/Image'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 
 export default function AllCountry() {
   const [countries, setCountries] = useState([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     axios.get("/country/namePpAbr").then((response) => {
@@ -22,14 +25,21 @@ export default function AllCountry() {
       }
       out.sort((a,b) => a.pp < b.pp)
       setCountries(out);
+      setLoading(false)
     });
   }, []);
 
   return (
+    isLoading ? 
+    <div className="h-screen bg-main-two">
+        <div className="load">
+            <Loader id="spinner" type="ThreeDots" />
+        </div>
+    </div> : 
     <div className="h-screen bg-main-two flex flex-col">
       <Header />
-      <div className="py-2 flex flex-col px-2 bg-main-four h-full">
-        <AutoSizer className="">
+      <div className="py-2 flex flex-col px-2 bg-main-two h-full">
+        <AutoSizer className="text-main-four">
           {({ height, width }) => (
             <Table
               width={width}

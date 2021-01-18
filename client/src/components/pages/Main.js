@@ -3,6 +3,8 @@ import Header from "./../molecules/Header";
 import Footer from './../molecules/Footer'
 import NamesContainer from "../molecules/NamesContainer";
 import axios from "axios";
+import Loader from 'react-loader-spinner'
+import '../../css/Graph.css'
 import CssTextField from '../atoms/CssTextField'
 import Button from '@material-ui/core/Button'
 
@@ -10,6 +12,7 @@ export default function Main() {
   const [players, setPlayers] = useState([]);
   const [countries, setCountries] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     axios.get("/players").then((response) => {
@@ -29,6 +32,7 @@ export default function Main() {
         countryList.push(country)
       })
       setCountries(countryList)
+      setLoading(false)
     })
   },[]);
 
@@ -47,6 +51,12 @@ export default function Main() {
   };
 
   return (
+    isLoading ? 
+    <div className="h-screen bg-main-two">
+        <div className="load">
+            <Loader id="spinner" type="ThreeDots" />
+        </div>
+    </div> : 
     <div className="bg-main-two h-screen">
       <Header />
       <div className="w-screen flex flex-col self-center items-center py-10">

@@ -4,10 +4,13 @@ import Header from "../molecules/Header";
 import UserTable from "../molecules/UserTable";
 import { Column, Table } from 'react-virtualized'
 import Image from '../atoms/Image'
+import Loader from 'react-loader-spinner'
+import "../../css/Graph.css";
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 
 export default function AllCountry() {
   const [players, setPlayers] = useState([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     axios.get("/players").then((response) => {
@@ -22,14 +25,21 @@ export default function AllCountry() {
       }
       out.sort((a,b) => parseInt(a.pp) < parseInt(b.pp))
       setPlayers(out);
+      setLoading(false)
     });
   }, []);
 
   return (
+    isLoading ? 
+    <div className="h-screen bg-main-two">
+        <div className="load">
+            <Loader id="spinner" type="ThreeDots" />
+        </div>
+    </div> : 
     <div className="h-screen bg-main-two flex flex-col">
       <Header />
-      <div className="py-2 flex flex-col px-2 bg-main-four h-full">
-        <AutoSizer className="">
+      <div className="py-2 flex flex-col px-2 bg-main-two h-full">
+        <AutoSizer className="text-main-four">
           {({ height, width }) => (
             <Table
               width={width}
@@ -52,7 +62,7 @@ export default function AllCountry() {
               <Column
                 label="Rank"
                 dataKey="rank"
-                width={60}
+                width={80}
                 cellRenderer={({ cellData }) => (
                   <div className="text-lg">{cellData}</div>
                 )}
