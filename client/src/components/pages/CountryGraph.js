@@ -79,7 +79,7 @@ export default function CountryGraph(props) {
                                     }
                                 }}
                             >
-                                <Column label="#" dataKey="player" width={30} 
+                                <Column label="#" dataKey="player" width={55} 
                                     cellRenderer={({rowIndex})=>(
                                         <div className="text-xs">
                                             {rowIndex+1}
