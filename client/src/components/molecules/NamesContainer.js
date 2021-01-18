@@ -4,14 +4,15 @@ import { v4 as uuidv4 } from "uuid";
 import NewUser from "../atoms/NewUser";
 
 export default function NamesContainer(props) {
+
+  let list = props.names.sort((a,b) => a.name.localeCompare(b.name)).slice(0,5)
+
   return (
     <div>
       <div>
-        {props.names
-          .sort((a, b) => a.localeCompare(b))
-          .slice(0, 5)
+        {list
           .map((name) => (
-            <Name key={uuidv4()} name={name} />
+            <Name key={uuidv4()} data={name} />
           ))}
         <NewUser />
       </div>
