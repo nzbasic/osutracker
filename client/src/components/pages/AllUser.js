@@ -23,7 +23,8 @@ export default function AllCountry() {
           rank: data[i].rank
         });
       }
-      out.sort((a,b) => parseInt(a.pp) < parseInt(b.pp))
+      out.sort((a,b) => b.pp-a.pp)
+      console.log(out)
       setPlayers(out);
       setLoading(false)
     });

@@ -23,7 +23,7 @@ export default function AllCountry() {
           abbreviation: data[i].abbreviation,
         });
       }
-      out.sort((a,b) => a.pp < b.pp)
+      out.sort((a,b) => b.pp-a.pp)
       setCountries(out);
       setLoading(false)
     });
