@@ -22,6 +22,7 @@ export default function Main() {
         playerList.push(user)
       })
       setPlayers(playerList);
+      setLoading(false)
     });
 
 
@@ -32,7 +33,6 @@ export default function Main() {
         countryList.push(country)
       })
       setCountries(countryList)
-      setLoading(false)
     })
   },[]);
 
