@@ -8,12 +8,28 @@ import Button from '@material-ui/core/Button'
 
 export default function Main() {
   const [players, setPlayers] = useState([]);
+  const [countries, setCountries] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     axios.get("/players").then((response) => {
-      setPlayers(response.data.map((user) => user.name));
+      let playerList = []
+      response.data.forEach(user => {
+        user.type = "player"
+        playerList.push(user)
+      })
+      setPlayers(playerList);
     });
+
+
+    axios.get("/country/nameAbr").then(response => {
+      let countryList = []
+      response.data.forEach(country => {
+        country.type = "country"
+        countryList.push(country)
+      })
+      setCountries(countryList)
+    })
   },[]);
 
   const editSearchTerm = (e) => {
@@ -21,9 +37,13 @@ export default function Main() {
   };
 
   const dynamicSearch = () => {
-    return players.filter((name) =>
-      name.toLowerCase().includes(searchTerm.toLowerCase())
+
+    let combined = players.concat(countries)
+
+    let filter = combined.filter((name) =>
+      name.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    return filter
   };
 
   return (
@@ -32,7 +52,7 @@ export default function Main() {
       <div className="w-screen flex flex-col self-center items-center py-10">
         <div>
           <CssTextField
-            label="Search for a Player"
+            label="Search for a Player or Country"
             onChange={editSearchTerm}
             value={searchTerm}
           />
@@ -40,10 +60,13 @@ export default function Main() {
         <div className="flex flex-col items-center py-2">
           <NamesContainer names={dynamicSearch()} />
         </div>
-        <h1 className="text-main-four py-2">Stats for all users are updated every three hours.</h1>
-        <h1 className="text-main-four py-2">Currently tracking {players.length} users.</h1>
-        <div className="py-2">
+        <h1 className="text-main-four py-2">Stats for all users are updated every three hours. Countries daily.</h1>
+        <h1 className="text-main-four py-2">Currently tracking {players.length} users and {countries.length} countries.</h1>
+        <div className="py-2 flex flex-col">
           <Button color="primary" href="/all" variant="contained">View All Users</Button>
+          <div className="py-2">
+            <Button color="primary" href="/allCountry" variant="contained">View All Countries</Button>
+          </div>
         </div>
       </div>
       <div className="absolute bottom-0 w-screen">
