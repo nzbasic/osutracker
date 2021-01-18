@@ -6,6 +6,7 @@ import Main from "./components/pages/Main";
 import Admin from "./components/pages/Admin";
 import AddUser from "./components/pages/AddUser";
 import AllUser from "./components/pages/AllUser"
+import AllCountry from './components/pages/AllCountry'
 import CountryGraph from "./components/pages/CountryGraph"
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/" exact component={Main} />
           <Route path="/add" component={AddUser} />
           <Route path="/all" component={AllUser} />
+          <Route path="/allCountry" component={AllCountry} />
           <Route path="/country/:country" component={CountryGraph} />
           <ProtectedRoute path="/admin" component={Admin} />
         </Switch>
