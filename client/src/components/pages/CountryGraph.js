@@ -17,12 +17,7 @@ export default function CountryGraph(props) {
     ])
     const [isLoading, setLoading] = useState(true)
     const [abbreviation, setAbbreviation] = useState("")
-
-    const [columns] = useState([
-        { name: 'player', title: 'Player' },
-        { name: 'name', title: 'Map' },
-        { name: 'pp', title: 'pp'}
-    ])
+    
 
     useEffect(() => {
 
@@ -95,6 +90,13 @@ export default function CountryGraph(props) {
                                             #
                                         </div>
                                     )}
+                                    cellDataGetter={({dataKey, rowData}) => {
+                                        if (rowData === undefined) {
+                                            return 0
+                                        } else {
+                                            return rowData[dataKey]
+                                        }
+                                    }}
                                 />
                                 <Column label="Player" dataKey="player" width={100}
                                     cellRenderer={({cellData})=>(
@@ -107,21 +109,41 @@ export default function CountryGraph(props) {
                                             Player
                                         </div>
                                     )}
+                                    cellDataGetter={({dataKey, rowData}) => {
+                                        if (rowData === undefined) {
+                                            return 0
+                                        } else {
+                                            return rowData[dataKey]
+                                        }
+                                    }}
                                 />
                                 <Column label="Map" dataKey="name" width={600}
-                                    cellRenderer={({rowIndex, cellData}) => (
-                                        <a href={"https://osu.ppy.sh/beatmaps/"+topScores[rowIndex].id+"?mode=osu"}
-                                           target="_blank"
-                                           className="text-main-three text-xs"
-                                        >
-                                            {cellData}
-                                        </a>
-                                    )}
+                                    cellRenderer={({rowIndex, cellData}) => {
+                                        if (topScores[rowIndex] === undefined) {
+                                            return <div></div>
+                                        } else {
+                                            return (
+                                                <a href={"https://osu.ppy.sh/beatmaps/"+topScores[rowIndex].id+"?mode=osu"}
+                                                target="_blank"
+                                                className="text-main-three text-xs"
+                                                >
+                                                    {cellData}
+                                                </a>
+                                            )
+                                        }
+                                    }}
                                     headerRenderer={()=>(
                                         <div className="text-xs">
                                             Map
                                         </div>
                                     )}
+                                    cellDataGetter={({dataKey, rowData}) => {
+                                        if (rowData === undefined) {
+                                            return 0
+                                        } else {
+                                            return rowData[dataKey]
+                                        }
+                                    }}
                                 />
                                 <Column label="Mods" dataKey="mods" width={80} 
                                     cellRenderer={({cellData})=>(
@@ -134,6 +156,13 @@ export default function CountryGraph(props) {
                                             Mods
                                         </div>
                                     )}
+                                    cellDataGetter={({dataKey, rowData}) => {
+                                        if (rowData === undefined) {
+                                            return 0
+                                        } else {
+                                            return rowData[dataKey]
+                                        }
+                                    }}
                                 />
 
                                 <Column label="x" dataKey="missCount" width={40}
@@ -147,6 +176,13 @@ export default function CountryGraph(props) {
                                             x
                                         </div>
                                     )}
+                                    cellDataGetter={({dataKey, rowData}) => {
+                                        if (rowData === undefined) {
+                                            return 0
+                                        } else {
+                                            return rowData[dataKey]
+                                        }
+                                    }}
                                 />
                                 <Column label="pp" dataKey="pp" width={60}
                                     cellRenderer={({cellData})=>(
@@ -159,6 +195,13 @@ export default function CountryGraph(props) {
                                             pp
                                         </div>
                                     )}
+                                    cellDataGetter={({dataKey, rowData}) => {
+                                        if (rowData === undefined) {
+                                            return 0
+                                        } else {
+                                            return rowData[dataKey]
+                                        }
+                                    }}
                                 />
                             </Table>
                         )}
