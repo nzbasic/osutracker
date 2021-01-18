@@ -9,7 +9,7 @@ export default function Country(props) {
                 height={40}
                 width={60}
                 link={
-                  "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+                  "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
                   props.abbreviation +
                   ".svg"
                 }

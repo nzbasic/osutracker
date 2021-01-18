@@ -27,7 +27,7 @@ export default function User(props) {
                 height={12}
                 width={18}
                 link={
-                  "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+                  "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
                   props.data[0].country +
                   ".svg"
                 }

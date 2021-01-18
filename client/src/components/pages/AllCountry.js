@@ -87,7 +87,7 @@ export default function AllCountry() {
                                 height={20}
                                 width={30}
                                 link={
-                                "http://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+                                "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
                                 countries[rowIndex].abbreviation +
                                 ".svg"
                                 }
