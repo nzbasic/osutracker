@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../molecules/Header"
-import AccGraph from "./../atoms/graphs/AccGraph";
-import PpGraph from "./../atoms/graphs/PpGraph";
-import RankGraph from "./../atoms/graphs/RankGraph";
-import PlayGraph from "./../atoms/graphs/PlayGraph";
 import Loader from "react-loader-spinner";
 import User from "../molecules/User";
-import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import "../../css/Graph.css";
 import TimeSeriesChart from '../molecules/TimeSeriesChart'
 
