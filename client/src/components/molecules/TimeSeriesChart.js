@@ -16,8 +16,8 @@ import {
 const CustomTooltip = ({ active, payload, label}) => {
     if (active) {
         return (
-            <div className="">
-                <p className="label">{moment(label).format("DDD M YY") + " : " + Math.floor(payload[0].value) + "pp"}</p>
+            <div className="text-main-one">
+                <p className="label">{moment(label).format("DDD M YY") + " : " + payload[0].value}</p>
             </div>
         )
     }
@@ -27,7 +27,6 @@ const CustomTooltip = ({ active, payload, label}) => {
 const TimeSeriesChart = (props) => (
   <ResponsiveContainer width='95%' height='95%' >
     <LineChart data={props.chartData} margin={{top:25}}>
-      <Label value="pp History Graph" offset={0} position="top" />
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis
         dataKey='x'
@@ -36,7 +35,7 @@ const TimeSeriesChart = (props) => (
         tickFormatter={(unixTime) => moment(unixTime).format('HH:mm Do')}
         type='number'
       />
-      <YAxis dataKey='y' name='pp' domain={['dataMin-5', 'auto']} />
+      <YAxis dataKey='y' name='pp' domain={['dataMin-0.1', 'auto']} />
       <Tooltip content={<CustomTooltip />}/>
       <Line
         strokeWidth={2}
