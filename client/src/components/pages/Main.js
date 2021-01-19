@@ -59,7 +59,7 @@ export default function Main() {
     </div> : 
     <div className="bg-main-two h-screen">
       <Header />
-      <div className="w-screen flex flex-col self-center items-center py-10">
+      <div className="w-screen flex flex-col self-center items-center py-10 text-main-four text-center">
         <div>
           <CssTextField
             label="Search for a Player or Country"
@@ -70,8 +70,8 @@ export default function Main() {
         <div className="flex flex-col items-center py-2">
           <NamesContainer names={dynamicSearch()} />
         </div>
-        <h1 className="text-main-four py-2">Stats for all users are updated every three hours. Countries daily.</h1>
-        <h1 className="text-main-four py-2">Currently tracking {players.length} users and {countries.length} countries.</h1>
+        <h1 className="py-2">Stats for all users are updated every three hours. Countries daily.</h1>
+        <h1 className="py-2">Currently tracking {players.length} users and {countries.length} countries.</h1>
         <div className="py-2 flex flex-col">
           <Button color="primary" href="/all" variant="contained">View All Users</Button>
           <div className="py-2">
