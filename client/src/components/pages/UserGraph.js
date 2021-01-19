@@ -7,7 +7,9 @@ import RankGraph from "./../atoms/graphs/RankGraph";
 import PlayGraph from "./../atoms/graphs/PlayGraph";
 import Loader from "react-loader-spinner";
 import User from "../molecules/User";
+import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import "../../css/Graph.css";
+import TimeSeriesChart from '../molecules/TimeSeriesChart'
 
 export default function UserGraph(props) {
   const [ppPoints, setPpPoints] = useState([]);
@@ -30,19 +32,19 @@ export default function UserGraph(props) {
 
       for (let i = 0; i < response.data.length; i++) {
         pp.push({
-          x: new Date(response.data[i].date),
+          x: response.data[i].date,
           y: parseInt(response.data[i].pp),
         });
         rank.push({
-          x: new Date(response.data[i].date),
+          x: response.data[i].date,
           y: parseInt(response.data[i].rank),
         });
         acc.push({
-          x: new Date(response.data[i].date),
+          x: response.data[i].date,
           y: parseFloat(response.data[i].acc),
         });
         play.push({
-          x: new Date(response.data[i].date),
+          x: response.data[i].date,
           y: parseInt(response.data[i].plays),
         });
       }
@@ -70,18 +72,26 @@ export default function UserGraph(props) {
     <div className="flex flex-col h-screen bg-main-two text-main-four">
       <Header />
       <User data={userData} />
-      <div className="grid grid-cols-2 h-full gap-y-1 gap-x-1">
-        <div>
-          <RankGraph points={rankPoints} />
+      <div className="flex flex-col lg:h-full">
+        <div className="flex flex-col lg:flex-row lg:h-full h-screen">
+          <div className="h-full w-full bg-main-four flex flex-col">
+            <div className="text-main-one self-center">Pp</div>
+            <TimeSeriesChart chartData={ppPoints} />
+          </div>
+          <div className="h-full w-full bg-main-four flex flex-col">
+            <div className="text-main-one self-center">Rank</div>
+            <TimeSeriesChart chartData={rankPoints} />
+          </div>
         </div>
-        <div>
-          <PpGraph points={ppPoints} />
-        </div>
-        <div>
-          <AccGraph points={accPoints} />
-        </div>
-        <div>
-          <PlayGraph points={playPoints} />
+        <div className="flex flex-col lg:flex-row h-screen lg:h-full">
+          <div className="h-full w-full bg-main-four flex flex-col">
+            <div className="text-main-one self-center">Acc</div>
+            <TimeSeriesChart chartData={accPoints} />
+          </div>
+          <div className="h-full w-full bg-main-four flex flex-col">
+            <div className="text-main-one self-center">Plays</div>
+            <TimeSeriesChart chartData={playPoints} />
+          </div>
         </div>
       </div>
     </div>
