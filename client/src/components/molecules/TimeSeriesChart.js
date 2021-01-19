@@ -36,7 +36,7 @@ const TimeSeriesChart = (props) => (
         tickFormatter={(unixTime) => moment(unixTime).format('HH:mm Do')}
         type='number'
       />
-      <YAxis dataKey='y' name='pp' domain={['dataMin', 'auto']} />
+      <YAxis dataKey='y' name='pp' domain={['dataMin-5', 'auto']} />
       <Tooltip content={<CustomTooltip />}/>
       <Line
         strokeWidth={2}
