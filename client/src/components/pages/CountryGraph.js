@@ -210,7 +210,7 @@ export default function CountryGraph(props) {
                 </div>
                 <div className="bg-main-four h-full w-full lg:w-1/2 flex flex-col">
                     <h1 className="self-center">pp History Chart</h1>
-                   <TimeSeriesChart chartData={ppHistory} />
+                    <TimeSeriesChart chartData={ppHistory} />
                 </div>
             </div>
             
