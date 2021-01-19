@@ -3,7 +3,7 @@ import Image from '../atoms/Image'
 
 export default function Country(props) {
     return (
-        <div className="flex flex-row px-1">
+        <div className="flex flex-row px-1 bg-main-two">
             <div className="outline-inner">
             <Image
                 height={40}
