@@ -78,7 +78,7 @@ const TimeSeriesChart = (props) => {
         />
         <YAxis dataKey="y" name="pp" domain={["dataMin-0.1", "auto"]} />
         <Tooltip content={<CustomTooltip />} />
-        <Line strokeWidth={2} dataKey="y" type="monotone" stroke="#c91a34" />
+        <Line strokeWidth={2} dataKey="y" type="monotone" stroke="#c91a34" dot={false} />
       </LineChart>
     </ResponsiveContainer>
   );
