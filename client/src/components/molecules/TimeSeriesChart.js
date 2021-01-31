@@ -27,46 +27,12 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const TimeSeriesChart = (props) => {
-  const [zoomState, setZoomState] = useState();
-
-  // for desktop
-  const handleZoomMouseDown = (e) =>
-    e && setZoomState({ ...zoomState, refAreaLeft: e.activeLabel });
-
-  const handleZoomMouseMove = (e) =>
-    e &&
-    zoomState.refAreaLeft &&
-    setZoomState({ ...zoomState, refAreaRight: e.activeLabel });
-
-  const handleZoomMouseUp = (e) => {
-    if (
-      !(e && zoomState.refAreaLeft && zoomState.refAreaRight) ||
-      zoomState.refAreaLeft === zoomState.refAreaRight
-    ) {
-      setZoomState();
-      return;
-    }
-
-    const min = Math.min(zoomState.refAreaRight, zoomState.refAreaLeft);
-    const max = Math.max(zoomState.refAreaRight, zoomState.refAreaLeft);
-
-    setZoomState({
-      ...zoomState,
-      xMin: min,
-      xMax: max,
-      refAreaLeft: undefined,
-      refAreaRight: undefined,
-    });
-  };
-
+  
   return (
     <ResponsiveContainer width="95%" height="95%">
       <LineChart 
         data={props.chartData} 
         margin={{ top: 25 }}
-        onMouseDown={e => handleZoomMouseDown}
-        onMouseMove={e => handleZoomMouseMove}
-        onMouseUp={e => handleZoomMouseUp}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
