@@ -64,26 +64,26 @@ export default function UserGraph(props) {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col h-screen bg-main-two text-main-four">
+    <div className="flex flex-col h-full lg:h-screen bg-main-two text-main-four ">
       <Header />
       <User data={userData} />
       <div className="flex flex-col lg:h-full">
-        <div className="flex flex-col lg:flex-row lg:h-full h-screen">
-          <div className="h-full w-full bg-main-four flex flex-col">
+        <div className="flex flex-col lg:flex-row lg:h-full">
+          <div className="lg:h-full w-full bg-main-four flex flex-col h-72">
             <div className="text-main-one self-center">Pp</div>
             <TimeSeriesChart chartData={ppPoints} />
           </div>
-          <div className="h-full w-full bg-main-four flex flex-col">
+          <div className="lg:h-full w-full bg-main-four flex flex-col h-72">
             <div className="text-main-one self-center">Rank</div>
             <TimeSeriesChart chartData={rankPoints} />
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row h-screen lg:h-full">
-          <div className="h-full w-full bg-main-four flex flex-col">
+        <div className="flex flex-col lg:flex-row lg:h-full">
+          <div className="lg:h-full w-full bg-main-four flex flex-col h-72">
             <div className="text-main-one self-center">Acc</div>
             <TimeSeriesChart chartData={accPoints} />
           </div>
-          <div className="h-full w-full bg-main-four flex flex-col">
+          <div className="lg:h-full w-full bg-main-four flex flex-col h-72">
             <div className="text-main-one self-center">Plays</div>
             <TimeSeriesChart chartData={playPoints} />
           </div>
