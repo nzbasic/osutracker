@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Line,
   Label,
+  Brush,
   Tooltip,
   LineChart,
   XAxis,
@@ -29,7 +30,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 const TimeSeriesChart = (props) => {
   
   return (
-    <ResponsiveContainer width="95%" height="95%">
+    <ResponsiveContainer width="95%" height="90%">
       <LineChart 
         data={props.chartData} 
         margin={{ top: 25 }}
@@ -43,6 +44,9 @@ const TimeSeriesChart = (props) => {
           type="number"
         />
         <YAxis dataKey="y" name="pp" domain={["dataMin-0.1", "auto"]} />
+        <Brush dataKey="x" height={30}
+          tickFormatter={(unixTime) => moment(unixTime).format("HH:mm Do")}
+        />
         <Tooltip content={<CustomTooltip />} />
         <Line strokeWidth={2} dataKey="y" type="monotone" stroke="#c91a34" dot={false} />
       </LineChart>
