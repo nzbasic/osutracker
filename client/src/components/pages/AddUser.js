@@ -70,7 +70,7 @@ export default class AddUser extends Component {
 
   render() {
     return (
-      <div className="bg-main-two h-screen text-main-four text-center">
+      <div className="bg-main-two min-h-screen text-main-four text-center">
         <Header />
         <div className="flex flex-col py-20 items-center">
           <h1 className="text-2xl">Add a new user</h1>

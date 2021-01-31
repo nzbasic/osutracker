@@ -57,7 +57,7 @@ export default function Main() {
             <Loader id="spinner" type="ThreeDots" />
         </div>
     </div> : 
-    <div className="bg-main-two h-screen">
+    <div className="bg-main-two min-h-screen">
       <Header />
       <div className="w-screen flex flex-col self-center items-center py-10 text-main-four text-center">
         <div>
