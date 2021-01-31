@@ -79,7 +79,7 @@ export default function CountryGraph(props) {
                                     }
                                 }}
                             >
-                                <Column label="#" dataKey="player" width={55} 
+                                <Column label="#" dataKey="player" width={40} 
                                     cellRenderer={({rowIndex})=>(
                                         <div className="text-xs">
                                             {rowIndex+1}
@@ -117,7 +117,7 @@ export default function CountryGraph(props) {
                                         }
                                     }}
                                 />
-                                <Column label="Map" dataKey="name" width={600}
+                                <Column label="Map" dataKey="name" width={450}
                                     cellRenderer={({rowIndex, cellData}) => {
                                         if (topScores[rowIndex] === undefined) {
                                             return <div></div>
@@ -145,7 +145,7 @@ export default function CountryGraph(props) {
                                         }
                                     }}
                                 />
-                                <Column label="Mods" dataKey="mods" width={80} 
+                                <Column label="Mods" dataKey="mods" width={90} 
                                     cellRenderer={({cellData})=>(
                                         <div className="text-xs">
                                             {cellData}
@@ -165,10 +165,10 @@ export default function CountryGraph(props) {
                                     }}
                                 />
 
-                                <Column label="x" dataKey="missCount" width={40}
+                                <Column label="x" dataKey="missCount" width={25}
                                     cellRenderer={({cellData})=>(
-                                        <div className="text-xs">
-                                            {cellData + "x"}
+                                        <div className="text-xs lg:text-sm">
+                                            {cellData}
                                         </div>
                                     )}
                                     headerRenderer={()=>(

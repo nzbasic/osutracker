@@ -7,6 +7,9 @@ module.exports = {
         inner: ['2px solid #000000', '-2px']
       }
     },
+    fontSize: {
+      'xs': '0.6rem',
+    },
     colors: {
       main: {
         one: '#222831',
