@@ -55,15 +55,7 @@ router.route("/ppHistory/:country").get((req, res) => {
 router.route("/scores/:country/latest").get((req, res) => {
     Country.find({ name: req.params.country }, { scoreHistory: 1 })
         .then(history => {
-            res.json(history[0].scoreHistory[history[0].scoreHistory.length-1])
-        })
-        .catch(err => res.status(400).json("error: " + err + req.params.country))
-})
-
-router.route("/scores/:country/all").get((req, res) => {
-    Country.find({ name: req.params.country }, { scoreHistory: 1 })
-        .then(history => {
-            res.json(history[0].scoreHistory)
+            res.json(history)
         })
         .catch(err => res.status(400).json("error: " + err + req.params.country))
 })
