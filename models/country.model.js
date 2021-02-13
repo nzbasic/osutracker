@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 let countrySchema = new mongoose.Schema({
     name: String,
@@ -9,7 +9,6 @@ let countrySchema = new mongoose.Schema({
         }
     ],
     scoreHistory: [
-        [
             {
                 name: String,
                 id: String,
@@ -20,17 +19,16 @@ let countrySchema = new mongoose.Schema({
                 acc: Number,
                 player: String
             }
-        ]
     ],
     ppHistory: [
         {
-            total: Number,
-            contributors: Array,
+            total: Number, 
             date: Number
         }
-    ]
-})
+    ],
+    contributors: Array,
+});
 
-const Country = mongoose.model('country', countrySchema) 
+const Country = mongoose.model("country", countrySchema);
 
-module.exports = Country
+module.exports = Country;
