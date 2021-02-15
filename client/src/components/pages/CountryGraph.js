@@ -22,7 +22,7 @@ export default function CountryGraph(props) {
     useEffect(() => {
 
         axios.get("/country/abbreviation/" + props.match.params.country).then(response => {
-            console.log(response)
+            //console.log(response)
             setAbbreviation(response.data[0].abbreviation)
         })
 
