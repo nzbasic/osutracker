@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../molecules/Header"
+import Header from "../molecules/Header2"
 import Loader from "react-loader-spinner";
-import User from "../molecules/User";
+import UserDetails from "../molecules/UserDetails";
 import "../../css/Graph.css";
 import TimeSeriesChart from '../molecules/TimeSeriesChart'
 
@@ -66,7 +66,7 @@ export default function UserGraph(props) {
   ) : (
     <div className="flex flex-col h-full lg:h-screen bg-main-two text-main-four ">
       <Header />
-      <User data={userData} />
+      <UserDetails data={userData} />
       <div className="flex flex-col lg:h-full">
         <div className="flex flex-col lg:flex-row lg:h-full">
           <div className="lg:h-full w-full bg-main-four flex flex-col h-72">

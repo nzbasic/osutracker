@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../molecules/Header";
+import Header from "../molecules/Header2";
 import UserTable from "../molecules/UserTable";
-import { Column, Table } from 'react-virtualized'
-import Image from '../atoms/Image'
 import Loader from 'react-loader-spinner'
 import "../../css/Graph.css";
+import { Column, Table } from 'react-virtualized'
+import Image from '../atoms/Image'
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 
 export default function AllCountry() {
-  const [players, setPlayers] = useState([]);
+  const [countries, setCountries] = useState([]);
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get("/players").then((response) => {
+    axios.get("/country/namePpAbr").then((response) => {
       let data = response.data;
       let out = [];
       for (let i = 0; i < data.length; i++) {
         out.push({
           name: data[i].name,
           pp: data[i].pp,
-          rank: data[i].rank
+          abbreviation: data[i].abbreviation,
         });
       }
       out.sort((a,b) => b.pp-a.pp)
-      console.log(out)
-      setPlayers(out);
+      setCountries(out);
       setLoading(false)
     });
   }, []);
@@ -47,10 +46,10 @@ export default function AllCountry() {
               height={height}
               headerHeight={30}
               rowHeight={30}
-              rowCount={players.length}
+              rowCount={countries.length}
               rowGetter={({ index }) => {
-                if (players) {
-                  return players[index];
+                if (countries) {
+                  return countries[index];
                 } else {
                   return {
                     name: "empty",
@@ -61,13 +60,13 @@ export default function AllCountry() {
               }}
             >
               <Column
-                label="Rank"
-                dataKey="rank"
-                width={80}
-                cellRenderer={({ cellData }) => (
-                  <div className="text-lg">{cellData}</div>
+                label="#"
+                dataKey="name"
+                width={55}
+                cellRenderer={({ rowIndex }) => (
+                  <div className="text-lg">{rowIndex + 1}</div>
                 )}
-                headerRenderer={() => <div className="text-lg">Rank</div>}
+                headerRenderer={() => <div className="text-lg">#</div>}
                 cellDataGetter={({ dataKey, rowData }) => {
                   if (rowData === undefined) {
                     return 0;
@@ -77,15 +76,26 @@ export default function AllCountry() {
                 }}
               />
               <Column
-                label="Player"
+                label="Country"
                 dataKey="name"
                 width={200}
                 cellRenderer={({ cellData, rowIndex }) => (
-                    <div className="text-lg text-main-three">
-                        <a href={"/user/" + cellData} target="_blank">{cellData}</a>
+                    <div className="text-lg text-main-three flex flex-row">
+                        <a href={"/country/" + cellData} target="_blank">{cellData}</a>
+                        <div className="self-center px-2">
+                            <Image
+                                height={20}
+                                width={30}
+                                link={
+                                "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+                                countries[rowIndex].abbreviation +
+                                ".svg"
+                                }
+                            />
+                        </div>
                     </div>
                 )}
-                headerRenderer={() => <div className="text-lg">Player</div>}
+                headerRenderer={() => <div className="text-lg">Country</div>}
                 cellDataGetter={({ dataKey, rowData }) => {
                   if (rowData === undefined) {
                     return 0;
@@ -110,7 +120,6 @@ export default function AllCountry() {
                   }
                 }}
               />
-              
             </Table>
           )}
         </AutoSizer>

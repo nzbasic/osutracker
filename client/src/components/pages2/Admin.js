@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AdminTable from "../molecules/AdminTable";
-import Header from "../molecules/Header";
+import Header from "../molecules/Header2";
 
 export default function Admin() {
   return (

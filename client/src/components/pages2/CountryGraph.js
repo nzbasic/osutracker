@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TimeSeriesChart from '../molecules/TimeSeriesChart'
 import Loader from 'react-loader-spinner'
-import Header from '../molecules/Header'
+import Header from '../molecules/Header2'
 import Country from '../molecules/Country'
 import "../../css/Graph.css";
 import { Column, Table } from 'react-virtualized'

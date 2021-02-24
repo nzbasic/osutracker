@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import '../../css/Chart.css'
 
 import {
   ResponsiveContainer,
@@ -17,7 +18,7 @@ import {
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
-      <div className="text-main-one">
+      <div className="text-main-three">
         <p className="label">
           {moment(label).format("DD M YY") + " : " + payload[0].value}
         </p>

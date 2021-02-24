@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import MaterialTable from "material-table";
 import { forwardRef } from "react";
-import Header from "./Header";
+import Header from "./Header2";
 
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
-import Footer from "../molecules/Footer"
-import Header from "../molecules/Header"
+import Footer from "../molecules/Footer2"
+import Header from "../molecules/Header2"
 import CssTextField from '../atoms/CssTextField'
 export default class AddUser extends Component {
   constructor() {

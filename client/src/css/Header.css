@@ -1,5 +1,27 @@
-h1{
-    font-size:5;
-    font-family: sans-serif;
-    text-align:center;
+@keyframes moveleft {
+  from {
+    right: -14rem;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+@keyframes moveright {
+    from {
+        right: 0px;
+      }
+      to {
+        right: -14rem;
+      }
+}
+
+#drawerActive {
+    animation: moveleft 0.2s forwards;
+    animation-timing-function: ease-out;
+}
+
+#drawerInactive {
+    animation: moveright 0.2s forwards;
+    animation-timing-function: linear;
 }

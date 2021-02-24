@@ -4,20 +4,34 @@ module.exports = {
   theme: {
     extend: {
       outline: {
-        inner: ['2px solid #000000', '-2px']
-      }
-    },
-    fontSize: {
-      'xs': '0.6rem',
-    },
-    colors: {
-      main: {
-        one: '#222831',
-        two: '#393e46',
-        three: '#3282b8',
-        four: '#eeeeee',
+        inner: ['1px solid #000000', '-1px']
+      },
+      boxShadow: {
+        leftShadow: '0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
+      },
+      colors: {
+        main: {
+          one: '#ffffff',
+          two: '#f0f0f0',
+          three: '#23272a',
+          four: '#db5a1f',
+        }
+      },
+      fontSize: {
+        'xs': '0.6rem',
+      },
+      screens: {
+        'off': '300px',
+        'tiny': '346px',
+        'ms': '426px',
+        'ms2': '600px',
+      },
+      width: {
+        'graph': '80vw',
+        'smgraph': 'calc(100vw - 1rem)'
       }
     }
+    
   },
   variants: {
     extend: {},
