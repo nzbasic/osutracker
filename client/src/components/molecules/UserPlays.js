@@ -1,11 +1,42 @@
 import React, { useState, useEffect } from "react";
 import clonedeep from 'lodash/cloneDeep'
+import ScrollAnimation from 'react-animate-on-scroll'
+import 'animate.css'
 
-export default function UserPlays({ plays, currentTop }) {
+export default function UserPlays({ plays, currentTop, country }) {
 
   const [date, setDate] = useState(new Date().getTime())
   const [currentIndex, setCurrentIndex] = useState(plays.length)
   const [currentPlays, setCurrentPlays] = useState(currentTop)
+
+  const Play = ({ data, index }) => (
+
+    <ScrollAnimation animateIn="animate__slideInRight" duration={0.3} animateOnce>
+    <div className={`bg-main-one flex rounded-md shadow-md p-2 my-2 justify-between w-full text-xs md:text-sm lg:text-base`}>
+      <div className="flex">
+          {country ? (<div className="self-center mr-2 hidden md:block lg:hidden md:w-20">{preventOverflow(data.player, 9)}</div>): ""}
+          {country ? (<div className="self-center mr-2 hidden lg:block lg:w-32">{preventOverflow(data.player, 10)}</div>): ""}
+          {country ? (<div className="self-center mr-2 md:hidden w-10">{preventOverflow(data.player, 8)}</div>): ""}
+        <div className="flex flex-col">
+          <a className="flex hover:text-main-four outline-none" href={"https://osu.ppy.sh/b/" + data.id} target="_blank" rel="noreferrer">
+            <div className="hidden md:block">{preventOverflow(artist(data.name), 20) + " -"}</div>
+            <div className="hidden md:block lg:hidden">{preventOverflow(songName(data.name), 30)}</div>
+            <div className="block md:hidden">{preventOverflow(songName(data.name), 30)}</div>
+            <div className="hidden lg:block md:px-1">{preventOverflow(songName(data.name), 60)}</div>
+          </a>
+          <div>{preventOverflow(diffName(data.name), 30)}</div>
+        </div>
+      </div>
+      
+      <div className="flex self-center space-x-2">
+        <div>{data.mods.length ? "+" + data.mods : ""}</div>
+        <div>{(data.acc*100).toFixed(2) + "%"}</div>
+        <div>{Math.round(data.pp) + "pp"}</div>
+      </div>
+    </div>
+    </ScrollAnimation>
+    
+  );
 
   const goBack = () => {
     let nextPlays = plays[currentIndex-1]
@@ -85,28 +116,7 @@ export default function UserPlays({ plays, currentTop }) {
   );
 }
 
-const Play = ({ data, index }) => (
 
-  <div className={`bg-main-one flex rounded-md shadow-md p-2 my-2 justify-between w-full text-xs md:text-sm lg:text-base`}>
-    <div className="flex flex-col">
-      <a className="flex hover:text-main-four outline-none" href={"https://osu.ppy.sh/b/" + data.id} target="_blank" rel="noreferrer">
-        <div className="hidden md:block">{artist(data.name) + " -"}</div>
-        <div className="block lg:hidden">{preventOverflow(songName(data.name), 30)}</div>
-        <div className="hidden lg:block md:px-1">{preventOverflow(songName(data.name), 60)}</div>
-      </a>
-      <div>{diffName(data.name)}</div>
-    </div>
-    <div className="flex self-center space-x-2">
-      <div>{data.mods.length ? "+" + data.mods : ""}</div>
-      <div>{(data.acc*100).toFixed(2) + "%"}</div>
-      <div>{Math.round(data.pp) + "pp"}</div>
-    </div>
-  </div>
-
-
-
-  
-);
 
 const preventOverflow = (string,number) =>
   string.length > number

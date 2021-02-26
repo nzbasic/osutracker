@@ -40,7 +40,7 @@ export default function Main() {
 
 
     return (
-        <div className="bg-main-two h-full w-screen top-12 relative lg:static flex flex-col">
+        <div className="bg-main-two h-full w-screen top-12 mt-2 relative lg:static flex flex-col">
             <div id="firstDiv" className="block bg-main-one shadow rounded-lg self-center w-11/12 lg:w-auto lg:text-7xl text-2xl text-center md:text-6xl font-bold m-4 p-4">
                 Welcome to osuTracker.
             </div>

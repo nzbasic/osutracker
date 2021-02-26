@@ -28,7 +28,10 @@ module.exports = {
       },
       width: {
         'graph': '80vw',
-        'smgraph': 'calc(100vw - 1rem)'
+        'smgraph': 'calc(100vw - 3rem)'
+      },
+      height: {
+        'graph': '32rem'
       }
     }
     

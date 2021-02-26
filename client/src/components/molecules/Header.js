@@ -27,10 +27,10 @@ export default function Header() {
         if (props.active) {
             return ( 
                 <div id={menuWillDeactivate ? "drawerInactive" : "drawerActive"} className="bg-main-one w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-10">
-                    <Button style={{marginTop: '-0.5rem'}} text={<div className="flex flex-row items-center justify-left"><PersonIcon fontSize="large"/>All Players</div>} />
-                    <Button text={<div className="flex flex-row items-center justify-left"><FlagIcon fontSize="large"/>All Countries</div>} />
-                    <Button text={<div className="flex flex-row items-center justify-left"><PublicIcon fontSize="large"/>Global Tracker</div>} />
-                    <Button text={<div className="flex flex-row items-center justify-left"><AddIcon fontSize="large"/>Add New Player</div>} />
+                    <Button link="/allusers" style={{marginTop: '-0.5rem'}} text={<div className="flex flex-row items-center justify-left"><PersonIcon fontSize="large"/>All Players</div>} />
+                    <Button link="/allcountries" text={<div className="flex flex-row items-center justify-left"><FlagIcon fontSize="large"/>All Countries</div>} />
+                    <Button link="/country/Global" text={<div className="flex flex-row items-center justify-left"><PublicIcon fontSize="large"/>Global Tracker</div>} />
+                    <Button link="/add" text={<div className="flex flex-row items-center justify-left"><AddIcon fontSize="large"/>Add New Player</div>} />
                 </div>
             )
         } else {
@@ -51,10 +51,10 @@ export default function Header() {
                         <div className="self-center px-2">osuTracker</div>
                     </a>
                     <div className="hidden lg:flex space-x-5">
-                        <Button text="All Players"/>
-                        <Button text="All Countries"/>
-                        <Button text="Global Tracker"/>
-                        <Button text="Add New Player"/>
+                        <Button link="/allusers" text="All Players"/>
+                        <Button link="/allcountries" text="All Countries"/>
+                        <Button link="/country/Global" text="Global Tracker"/>
+                        <Button link="/add" text="Add New Player"/>
                     </div>
                     <div className="lg:hidden cursor-pointer hover:bg-main-two rounded-md p-1" onClick={menuToggle}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>

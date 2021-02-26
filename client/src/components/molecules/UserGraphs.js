@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import TimeSeriesChart from "./TimeSeriesChart.js";
 
 export default function UserGraphs({ data }) {
-  const [buttonIndex, setButtonIndex] = useState(0);
-  const [ppPoints, setPpPoints] = useState([]);
-  const [accPoints, setAccPoints] = useState([]);
-  const [playPoints, setPlayPoints] = useState([]);
-  const [rankPoints, setRankPoints] = useState([]);
+  const [buttonIndex, setButtonIndex] = useState(0)
+  const [ppPoints, setPpPoints] = useState([])
+  const [accPoints, setAccPoints] = useState([])
+  const [playPoints, setPlayPoints] = useState([])
+  const [rankPoints, setRankPoints] = useState([])
 
     useEffect(() => {
+
         let pp = [];
         let acc = [];
         let play = [];

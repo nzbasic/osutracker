@@ -1,19 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './css/App.css'
 
-import UserGraph from "./components/pages2/UserGraph";
 import Main from "./components/pages/Main";
-import Admin from "./components/pages2/Admin";
-import AddUser from "./components/pages2/AddUser";
-import AllUser from "./components/pages2/AllUser"
-import AllCountry from './components/pages2/AllCountry'
-import CountryGraph from "./components/pages2/CountryGraph"
-import ProtectedRoute from "./components/ProtectedRoute";
 import Header from "./components/molecules/Header";
-import Footer from './components/molecules/Footer'
 import User from './components/pages/User'
 import Country from './components/pages/Country'
+import AllUsers from './components/pages/AllUsers'
+import AllCountries from './components/pages/AllCountries'
+import AddUser from './components/pages/AddUser'
 
 // class App extends Component {
 //   render() {
@@ -41,6 +36,9 @@ function App() {
         <Route path="/" exact component={Main} />
         <Route path="/country/:name" component={Country} />
         <Route path="/user/:id" component={User} />
+        <Route path="/allusers" component={AllUsers} />
+        <Route path="/allcountries" component={AllCountries} />
+        <Route path="/add" component={AddUser} />
       </Switch>    
     </BrowserRouter>
   )

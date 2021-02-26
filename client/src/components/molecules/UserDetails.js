@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "../atoms/Image";
-import Text from "../atoms/Text";
 import Tooltip from "@material-ui/core/Tooltip";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { LinearProgress, Zoom } from "@material-ui/core";
