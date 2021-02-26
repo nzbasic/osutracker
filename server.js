@@ -35,7 +35,7 @@ app.use("/api/users", usersRouter)
 app.use("/api/countries", countryRouter)
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "client/build/index.html"), function (err) {
+  res.sendFile(path.join(import.meta.url, "client/build/index.html"), function (err) {
     if (err) {
       res.status(500).send(err);
     }
