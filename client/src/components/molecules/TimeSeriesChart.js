@@ -41,12 +41,12 @@ const TimeSeriesChart = (props) => {
           dataKey="x"
           domain={["auto", "auto"]}
           name="Date"
-          tickFormatter={(unixTime) => moment(unixTime).format("HH:mm Do")}
+          tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
           type="number"
         />
         <YAxis dataKey="y" name="pp" domain={["dataMin-0.1", "auto"]} />
         <Brush dataKey="x" height={30}
-          tickFormatter={(unixTime) => moment(unixTime).format("HH:mm Do")}
+          tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
         />
         <Tooltip content={<CustomTooltip />} />
         <Line strokeWidth={2} dataKey="y" type="monotone" stroke="#c91a34" dot={false} />
