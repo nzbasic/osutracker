@@ -47,7 +47,7 @@
     "restler": "^3.4.0",
     "semantic-ui-react": "^2.0.3",
     "string-to-color": "^2.2.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "uuid": "^8.3.1",
     "victory": "^35.4.3",
     "web-vitals": "^0.2.4"
@@ -55,8 +55,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": [
