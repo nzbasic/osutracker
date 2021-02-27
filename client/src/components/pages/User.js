@@ -13,15 +13,15 @@ export default function User(props) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("158.140.235.63:3535/api/users/id/" + props.match.params.id).then((res) => {
+    axios.get("/api/users/id/" + props.match.params.id).then((res) => {
       setUserData(res.data[0]);
       if (res.data[0].farm != -1) {
         axios
-        .get("158.140.235.63:3535/api/users/id/" + props.match.params.id + "/stats")
+        .get("/api/users/id/" + props.match.params.id + "/stats")
         .then((res) => {
           setUserStats(res.data);
           axios
-            .get("158.140.235.63:3535/api/users/id/" + props.match.params.id + "/plays")
+            .get("/api/users/id/" + props.match.params.id + "/plays")
             .then((res) => {
               setUserPlays(res.data);
               setLoading(false);
