@@ -1,4 +1,6 @@
 import express from 'express'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import mongoose from 'mongoose'
 import path from 'path'
 import cors from 'cors'
@@ -34,8 +36,10 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api/users", usersRouter)
 app.use("/api/countries", countryRouter)
 
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(import.meta.url, "client/build/index.html"), function (err) {
+  res.sendFile(path.join(__dirname, "client/build/index.html"), function (err) {
     if (err) {
       res.status(500).send(err);
     }
