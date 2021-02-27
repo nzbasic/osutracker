@@ -1,21 +1,15 @@
-.container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+body {
+    background: #f0f0f0;
 }
 
-.searchContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+html {
+    margin:0;
+    padding:0;
+    min-height: 100vh;
+    padding-bottom: 3rem;
+    overflow: auto;
 }
 
-.textContainer {
-    padding: 0px 0px 5px 0px;
-}
-
-#outlined-basic {
-    width:33vw;
+#main {
+    height: calc(100vh - 3rem);
 }

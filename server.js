@@ -1,9 +1,13 @@
-// Import npm packages
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
-const cors = require("cors");
-require('dotenv').config()
+import express from 'express'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import mongoose from 'mongoose'
+import path from 'path'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import usersRouter from './routes/users.js'
+import countryRouter from './routes/countries.js'
+dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 8080; // Step 1
@@ -29,18 +33,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-const playersRouter = require("./routes/players");
-const playRouter = require("./routes/plays");
-const statRouter = require("./routes/stats");
-const userRouter = require("./routes/user");
-const newPlayerRouter = require("./routes/newplayer");
-const countryRouter = require("./routes/country")
-app.use("/players", playersRouter);
-app.use("/plays", playRouter);
-app.use("/stats", statRouter);
-app.use("/login", userRouter);
-app.use("/newplayer", newPlayerRouter);
-app.use("/country", countryRouter)
+app.use("/api/users", usersRouter)
+app.use("/api/countries", countryRouter)
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"), function (err) {

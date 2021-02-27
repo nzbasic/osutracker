@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 let beatmapSchema = new mongoose.Schema({
     id: String,
@@ -7,9 +7,10 @@ let beatmapSchema = new mongoose.Schema({
     maxCombo: String,
     objects: Number,
     starRating: String,
-    length: String
-})
+    length: String,
+    mapper: String,
+});
 
-const Beatmap = mongoose.model('beatmap', beatmapSchema)
+const Beatmap = mongoose.model("beatmap", beatmapSchema);
 
-module.exports = Beatmap
+export default Beatmap;

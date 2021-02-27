@@ -1,0 +1,17 @@
+@keyframes launch {
+    0% {opacity:0;}
+    50% {opacity: 0;}
+    100% {opacity:1;}
+}
+
+#firstDiv {
+    animation: launch ease-in 1s;
+}
+
+#secondDiv {
+    animation: launch ease-in 2s;
+}
+
+#thirdDiv {
+    animation: launch ease-in 3s;
+}

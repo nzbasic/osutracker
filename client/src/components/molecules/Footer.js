@@ -1,36 +1,19 @@
-import React from "react";
-import "../../css/Footer.css";
+import React from 'react'
+import GitHub from '@material-ui/icons/GitHub'
+import '../../css/Main.css'
 
 export default function Footer() {
-  return (
-    <div className="main">
-      <div>
-        <div className="invisible lg:visible">
-          <img
-            alt="failed to load"
-            src="https://cdn.discordapp.com/attachments/627267590862929961/794149886026055680/wave.png"
-            width="100%"
-            height="20%"
-          ></img>
-        </div>
-        <div className="absolute bottom-7 ">
-          <div className="flex flex-row w-screen justify-center">
-            <h1 className="py-1 px-4 text-main-four">Website by nzbasic</h1>
-            <a
-              className="flex flex-row"
-              href="https://github.com/nzbasic/osutracker"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                alt="GitHub"
-                src="https://cdn.discordapp.com/attachments/627267590862929961/794140189416357888/GitHub-Mark-32px.png"
-              />
-              <h1 className="py-1 px-1 text-main-four">View Source</h1>
+    return (
+        <div id="thirdDiv" className=" my-4 w-full bg-main-one h-12 inline-flex flex-row rounded-lg shadow justify-center self-center">
+            <div className="self-center px-2">
+                Site by nzbasic
+            </div>
+            <a href="https://github.com/nzbasic/osutracker" target="_blank" rel="noreferrer" className="flex items-center">
+                <GitHub fontSize="small"/>
+                <div className="px-2 hover:text-main-four">
+                    View Source 
+                </div>
             </a>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    )
 }
