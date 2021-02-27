@@ -35,7 +35,7 @@ export default function AllUsers() {
             <CircularProgress className="self-center" size="10rem" />
         </div>
     ) : (
-    <div className="flex flex-col space-y-2 mt-4 p-2 w-smgraph ml-4 ">
+    <div className="flex flex-col space-y-2 lg:mt-4 mt-16 p-2 w-smgraph ml-4 ">
       {userData.map((data) => (
         <div className="w-full">
           <User key={data.name} data={data} />
