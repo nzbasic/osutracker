@@ -17,7 +17,7 @@ const osuApi = new osu.Api(process.env.OSU_API_KEY, {
 const router = express.Router()
 
 router.route("/id").get((req, res) => {
-  User.find({},{ currentTop: 0, rank: 0, joined: 0, level: 0, plays: 0, range: 0, farm: 0 })
+  User.find({},{ currentTop: 0, rank: 0, joined: 0, level: 0, plays: 0, range: 0, farm: 0, _id: 0, __v: 0, country: 0 })
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err))
 });
