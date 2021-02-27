@@ -8,7 +8,7 @@ export default function AllUsers() {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get("/api/users/id").then((res) => {
+    axios.get("158.140.235.63:3535/api/users/id").then((res) => {
       setUserData(res.data.sort((a, b) => b.pp - a.pp));
       setLoading(false)
     });

@@ -12,7 +12,7 @@ export default function Main() {
 
     useEffect(() => {
 
-        axios.get("/api/countries/id").then(res => {
+        axios.get("158.140.235.63:3535/api/countries/id").then(res => {
             let countryList = []
             res.data.forEach(country => {
                 country.type = "country"
@@ -27,7 +27,7 @@ export default function Main() {
             setCountries(countryList)
         })
 
-        axios.get("/api/users/id").then(res => {
+        axios.get("158.140.235.63:3535/api/users/id").then(res => {
             let userList = []
             res.data.forEach(user => {
                 user.type = "user"

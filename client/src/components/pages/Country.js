@@ -18,13 +18,13 @@ export default function Country(props) {
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios.get("/api/countries/" + props.match.params.name + "/details").then((res) => {
+        axios.get("158.140.235.63:3535/api/countries/" + props.match.params.name + "/details").then((res) => {
           setCountryDetails(res.data[0])
-          axios.get("/api/countries/" + props.match.params.name + "/stats").then((res) => {
+          axios.get("158.140.235.63:3535/api/countries/" + props.match.params.name + "/stats").then((res) => {
             setCountryStats(res.data)
-            axios.get("/api/countries/" + props.match.params.name + "/plays").then((res) => {
+            axios.get("158.140.235.63:3535/api/countries/" + props.match.params.name + "/plays").then((res) => {
               setCountryPlays(res.data)
-              axios.get("/api/countries/" + props.match.params.name + "/players").then((res) => {
+              axios.get("158.140.235.63:3535/api/countries/" + props.match.params.name + "/players").then((res) => {
                 setCountryPlayers(res.data)
                 setLoading(false)
               })

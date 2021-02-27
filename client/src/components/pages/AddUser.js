@@ -19,7 +19,7 @@ export default function AddUser() {
     }
 
     useEffect(() => {
-        axios.get("/api/users/id").then(res => {
+        axios.get("158.140.235.63:3535/api/users/id").then(res => {
             setPlayers(res.data.map(user => user.name.toLowerCase()))
             setLoading(false)
         })
@@ -45,7 +45,7 @@ export default function AddUser() {
             let flag = true
             let message = ""
 
-            await axios.post("/api/users/add", { name: searchTerm }).then(res => {
+            await axios.post("158.140.235.63:3535/api/users/add", { name: searchTerm }).then(res => {
                 if (res.data == "Added") {
                     message = searchTerm + " added!"
                     players.push(searchTerm)
