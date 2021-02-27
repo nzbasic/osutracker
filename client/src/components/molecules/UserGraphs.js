@@ -64,10 +64,10 @@ export default function UserGraphs({ data }) {
       <div className="inline-flex justify-center">
         <div className="">
           <div className="bg-main-one inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
-              <ToggleGraph data={ppPoints} active={buttonIndex === 0}/>
-              <ToggleGraph data={rankPoints} active={buttonIndex === 1}/>
-              <ToggleGraph data={accPoints} active={buttonIndex === 2}/>
-              <ToggleGraph data={playPoints} active={buttonIndex === 3}/>
+              <ToggleGraph data={ppPoints} active={buttonIndex === 0} reversed={false}/>
+              <ToggleGraph data={rankPoints} active={buttonIndex === 1} reversed={true}/>
+              <ToggleGraph data={accPoints} active={buttonIndex === 2} reversed={false}/>
+              <ToggleGraph data={playPoints} active={buttonIndex === 3} reversed={false}/>
           </div>
         </div>
       </div>
@@ -86,8 +86,8 @@ const GraphButton = ({ text, onClick, active }) => (
   </div>
 )
 
-const ToggleGraph = ({ active, data }) => (
+const ToggleGraph = ({ active, data, reversed }) => (
     <div className={`${active ? "block" : "hidden"} w-full h-full`}>
-        <TimeSeriesChart chartData={data} /> 
+        <TimeSeriesChart chartData={data} reversed={reversed} /> 
     </div>
 )

@@ -35,6 +35,7 @@ const TimeSeriesChart = (props) => {
       <LineChart 
         data={props.chartData} 
         margin={{ top: 25 }}
+        
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
@@ -44,7 +45,7 @@ const TimeSeriesChart = (props) => {
           tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
           type="number"
         />
-        <YAxis dataKey="y" name="pp" domain={["dataMin-0.1", "auto"]} />
+        <YAxis reversed={props.reversed} dataKey="y" name="pp" domain={["dataMin-0.1", "auto"]} />
         <Brush dataKey="x" height={30}
           tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
         />

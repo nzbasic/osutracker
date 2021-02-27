@@ -46,8 +46,8 @@ export default function CountryGraphs({ stats }) {
       <div className="inline-flex justify-center">
         <div className="">
           <div className="bg-main-one inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
-            <ToggleGraph data={ppPoints} active={buttonIndex === 0} />
-            <ToggleGraph data={accPoints} active={buttonIndex === 1} />
+            <ToggleGraph data={ppPoints} active={buttonIndex === 0} reversed={false} />
+            <ToggleGraph data={accPoints} active={buttonIndex === 1} reversed={false} />
           </div>
         </div>
       </div>
@@ -66,8 +66,8 @@ const GraphButton = ({ text, onClick, active }) => (
   </div>
 )
 
-const ToggleGraph = ({ active, data }) => (
+const ToggleGraph = ({ active, data, reversed }) => (
   <div className={`${active ? "block" : "hidden"} w-full h-full`}>
-    <TimeSeriesChart chartData={data} />
+    <TimeSeriesChart chartData={data} reversed={reversed} />
   </div>
 )
