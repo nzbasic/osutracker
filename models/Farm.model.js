@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 let farmSchema = new mongoose.Schema({
-    name: String,
+  name: String,
 });
 
 const Farm = mongoose.model("farm", farmSchema);

@@ -1,14 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 let countrySchema = new mongoose.Schema({
-    name: String,
-    abbreviation: String,
-    contributors: Array,
-    acc: Number,
-    pp: String,
-    farm: Number,
-    scoresCurrent: Array,
-    range: String
+  name: String,
+  abbreviation: String,
+  contributors: Array,
+  acc: Number,
+  pp: String,
+  farm: Number,
+  scoresCurrent: Array,
+  range: String,
 });
 
 const Country = mongoose.model("country", countrySchema);

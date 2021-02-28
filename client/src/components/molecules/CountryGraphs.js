@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TimeSeriesChart from '../molecules/TimeSeriesChart'
+import TimeSeriesChart from "../molecules/TimeSeriesChart";
 
 export default function CountryGraphs({ stats }) {
   const [buttonIndex, setButtonIndex] = useState(0);
@@ -14,12 +14,12 @@ export default function CountryGraphs({ stats }) {
       pp.push({
         x: stats[i].date,
         y: parseInt(stats[i].pp),
-      })
+      });
       if (parseFloat(stats[i].acc) > 0)
-      acc.push({
-        x: stats[i].date,
-        y: (parseFloat(stats[i].acc) * 100).toFixed(2),
-      })
+        acc.push({
+          x: stats[i].date,
+          y: (parseFloat(stats[i].acc) * 100).toFixed(2),
+        });
     }
 
     pp.sort((a, b) => a.x - b.x);
@@ -27,9 +27,9 @@ export default function CountryGraphs({ stats }) {
 
     setPpPoints(pp);
     setAccPoints(acc);
-  }, [stats])
+  }, [stats]);
 
-  let arr = ["Pp", "Acc"]
+  let arr = ["Pp", "Acc"];
 
   return (
     <div className="inline-flex flex-col items-center py-2">
@@ -46,8 +46,16 @@ export default function CountryGraphs({ stats }) {
       <div className="inline-flex justify-center">
         <div className="">
           <div className="bg-main-one inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
-            <ToggleGraph data={ppPoints} active={buttonIndex === 0} reversed={false} />
-            <ToggleGraph data={accPoints} active={buttonIndex === 1} reversed={false} />
+            <ToggleGraph
+              data={ppPoints}
+              active={buttonIndex === 0}
+              reversed={false}
+            />
+            <ToggleGraph
+              data={accPoints}
+              active={buttonIndex === 1}
+              reversed={false}
+            />
           </div>
         </div>
       </div>
@@ -64,10 +72,10 @@ const GraphButton = ({ text, onClick, active }) => (
   >
     {text}
   </div>
-)
+);
 
 const ToggleGraph = ({ active, data, reversed }) => (
   <div className={`${active ? "block" : "hidden"} w-full h-full`}>
     <TimeSeriesChart chartData={data} reversed={reversed} />
   </div>
-)
+);

@@ -66,29 +66,34 @@ export default function UserDetails({ data }) {
                 </Tooltip>
               </div>
             </div>
-            <a className="text-main-four outline-none" target="_blank" rel="noreferrer" href={"https://osu.ppy.sh/users/" + data.id}>Link</a>
+            <a
+              className="text-main-four outline-none"
+              target="_blank"
+              rel="noreferrer"
+              href={"https://osu.ppy.sh/users/" + data.id}
+            >
+              Link
+            </a>
           </div>
         </div>
       </div>
       <div>
         <div className="w-28 md:w-40 lg:w-80 ml-2 hidden ms:block text-xs md:text-md lg:text-xl">
-           <CircularProgressbarWithChildren value={(data.level %1).toFixed(2)*100}>
-             <div>
-               {"Level: " + Math.floor(data.level)}
-             </div>
-             <div>
-               {((data.level %1)*100).toFixed(2) + "%"}
-             </div>
-           </CircularProgressbarWithChildren>
-         </div>
+          <CircularProgressbarWithChildren
+            value={(data.level % 1).toFixed(2) * 100}
+          >
+            <div>{"Level: " + Math.floor(data.level)}</div>
+            <div>{((data.level % 1) * 100).toFixed(2) + "%"}</div>
+          </CircularProgressbarWithChildren>
+        </div>
       </div>
       <div className="hidden off:block ms:hidden w-full py-2 flex">
-           <div>Level {Math.floor(data.level)}</div>
-           <LinearProgress
-             value={(data.level %1).toFixed(2)*100}
-             variant="determinate"
-           />
-       </div>
+        <div>Level {Math.floor(data.level)}</div>
+        <LinearProgress
+          value={(data.level % 1).toFixed(2) * 100}
+          variant="determinate"
+        />
+      </div>
     </div>
   );
 

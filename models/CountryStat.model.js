@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 let countryStatSchema = new mongoose.Schema({
-    name: String,
-    date: Number,
-    pp: String,
-    acc: Number
+  name: String,
+  date: Number,
+  pp: String,
+  acc: Number,
 });
 
 const CountryStat = mongoose.model("countryStat", countryStatSchema);

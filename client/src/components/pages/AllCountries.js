@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ScrollAnimation from "react-animate-on-scroll";
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function AllUsers() {
   const [userData, setUserData] = useState([]);
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("/api/countries/id").then((res) => {
       setUserData(res.data.sort((a, b) => b.pp - a.pp));
-      setLoading(false)
+      setLoading(false);
     });
   }, []);
 
@@ -23,7 +23,9 @@ export default function AllUsers() {
           </a>
           <div className="flex">
             {Math.round(parseFloat(data.pp)) + "pp"}
-            <div className="ml-2">{parseFloat(data.acc*100).toFixed(2) + "%"}</div>
+            <div className="ml-2">
+              {parseFloat(data.acc * 100).toFixed(2) + "%"}
+            </div>
           </div>
         </div>
       </div>
@@ -31,10 +33,10 @@ export default function AllUsers() {
   );
 
   return isLoading ? (
-        <div className="w-screen h-screen flex justify-center align-center">
-            <CircularProgress className="self-center" size="10rem" />
-        </div>
-    ) : (
+    <div className="w-screen h-screen flex justify-center align-center">
+      <CircularProgress className="self-center" size="10rem" />
+    </div>
+  ) : (
     <div className="flex flex-col space-y-2 lg:mt-4 p-2 w-smgraph ml-4 mt-16">
       {userData.map((data) => (
         <div className="w-full">

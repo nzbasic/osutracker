@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 let userPlaysSchema = new mongoose.Schema({
-    name: String,
-    id: String,
-    date: Number,
-    added: Array,
-    removed: Array
+  name: String,
+  id: String,
+  date: Number,
+  added: Array,
+  removed: Array,
 });
 
 const UserPlays = mongoose.model("userPlays", userPlaysSchema);

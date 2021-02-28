@@ -1,41 +1,43 @@
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import TextField from "@material-ui/core/TextField"
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
 
 export const useStyles = makeStyles({
   primary: {
-    background: '#3282b8',
+    background: "#3282b8",
     "&:hover": {
-        backgroundColor: "#00adb5"
-    }
+      backgroundColor: "#00adb5",
+    },
   },
   secondary: {
-    background: '#c91a34',
+    background: "#c91a34",
     "&:hover": {
-        backgroundColor: "#e32424"
-    }
+      backgroundColor: "#e32424",
+    },
   },
 });
 
 export const CssTextField = withStyles({
-    root: {
-      '& label.Mui-focused': {
-        color: 'green',
+  root: {
+    "& label.Mui-focused": {
+      color: "green",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "red",
       },
-      '& .MuiInput-underline:after': {
-        borderBottomColor: 'green',
+      "&:hover fieldset": {
+        borderColor: "yellow",
       },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: 'red',
-        },
-        '&:hover fieldset': {
-          borderColor: 'yellow',
-        },
-        '&.Mui-focused fieldset': {
-          borderColor: 'green',
-        },
+      "&.Mui-focused fieldset": {
+        borderColor: "green",
       },
     },
+  },
 })(TextField);
 
-export default function test() { return <div>Something went very wrong</div>}
+export default function test() {
+  return <div>Something went very wrong</div>;
+}

@@ -4,7 +4,7 @@ import { CircularProgress, LinearProgress } from "@material-ui/core";
 import UserDetails from "../molecules/UserDetails";
 import UserGraphs from "../molecules/UserGraphs";
 import UserPlays from "../molecules/UserPlays";
-import Footer from '../molecules/Footer'
+import Footer from "../molecules/Footer";
 
 export default function User(props) {
   const [userData, setUserData] = useState([]);
@@ -17,18 +17,18 @@ export default function User(props) {
       setUserData(res.data[0]);
       if (res.data[0].farm != -1) {
         axios
-        .get("/api/users/id/" + props.match.params.id + "/stats")
-        .then((res) => {
-          setUserStats(res.data);
-          axios
-            .get("/api/users/id/" + props.match.params.id + "/plays")
-            .then((res) => {
-              setUserPlays(res.data);
-              setLoading(false);
-            });
-        });
+          .get("/api/users/id/" + props.match.params.id + "/stats")
+          .then((res) => {
+            setUserStats(res.data);
+            axios
+              .get("/api/users/id/" + props.match.params.id + "/plays")
+              .then((res) => {
+                setUserPlays(res.data);
+                setLoading(false);
+              });
+          });
       } else {
-        setLoading(false)
+        setLoading(false);
       }
     });
   }, [props.match.params.id]);
@@ -43,7 +43,6 @@ export default function User(props) {
         <UserDetails data={userData} />
 
         {userData.farm != -1 ? (
-
           <div className="inline-flex flex-col items-center ">
             <UserGraphs data={userStats} />
             <UserPlays plays={userPlays} currentTop={userData.currentTop} />
@@ -51,16 +50,11 @@ export default function User(props) {
               <Footer />
             </div>
           </div>
-
         ) : (
-
           <div className="text-center">
             Please wait up to 24 hours for new profiles to fully start tracking.
           </div>
-
         )}
-
-        
       </div>
     </div>
   );
