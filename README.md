@@ -13,7 +13,6 @@ osuTracker collects data from the osu! API, allowing users to track their progre
 * NodeJS
 
 ## Features
-List of features ready and TODOs for future development
 * Tracking user stats
 * Allowing any user to apply to be tracked
 * Tracking history of top 100 plays for each country (and global)
