@@ -6,7 +6,7 @@ export default function CountryContributors({contributors}) {
 
     const Contributor = ({data}) => (
 
-        <div className="flex justify-between w-72 bg-main-one shadow-md rounded-md p-2">
+        <div className="flex justify-between w-full bg-main-one shadow-md rounded-md p-2">
             <div>{data.name}</div>
             <div>{Math.round(data.pp) + "pp"}</div>
         </div>
