@@ -7,7 +7,6 @@ export default function UserPlays({ plays, currentTop, country }) {
 
   const [playsHistory, setPlaysHistory] = useState([{scores: currentTop, date: new Date().getTime()}])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     if (plays.length != 0) {
@@ -42,7 +41,6 @@ export default function UserPlays({ plays, currentTop, country }) {
       }
       setPlaysHistory(playsHistory)
       setCurrentIndex(plays.length)
-      setLoading(false)
     }
   },[])
 
