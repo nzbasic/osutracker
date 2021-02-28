@@ -9,16 +9,12 @@ export default function UserPlays({ plays, currentTop, country }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isLoading, setLoading] = useState(true)
 
-  console.log(plays)
-
   useEffect(() => {
     if (plays.length != 0) {
       
       for (let i=plays.length-1; i>=0; i--) {
         
-  
         let lastPlays = clonedeep(playsHistory[0].scores) 
-        console.log(lastPlays)
         let change = plays[i]
         let added = change.added
         let removed = change.removed
