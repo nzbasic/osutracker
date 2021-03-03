@@ -42,7 +42,14 @@ export default function UserPlays({ plays, currentTop, country }) {
           (play1, play2) => parseInt(play2.pp) - parseInt(play1.pp)
         );
 
-        playsHistory.unshift({ scores: lastPlays, date: plays[i].date });
+        if (i != 0) {
+          playsHistory.unshift({ scores: lastPlays, date: plays[i - 1].date });
+        } else {
+          playsHistory.unshift({
+            scores: lastPlays,
+            date: plays[i].date - 86400,
+          });
+        }
       }
       setPlaysHistory(playsHistory);
       setCurrentIndex(plays.length);
