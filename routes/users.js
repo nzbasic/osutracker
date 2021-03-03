@@ -20,7 +20,6 @@ router.route("/id").get((req, res) => {
     {},
     {
       currentTop: 0,
-      rank: 0,
       joined: 0,
       level: 0,
       plays: 0,
