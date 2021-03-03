@@ -18,12 +18,9 @@ export default function AllCountries() {
     <ScrollAnimation animateIn="animate__slideInRight" offset={0} animateOnce>
       <div className="bg-main-one w-full rounded-md shadow-md">
         <div className="p-2 flex justify-between">
-          <div>
-            {index}
-            <a
-              className="hover:text-main-four pl-2"
-              href={"/country/" + data.name}
-            >
+          <div className="flex">
+            <div className="w-8">{index > 0 ? index : ""}</div>
+            <a className="hover:text-main-four" href={"/country/" + data.name}>
               {data.name}
             </a>
           </div>
@@ -46,8 +43,8 @@ export default function AllCountries() {
   ) : (
     <div className="flex flex-col space-y-2 lg:mt-4 p-2 w-smgraph ml-4 mt-16">
       {countryData.map((data, index) => (
-        <div className="w-full">
-          <Country key={data.name} data={data} index={index} />
+        <div key={index} className="w-full">
+          <Country data={data} index={index} />
         </div>
       ))}
     </div>

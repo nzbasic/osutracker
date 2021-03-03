@@ -14,13 +14,17 @@ export default function AllUsers() {
     });
   }, []);
 
-  const User = ({ data }) => (
+  const User = ({ data, index }) => (
     <ScrollAnimation animateIn="animate__slideInRight" offset={0} animateOnce>
       <div className="bg-main-one w-full rounded-md shadow-md">
-        <div className="p-2 flex justify-between">
-          <a className="hover:text-main-four" href={"/user/" + data.id}>
-            {data.name}
-          </a>
+        <div className="p-2 flex justify-between text-sm lg:text-base">
+          <div className="flex w-auto ">
+            <div className="lg:w-20 pr-2 lg:pr-0">{index}</div>
+            <a className="hover:text-main-four" href={"/user/" + data.id}>
+              {data.name}
+            </a>
+          </div>
+
           <div className="flex">
             {Math.round(parseFloat(data.pp)) + "pp"}
             <div className="ml-2">{parseFloat(data.acc).toFixed(2) + "%"}</div>
@@ -36,9 +40,9 @@ export default function AllUsers() {
     </div>
   ) : (
     <div className="flex flex-col space-y-2 lg:mt-4 mt-16 p-2 w-smgraph ml-4 ">
-      {userData.map((data) => (
-        <div className="w-full">
-          <User key={data.name} data={data} />
+      {userData.map((data, index) => (
+        <div key={index} className="w-full">
+          <User data={data} index={data.rank} />
         </div>
       ))}
     </div>
