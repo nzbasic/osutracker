@@ -29,7 +29,7 @@ export default function Main() {
       setCountries(countryList);
     });
 
-    axios.get("/api/users/id").then((res) => {
+    axios.get("/api/users/all").then((res) => {
       let userList = [];
       res.data.forEach((user) => {
         user.type = "user";
