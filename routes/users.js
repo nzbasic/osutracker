@@ -15,8 +15,27 @@ const osuApi = new osu.Api(process.env.OSU_API_KEY, {
 
 const router = express.Router();
 
+router.route("/limitedAll").get((req, res) => {
+  User.find(
+    {},
+    {
+      currentTop: 0,
+      joined: 0,
+      level: 0,
+      plays: 0,
+      range: 0,
+      farm: 0,
+      _id: 0,
+      __v: 0,
+      country: 0,
+    }
+  )
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/all").get((req, res) => {
-  User.find({})
+  User.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 });
