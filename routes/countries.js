@@ -5,7 +5,13 @@ import CountryPlays from "../models/CountryPlays.model.js";
 import CountryPlayers from "../models/CountryPlayers.model.js";
 const router = express.Router();
 
-router.route("/id").get((req, res) => {
+router.route("/all").get((req, res) => {
+  Country.find()
+    .then((countries) => res.json(countries))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/limitedAll").get((req, res) => {
   Country.find({}, { name: 1, abbreviation: 1, pp: 1, acc: 1 })
     .then((countries) => res.json(countries))
     .catch((err) => res.status(400).json("Error: " + err));
