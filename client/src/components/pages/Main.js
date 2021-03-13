@@ -10,7 +10,7 @@ export default function Main() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("/api/countries/id").then((res) => {
+    axios.get("/api/countries/limitedAll").then((res) => {
       let countryList = [];
       res.data.forEach((country) => {
         country.type = "country";
