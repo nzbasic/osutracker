@@ -15,26 +15,13 @@ const osuApi = new osu.Api(process.env.OSU_API_KEY, {
 
 const router = express.Router();
 
-router.route("/id").get((req, res) => {
-  User.find(
-    {},
-    {
-      currentTop: 0,
-      joined: 0,
-      level: 0,
-      plays: 0,
-      range: 0,
-      farm: 0,
-      _id: 0,
-      __v: 0,
-      country: 0,
-    }
-  )
+router.route("/all").get((req, res) => {
+  User.find({})
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/id/:id").get((req, res) => {
+router.route("/:id").get((req, res) => {
   User.find({ id: req.params.id })
     .then((user) => {
       res.json(user);
@@ -42,7 +29,7 @@ router.route("/id/:id").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err + req.params.id));
 });
 
-router.route("/id/:id/stats").get((req, res) => {
+router.route("/:id/stats").get((req, res) => {
   UserStat.find({ id: req.params.id })
     .then((stats) => {
       res.json(stats);
@@ -50,7 +37,7 @@ router.route("/id/:id/stats").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err + req.params.id));
 });
 
-router.route("/id/:id/plays").get((req, res) => {
+router.route("/:id/plays").get((req, res) => {
   UserPlays.find({ id: req.params.id })
     .then((plays) => {
       res.json(plays);
