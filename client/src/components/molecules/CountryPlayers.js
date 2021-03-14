@@ -77,7 +77,7 @@ export default function CountryPlayers({ players }) {
             dataKey="date"
             domain={["auto", "auto"]}
             name="Date"
-            tickFormatter={(unixTime) => moment(unixTime).format("HH:mm Do")}
+            tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
             type="number"
           />
 
@@ -85,7 +85,7 @@ export default function CountryPlayers({ players }) {
           <Brush
             dataKey="date"
             height={30}
-            tickFormatter={(unixTime) => moment(unixTime).format("HH:mm Do")}
+            tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
           />
           <Tooltip content={<CustomTooltip />} />
           {playerNames.map((player) => {
