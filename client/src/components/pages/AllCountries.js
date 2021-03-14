@@ -15,25 +15,23 @@ export default function AllCountries() {
   }, []);
 
   const Country = ({ data, index }) => (
-    <ScrollAnimation animateIn="animate__slideInRight" offset={0} animateOnce>
-      <div className="bg-main-one w-full rounded-md shadow-md">
-        <div className="p-2 flex justify-between">
-          <div className="flex">
-            <div className="w-8">{index > 0 ? index : ""}</div>
-            <a className="hover:text-main-four" href={"/country/" + data.name}>
-              {data.name}
-            </a>
-          </div>
+    <div className="bg-main-one w-full rounded-md shadow-md">
+      <div className="p-2 flex justify-between">
+        <div className="flex">
+          <div className="w-8">{index > 0 ? index : ""}</div>
+          <a className="hover:text-main-four" href={"/country/" + data.name}>
+            {data.name}
+          </a>
+        </div>
 
-          <div className="flex">
-            {Math.round(parseFloat(data.pp)) + "pp"}
-            <div className="ml-2">
-              {parseFloat(data.acc * 100).toFixed(2) + "%"}
-            </div>
+        <div className="flex">
+          {Math.round(parseFloat(data.pp)) + "pp"}
+          <div className="ml-2">
+            {parseFloat(data.acc * 100).toFixed(2) + "%"}
           </div>
         </div>
       </div>
-    </ScrollAnimation>
+    </div>
   );
 
   return isLoading ? (
