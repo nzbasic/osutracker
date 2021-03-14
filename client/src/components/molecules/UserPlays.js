@@ -89,7 +89,7 @@ export default function UserPlays({ plays, currentTop, country }) {
           )}
           {country ? (
             <div className="self-center mr-4 md:hidden w-10">
-              {preventOverflow(data.player, 8)}
+              {preventOverflow(data.player, 7)}
             </div>
           ) : (
             ""
@@ -108,13 +108,13 @@ export default function UserPlays({ plays, currentTop, country }) {
                 {preventOverflow(songName(data.name), 30)}
               </div>
               <div className="block md:hidden">
-                {preventOverflow(songName(data.name), 30)}
+                {preventOverflow(songName(data.name), 15)}
               </div>
               <div className="hidden lg:block md:px-1">
                 {preventOverflow(songName(data.name), 60)}
               </div>
             </a>
-            <div>{preventOverflow(diffName(data.name), 30)}</div>
+            <div>{preventOverflow(diffName(data.name), 20)}</div>
           </div>
         </div>
 
