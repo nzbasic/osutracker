@@ -26,3 +26,4 @@ User Page
 * Allows any user to add themselves automatically 
 * Tracking history of top 100 plays for each country (and global)
 * Tracking history of top 10 plays for each user
+* Public API for devs
