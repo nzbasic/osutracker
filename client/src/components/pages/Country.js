@@ -17,6 +17,7 @@ export default function Country(props) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = props.match.params.name;
     axios
       .get("/api/countries/" + props.match.params.name + "/details")
       .then((res) => {

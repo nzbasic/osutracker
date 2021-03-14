@@ -16,6 +16,7 @@ export default function AddUser() {
   };
 
   useEffect(() => {
+    document.title = "Add Player";
     axios.get("/api/users/id").then((res) => {
       setPlayers(res.data.map((user) => user.name.toLowerCase()));
       setLoading(false);

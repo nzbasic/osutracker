@@ -8,6 +8,7 @@ export default function AllUsers() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "All Players";
     axios.get("/api/users/limitedAll").then((res) => {
       setUserData(res.data.sort((a, b) => b.pp - a.pp));
       setLoading(false);

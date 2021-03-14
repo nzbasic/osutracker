@@ -8,6 +8,7 @@ export default function AllCountries() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "All Countries";
     axios.get("/api/countries/limitedAll").then((res) => {
       setCountryData(res.data.sort((a, b) => b.pp - a.pp));
       setLoading(false);

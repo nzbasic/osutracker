@@ -15,6 +15,7 @@ export default function User(props) {
   useEffect(() => {
     axios.get("/api/users/" + props.match.params.id).then((res) => {
       setUserData(res.data[0]);
+      document.title = res.data[0].name;
       if (res.data[0].farm !== -1) {
         axios
           .get("/api/users/" + props.match.params.id + "/stats")
