@@ -3,6 +3,8 @@
 
 # [osutracker.com](https://osutracker.com)
 
+# [API Documentation for Devs](https://wiki.nzbasic.com/docs/osuTracker/aboutOsuTracker)
+
 ## General info
 osuTracker collects data from the osu! API, allowing users to track their (or others') progress in the game. It also collects data on whole countries based on the top 50 players of each country. 
 
