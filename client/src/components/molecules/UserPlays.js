@@ -72,6 +72,7 @@ export default function UserPlays({ plays, currentTop, country }) {
         } flex rounded-md shadow-md p-2 my-2 justify-between w-full text-xs md:text-sm lg:text-base`}
       >
         <div className="flex">
+          <div className="w-6 md:w-10 self-center text-left">{"#" + index}</div>
           {country ? (
             <div className="self-center mr-2 hidden md:block lg:hidden md:w-20">
               {preventOverflow(data.player, 9)}
@@ -87,7 +88,7 @@ export default function UserPlays({ plays, currentTop, country }) {
             ""
           )}
           {country ? (
-            <div className="self-center mr-2 md:hidden w-10">
+            <div className="self-center mr-4 md:hidden w-10">
               {preventOverflow(data.player, 8)}
             </div>
           ) : (
