@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { CircularProgress, LinearProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import UserDetails from "../molecules/UserDetails";
 import UserGraphs from "../molecules/UserGraphs";
 import UserPlays from "../molecules/UserPlays";
@@ -15,7 +15,7 @@ export default function User(props) {
   useEffect(() => {
     axios.get("/api/users/" + props.match.params.id).then((res) => {
       setUserData(res.data[0]);
-      if (res.data[0].farm != -1) {
+      if (res.data[0].farm !== -1) {
         axios
           .get("/api/users/" + props.match.params.id + "/stats")
           .then((res) => {
@@ -42,7 +42,7 @@ export default function User(props) {
       <div className="flex flex-col items-center w-full">
         <UserDetails data={userData} />
 
-        {userData.farm != -1 ? (
+        {userData.farm !== -1 ? (
           <div className="inline-flex flex-col items-center ">
             <UserGraphs data={userStats} />
             <UserPlays plays={userPlays} currentTop={userData.currentTop} />

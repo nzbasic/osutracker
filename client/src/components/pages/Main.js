@@ -14,7 +14,7 @@ export default function Main() {
       let countryList = [];
       res.data.forEach((country) => {
         country.type = "country";
-        if (country.name == "Global") {
+        if (country.name === "Global") {
           country.url =
             "https://upload.wikimedia.org/wikipedia/commons/e/ef/International_Flag_of_Planet_Earth.svg";
         } else {

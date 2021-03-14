@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import stc from "string-to-color";
 import moment from "moment";
 import "../../css/Chart.css";
@@ -7,11 +6,9 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   Line,
-  Label,
   Brush,
   Tooltip,
   LineChart,
-  Legend,
   XAxis,
   YAxis,
 } from "recharts";
@@ -25,7 +22,7 @@ export default function CountryPlayers({ players }) {
 
     let table = [];
     playerPoints.forEach((point) => {
-      if (point.date == label) {
+      if (point.date === label) {
         table.push({ name: point.name, pp: point[point.name] });
       }
     });
@@ -58,7 +55,7 @@ export default function CountryPlayers({ players }) {
         });
         let flag = true;
         playerList.forEach((name) => {
-          if (name.name == player.name) {
+          if (name.name === player.name) {
             flag = false;
           }
         });

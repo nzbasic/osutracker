@@ -8,7 +8,7 @@ export default function CountryDetails({ details }) {
     <div className="bg-main-one rounded-md shadow-lg inline-flex flex-wrap m-4 p-4 font-semibold text-xs lg:text-lg mt-16 lg:mt-4">
       <div className="flex">
         <div className="outline-inner w-28 md:w-40 lg:w-auto">
-          {details.abbreviation == "" ? (
+          {details.abbreviation === "" ? (
             <Image
               link={
                 "https://upload.wikimedia.org/wikipedia/commons/e/ef/International_Flag_of_Planet_Earth.svg"

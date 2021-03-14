@@ -10,7 +10,7 @@ export default function UserPlays({ plays, currentTop, country }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (plays.length != 0) {
+    if (plays.length !== 0) {
       for (let i = plays.length - 1; i >= 0; i--) {
         let lastPlays = clonedeep(playsHistory[0].scores);
         let change = plays[i];
@@ -22,7 +22,7 @@ export default function UserPlays({ plays, currentTop, country }) {
         lastPlays.forEach((play1) => {
           toRemove.push(
             added.findIndex(
-              (play2) => play1.id == play2.id && play1.pp == play2.pp
+              (play2) => play1.id === play2.id && play1.pp === play2.pp
             )
           );
         });
@@ -42,7 +42,7 @@ export default function UserPlays({ plays, currentTop, country }) {
           (play1, play2) => parseInt(play2.pp) - parseInt(play1.pp)
         );
 
-        if (i != 0) {
+        if (i !== 0) {
           playsHistory.unshift({ scores: lastPlays, date: plays[i - 1].date });
         } else {
           playsHistory.unshift({

@@ -5,7 +5,7 @@ export default function Tracked({ name }) {
   return (
     <div
       onClick={() => {
-        if (name.type == "country") {
+        if (name.type === "country") {
           window.location.href = "/country/" + name.name;
         } else {
           window.location.href = "/user/" + name.id;
