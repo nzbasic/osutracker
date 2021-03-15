@@ -70,6 +70,7 @@ router.route("/add").post(async (req, res) => {
       let checkExists = await User.find({ id: user.id });
       if (checkExists.length > 0) {
         res.json("Already Exists");
+        return;
       }
 
       let newUser = new User({
