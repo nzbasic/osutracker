@@ -49,6 +49,7 @@ export default function AddUser() {
           players.push(searchTerm);
         } else {
           message = res.data;
+          flag = false;
         }
       });
 
