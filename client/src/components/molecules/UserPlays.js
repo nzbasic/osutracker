@@ -11,6 +11,7 @@ export default function UserPlays({ plays, currentTop, country }) {
 
   useEffect(() => {
     if (plays.length !== 0) {
+      playsHistory[0].date = plays[plays.length - 1].date;
       for (let i = plays.length - 1; i >= 0; i--) {
         let lastPlays = clonedeep(playsHistory[0].scores);
         let change = plays[i];
