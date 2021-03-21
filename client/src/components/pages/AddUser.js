@@ -23,18 +23,20 @@ export default function AddUser() {
     });
   }, []);
 
+  const toastSetting = {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    className: "",
+  };
+
   const addUser = async () => {
     if (players.includes(searchTerm.toLowerCase())) {
-      toast.error("User already tracked!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        className: "",
-      });
+      toast.error("User already tracked!", toastSetting);
     } else {
       setLoading(true);
 
@@ -51,27 +53,9 @@ export default function AddUser() {
       });
 
       if (flag) {
-        toast.success(message, {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          className: "",
-        });
+        toast.success(message, toastSetting);
       } else {
-        toast.error(message, {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          className: "",
-        });
+        toast.error(message, toastSetting);
       }
 
       setLoading(false);
