@@ -53,7 +53,7 @@ export default function Country(props) {
         </div>
         <div id="firstDiv" className="text-center">
           Country stats are based on the Top 100 plays made by the Top 50
-          players. (Global is 150)
+          players. (Global is 150 + some outliers)
         </div>
         <div
           id="secondDiv"
