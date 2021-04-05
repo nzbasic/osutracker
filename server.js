@@ -7,6 +7,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import usersRouter from "./routes/users.js";
 import countryRouter from "./routes/countries.js";
+import statsRouter from "./routes/stats.js";
 dotenv.config();
 
 const app = express();
@@ -35,6 +36,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use("/api/users", usersRouter);
 app.use("/api/countries", countryRouter);
+app.use("/api/stats", statsRouter);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
