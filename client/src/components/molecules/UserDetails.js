@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "../atoms/Image";
 import Tooltip from "@material-ui/core/Tooltip";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { LinearProgress, Zoom } from "@material-ui/core";
 import "../../css/Main.css";
+import axios from "axios";
 
 export default function UserDetails({ data }) {
-  if (data.length == 0) {
+  const [countryFull, setCountryFull] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let countryName = (await axios.get("/api/countries/" + data.country))
+        .data;
+      setCountryFull(countryName);
+    };
+    fetchData();
+  });
+
+  if (!data) {
     return <div>Error loading user info! Please refresh.</div>;
   }
 
@@ -19,7 +31,10 @@ export default function UserDetails({ data }) {
       <div className="flex flex-col">
         <div className="flex lg:text-lg font-bold px-0.5 md:px-2 lg:pt-4">
           {data.name}
-          <div className="outline-inner self-center mx-2 w-5 md:w-auto">
+          <a
+            className="outline-inner self-center mx-2 w-5 md:w-auto"
+            href={"/country/" + countryFull}
+          >
             <Image
               link={
                 "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
@@ -29,7 +44,7 @@ export default function UserDetails({ data }) {
               height={12}
               width={28}
             />
-          </div>
+          </a>
         </div>
         <div className="flex lg:text-lg h-full font-semibold lg:pt-12 md:pt-4 pt-2">
           <div className="flex flex-col px-0.5 md:px-2 justify-between h-full ">
