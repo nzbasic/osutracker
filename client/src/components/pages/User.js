@@ -13,25 +13,31 @@ export default function User(props) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("/api/users/" + props.match.params.id).then((res) => {
-      setUserData(res.data[0]);
-      document.title = res.data[0].name;
-      if (res.data[0].farm !== -1) {
-        axios
-          .get("/api/users/" + props.match.params.id + "/stats")
-          .then((res) => {
-            setUserStats(res.data);
-            axios
-              .get("/api/users/" + props.match.params.id + "/plays")
-              .then((res) => {
-                setUserPlays(res.data);
-                setLoading(false);
-              });
-          });
-      } else {
-        setLoading(false);
+    const fetchData = async () => {
+      let userData = (await axios.get("/api/users/" + props.match.params.id))
+        .data[0];
+      if (userData) {
+        setUserData(userData);
+        document.title = userData.name;
+        if (userData.farm !== -1) {
+          let userStats = await axios.get(
+            "/api/users/" + props.match.params.id + "/stats"
+          );
+
+          setUserStats(userStats.data);
+
+          let userPlays = await axios.get(
+            "/api/users/" + props.match.params.id + "/plays"
+          );
+
+          setUserPlays(userPlays.data);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
       }
-    });
+    };
+    fetchData();
   }, [props.match.params.id]);
 
   return isLoading ? (

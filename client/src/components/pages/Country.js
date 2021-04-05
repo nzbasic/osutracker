@@ -18,27 +18,34 @@ export default function Country(props) {
 
   useEffect(() => {
     document.title = props.match.params.name;
-    axios
-      .get("/api/countries/" + props.match.params.name + "/details")
-      .then((res) => {
-        setCountryDetails(res.data[0]);
-        axios
-          .get("/api/countries/" + props.match.params.name + "/stats")
-          .then((res) => {
-            setCountryStats(res.data);
-            axios
-              .get("/api/countries/" + props.match.params.name + "/plays")
-              .then((res) => {
-                setCountryPlays(res.data);
-                axios
-                  .get("/api/countries/" + props.match.params.name + "/players")
-                  .then((res) => {
-                    setCountryPlayers(res.data);
-                    setLoading(false);
-                  });
-              });
-          });
-      });
+
+    const fetchData = async () => {
+      let countryDetails = (
+        await axios.get(
+          "/api/countries/" + props.match.params.name + "/details"
+        )
+      ).data[0];
+      setCountryDetails(countryDetails);
+
+      let countryStats = (
+        await axios.get("/api/countries/" + props.match.params.name + "/stats")
+      ).data;
+      setCountryStats(countryStats);
+
+      let countryPlays = (
+        await axios.get("/api/countries/" + props.match.params.name + "/plays")
+      ).data;
+      setCountryPlays(countryPlays);
+
+      let countryPlayers = (
+        await axios.get(
+          "/api/countries/" + props.match.params.name + "/players"
+        )
+      ).data;
+      setCountryPlayers(countryPlayers);
+      setLoading(false);
+    };
+    fetchData();
   }, [props.match.params.name]);
 
   return isLoading ? (

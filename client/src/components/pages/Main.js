@@ -10,9 +10,10 @@ export default function Main() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("/api/countries/limitedAll").then((res) => {
+    const fetchData = async () => {
+      let countries = (await axios.get("/api/countries/limitedAll")).data;
       let countryList = [];
-      res.data.forEach((country) => {
+      countries.forEach((country) => {
         country.type = "country";
         if (country.name === "Global") {
           country.url =
@@ -23,21 +24,22 @@ export default function Main() {
             country.abbreviation +
             ".svg";
         }
-
         countryList.push(country);
       });
-      setCountries(countryList);
-    });
 
-    axios.get("/api/users/limitedAll").then((res) => {
+      setCountries(countryList);
+
+      let users = (await axios.get("/api/users/limitedAll")).data;
       let userList = [];
-      res.data.forEach((user) => {
+      users.forEach((user) => {
         user.type = "user";
         userList.push(user);
       });
+
       setUsers(userList);
       setLoading(false);
-    });
+    };
+    fetchData();
   }, []);
 
   return (
