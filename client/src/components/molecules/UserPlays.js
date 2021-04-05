@@ -40,7 +40,7 @@ export default function UserPlays({ plays, currentTop, country }) {
         });
 
         lastPlays.sort(
-          (play1, play2) => parseInt(play2.pp) - parseInt(play1.pp)
+          (play1, play2) => parseFloat(play2.pp) - parseFloat(play1.pp)
         );
 
         if (i !== 0) {
@@ -52,6 +52,11 @@ export default function UserPlays({ plays, currentTop, country }) {
           });
         }
       }
+
+      playsHistory[playsHistory.length - 1].scores.sort(
+        (a, b) => parseFloat(b.pp) - parseFloat(a.pp)
+      );
+
       setPlaysHistory(playsHistory);
       setCurrentIndex(plays.length);
     }
