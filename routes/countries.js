@@ -49,4 +49,12 @@ router.route("/:name/plays").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err + req.params.name));
 });
 
+router.route("/:abbreviation").get((req, res) => {
+  Country.findOne({ abbreviation: req.params.abbreviation }, { name: 1 })
+    .then((country) => {
+      res.json(country.name);
+    })
+    .catch((err) => res.status(400).json("Error: " + err + req.params.name));
+});
+
 export default router;
