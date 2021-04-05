@@ -6,6 +6,7 @@ import PublicIcon from "@material-ui/icons/Public";
 import AddIcon from "@material-ui/icons/Add";
 import FlagIcon from "@material-ui/icons/Flag";
 import DescriptionIcon from "@material-ui/icons/Description";
+import SearchIcon from "@material-ui/icons/Search";
 
 export default function Header() {
   const [menu, setMenu] = useState(false);
@@ -31,8 +32,17 @@ export default function Header() {
           className="bg-main-one w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-10"
         >
           <Button
-            link="/allusers"
+            link="/"
             style={{ marginTop: "-0.5rem" }}
+            text={
+              <div className="flex flex-row items-center justify-left">
+                <SearchIcon fontSize="large" />
+                Search
+              </div>
+            }
+          />
+          <Button
+            link="/allusers"
             text={
               <div className="flex flex-row items-center justify-left">
                 <PersonIcon fontSize="large" />
@@ -97,14 +107,16 @@ export default function Header() {
             <div className="self-center px-2">osuTracker</div>
           </a>
           <div className="hidden lg:flex space-x-5">
+            <Button link="/" text="Search" />
             <Button link="/allusers" text="All Players" />
             <Button link="/allcountries" text="All Countries" />
-            <Button link="/country/Global" text="Global Tracker" />
-            <Button link="/add" text="Add New Player" />
+            <Button link="/country/Global" text="Global" />
+            <Button link="/add" text="Add Player" />
+            <Button link="/stats" text="Fun Stats" />
             <Button
               link="https://wiki.nzbasic.com/docs/osuTracker/aboutOsuTracker"
               target="_blank"
-              text="API Docs"
+              text="API"
             />
           </div>
           <div
