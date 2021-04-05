@@ -9,6 +9,7 @@ import Country from "./components/pages/Country";
 import AllUsers from "./components/pages/AllUsers";
 import AllCountries from "./components/pages/AllCountries";
 import AddUser from "./components/pages/AddUser";
+import Stats from "./components/pages/Stats";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/allusers" component={AllUsers} />
         <Route path="/allcountries" component={AllCountries} />
         <Route path="/add" component={AddUser} />
+        <Route path="/stats" component={Stats} />
       </Switch>
     </BrowserRouter>
   );
