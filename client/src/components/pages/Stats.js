@@ -73,10 +73,10 @@ export default function Stats() {
         </div>
 
         <div className="mt-4 w-full bg-main-one shadow-md rounded-md p-2 font-bold text-center">
-          Top 1000 Map Sets
+          Top 100 Map Sets
         </div>
         <div className="w-full">
-          <TopMapSets data={stats.setCount.slice(0, 1000)} />
+          <TopMapSets data={stats.setCount.slice(0, 100)} />
         </div>
 
         <Footer />
