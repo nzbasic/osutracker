@@ -10,10 +10,9 @@ export default function Main() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      let countries = (await axios.get("/api/countries/limitedAll")).data;
+    axios.get("/api/countries/limitedAll").then((res) => {
       let countryList = [];
-      countries.forEach((country) => {
+      res.data.forEach((country) => {
         country.type = "country";
         if (country.name === "Global") {
           country.url =
@@ -26,20 +25,19 @@ export default function Main() {
         }
         countryList.push(country);
       });
-
       setCountries(countryList);
+    });
 
-      let users = (await axios.get("/api/users/limitedAll")).data;
+    axios.get("/api/users/limitedAll").then((res) => {
       let userList = [];
-      users.forEach((user) => {
+      res.data.forEach((user) => {
         user.type = "user";
+        user.url = "http://s.ppy.sh/a/" + user.id;
         userList.push(user);
       });
-
       setUsers(userList);
       setLoading(false);
-    };
-    fetchData();
+    });
   }, []);
 
   return (
