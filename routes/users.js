@@ -19,15 +19,11 @@ router.route("/limitedAll").get((req, res) => {
   User.find(
     {},
     {
-      currentTop: 0,
-      joined: 0,
-      level: 0,
-      plays: 0,
-      range: 0,
-      farm: 0,
-      _id: 0,
-      __v: 0,
-      country: 0,
+      name: 1,
+      id: 1,
+      pp: 1,
+      rank: 1,
+      acc: 1,
     }
   )
     .then((users) => res.json(users))
