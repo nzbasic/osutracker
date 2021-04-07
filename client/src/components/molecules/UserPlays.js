@@ -172,7 +172,7 @@ export default function UserPlays({ plays, currentTop, country }) {
 
   return (
     <div className="w-full max-w-full flex flex-col">
-      <div className="flex w-full justify-center items-center mb-4">
+      <div className="flex w-full justify-center items-center mb-4 text-sm md:text-base">
         <div className="p-2 bg-main-one rounded-md shadow-md flex">
           <div
             className={`${
@@ -197,10 +197,10 @@ export default function UserPlays({ plays, currentTop, country }) {
         <div>
           {country ? (
             <div
-              className="bg-main-one outline-inner shadow-md text-center ml-4 p-2 hover:bg-main-two cursor-pointer"
+              className="bg-main-one text-xs md:text-base outline-inner shadow-md text-center ml-4 p-2 hover:bg-main-two cursor-pointer"
               onClick={handleUnique}
             >
-              {unique ? "All Scores" : "Unique Maps"}
+              {unique ? "See All Scores" : "See Unique Maps"}
             </div>
           ) : (
             <></>
