@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import stc from "string-to-color";
+import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 import "../../css/Chart.css";
 import {
@@ -32,8 +33,8 @@ export default function CountryPlayers({ players }) {
         <div className="text-main-three bg-main-one rounded-md shadow-md p-2">
           <div className="label flex flex-col">
             {moment(label).format("DD M YY")}
-            {table.map((data) => (
-              <div key={data.name}>{data.name + " " + data.pp + "pp"}</div>
+            {table.map((data, index) => (
+              <div key={uuidv4()}>{data.name + " " + data.pp + "pp"}</div>
             ))}
           </div>
         </div>
@@ -45,6 +46,8 @@ export default function CountryPlayers({ players }) {
   useEffect(() => {
     let dataPoints = [];
     let playerList = [];
+
+    players.sort((a, b) => a.date - b.date);
 
     players.forEach((point) => {
       point.listPlayers.forEach((player, index) => {
@@ -91,12 +94,13 @@ export default function CountryPlayers({ players }) {
           {playerNames.map((player) => {
             return (
               <Line
-                key={player.name}
+                key={uuidv4()}
                 dataKey={player.name}
                 strokeWidth={2}
                 stroke={player.colour}
                 connectNulls={true}
                 activeDot={{ stroke: player.color, strokeWidth: 2, r: 4 }}
+                isAnimationActive={false}
               />
             );
           })}
