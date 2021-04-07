@@ -8,6 +8,43 @@ export default function UserPlays({ plays, currentTop, country }) {
     { scores: currentTop, date: new Date().getTime() },
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [unique, setUnique] = useState(false);
+  const [uniqueScores, setUniqueScores] = useState({ scores: [], date: 0 });
+
+  const handleDateChange = (change) => {
+    if (unique) {
+      findUnique(currentIndex + change);
+    }
+    setCurrentIndex(currentIndex + change);
+  };
+
+  const findUnique = (index) => {
+    let clone = clonedeep(playsHistory[index]);
+
+    let uniqueCount = { scores: [], date: clone.date };
+
+    for (const play of clone.scores) {
+      let found = false;
+      uniqueCount.scores.forEach((map) => {
+        if (map.id === play.id) {
+          found = true;
+        }
+      });
+      if (!found) {
+        uniqueCount.scores.push(play);
+      }
+    }
+    setUniqueScores(uniqueCount);
+  };
+
+  const handleUnique = () => {
+    if (unique) {
+      setUnique(false);
+    } else {
+      setUnique(true);
+      findUnique(currentIndex);
+    }
+  };
 
   useEffect(() => {
     if (plays.length !== 0) {
@@ -135,31 +172,51 @@ export default function UserPlays({ plays, currentTop, country }) {
 
   return (
     <div className="w-full max-w-full flex flex-col">
-      <div className="self-center p-2 mb-4 bg-main-one rounded-md shadow-md flex">
-        <div
-          className={`${
-            currentIndex > 0 ? "block" : "invisible"
-          } mr-2 hover:text-main-four font-extrabold cursor-pointer`}
-          onClick={() => setCurrentIndex(currentIndex - 1)}
-        >
-          ⟵
+      <div className="flex w-full justify-center items-center mb-4">
+        <div className="p-2 bg-main-one rounded-md shadow-md flex">
+          <div
+            className={`${
+              currentIndex > 0 ? "block" : "invisible"
+            } mr-2 hover:text-main-four font-extrabold cursor-pointer`}
+            onClick={() => handleDateChange(-1)}
+          >
+            ⟵
+          </div>
+          <div className="font-semibold">
+            {new Date(playsHistory[currentIndex].date).toDateString()}
+          </div>
+          <div
+            className={`${
+              currentIndex < plays.length ? "block" : "invisible"
+            } ml-2 hover:text-main-four font-extrabold cursor-pointer`}
+            onClick={() => handleDateChange(1)}
+          >
+            ⟶
+          </div>
         </div>
-        <div className="font-semibold">
-          {new Date(playsHistory[currentIndex].date).toDateString()}
-        </div>
-        <div
-          className={`${
-            currentIndex < plays.length ? "block" : "invisible"
-          } ml-2 hover:text-main-four font-extrabold cursor-pointer`}
-          onClick={() => setCurrentIndex(currentIndex + 1)}
-        >
-          ⟶
+        <div>
+          {country ? (
+            <div
+              className="bg-main-one outline-inner shadow-md text-center ml-4 p-2 hover:bg-main-two cursor-pointer"
+              onClick={handleUnique}
+            >
+              {unique ? "All Scores" : "Unique Maps"}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
-
-      {playsHistory[currentIndex].scores.map((play, index) => (
-        <Play key={index} data={play} index={index + 1} />
-      ))}
+      <div className={unique ? "hidden" : "block"}>
+        {playsHistory[currentIndex].scores.map((play, index) => (
+          <Play key={index} data={play} index={index + 1} />
+        ))}
+      </div>
+      <div className={unique ? "block" : "hidden"}>
+        {uniqueScores.scores.map((play, index) => (
+          <Play key={index} data={play} index={index + 1} />
+        ))}
+      </div>
     </div>
   );
 }
