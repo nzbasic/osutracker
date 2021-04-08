@@ -4,8 +4,21 @@ export default function CountryContributors({ contributors }) {
   contributors.sort((a, b) => parseInt(b.pp) - parseInt(a.pp));
 
   const Contributor = ({ data }) => (
-    <div className="flex justify-between w-full bg-main-one shadow-md rounded-md p-2">
-      <div>{data.name}</div>
+    <div className="flex justify-between w-full bg-main-one shadow-md rounded-md p-2 ">
+      <a
+        className={`${
+          data.name === "Bonus pp" && data.pp === 416.667
+            ? ""
+            : "hover:text-main-four cursor-pointer"
+        } select-none `}
+        href={
+          data.name === "Bonus pp" && data.pp === 416.667
+            ? null
+            : "/redirect/" + data.name
+        }
+      >
+        {data.name}
+      </a>
       <div>{Math.round(data.pp) + "pp"}</div>
     </div>
   );

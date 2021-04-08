@@ -7,7 +7,7 @@ export default function UserRedirect(props) {
       let found = await axios.get(
         "/api/users/" + props.match.params.name + "/getId"
       );
-      window.location.href = "/user/" + found.data;
+      window.location.replace("/user/" + found.data);
     };
     fetchData();
   });
