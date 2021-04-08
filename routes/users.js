@@ -36,6 +36,14 @@ router.route("/all").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/:name/getId").get((req, res) => {
+  User.findOne({ name: req.params.name }, { id: 1 })
+    .then((user) => {
+      res.json(user.id);
+    })
+    .catch((err) => res.status(400).json("Error: " + err + req.params.id));
+});
+
 router.route("/:id").get((req, res) => {
   User.find({ id: req.params.id })
     .then((user) => {

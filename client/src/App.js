@@ -10,6 +10,7 @@ import AllUsers from "./components/pages/AllUsers";
 import AllCountries from "./components/pages/AllCountries";
 import AddUser from "./components/pages/AddUser";
 import Stats from "./components/pages/Stats";
+import UserRedirect from "./components/pages/UserRedirect";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/allcountries" component={AllCountries} />
         <Route path="/add" component={AddUser} />
         <Route path="/stats" component={Stats} />
+        <Route path="/redirect/:name" component={UserRedirect} />
       </Switch>
     </BrowserRouter>
   );
