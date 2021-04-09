@@ -72,7 +72,7 @@ export default function UserDetails({ data }) {
               <div className="">{"Farm: " + data.farm + "%"}</div>
               <div className="h-5 hidden tiny:block">
                 <Tooltip
-                  title="Percentage of plays in top 100 where the beatmap was made by a common pp mapper (e.g. Sotarks)"
+                  title="Percentage of top plays that are in the top 727 most common map sets of tracked users."
                   placement="bottom"
                   className="self-center"
                   TransitionComponent={Zoom}
