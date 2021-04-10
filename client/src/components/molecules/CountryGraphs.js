@@ -14,8 +14,6 @@ export default function CountryGraphs({ stats }) {
     let farm = [];
     let range = [];
 
-    console.log(stats);
-
     for (let i = 0; i < stats.length; i++) {
       pp.push({
         x: stats[i].date,
