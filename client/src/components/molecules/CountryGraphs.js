@@ -5,10 +5,16 @@ export default function CountryGraphs({ stats }) {
   const [buttonIndex, setButtonIndex] = useState(0);
   const [ppPoints, setPpPoints] = useState([]);
   const [accPoints, setAccPoints] = useState([]);
+  const [farmPoints, setFarmPoints] = useState([]);
+  const [rangePoints, setRangePoints] = useState([]);
 
   useEffect(() => {
     let pp = [];
     let acc = [];
+    let farm = [];
+    let range = [];
+
+    console.log(stats);
 
     for (let i = 0; i < stats.length; i++) {
       pp.push({
@@ -20,16 +26,29 @@ export default function CountryGraphs({ stats }) {
           x: stats[i].date,
           y: (parseFloat(stats[i].acc) * 100).toFixed(2),
         });
+
+      if (stats[i].farm) {
+        farm.push({
+          x: stats[i].date,
+          y: stats[i].farm,
+        });
+      }
+
+      if (stats[i].range) {
+        range.push({
+          x: stats[i].date,
+          y: stats[i].range.toFixed(2),
+        });
+      }
     }
 
-    pp.sort((a, b) => a.x - b.x);
-    acc.sort((a, b) => a.x - b.x);
-
-    setPpPoints(pp);
-    setAccPoints(acc);
+    setPpPoints(pp.sort((a, b) => a.x - b.x));
+    setAccPoints(acc.sort((a, b) => a.x - b.x));
+    setFarmPoints(farm.sort((a, b) => a.x - b.x));
+    setRangePoints(range.sort((a, b) => a.x - b.x));
   }, [stats]);
 
-  let arr = ["Pp", "Acc"];
+  let arr = ["Pp", "Acc", "Farm", "Range"];
 
   return (
     <div className="inline-flex flex-col items-center py-2">
@@ -54,6 +73,16 @@ export default function CountryGraphs({ stats }) {
             <ToggleGraph
               data={accPoints}
               active={buttonIndex === 1}
+              reversed={false}
+            />
+            <ToggleGraph
+              data={farmPoints}
+              active={buttonIndex === 2}
+              reversed={false}
+            />
+            <ToggleGraph
+              data={rangePoints}
+              active={buttonIndex === 3}
               reversed={false}
             />
           </div>

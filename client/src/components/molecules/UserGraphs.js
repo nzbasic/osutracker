@@ -7,12 +7,16 @@ export default function UserGraphs({ data }) {
   const [accPoints, setAccPoints] = useState([]);
   const [playPoints, setPlayPoints] = useState([]);
   const [rankPoints, setRankPoints] = useState([]);
+  const [farmPoints, setFarmPoints] = useState([]);
+  const [rangePoints, setRangePoints] = useState([]);
 
   useEffect(() => {
     let pp = [];
     let acc = [];
     let play = [];
     let rank = [];
+    let farm = [];
+    let range = [];
 
     for (let i = 0; i < data.length; i++) {
       pp.push({
@@ -31,20 +35,31 @@ export default function UserGraphs({ data }) {
         x: data[i].date,
         y: parseInt(data[i].plays),
       });
+
+      if (data[i].farm) {
+        farm.push({
+          x: data[i].date,
+          y: data[i].farm,
+        });
+      }
+
+      if (data[i].range) {
+        range.push({
+          x: data[i].date,
+          y: data[i].range.toFixed(2),
+        });
+      }
     }
 
-    pp.sort((a, b) => a.x - b.x);
-    rank.sort((a, b) => a.x - b.x);
-    acc.sort((a, b) => a.x - b.x);
-    play.sort((a, b) => a.x - b.x);
-
-    setPpPoints(pp);
-    setAccPoints(acc);
-    setRankPoints(rank);
-    setPlayPoints(play);
+    setPpPoints(pp.sort((a, b) => a.x - b.x));
+    setAccPoints(acc.sort((a, b) => a.x - b.x));
+    setRankPoints(rank.sort((a, b) => a.x - b.x));
+    setPlayPoints(play.sort((a, b) => a.x - b.x));
+    setFarmPoints(farm.sort((a, b) => a.x - b.x));
+    setRangePoints(range.sort((a, b) => a.x - b.x));
   }, [data]);
 
-  const arr = ["Pp", "Rank", "Acc", "Plays"];
+  const arr = ["Pp", "Rank", "Acc", "Plays", "Farm", "Range"];
 
   return (
     <div className="inline-flex flex-col items-center py-2">
@@ -81,6 +96,16 @@ export default function UserGraphs({ data }) {
               active={buttonIndex === 3}
               reversed={false}
             />
+            <ToggleGraph
+              data={farmPoints}
+              active={buttonIndex === 4}
+              reversed={false}
+            />
+            <ToggleGraph
+              data={rangePoints}
+              active={buttonIndex === 5}
+              reversed={false}
+            />
           </div>
         </div>
       </div>
@@ -92,7 +117,7 @@ const GraphButton = ({ text, onClick, active }) => (
   <div
     className={`${
       active ? "bg-main-four" : "hover:bg-gray-400 cursor-pointer"
-    } lg:text-2xl font-semibold shadow outline-inner bg-main-one p-1 w-16 lg:w-32 text-center `}
+    } lg:text-2xl font-semibold shadow outline-inner bg-main-one p-1 text-xs md:text-base w-10 md:w-20 lg:w-32 text-center `}
     onClick={onClick}
   >
     {text}
