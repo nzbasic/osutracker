@@ -4,6 +4,7 @@ import axios from "axios";
 import clone from "lodash/clone";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ItemTable from "../molecules/ItemTable.js";
+import UserRedirect from "./UserRedirect.js";
 
 export default function CountryUserList(props) {
   const [userData, setUserData] = useState([]);
@@ -26,6 +27,7 @@ export default function CountryUserList(props) {
           user.level = user.level.toFixed(1);
           user.pp = parseFloat(user.pp).toFixed(1);
           user.averageObjects = parseInt(user.averageObjects);
+          user.range = parseInt(user.range);
         });
 
         setUserData(filtered);
@@ -39,6 +41,7 @@ export default function CountryUserList(props) {
     { title: "pp", sortBy: "pp", mobile: true },
     { title: "Acc", sortBy: "acc", mobile: true },
     { title: "Farm", sortBy: "farm", mobile: true },
+    { title: "Range", sortBy: "range", mobile: true },
     { title: "Level", sortBy: "level", mobile: false },
     { title: "Joined", sortBy: "joined", mobile: false },
     { title: "Objects/Play", sortBy: "averageObjects", mobile: false },
