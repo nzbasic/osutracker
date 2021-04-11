@@ -69,7 +69,7 @@ export default function UserTable({ items, headers }) {
                         href={"/user/" + user.id}
                         className="hover:text-main-four"
                       >
-                        {user[header.sortBy]}
+                        {preventOverflow(user[header.sortBy], 12)}
                       </a>
                     ) : header.title === "Joined" ? (
                       new Date(user[header.sortBy]).toLocaleDateString()
