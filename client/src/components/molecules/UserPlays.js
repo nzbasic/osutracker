@@ -50,7 +50,10 @@ export default function UserPlays({ plays, currentTop, country }) {
     if (plays.length !== 0) {
       playsHistory[0].date = plays[plays.length - 1].date;
       for (let i = plays.length - 1; i >= 0; i--) {
-        let lastPlays = clonedeep(playsHistory[0].scores);
+        console.log(playsHistory[0].scores);
+        console.log([...playsHistory[0].scores]);
+        let lastPlays = [...playsHistory[0].scores];
+        console.log(lastPlays);
         let change = plays[i];
         let added = change.added;
         let removed = change.removed;

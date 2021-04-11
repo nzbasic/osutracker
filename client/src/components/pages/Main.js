@@ -51,7 +51,7 @@ export default function Main() {
 
       <div
         id="firstDiv"
-        className="self-center m-4 md:m-10 lg:m-14 md:w-72 h-80"
+        className="self-center m-4 md:m-10 lg:m-14 md:w-72 h-80 mb-12"
       >
         <Search items={users.concat(countries)} isLoading={isLoading} />
       </div>

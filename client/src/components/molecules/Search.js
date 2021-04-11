@@ -5,15 +5,22 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Search({ items, isLoading }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [shownNumber, setShownNumber] = useState(0);
+
+  let globalFilter;
 
   const editSearchTerm = (e) => {
     setSearchTerm(e.target.value);
+    setShownNumber(0);
   };
 
   const dynamicSearch = () => {
     let filter = items.filter((name) =>
       name.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    globalFilter = filter;
+
     return filter;
   };
 
@@ -22,7 +29,7 @@ export default function Search({ items, isLoading }) {
       <CircularProgress />
     </div>
   ) : (
-    <div>
+    <div className="flex flex-col items-center">
       <TextField
         variant="outlined"
         label="Player or Country"
@@ -30,7 +37,32 @@ export default function Search({ items, isLoading }) {
         value={searchTerm}
         onChange={editSearchTerm}
       />
-      <TrackedContainer items={dynamicSearch()} />
+      <TrackedContainer
+        items={dynamicSearch()}
+        term={searchTerm}
+        shown={shownNumber}
+      />
+      <div className="bg-main-one flex shadow-md p-1 w-40 mt-2 lg:mt-3 rounded-md justify-between">
+        <div
+          className={`${
+            shownNumber > 0 ? "block" : "invisible"
+          } hover:text-main-four cursor-pointer`}
+          onClick={() => setShownNumber(shownNumber - 5)}
+        >
+          ⟵
+        </div>
+        <div className="font-semibold">
+          {shownNumber + 1 + "-" + (shownNumber + 5)}
+        </div>
+        <div
+          className={`${
+            shownNumber < items.length ? "block" : "invisible"
+          } hover:text-main-four cursor-pointer`}
+          onClick={() => setShownNumber(shownNumber + 5)}
+        >
+          ⟶
+        </div>
+      </div>
     </div>
   );
 }
