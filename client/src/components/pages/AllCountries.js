@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ScrollAnimation from "react-animate-on-scroll";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ItemTable from "../molecules/ItemTable.js";
 
 export default function AllCountries() {
   const [countryData, setCountryData] = useState([]);
@@ -10,42 +11,41 @@ export default function AllCountries() {
   useEffect(() => {
     document.title = "All Countries";
     axios.get("/api/countries/limitedAll").then((res) => {
-      setCountryData(res.data.sort((a, b) => b.pp - a.pp));
+      let sorted = res.data.sort((a, b) => b.pp - a.pp);
+      let filtered = sorted.filter(
+        (obj) => obj.rank != 0 && obj.farm != -1 && obj.pp != 0
+      );
+
+      filtered.forEach((country, index) => {
+        country.acc = parseFloat(country.acc * 100).toFixed(2);
+        country.pp = parseFloat(country.pp).toFixed(1);
+        country.rank = index;
+        country.range = parseInt(country.range);
+        country.averageObjects = parseInt(country.averageObjects);
+      });
+
+      setCountryData(filtered);
       setLoading(false);
     });
   }, []);
 
-  const Country = ({ data, index }) => (
-    <div className="bg-main-one w-full rounded-md shadow-md">
-      <div className="p-2 flex justify-between">
-        <div className="flex">
-          <div className="w-8">{index > 0 ? index : ""}</div>
-          <a className="hover:text-main-four" href={"/country/" + data.name}>
-            {data.name}
-          </a>
-        </div>
-
-        <div className="flex">
-          {Math.round(parseFloat(data.pp)) + "pp"}
-          <div className="ml-2">
-            {parseFloat(data.acc * 100).toFixed(2) + "%"}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  let headers = [
+    { title: "#", sortBy: "rank", mobile: true },
+    { title: "Country", sortBy: "name", mobile: true },
+    { title: "pp", sortBy: "pp", mobile: true },
+    { title: "Acc", sortBy: "acc", mobile: true },
+    { title: "Farm", sortBy: "farm", mobile: true },
+    { title: "Range", sortBy: "range", mobile: true },
+    { title: "Objects/Play", sortBy: "averageObjects", mobile: false },
+  ];
 
   return isLoading ? (
     <div className="w-screen h-screen flex justify-center align-center">
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="flex flex-col space-y-2 lg:mt-4 p-2 w-smgraph ml-4 mt-16">
-      {countryData.map((data, index) => (
-        <div key={index} className="w-full">
-          <Country data={data} index={index} />
-        </div>
-      ))}
+    <div className="mt-16 lg:mt-4">
+      <ItemTable items={countryData} headers={headers} />
     </div>
   );
 }

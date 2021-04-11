@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import ScrollAnimation from "react-animate-on-scroll";
+import clone from "lodash/clone";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ItemTable from "../molecules/ItemTable.js";
 
 export default function AllUsers() {
   const [userData, setUserData] = useState([]);
@@ -10,40 +12,42 @@ export default function AllUsers() {
   useEffect(() => {
     document.title = "All Players";
     axios.get("/api/users/limitedAll").then((res) => {
-      setUserData(res.data.sort((a, b) => b.pp - a.pp));
+      let sorted = res.data.sort((a, b) => b.pp - a.pp);
+      let filtered = sorted.filter(
+        (obj) =>
+          obj.rank != 0 && obj.level !== null && obj.farm != -1 && obj.pp != 0
+      );
+
+      filtered.forEach((user) => {
+        user.acc = parseFloat(user.acc).toFixed(2);
+        user.level = user.level.toFixed(1);
+        user.pp = parseFloat(user.pp).toFixed(1);
+        user.averageObjects = parseInt(user.averageObjects);
+      });
+
+      setUserData(filtered);
       setLoading(false);
     });
   }, []);
 
-  const User = ({ data, index }) => (
-    <div className="bg-main-one w-full rounded-md shadow-md">
-      <div className="p-2 flex justify-between text-sm lg:text-base">
-        <div className="flex w-auto ">
-          <div className="lg:w-20 pr-2 lg:pr-0">{index}</div>
-          <a className="hover:text-main-four" href={"/user/" + data.id}>
-            {data.name}
-          </a>
-        </div>
-
-        <div className="flex">
-          {Math.round(parseFloat(data.pp)) + "pp"}
-          <div className="ml-2">{parseFloat(data.acc).toFixed(2) + "%"}</div>
-        </div>
-      </div>
-    </div>
-  );
+  let headers = [
+    { title: "#", sortBy: "rank", mobile: true },
+    { title: "Name", sortBy: "name", mobile: true },
+    { title: "pp", sortBy: "pp", mobile: true },
+    { title: "Acc", sortBy: "acc", mobile: true },
+    { title: "Farm", sortBy: "farm", mobile: true },
+    { title: "Level", sortBy: "level", mobile: false },
+    { title: "Joined", sortBy: "joined", mobile: false },
+    { title: "Objects/Play", sortBy: "averageObjects", mobile: false },
+  ];
 
   return isLoading ? (
     <div className="w-screen h-screen flex justify-center align-center">
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="flex flex-col space-y-2 lg:mt-4 mt-16 p-2 w-smgraph ml-4 ">
-      {userData.map((data, index) => (
-        <div key={index} className="w-full">
-          <User data={data} index={data.rank} />
-        </div>
-      ))}
+    <div className="mt-16 lg:mt-4">
+      <ItemTable items={userData} headers={headers} />
     </div>
   );
 }
