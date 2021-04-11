@@ -58,6 +58,15 @@ export default function Country(props) {
         <div id="firstDiv">
           <CountryDetails details={countryDetails} />
         </div>
+        <a
+          id="firstDiv"
+          className={`${
+            props.match.params.name === "Global" ? "hidden" : "block"
+          } bg-main-one rounded-md shadow-md p-2 mb-2 cursor-pointer hover:text-main-four`}
+          href={"/allusers/" + props.match.params.name}
+        >
+          View Player List
+        </a>
         <div id="firstDiv" className="text-center">
           Country stats are based on the Top 100 plays made by the Top 50
           players. (Global is 150 + some outliers)
