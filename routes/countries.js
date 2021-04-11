@@ -12,7 +12,18 @@ router.route("/all").get((req, res) => {
 });
 
 router.route("/limitedAll").get((req, res) => {
-  Country.find({}, { name: 1, abbreviation: 1, pp: 1, acc: 1 })
+  Country.find(
+    {},
+    {
+      name: 1,
+      abbreviation: 1,
+      pp: 1,
+      acc: 1,
+      farm: 1,
+      range: 1,
+      averageObjects: 1,
+    }
+  )
     .then((countries) => res.json(countries))
     .catch((err) => res.status(400).json("Error: " + err));
 });

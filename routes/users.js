@@ -2,6 +2,7 @@ import express from "express";
 import User from "../models/User.model.js";
 import UserStat from "../models/UserStat.model.js";
 import UserPlays from "../models/UserPlays.model.js";
+import Country from "../models/Country.model.js";
 import osu from "node-osu";
 import dotenv from "dotenv";
 dotenv.config();
@@ -24,6 +25,35 @@ router.route("/limitedAll").get((req, res) => {
       pp: 1,
       rank: 1,
       acc: 1,
+      farm: 1,
+      range: 1,
+      joined: 1,
+      level: 1,
+      averageObjects: 1,
+    }
+  )
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/limitedAllCountry/:country").get(async (req, res) => {
+  let abbreviation = (
+    await Country.findOne({ name: req.params.country }, { abbreviation: 1 })
+  ).abbreviation;
+
+  User.find(
+    { country: abbreviation },
+    {
+      name: 1,
+      id: 1,
+      pp: 1,
+      rank: 1,
+      acc: 1,
+      farm: 1,
+      range: 1,
+      joined: 1,
+      level: 1,
+      averageObjects: 1,
     }
   )
     .then((users) => res.json(users))
