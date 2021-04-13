@@ -47,57 +47,69 @@ export default function UserPlays({ plays, currentTop, country }) {
   };
 
   useEffect(() => {
-    if (plays.length !== 0) {
-      playsHistory[0].date = plays[plays.length - 1].date;
+    // only execute if there are changes to apply
+    if (plays.length > 0) {
+      let newPlayHistory = [];
+      newPlayHistory.push({ scores: currentTop, date: new Date().getTime() });
+
+      // each play is a delta with added and removed scores compared to the last top plays.
+
+      // start from the last plays update and loop to the first
       for (let i = plays.length - 1; i >= 0; i--) {
-        console.log(playsHistory[0].scores);
-        console.log([...playsHistory[0].scores]);
-        let lastPlays = [...playsHistory[0].scores];
-        console.log(lastPlays);
-        let change = plays[i];
-        let added = change.added;
-        let removed = change.removed;
+        let update = plays[i];
+        let nextDate;
+        let previousTop = newPlayHistory[0];
 
-        let toRemove = [];
+        if (i > 0) {
+          nextDate = plays[i - 1].date;
+        } else {
+          nextDate = plays[i].date - 86401;
+        }
 
-        lastPlays.forEach((play1) => {
-          toRemove.push(
-            added.findIndex(
-              (play2) => play1.id === play2.id && play1.pp === play2.pp
-            )
-          );
+        let playsToAdd = { scores: [], date: nextDate };
+
+        // we are working backwards, so plays that were removed in each update are added to the playsToAdd
+
+        update.removed.forEach((play) => {
+          playsToAdd.scores.push(play);
         });
 
-        toRemove.forEach((value, index) => {
-          if (value > -1) {
-            playsHistory[0].scores[index].added = true;
-            lastPlays.splice(index, 1);
+        // plays that were added need to be removed from the previous top plays
+        // find the plays that DONT need to be removed and then add them to the current top
+
+        // go through last top
+
+        // find plays that werent in added
+        previousTop.scores.forEach((previousPlay) => {
+          let found = false;
+          update.added.forEach((addedPlay) => {
+            if (
+              // can never be too sure..
+              addedPlay.acc === previousPlay.acc &&
+              addedPlay.id === previousPlay.id &&
+              addedPlay.pp === previousPlay.pp
+            ) {
+              found = true;
+            }
+          });
+          if (!found) {
+            if (previousPlay.added) {
+              previousPlay.added = false;
+            }
+            playsToAdd.scores.push(previousPlay);
+          } else {
+            //to do: fix this
+            //previousPlay.added = true;
           }
         });
 
-        removed.forEach((play) => {
-          lastPlays.push(play);
-        });
+        // sort the plays
+        playsToAdd.scores.sort((a, b) => parseFloat(b.pp) - parseFloat(a.pp));
 
-        lastPlays.sort(
-          (play1, play2) => parseFloat(play2.pp) - parseFloat(play1.pp)
-        );
-
-        if (i !== 0) {
-          playsHistory.unshift({ scores: lastPlays, date: plays[i - 1].date });
-        } else {
-          playsHistory.unshift({
-            scores: lastPlays,
-            date: plays[i].date - 86400,
-          });
-        }
+        // finally, put the added plays in the first slot of the new array
+        newPlayHistory.unshift(playsToAdd);
       }
-
-      playsHistory[playsHistory.length - 1].scores.sort(
-        (a, b) => parseFloat(b.pp) - parseFloat(a.pp)
-      );
-
-      setPlaysHistory(playsHistory);
+      setPlaysHistory(newPlayHistory);
       setCurrentIndex(plays.length);
     }
   }, []);
