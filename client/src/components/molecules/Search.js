@@ -46,7 +46,7 @@ export default function Search({ items, isLoading }) {
         <div
           className={`${
             shownNumber > 0 ? "block" : "invisible"
-          } hover:text-main-four cursor-pointer`}
+          } hover:text-main-four cursor-pointer select-none`}
           onClick={() => setShownNumber(shownNumber - 5)}
         >
           ⟵
@@ -57,7 +57,7 @@ export default function Search({ items, isLoading }) {
         <div
           className={`${
             shownNumber < items.length ? "block" : "invisible"
-          } hover:text-main-four cursor-pointer`}
+          } hover:text-main-four cursor-pointer select-none`}
           onClick={() => setShownNumber(shownNumber + 5)}
         >
           ⟶
