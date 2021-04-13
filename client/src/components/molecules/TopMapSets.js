@@ -10,13 +10,18 @@ export default function TopMapSets({ data }) {
     let arrayOfSetIds = data.map((item) => item.setId);
 
     const fetchData = async () => {
-      setMapSets(
-        (
-          await axios.get("/api/stats/mapsets", {
-            params: { arr: arrayOfSetIds },
-          })
-        ).data
-      );
+      let batchNumber = 100;
+      let batches = arrayOfSetIds.length / batchNumber;
+
+      let allMaps = [];
+      for (let i = 0; i <= batches; i++) {
+        let batch = await axios.get("/api/stats/mapsets", {
+          params: { arr: arrayOfSetIds.slice(i * 100, i * 100 + 100) },
+        });
+        allMaps.push(...batch.data);
+      }
+
+      setMapSets(allMaps);
       setLoading(false);
     };
     fetchData();
