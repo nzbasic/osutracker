@@ -34,7 +34,13 @@ export default function TopMapSets({ data }) {
   ) : (
     <div className="bg-main-one shadow-md rounded-md mt-4 p-2 flex flex-col text-xs md:text-base">
       {mapSets.map((map, index) => (
-        <div key={index}>
+        <a
+          key={index}
+          href={"https://osu.ppy.sh/beatmapsets/" + map.setId}
+          className="hover:text-main-four"
+          target="_blank"
+          rel="noreferrer"
+        >
           {index +
             1 +
             " " +
@@ -43,7 +49,7 @@ export default function TopMapSets({ data }) {
             map.name.replace(/(\[(.*?)\])/g, "") +
             ": " +
             data[index].count}
-        </div>
+        </a>
       ))}
     </div>
   );
