@@ -17,7 +17,6 @@ export default function Stats() {
   useEffect(() => {
     const fetchData = async () => {
       let stats = (await axios.get("/api/stats/")).data;
-      console.log(stats);
       setStats(stats);
       setLoading(false);
     };
