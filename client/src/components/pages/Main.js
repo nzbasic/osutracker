@@ -56,7 +56,7 @@ export default function Main() {
         <Search items={users.concat(countries)} isLoading={isLoading} />
       </div>
 
-      <div className="mt-2 inline-flex flex-col self-center">
+      <div className="mt-6 lg:mt-14 inline-flex flex-col self-center">
         <div className="flex flex-row self-center my-4 space-x-5 space-y-0">
           <div
             id="secondDiv"
