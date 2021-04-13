@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "../atoms/MenuButton.js";
 import "../../css/Header.css";
 import PersonIcon from "@material-ui/icons/Person";
@@ -25,6 +25,26 @@ export default function Header() {
     }
   }
 
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          menuToggle();
+        }
+      }
+
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
   const MenuButton = ({ Icon, text }) => (
     <div className="flex flex-row items-center justify-left">
       <Icon fontSize="large" />
@@ -33,9 +53,13 @@ export default function Header() {
   );
 
   function Menu(props) {
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
+
     if (props.active) {
       return (
         <div
+          ref={wrapperRef}
           id={menuWillDeactivate ? "drawerInactive" : "drawerActive"}
           className="bg-main-one w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-10"
         >
