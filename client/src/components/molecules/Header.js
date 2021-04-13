@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import FlagIcon from "@material-ui/icons/Flag";
 import DescriptionIcon from "@material-ui/icons/Description";
 import SearchIcon from "@material-ui/icons/Search";
+import InfoIcon from "@material-ui/icons/Info";
 
 export default function Header() {
   const [menu, setMenu] = useState(false);
@@ -24,6 +25,13 @@ export default function Header() {
     }
   }
 
+  const MenuButton = ({ Icon, text }) => (
+    <div className="flex flex-row items-center justify-left">
+      <Icon fontSize="large" />
+      {text}
+    </div>
+  );
+
   function Menu(props) {
     if (props.active) {
       return (
@@ -34,58 +42,32 @@ export default function Header() {
           <Button
             link="/"
             style={{ marginTop: "-0.5rem" }}
-            text={
-              <div className="flex flex-row items-center justify-left">
-                <SearchIcon fontSize="large" />
-                Search
-              </div>
-            }
+            text={<MenuButton Icon={SearchIcon} text={"Search"} />}
           />
           <Button
             link="/allusers"
-            text={
-              <div className="flex flex-row items-center justify-left">
-                <PersonIcon fontSize="large" />
-                All Players
-              </div>
-            }
+            text={<MenuButton Icon={PersonIcon} text={"All Players"} />}
           />
           <Button
             link="/allcountries"
-            text={
-              <div className="flex flex-row items-center justify-left">
-                <FlagIcon fontSize="large" />
-                All Countries
-              </div>
-            }
+            text={<MenuButton Icon={FlagIcon} text={"All Countries"} />}
           />
           <Button
             link="/country/Global"
-            text={
-              <div className="flex flex-row items-center justify-left">
-                <PublicIcon fontSize="large" />
-                Global Tracker
-              </div>
-            }
+            text={<MenuButton Icon={PublicIcon} text={"Global Tracker"} />}
           />
           <Button
             link="/add"
-            text={
-              <div className="flex flex-row items-center justify-left">
-                <AddIcon fontSize="large" />
-                Add New Player
-              </div>
-            }
+            text={<MenuButton Icon={AddIcon} text={"Add New Player"} />}
+          />
+          <Button
+            link="/stats"
+            text={<MenuButton Icon={InfoIcon} text={"Fun Stats"} />}
           />
           <Button
             link="https://wiki.nzbasic.com/docs/osuTracker/aboutOsuTracker"
             target="_blank"
-            text={
-              <div className="flex flex-row items-center justify-left">
-                <DescriptionIcon fontSize="large" />
-                API Docs
-              </div>
-            }
+            text={<MenuButton Icon={DescriptionIcon} text={"API Docs"} />}
           />
         </div>
       );
