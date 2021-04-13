@@ -192,7 +192,7 @@ export default function UserPlays({ plays, currentTop, country }) {
           <div
             className={`${
               currentIndex > 0 ? "block" : "invisible"
-            } mr-2 hover:text-main-four font-extrabold cursor-pointer`}
+            } mr-2 hover:text-main-four font-extrabold cursor-pointer select-none`}
             onClick={() => handleDateChange(-1)}
           >
             ⟵
@@ -203,7 +203,7 @@ export default function UserPlays({ plays, currentTop, country }) {
           <div
             className={`${
               currentIndex < plays.length ? "block" : "invisible"
-            } ml-2 hover:text-main-four font-extrabold cursor-pointer`}
+            } ml-2 hover:text-main-four font-extrabold cursor-pointer select-none`}
             onClick={() => handleDateChange(1)}
           >
             ⟶
