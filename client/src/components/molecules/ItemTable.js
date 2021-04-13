@@ -28,7 +28,7 @@ export default function UserTable({ items, headers }) {
         <div
           className={`${
             showing > 0 ? "block" : "invisible"
-          } hover:text-main-four cursor-pointer`}
+          } hover:text-main-four cursor-pointer select-none`}
           onClick={() => setShowing(showing - 50)}
         >
           ⟵
@@ -37,7 +37,7 @@ export default function UserTable({ items, headers }) {
         <div
           className={`${
             showing < items.length - 50 ? "block" : "invisible"
-          } hover:text-main-four cursor-pointer`}
+          } hover:text-main-four cursor-pointer select-none`}
           onClick={() => setShowing(showing + 50)}
         >
           ⟶
