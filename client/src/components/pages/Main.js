@@ -79,7 +79,7 @@ export default function Main() {
         </div>
         <div
           id="thirdDiv"
-          className="flex flex-col w-full self-center bg-main-one shadow rounded-lg p-3 font-semibold md:text-lg text-sm"
+          className="flex flex-col w-full self-center bg-main-one shadow rounded-lg p-2 font-semibold md:text-lg text-sm"
         >
           <div className="text-center py-2">All Free.</div>
           <div className="text-center py-2">Updated Daily.</div>
