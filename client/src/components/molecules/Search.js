@@ -42,7 +42,7 @@ export default function Search({ items, isLoading }) {
         term={searchTerm}
         shown={shownNumber}
       />
-      <div className="bg-main-one flex shadow-md p-1 w-40 mt-2 lg:mt-3 rounded-md justify-between">
+      <div className="bg-main-one flex shadow p-1 w-40 mt-2 lg:mt-3 rounded justify-between">
         <div
           className={`${
             shownNumber > 0 ? "block" : "invisible"
