@@ -50,9 +50,15 @@ export default function Stats() {
           </div>
         </div>
 
+        <div className="my-4 rounded-md shadow-md bg-main-one p-2 text-center">
+          For the following stats, the number refers to the number of times that
+          item is seen among the top 100 plays of all tracked users.
+        </div>
+
         <div className="mt-2 w-full bg-main-one shadow-md rounded-md p-2 font-bold text-center">
           Average Top Play
         </div>
+
         <div className="w-full">
           <TopPlay id={stats.userStats.topPlay} />
         </div>
