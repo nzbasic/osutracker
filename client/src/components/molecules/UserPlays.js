@@ -124,7 +124,7 @@ export default function UserPlays({ plays, currentTop, country }) {
             if (
               scoreOld.acc === scoreNew.acc &&
               scoreOld.id === scoreNew.id &&
-              scoreOld.pp === previousNew.pp
+              scoreOld.pp === scoreNew.pp
             ) {
               found = true;
             }
