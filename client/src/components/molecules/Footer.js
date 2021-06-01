@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div
       id="thirdDiv"
-      className=" my-4 w-full bg-main-one h-12 inline-flex flex-row rounded-lg shadow justify-center self-center space-x-4"
+      className=" my-4 w-full mx-2 bg-main-one h-12 inline-flex flex-row rounded-lg shadow justify-center self-center space-x-4"
     >
       <div className="self-center">nzbasic</div>
       <a
