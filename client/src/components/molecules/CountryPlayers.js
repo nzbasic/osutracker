@@ -12,6 +12,7 @@ import {
   LineChart,
   XAxis,
   YAxis,
+  Legend,
 } from "recharts";
 
 export default function CountryPlayers({ players }) {
@@ -34,7 +35,9 @@ export default function CountryPlayers({ players }) {
           <div className="label flex flex-col">
             {moment(label).format("DD M YY")}
             {table.map((data, index) => (
-              <div key={uuidv4()}>{data.name + " " + data.pp + "pp"}</div>
+              <div style={{ color: stc(data.name) }} key={uuidv4()}>
+                {data.name + " " + data.pp + "pp"}
+              </div>
             ))}
           </div>
         </div>
