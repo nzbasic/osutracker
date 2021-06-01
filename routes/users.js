@@ -36,6 +36,20 @@ router.route("/limitedAll").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/searchAll").get((req, res) => {
+  User.find(
+    {},
+    {
+      _id: 0,
+      name: 1,
+      id: 1,
+      pp: 1,
+    }
+  )
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/limitedAllCountry/:country").get(async (req, res) => {
   let abbreviation = (
     await Country.findOne({ name: req.params.country }, { abbreviation: 1 })
