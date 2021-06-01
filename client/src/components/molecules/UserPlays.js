@@ -58,7 +58,11 @@ export default function UserPlays({ plays, currentTop, country }) {
       for (let i = plays.length - 1; i >= 0; i--) {
         let update = plays[i];
         let nextDate;
-        let previousTop = newPlayHistory[0];
+        let previousTop = clonedeep(newPlayHistory[0]);
+        console.log(previousTop);
+        previousTop.scores.forEach((score) => {
+          score.added = false;
+        });
 
         if (i > 0) {
           nextDate = plays[i - 1].date;
@@ -93,9 +97,6 @@ export default function UserPlays({ plays, currentTop, country }) {
             }
           });
           if (!found) {
-            if (previousPlay.added) {
-              previousPlay.added = false;
-            }
             playsToAdd.scores.push(previousPlay);
           } else {
             //to do: fix this
@@ -109,6 +110,31 @@ export default function UserPlays({ plays, currentTop, country }) {
         // finally, put the added plays in the first slot of the new array
         newPlayHistory.unshift(playsToAdd);
       }
+
+      // roundabout method of showing the difference between two time periods there is probably a much smarter way of doing this but im lazy
+      for (let i = 0; i < newPlayHistory.length - 1; i++) {
+        // find plays that are in i+1 that arent in i
+
+        let current = newPlayHistory[i];
+        let next = newPlayHistory[i + 1];
+
+        next.scores.forEach((scoreNew) => {
+          let found = false;
+          current.scores.forEach((scoreOld) => {
+            if (
+              scoreOld.acc === scoreNew.acc &&
+              scoreOld.id === scoreNew.id &&
+              scoreOld.pp === previousNew.pp
+            ) {
+              found = true;
+            }
+          });
+          if (!found) {
+            scoreNew.added = true;
+          }
+        });
+      }
+
       setPlaysHistory(newPlayHistory);
       setCurrentIndex(plays.length);
     }
