@@ -59,7 +59,6 @@ export default function UserPlays({ plays, currentTop, country }) {
         let update = plays[i];
         let nextDate;
         let previousTop = clonedeep(newPlayHistory[0]);
-        console.log(previousTop);
         previousTop.scores.forEach((score) => {
           score.added = false;
         });
