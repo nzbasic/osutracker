@@ -53,9 +53,6 @@ export default function User(props) {
           <div className="inline-flex flex-col items-center ">
             <UserGraphs data={userStats} />
             <UserPlays plays={userPlays} currentTop={userData.currentTop} />
-            <div className="max-w-lg w-full">
-              <Footer />
-            </div>
           </div>
         ) : (
           <div className="text-center">

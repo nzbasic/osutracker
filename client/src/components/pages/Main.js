@@ -90,7 +90,6 @@ export default function Main() {
             Countries.
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   );

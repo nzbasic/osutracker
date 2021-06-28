@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.max-w-screen {
+    max-width: 100vw;
+}

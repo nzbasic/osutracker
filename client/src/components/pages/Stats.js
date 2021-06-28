@@ -83,8 +83,6 @@ export default function Stats() {
         <div className="w-full">
           <TopMapSets data={stats.setCount.slice(0, 727)} />
         </div>
-
-        <Footer />
       </div>
     </div>
   );

@@ -95,9 +95,6 @@ export default function Country(props) {
             country={true}
           />
         </div>
-        <div>
-          <Footer />
-        </div>
       </div>
     </div>
   );
