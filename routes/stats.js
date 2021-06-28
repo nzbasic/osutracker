@@ -9,6 +9,12 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/farmSets").get((req, res) => {
+  OverallStats.findOne({}, { setCount: 1 })
+    .then((stats) => res.json(stats))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/mapset/:id").get((req, res) => {
   Beatmap.findOne({ id: req.params.id })
     .then((map) => res.json(map))
