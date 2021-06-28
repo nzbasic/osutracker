@@ -26,7 +26,17 @@ mongoose.connection.on("connected", () => {
 // Data parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
+app.options("*", cors({ credentials: true, origin: true }));
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Step 3
 
