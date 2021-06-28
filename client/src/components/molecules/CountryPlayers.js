@@ -91,6 +91,7 @@ export default function CountryPlayers({ players }) {
           <Brush
             dataKey="date"
             height={30}
+            travellerWidth={50}
             tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
           />
           <Tooltip content={<CustomTooltip />} />
@@ -98,6 +99,7 @@ export default function CountryPlayers({ players }) {
             return (
               <Line
                 key={uuidv4()}
+                dot={false}
                 dataKey={player.name}
                 strokeWidth={2}
                 stroke={player.colour}
