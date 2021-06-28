@@ -9,35 +9,41 @@ export default function Main() {
   const [countries, setCountries] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios.get("/api/countries/searchAll").then((res) => {
-      let countryList = [];
-      res.data.forEach((country) => {
-        country.type = "country";
-        if (country.name === "Global") {
-          country.url =
-            "https://upload.wikimedia.org/wikipedia/commons/e/ef/International_Flag_of_Planet_Earth.svg";
-        } else {
-          country.url =
-            "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
-            country.abbreviation +
-            ".svg";
-        }
-        countryList.push(country);
-      });
-      setCountries(countryList);
+  const handleUsers = (users) => {
+    let userList = users.map((user) => {
+      user.type = "user";
+      user.url = "http://s.ppy.sh/a/" + user.id;
+      return user;
     });
 
-    axios.get("/api/users/searchAll").then((res) => {
-      let userList = [];
-      res.data.forEach((user) => {
-        user.type = "user";
-        user.url = "http://s.ppy.sh/a/" + user.id;
-        userList.push(user);
-      });
-      setUsers(userList);
-      setLoading(false);
+    setUsers(userList);
+  };
+
+  const handleCountries = (countries) => {
+    let countryList = countries.map((country) => {
+      country.type = "country";
+      if (country.name === "Global") {
+        country.url =
+          "https://upload.wikimedia.org/wikipedia/commons/e/ef/International_Flag_of_Planet_Earth.svg";
+      } else {
+        country.url =
+          "https://purecatamphetamine.github.io/country-flag-icons/3x2/" +
+          country.abbreviation +
+          ".svg";
+      }
+      return country;
     });
+    setCountries(countryList);
+  };
+
+  useEffect(() => {
+    let countriesPromise = axios.get("/api/countries/searchAll");
+    let usersPromise = axios.get("/api/users/searchAll");
+
+    Promise.all([
+      countriesPromise.then((res) => handleCountries(res.data)),
+      usersPromise.then((res) => handleUsers(res.data)),
+    ]).then(() => setLoading(false));
   }, []);
 
   return (
