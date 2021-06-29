@@ -62,7 +62,7 @@ export default function Main() {
         <Search items={users.concat(countries)} isLoading={isLoading} />
       </div>
 
-      <div className="mt-6 lg:mt-14 mb-12 inline-flex flex-col self-center z-0">
+      <div className="mt-6 lg:mt-14 mb-12 lg:mb-0 inline-flex flex-col self-center z-0">
         <div className="w-full flex flex-row justify-between self-center my-4 space-y-0">
           <div
             id="secondDiv"
