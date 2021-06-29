@@ -157,23 +157,32 @@ export default function UserPlays({ plays, currentTop, country }) {
         <div className="flex">
           <div className="w-6 md:w-10 self-center text-left">{"#" + index}</div>
           {country ? (
-            <div className="self-center mr-2 hidden md:block lg:hidden md:w-20">
+            <a
+              className="self-center mr-2 hidden md:block lg:hidden md:w-20 hover:cursor-pointer hover:text-main-four"
+              href={"/redirect/" + data.player}
+            >
               {preventOverflow(data.player, 9)}
-            </div>
+            </a>
           ) : (
             ""
           )}
           {country ? (
-            <div className="self-center mr-2 hidden lg:block lg:w-32">
+            <a
+              className="self-center mr-2 hidden lg:block lg:w-32 hover:cursor-pointer hover:text-main-four"
+              href={"/redirect/" + data.player}
+            >
               {preventOverflow(data.player, 10)}
-            </div>
+            </a>
           ) : (
             ""
           )}
           {country ? (
-            <div className="self-center mr-4 md:hidden w-10">
+            <a
+              className="self-center mr-4 md:hidden w-10 hover:cursor-pointer hover:text-main-four"
+              href={"/redirect/" + data.player}
+            >
               {preventOverflow(data.player, 7)}
-            </div>
+            </a>
           ) : (
             ""
           )}
