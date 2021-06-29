@@ -16,36 +16,46 @@ export default function Country(props) {
   const [countryPlays, setCountryPlays] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const handleDetails = (details) => {
+    setCountryDetails(details);
+  };
+
+  const handleStats = (stats) => {
+    setCountryStats(stats);
+  };
+
+  const handlePlayers = (players) => {
+    setCountryPlayers(players);
+  };
+
+  const handlePlays = (plays) => {
+    setCountryPlays(plays);
+  };
+
   useEffect(() => {
     document.title = props.match.params.name;
 
-    const fetchData = async () => {
-      let countryDetails = (
-        await axios.get(
-          "/api/countries/" + props.match.params.name + "/details"
-        )
-      ).data[0];
-      setCountryDetails(countryDetails);
+    const detailsPromise = axios.get(
+      "/api/countries/" + props.match.params.name + "/details"
+    );
+    const statsPromise = axios.get(
+      "/api/countries/" + props.match.params.name + "/stats"
+    );
+    const playsPromise = axios.get(
+      "/api/countries/" + props.match.params.name + "/plays"
+    );
+    const playersPromise = axios.get(
+      "/api/countries/" + props.match.params.name + "/players"
+    );
 
-      let countryStats = (
-        await axios.get("/api/countries/" + props.match.params.name + "/stats")
-      ).data;
-      setCountryStats(countryStats);
-
-      let countryPlays = (
-        await axios.get("/api/countries/" + props.match.params.name + "/plays")
-      ).data;
-      setCountryPlays(countryPlays);
-
-      let countryPlayers = (
-        await axios.get(
-          "/api/countries/" + props.match.params.name + "/players"
-        )
-      ).data;
-      setCountryPlayers(countryPlayers);
+    Promise.all([
+      detailsPromise.then((res) => handleDetails(res.data[0])),
+      statsPromise.then((res) => handleStats(res.data)),
+      playsPromise.then((res) => handlePlays(res.data)),
+      playersPromise.then((res) => handlePlayers(res.data)),
+    ]).then(() => {
       setLoading(false);
-    };
-    fetchData();
+    });
   }, [props.match.params.name]);
 
   return isLoading ? (
