@@ -9,26 +9,32 @@ export default function AllUsers() {
   const [userData, setUserData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const handleUsers = (users) => {
+    let sorted = users.sort((a, b) => b.pp - a.pp);
+    let filtered = sorted.filter(
+      (obj) =>
+        obj.rank != 0 && obj.level !== null && obj.farm != -1 && obj.pp != 0
+    );
+
+    filtered.forEach((user) => {
+      user.acc = parseFloat(user.acc).toFixed(2);
+      user.level = user.level.toFixed(1);
+      user.pp = parseFloat(user.pp).toFixed(1);
+      user.averageObjects = parseInt(user.averageObjects);
+      user.range = parseInt(user.range);
+    });
+
+    setUserData(filtered);
+  };
+
   useEffect(() => {
     document.title = "All Players";
-    axios.get("/api/users/limitedAll").then((res) => {
-      let sorted = res.data.sort((a, b) => b.pp - a.pp);
-      let filtered = sorted.filter(
-        (obj) =>
-          obj.rank != 0 && obj.level !== null && obj.farm != -1 && obj.pp != 0
-      );
 
-      filtered.forEach((user) => {
-        user.acc = parseFloat(user.acc).toFixed(2);
-        user.level = user.level.toFixed(1);
-        user.pp = parseFloat(user.pp).toFixed(1);
-        user.averageObjects = parseInt(user.averageObjects);
-        user.range = parseInt(user.range);
-      });
+    const usersPromise = axios.get("/api/users/limitedAll");
 
-      setUserData(filtered);
-      setLoading(false);
-    });
+    Promise.all([usersPromise.then((res) => handleUsers(res.data))]).then(() =>
+      setLoading(false)
+    );
   }, []);
 
   let headers = [
