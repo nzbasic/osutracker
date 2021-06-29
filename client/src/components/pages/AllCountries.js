@@ -8,25 +8,31 @@ export default function AllCountries() {
   const [countryData, setCountryData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const handleCountries = (countries) => {
+    let sorted = countries.sort((a, b) => b.pp - a.pp);
+    let filtered = sorted.filter(
+      (obj) => obj.rank != 0 && obj.farm != -1 && obj.pp != 0
+    );
+
+    filtered.forEach((country, index) => {
+      country.acc = parseFloat(country.acc * 100).toFixed(2);
+      country.pp = parseFloat(country.pp).toFixed(1);
+      country.rank = index;
+      country.range = parseInt(country.range);
+      country.averageObjects = parseInt(country.averageObjects);
+    });
+
+    setCountryData(filtered);
+  };
+
   useEffect(() => {
     document.title = "All Countries";
-    axios.get("/api/countries/limitedAll").then((res) => {
-      let sorted = res.data.sort((a, b) => b.pp - a.pp);
-      let filtered = sorted.filter(
-        (obj) => obj.rank != 0 && obj.farm != -1 && obj.pp != 0
-      );
 
-      filtered.forEach((country, index) => {
-        country.acc = parseFloat(country.acc * 100).toFixed(2);
-        country.pp = parseFloat(country.pp).toFixed(1);
-        country.rank = index;
-        country.range = parseInt(country.range);
-        country.averageObjects = parseInt(country.averageObjects);
-      });
+    const countriesPromise = axios.get("/api/countries/limitedAll");
 
-      setCountryData(filtered);
-      setLoading(false);
-    });
+    Promise.all([
+      countriesPromise.then((res) => handleCountries(res.data)),
+    ]).then(() => setLoading(false));
   }, []);
 
   let headers = [
