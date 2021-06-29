@@ -49,6 +49,7 @@ const TimeSeriesChart = (props) => {
         <Brush
           dataKey="x"
           height={30}
+          travellerWidth={50}
           tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
         />
         <Tooltip content={<CustomTooltip />} />
