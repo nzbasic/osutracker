@@ -12,32 +12,35 @@ export default function User(props) {
   const [userPlays, setUserPlays] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const handleData = (data) => {
+    if (data[0]) {
+      document.title = data[0].name;
+      setUserData(data[0]);
+    }
+  };
+
+  const handleStats = (stats) => {
+    setUserStats(stats);
+  };
+
+  const handlePlays = (plays) => {
+    setUserPlays(plays);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      let userData = (await axios.get("/api/users/" + props.match.params.id))
-        .data[0];
-      if (userData) {
-        setUserData(userData);
-        document.title = userData.name;
-        if (userData.farm !== -1) {
-          let userStats = await axios.get(
-            "/api/users/" + props.match.params.id + "/stats"
-          );
+    let userDataPromise = axios.get("/api/users/" + props.match.params.id);
+    let userStatsPromise = axios.get(
+      "/api/users/" + props.match.params.id + "/stats"
+    );
+    let userPlaysPromise = axios.get(
+      "/api/users/" + props.match.params.id + "/plays"
+    );
 
-          setUserStats(userStats.data);
-
-          let userPlays = await axios.get(
-            "/api/users/" + props.match.params.id + "/plays"
-          );
-
-          setUserPlays(userPlays.data);
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      }
-    };
-    fetchData();
+    Promise.all([
+      userDataPromise.then((res) => handleData(res.data)),
+      userStatsPromise.then((res) => handleStats(res.data)),
+      userPlaysPromise.then((res) => handlePlays(res.data)),
+    ]).then(() => setLoading(false));
   }, [props.match.params.id]);
 
   return isLoading ? (
