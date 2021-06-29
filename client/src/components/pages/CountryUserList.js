@@ -53,7 +53,7 @@ export default function CountryUserList(props) {
   ];
 
   return isLoading ? (
-    <div className="w-screen h-screen flex justify-center align-center">
+    <div className="h-screen flex justify-center align-center">
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (

@@ -102,7 +102,7 @@ export default function Header() {
 
   return (
     <div>
-      <div className="w-screen h-12 bg-main-one fixed top-0 lg:static shadow z-50">
+      <div className="h-12 w-full bg-main-one fixed top-0 lg:static shadow z-50">
         <div className="flex justify-between lg:px-20 px-5 items-center h-full">
           <a className="text-lg font-semibold flex flex-row" href="/">
             <img
