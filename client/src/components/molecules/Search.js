@@ -7,8 +7,6 @@ export default function Search({ items, isLoading }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [shownNumber, setShownNumber] = useState(0);
 
-  let globalFilter;
-
   const editSearchTerm = (e) => {
     setSearchTerm(e.target.value);
     setShownNumber(0);
@@ -19,8 +17,8 @@ export default function Search({ items, isLoading }) {
       name.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    globalFilter = filter;
-
+    console.log("shown: " + shownNumber);
+    console.log("length: " + filter.length);
     return filter;
   };
 
@@ -56,7 +54,7 @@ export default function Search({ items, isLoading }) {
         </div>
         <div
           className={`${
-            shownNumber < items.length ? "block" : "invisible"
+            shownNumber + 5 < dynamicSearch().length ? "block" : "invisible"
           } hover:text-main-four cursor-pointer select-none`}
           onClick={() => setShownNumber(shownNumber + 5)}
         >
