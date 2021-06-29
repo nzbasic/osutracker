@@ -28,11 +28,11 @@ export default function User(props) {
   };
 
   useEffect(() => {
-    let userDataPromise = axios.get("/api/users/" + props.match.params.id);
-    let userStatsPromise = axios.get(
+    const userDataPromise = axios.get("/api/users/" + props.match.params.id);
+    const userStatsPromise = axios.get(
       "/api/users/" + props.match.params.id + "/stats"
     );
-    let userPlaysPromise = axios.get(
+    const userPlaysPromise = axios.get(
       "/api/users/" + props.match.params.id + "/plays"
     );
 

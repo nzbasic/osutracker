@@ -37,8 +37,8 @@ export default function Main() {
   };
 
   useEffect(() => {
-    let countriesPromise = axios.get("/api/countries/searchAll");
-    let usersPromise = axios.get("/api/users/searchAll");
+    const countriesPromise = axios.get("/api/countries/searchAll");
+    const usersPromise = axios.get("/api/users/searchAll");
 
     Promise.all([
       countriesPromise.then((res) => handleCountries(res.data)),
