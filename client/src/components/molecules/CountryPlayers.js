@@ -101,7 +101,7 @@ export default function CountryPlayers({ players }) {
                 key={uuidv4()}
                 dot={false}
                 dataKey={player.name}
-                strokeWidth={2}
+                strokeWidth={4}
                 stroke={player.colour}
                 connectNulls={true}
                 activeDot={{ stroke: player.color, strokeWidth: 2, r: 4 }}
