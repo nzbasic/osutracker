@@ -15,12 +15,16 @@ export default function AddUser() {
     setSearchTerm(e.target.value);
   };
 
+  const handleUsers = (users) => {
+    setPlayers(users.map((user) => user.name.toLowerCase()));
+  };
+
   useEffect(() => {
-    document.title = "Add Player";
-    axios.get("/api/users/id").then((res) => {
-      setPlayers(res.data.map((user) => user.name.toLowerCase()));
-      setLoading(false);
-    });
+    const usersPromise = axios.get("/api/users/id");
+
+    Promise.all([usersPromise.then((res) => handleUsers(res.data))]).then(() =>
+      setLoading(false)
+    );
   }, []);
 
   const toastSetting = {
