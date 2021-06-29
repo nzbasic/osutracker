@@ -16,9 +16,6 @@ export default function Search({ items, isLoading }) {
     let filter = items.filter((name) =>
       name.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    console.log("shown: " + shownNumber);
-    console.log("length: " + filter.length);
     return filter;
   };
 
