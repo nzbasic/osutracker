@@ -55,7 +55,7 @@ export default function UserTable({ items, headers }) {
             <div
               className={`${
                 header.sortBy === "name" ? "" : "hover:underline cursor-pointer"
-              } bg-main-one shadow-md rounded-md p-2 text-center `}
+              } bg-main-one shadow-md rounded-md px-2 py-1 text-center `}
               onClick={() => toggleSort(header.sortBy)}
             >
               {header.title}
@@ -63,7 +63,7 @@ export default function UserTable({ items, headers }) {
             <div>
               {data.slice(showing, showing + 50).map((user, index) => (
                 <div key={uuidv4()} className="text-center">
-                  <div className="bg-main-one rounded-md shadow-md mb-1 p-1">
+                  <div className="bg-main-one rounded-sm shadow-md mb-1 px-2 py-1">
                     {header.title === "Name" ? (
                       <a
                         href={"/user/" + user.id}
