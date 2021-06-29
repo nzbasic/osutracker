@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 
 export default function UserRedirect(props) {
   useEffect(() => {
-    const fetchData = async () => {
-      let found = await axios.get(
-        "/api/users/" + props.match.params.name + "/getId"
-      );
-      window.location.replace("/user/" + found.data);
-    };
-    fetchData();
+    const userPromise = axios.get(
+      "/api/users/" + props.match.params.name + "/getId"
+    );
+
+    userPromise.then((res) => {
+      window.location.replace("/user/" + res.data);
+    });
   });
 
   return <div></div>;

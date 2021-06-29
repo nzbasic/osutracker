@@ -14,13 +14,16 @@ export default function Stats() {
   const [stats, setStats] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const handleStats = (stats) => {
+    setStats(stats);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      let stats = (await axios.get("/api/stats/")).data;
-      setStats(stats);
-      setLoading(false);
-    };
-    fetchData();
+    const statsPromise = axios.get("/api/stats/");
+
+    Promise.all([statsPromise.then((res) => handleStats(res.data))]).then(() =>
+      setLoading(false)
+    );
   }, []);
 
   return isLoading ? (
