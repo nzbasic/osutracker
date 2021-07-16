@@ -11,7 +11,10 @@ router.route("/").get((req, res) => {
 
 router.route("/farmSets").get((req, res) => {
   OverallStats.findOne({}, { setCount: 1 })
-    .then((stats) => res.json(stats))
+    .then((stats) => {
+      let output = stats.setCount.slice(0, 727).map((count) => count.setId);
+      res.json(output);
+    })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
