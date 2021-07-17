@@ -12,7 +12,7 @@ export default function Tracked({ name }) {
           window.location.href = "/user/" + name.id;
         }
       }}
-      className="w-full text-xs md:text-sm xl:text-base h-12 text-center justify-start px-2 rounded-sm border-gray-400 hover:bg-main-four cursor-pointer flex"
+      className="w-full text-xs xl:text-base h-12 text-center justify-start px-2 rounded-sm border-gray-400 hover:bg-main-four cursor-pointer flex"
     >
       <div className="self-center outline-inner">
         <Image height={30} width={30} link={name.url} />
