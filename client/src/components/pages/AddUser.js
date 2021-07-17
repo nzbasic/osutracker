@@ -21,6 +21,7 @@ export default function AddUser() {
 
   useEffect(() => {
     const usersPromise = axios.get("/api/users/id");
+    document.title = "Add User";
 
     Promise.all([usersPromise.then((res) => handleUsers(res.data))]).then(() =>
       setLoading(false)

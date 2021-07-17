@@ -6,7 +6,6 @@ import CountryGraphs from "../molecules/CountryGraphs";
 import CountryContributors from "../molecules/CountryContributors";
 import CountryPlayers from "../molecules/CountryPlayers";
 import UserPlays from "../molecules/UserPlays";
-import Footer from "../molecules/Footer";
 import "../../css/Main.css";
 
 export default function Country(props) {

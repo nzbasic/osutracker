@@ -1,44 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
-import clone from "lodash/clone";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import React, { useEffect } from "react";
 import ItemTable from "../molecules/ItemTable.js";
-import UserRedirect from "./UserRedirect.js";
 
 export default function CountryUserList(props) {
-  const [userData, setUserData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-
-  const handleCountry = (country) => {
-    let sorted = country.sort((a, b) => b.pp - a.pp);
-    let filtered = sorted.filter(
-      (obj) =>
-        obj.rank != 0 && obj.level !== null && obj.farm != -1 && obj.pp != 0
-    );
-
-    filtered.forEach((user) => {
-      user.acc = parseFloat(user.acc).toFixed(2);
-      user.level = user.level.toFixed(1);
-      user.pp = parseFloat(user.pp).toFixed(1);
-      user.averageObjects = parseInt(user.averageObjects);
-      user.range = parseInt(user.range);
-    });
-
-    setUserData(filtered);
-  };
-
   useEffect(() => {
-    document.title = props.match.params.country + " Players";
-
-    const countryPromise = axios.get(
-      "/api/users/limitedAllCountry/" + props.match.params.country
-    );
-
-    Promise.all([countryPromise.then((res) => handleCountry(res.data))]).then(
-      () => setLoading(false)
-    );
-  }, [props.match.params.country]);
+    document.title = props.match.params.country + " Users";
+  });
 
   let headers = [
     { title: "#", sortBy: "rank", mobile: true },
@@ -52,13 +18,13 @@ export default function CountryUserList(props) {
     { title: "Objects/Play", sortBy: "averageObjects", mobile: false },
   ];
 
-  return isLoading ? (
-    <div className="h-screen flex justify-center align-center">
-      <CircularProgress className="self-center" size="10rem" />
-    </div>
-  ) : (
+  return (
     <div className="mt-16 lg:mt-4">
-      <ItemTable items={userData} headers={headers} />
+      <ItemTable
+        headers={headers}
+        url={"/api/countries/allFilter/" + props.match.params.country}
+        serverSidePagination={true}
+      />
     </div>
   );
 }
