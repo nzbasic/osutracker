@@ -124,7 +124,7 @@ export default function Header() {
               />
             </div>
             <div
-              className="lg:hidden ml-60 cursor-pointer hover:bg-main-two rounded-md p-1"
+              className="lg:hidden ml-56 cursor-pointer hover:bg-main-two rounded-md p-1"
               onClick={menuToggle}
             >
               <svg
