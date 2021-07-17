@@ -1,25 +1,13 @@
 import React from "react";
 import Tracked from "../atoms/Tracked.js";
 
-export default function TrackedContainer({ items, term, shown }) {
-  let list;
-  if (term == "") {
-    list = items
-      .sort((a, b) => parseFloat(b.pp) - parseFloat(a.pp))
-      .slice(shown, shown + 5);
-  } else {
-    list = items.sort((a, b) => a.name.localeCompare(b.name)).slice(0, 100);
-
-    list.sort((a, b) => parseFloat(b.pp) - parseFloat(a.pp));
-
-    list = list.slice(shown, shown + 5);
-  }
-
+export default function TrackedContainer({ items }) {
   return (
-    <div className="flex flex-col items-center">
-      {list.map((name) => (
+    <div className="w-full flex p-2 flex-col items-center bg-main-one rounded-md space-y-1 shadow">
+      {items.map((name) => (
         <Tracked name={name} key={name.name} />
       ))}
+      {items.length === 0 ? "No Results" : null}
     </div>
   );
 }
