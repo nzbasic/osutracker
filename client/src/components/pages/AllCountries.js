@@ -46,7 +46,7 @@ export default function AllCountries() {
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="mt-16 lg:mt-4">
+    <div className="">
       <ItemTable items={data} headers={headers} serverSidePagination={false} />
     </div>
   );

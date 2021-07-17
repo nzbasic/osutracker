@@ -19,7 +19,7 @@ export default function CountryUserList(props) {
   ];
 
   return (
-    <div className="mt-16 lg:mt-4">
+    <div className="">
       <ItemTable
         headers={headers}
         url={"/api/countries/allFilter/" + props.match.params.country}
