@@ -1,38 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ScrollAnimation from "react-animate-on-scroll";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ItemTable from "../molecules/ItemTable.js";
 
 export default function AllCountries() {
-  const [countryData, setCountryData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
-  const handleCountries = (countries) => {
-    let sorted = countries.sort((a, b) => b.pp - a.pp);
-    let filtered = sorted.filter(
-      (obj) => obj.rank != 0 && obj.farm != -1 && obj.pp != 0
+  const handleCountries = (data) => {
+    let countries = data.data.sort(
+      (a, b) => parseFloat(b.pp) - parseFloat(a.pp)
     );
-
-    filtered.forEach((country, index) => {
-      country.acc = parseFloat(country.acc * 100).toFixed(2);
-      country.pp = parseFloat(country.pp).toFixed(1);
+    countries.forEach((country, index) => {
       country.rank = index;
-      country.range = parseInt(country.range);
+      country.pp = parseFloat(country.pp).toFixed(2);
+      country.acc = (country.acc * 100).toFixed(2);
+      country.range = parseFloat(country.range).toFixed(2);
       country.averageObjects = parseInt(country.averageObjects);
     });
 
-    setCountryData(filtered);
+    setData(countries);
+    setLoading(false);
   };
 
   useEffect(() => {
     document.title = "All Countries";
 
-    const countriesPromise = axios.get("/api/countries/limitedAll");
-
-    Promise.all([
-      countriesPromise.then((res) => handleCountries(res.data)),
-    ]).then(() => setLoading(false));
+    axios
+      .get("/api/countries/limitedAll")
+      .then((data) => handleCountries(data));
   }, []);
 
   let headers = [
@@ -50,8 +46,8 @@ export default function AllCountries() {
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="mt-16 lg:mt-4">
-      <ItemTable items={countryData} headers={headers} />
+    <div className="">
+      <ItemTable items={data} headers={headers} serverSidePagination={false} />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import usersRouter from "./routes/users.js";
 import countryRouter from "./routes/countries.js";
 import statsRouter from "./routes/stats.js";
+import searchRouter from "./routes/search.js";
 dotenv.config();
 
 const app = express();
@@ -47,6 +48,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api/users", usersRouter);
 app.use("/api/countries", countryRouter);
 app.use("/api/stats", statsRouter);
+app.use("/api/search", searchRouter);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

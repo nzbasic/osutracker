@@ -29,7 +29,7 @@ export default function UserGraphs({ data }) {
       });
       acc.push({
         x: data[i].date,
-        y: parseFloat(data[i].acc),
+        y: Math.round((parseFloat(data[i].acc) + Number.EPSILON) * 100) / 100,
       });
       play.push({
         x: data[i].date,
@@ -46,7 +46,7 @@ export default function UserGraphs({ data }) {
       if (data[i].range) {
         range.push({
           x: data[i].date,
-          y: data[i].range.toFixed(2),
+          y: parseInt(data[i].range),
         });
       }
     }

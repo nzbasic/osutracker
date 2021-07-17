@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "./Image.js";
+import { preventOverflow } from "../../util/text";
 
 export default function Tracked({ name }) {
   return (
@@ -11,12 +12,12 @@ export default function Tracked({ name }) {
           window.location.href = "/user/" + name.id;
         }
       }}
-      className="md:w-72 w-72 h-12 text-center justify-start px-2 border-2 m-1 py-2 hover:bg-gray-400 cursor-pointer rounded flex"
+      className="w-full text-xs xl:text-base h-12 text-center justify-start px-2 rounded-sm border-gray-400 hover:bg-main-four cursor-pointer flex"
     >
       <div className="self-center outline-inner">
         <Image height={30} width={30} link={name.url} />
       </div>
-      <div className="px-2 self-center">{name.name}</div>
+      <div className="px-2 self-center">{preventOverflow(name.name, 9)}</div>
       <div className="self-center">{Math.floor(name.pp) + "pp"}</div>
     </div>
   );

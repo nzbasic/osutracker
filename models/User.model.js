@@ -14,6 +14,8 @@ let userSchema = new mongoose.Schema({
   joined: Number,
   currentTop: Array,
   farm: Number,
+  averageLength: Number,
+  averageObjects: Number,
 });
 
 const User = mongoose.model("user", userSchema);

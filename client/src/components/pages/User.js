@@ -4,7 +4,6 @@ import { CircularProgress } from "@material-ui/core";
 import UserDetails from "../molecules/UserDetails";
 import UserGraphs from "../molecules/UserGraphs";
 import UserPlays from "../molecules/UserPlays";
-import Footer from "../molecules/Footer";
 
 export default function User(props) {
   const [userData, setUserData] = useState([]);

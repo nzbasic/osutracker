@@ -16,38 +16,37 @@ const osuApi = new osu.Api(process.env.OSU_API_KEY, {
 
 const router = express.Router();
 
-router.route("/limitedAll").get((req, res) => {
-  User.find(
-    {},
-    {
-      name: 1,
-      id: 1,
-      pp: 1,
-      rank: 1,
-      acc: 1,
-      farm: 1,
-      range: 1,
-      joined: 1,
-      level: 1,
-      averageObjects: 1,
-    }
-  )
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json("Error: " + err));
+router.route("/allFilter").get(async (req, res) => {
+  const page = req.query.page;
+  const order = { [req.query.name]: req.query.order };
+
+  let users = await User.find({}, { currentTop: 0, modsCount: 0 })
+    .sort(order)
+    .collation({ locale: "en_US", numericOrdering: true })
+    .limit(50)
+    .skip(50 * (page - 1));
+
+  users.forEach((user) => {
+    user.rank = user.rank ?? 0;
+    user.plays = user.plays ?? 0;
+    user.averageObjects = user?.averageObjects ?? 0;
+    user.acc = parseFloat(user.acc ?? 0).toFixed(2);
+    user.level = parseFloat(user.level ?? 0).toFixed(1);
+    user.pp = parseFloat(user.pp ?? 0).toFixed(1);
+    user.averageObjects = parseInt(user.averageObjects ?? 0);
+    user.range = parseInt(user.range == "" ? 0 : user.range ?? 0);
+  });
+
+  //console.log(users);
+
+  let number = await User.countDocuments();
+
+  res.json({ data: users, numberResults: number });
+  return;
 });
 
-router.route("/searchAll").get((req, res) => {
-  User.find(
-    {},
-    {
-      _id: 0,
-      name: 1,
-      id: 1,
-      pp: 1,
-    }
-  )
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json("Error: " + err));
+router.route("/number").get((req, res) => {
+  User.countDocuments().then((count) => res.json(count));
 });
 
 router.route("/limitedAllCountry/:country").get(async (req, res) => {
