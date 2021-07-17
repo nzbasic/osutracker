@@ -25,12 +25,14 @@ export default function Search({ header }) {
   }, []);
 
   const inFocus = (focus) => {
-    if (focus) {
-      getFiltered(1, searchTerm);
-    }
+    if (header) {
+      if (focus) {
+        getFiltered(1, searchTerm);
+      }
 
-    // scuffed way to ensure click goes through on button before buttons disappear
-    setTimeout(() => setFocused(focus), 100);
+      // scuffed way to ensure click goes through on button before buttons disappear
+      setTimeout(() => setFocused(focus), 100);
+    }
   };
 
   const pageChange = (number) => {
