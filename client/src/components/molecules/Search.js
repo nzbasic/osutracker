@@ -76,11 +76,7 @@ export default function Search({ header }) {
     getFiltered(1, e.target.value);
   };
 
-  return !header && isLoading ? (
-    <div className="flex w-full h-full justify-center">
-      <CircularProgress className="self-center" size="10rem" />
-    </div>
-  ) : (
+  return (
     <div className="flex flex-col items-center z-20">
       <div className="flex flex-col w-full p-1 rounded items-center">
         <div className="relative text-gray-600">
@@ -107,7 +103,11 @@ export default function Search({ header }) {
             </svg>
           </div>
         </div>
-        {!(header && !focused) ? (
+        {!header && isLoading ? (
+          <div className="flex w-full h-full justify-center">
+            <CircularProgress className="self-center" size="10rem" />
+          </div>
+        ) : !(header && !focused) ? (
           <div className="w-full mt-2">
             <TrackedContainer items={items} />
           </div>
