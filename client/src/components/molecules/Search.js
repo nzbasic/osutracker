@@ -104,15 +104,15 @@ export default function Search({ header }) {
           </div>
         </div>
         {!header && isLoading ? (
-          <div className="flex w-full h-full justify-center">
-            <CircularProgress className="self-center" size="10rem" />
+          <div className="flex w-full h-32 justify-center">
+            <CircularProgress className="self-center" size="5rem" />
           </div>
         ) : !(header && !focused) ? (
           <div className="w-full mt-2">
             <TrackedContainer items={items} />
           </div>
         ) : null}
-        {!header ? (
+        {!header && !isLoading ? (
           <div className="bg-main-one flex mt-2 w-40 justify-between items-center p-1 rounded shadow">
             <div
               className={`${
