@@ -42,6 +42,9 @@ router.route("/all").get(async (req, res) => {
     countriesPromise.then((items) => (countries = items)),
   ]);
 
+  // null PP will mess up the sort
+  users = users.filter((user) => user.pp);
+
   const combined = countries.concat(users);
   const sorted = combined.sort((a, b) => parseFloat(b.pp) - parseFloat(a.pp));
 
