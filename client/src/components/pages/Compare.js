@@ -10,7 +10,10 @@ import { CircularProgress } from "@material-ui/core";
 import GraphDropdown from "../molecules/GraphDropdown.js";
 
 export default function Compare() {
-  const [compare, setCompare] = useState([]);
+  const [compare, setCompare] = useState([
+    { name: "", added: false, id: uuidv4() },
+    { name: "", added: false, id: uuidv4() },
+  ]);
   const [adding, setAdding] = useState(0);
   const [isLoading, setLoading] = useState(true);
   const [noGet, setNoGet] = useState(false);
@@ -116,7 +119,7 @@ export default function Compare() {
 
   const addNew = () => {
     const newItem = {
-      item: "",
+      name: "",
       user: false,
       added: false,
       id: uuidv4(),
@@ -133,20 +136,15 @@ export default function Compare() {
   };
 
   const select = (selected, itemToChange) => {
-    const clone = clonedeep(compare);
-    clone.forEach((item) => {
-      const user = selected.type === "user";
+    const user = selected.type === "user";
 
-      if (item.name === itemToChange.name) {
-        item.name = user ? parseInt(selected.id) : selected.name;
-        item.user = user;
-        item.added = true;
-      }
-    });
+    itemToChange.name = user ? parseInt(selected.id) : selected.name;
+    itemToChange.user = user;
+    itemToChange.added = true;
 
     setNoGet(false);
     setLoading(true);
-    setCompare(clone);
+    setCompare([...compare]);
   };
 
   const graphChange = (e) => {
@@ -168,9 +166,9 @@ export default function Compare() {
               reversed={reversed}
             />
           </div>
-        ) : (
+        ) : length > 0 ? (
           <CircularProgress className="self-center" size="10rem" />
-        )}
+        ) : null}
       </div>
 
       <div className="flex flex-col bg-white lg:w-graph w-smgraph mt-4 p-4 shadow-md rounded-md">
