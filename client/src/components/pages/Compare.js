@@ -182,7 +182,7 @@ export default function Compare() {
             <div className="flex flex-row items-center mt-3">
               <span
                 onClick={() => remove(item)}
-                className="mr-4 text-red-600 cursor-pointer"
+                className="mr-4 text-center text-white bg-red-500 hover:bg-red-700 rounded-sm px-2 cursor-pointer"
               >
                 x
               </span>
@@ -237,7 +237,10 @@ export default function Compare() {
 
         {compare.length + adding < 5 ? (
           <div className="flex flex-row w-full justify-center mt-4">
-            <span onClick={addNew} className="cursor-pointer select-none">
+            <span
+              onClick={addNew}
+              className="cursor-pointer select-none bg-main-four px-2 py-1 rounded-md hover:bg-blue-400"
+            >
               + Add New to Compare
             </span>
           </div>
