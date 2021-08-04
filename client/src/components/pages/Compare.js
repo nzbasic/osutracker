@@ -31,11 +31,19 @@ export default function Compare() {
       parseNumbers: true,
     });
 
-    if (Array.isArray(urlParams.u ?? 0)) {
-      urlParams.u = Array.from(new Set(urlParams.u));
+    console.log(urlParams);
+
+    let params = urlParams["u[]"] ? urlParams["u[]"] : urlParams?.u;
+
+    if (Array.isArray(params ?? 0)) {
+      params = Array.from(new Set(params));
 
       const data = [];
-      urlParams.u.forEach((item) => {
+      params.forEach((item) => {
+        if (!Number.isNaN(item)) {
+          item = parseInt(item);
+        }
+
         const value = {
           name: item,
           user: false,
@@ -100,7 +108,6 @@ export default function Compare() {
             );
           })
         ).then(() => {
-          console.log(compare);
           setLoading(false);
         });
 
@@ -187,14 +194,14 @@ export default function Compare() {
             <div className="flex flex-row items-center mt-3">
               <span
                 onClick={() => remove(item)}
-                className="mr-4 text-center text-white bg-red-500 hover:bg-red-700 rounded-sm px-2 cursor-pointer"
+                className="mr-2 text-center text-white bg-red-500 hover:bg-red-700 rounded-sm px-2 cursor-pointer"
               >
                 x
               </span>
               {index + 1}
             </div>
 
-            <div className={`z-${(5 - index) * 10} ml-4`}>
+            <div className={`z-${(5 - index) * 10} ml-2`}>
               <Search header={true} open={false} select={select} item={item} />
             </div>
 
