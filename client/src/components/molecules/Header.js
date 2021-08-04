@@ -6,6 +6,7 @@ import PublicIcon from "@material-ui/icons/Public";
 import AddIcon from "@material-ui/icons/Add";
 import FlagIcon from "@material-ui/icons/Flag";
 import DescriptionIcon from "@material-ui/icons/Description";
+import CompareIcon from "@material-ui/icons/Compare";
 import InfoIcon from "@material-ui/icons/Info";
 import Search from "./Search.js";
 
@@ -70,6 +71,10 @@ export default function Header() {
           <Button
             link="/allcountries"
             text={<MenuButton Icon={FlagIcon} text={"All Countries"} />}
+          />
+          <Button
+            link="/compare"
+            text={<MenuButton Icon={CompareIcon} text={"Compare"} />}
           />
           <Button
             link="/country/Global"
