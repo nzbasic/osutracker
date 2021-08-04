@@ -102,8 +102,6 @@ export default function CompareGraph({ compare, type, reversed }) {
       });
     }
 
-    console.log(dataPoints);
-
     setNames(nameList);
     setPoints(dataPoints);
   }, [compare, type]);
