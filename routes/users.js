@@ -87,6 +87,14 @@ router.route("/:name/getId").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err + req.params.id));
 });
 
+router.route("/:id/getName").get((req, res) => {
+  User.findOne({ id: req.params.id }, { name: 1 })
+    .then((user) => {
+      res.json(user.name);
+    })
+    .catch((err) => res.status(400).json("Error: " + err + req.params.id));
+});
+
 router.route("/:id").get((req, res) => {
   User.find({ id: req.params.id })
     .then((user) => {
