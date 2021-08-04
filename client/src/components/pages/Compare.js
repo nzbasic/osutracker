@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import queryString from "query-string";
 import { v4 as uuidv4 } from "uuid";
 import Search from "../molecules/Search.js";
-import clonedeep from "lodash/cloneDeep";
 import stc from "string-to-color";
 import axios from "axios";
 import CompareGraph from "../molecules/CompareGraph.js";
 import { CircularProgress } from "@material-ui/core";
 import GraphDropdown from "../molecules/GraphDropdown.js";
 
+const defaultCompare = [
+  { name: "", added: false, id: uuidv4() },
+  { name: "", added: false, id: uuidv4() },
+];
+
 export default function Compare() {
-  const [compare, setCompare] = useState([
-    { name: "", added: false, id: uuidv4() },
-    { name: "", added: false, id: uuidv4() },
-  ]);
+  const [compare, setCompare] = useState([]);
   const [adding, setAdding] = useState(0);
   const [isLoading, setLoading] = useState(true);
   const [noGet, setNoGet] = useState(false);
@@ -52,7 +53,10 @@ export default function Compare() {
       });
 
       setCompare(data.slice(0, 5));
+      setGraphType("pp");
     } else {
+      setLoading(false);
+      setCompare(defaultCompare);
       setAdding(false);
     }
   }, []);
@@ -96,6 +100,7 @@ export default function Compare() {
             );
           })
         ).then(() => {
+          console.log(compare);
           setLoading(false);
         });
 
