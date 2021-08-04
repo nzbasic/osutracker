@@ -13,6 +13,7 @@ import AddUser from "./components/pages/AddUser";
 import Stats from "./components/pages/Stats";
 import Footer from "./components/molecules/Footer";
 import UserRedirect from "./components/pages/UserRedirect";
+import Compare from "./components/pages/Compare";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/add" component={AddUser} />
           <Route path="/stats" component={Stats} />
           <Route path="/redirect/:name" component={UserRedirect} />
+          <Route path="/compare" component={Compare} />
         </Switch>
         {window.location.pathname !== "/add" ? <Footer /> : null}
       </div>
