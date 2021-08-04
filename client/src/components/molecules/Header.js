@@ -116,9 +116,10 @@ export default function Header() {
             <div className="z-20 static -top-p5 lg:-top-p75 absolute">
               <Search header={true} open={true} />
             </div>
-            <div className="hidden lg:flex space-x-5 lg:pl-56 xl:pl-72 select-none">
+            <div className="hidden lg:flex xl:space-x-2 lg:pl-56 xl:pl-72 select-none">
               <Button link="/allusers" text="All Players" />
               <Button link="/allcountries" text="All Countries" />
+              <Button link="/compare" text="Compare" />
               <Button link="/country/Global" text="Global" />
               <Button link="/add" text="Add Player" />
               <Button link="/stats" text="Fun Stats" />
