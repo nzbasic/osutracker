@@ -109,7 +109,7 @@ export default function Header() {
           </a>
           <div className="flex flex-row items-center fixed right-2 lg:relative">
             <div className="z-20 static -top-p5 lg:-top-p75 absolute">
-              <Search header={true} />
+              <Search header={true} open={true} />
             </div>
             <div className="hidden lg:flex space-x-5 lg:pl-56 xl:pl-72 select-none">
               <Button link="/allusers" text="All Players" />

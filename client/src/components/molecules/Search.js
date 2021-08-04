@@ -4,7 +4,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import InputWithDebouncing from "react-input-with-debouncing";
 import axios from "axios";
 
-export default function Search({ header }) {
+export default function Search({ header, open, select, item }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const [focused, setFocused] = useState(false);
@@ -82,7 +82,13 @@ export default function Search({ header }) {
         <div className="relative text-gray-600">
           <InputWithDebouncing
             type="search"
-            placeholder="Player or Country"
+            placeholder={
+              item?.name
+                ? item.data && item.user
+                  ? item.data[item.data.length - 1].player
+                  : item.name
+                : "Player or Country"
+            }
             value={searchTerm}
             onChange={editSearchTerm}
             debounceTimeout={250}
@@ -109,7 +115,12 @@ export default function Search({ header }) {
           </div>
         ) : !(header && !focused) ? (
           <div className="w-full mt-2">
-            <TrackedContainer items={items} />
+            <TrackedContainer
+              items={items}
+              open={open}
+              select={select}
+              item={item}
+            />
           </div>
         ) : null}
         {!header && !isLoading ? (

@@ -43,7 +43,7 @@ export default function Main() {
           id="firstDiv"
           className="self-center m-4 md:m-10 lg:m-14 md:w-72 h-80 mb-12"
         >
-          <Search header={false} />
+          <Search header={false} open={true} />
         </div>
 
         <div className="mt-6 lg:mt-14 mb-12 lg:mb-0 inline-flex flex-col self-center z-0">
