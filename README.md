@@ -62,7 +62,9 @@ The key features of **osuTracker**:
 - Allows any user to add themselves automatically 
 - Tracking history of top 100 plays for each country (and global)
 - Tracking history of top 10 plays for each user
+- Compare user/country stats
 - Public API for devs
+- Optimised for mobile and desktop views
 
 </td>
 </tr>
@@ -78,10 +80,14 @@ The key features of **osuTracker**:
 
 ### Screenshots
 
-Home Page
-![image](https://user-images.githubusercontent.com/54062686/109414853-2c8b5800-7a1a-11eb-9982-d7cc2a165f46.png)
-User Page
-![image](https://user-images.githubusercontent.com/54062686/109414866-46c53600-7a1a-11eb-8a5d-2f6855d5e078.png)
+Home
+![image](https://user-images.githubusercontent.com/54062686/128279662-4d36c267-8647-43dc-8b38-136533f53dcf.png)
+
+User Profile: [Link](https://osutracker.com/user/7562902)
+![image](https://user-images.githubusercontent.com/54062686/128279670-c4336079-5176-49cb-bf94-d29597b8d9a8.png)
+
+Comparing Users: [Link](https://osutracker.com/compare?one=13767572&two=15293080&three=6934358&four=13192231&)
+![image](https://user-images.githubusercontent.com/54062686/128279675-2cab0beb-3655-42cb-9e37-9c3c0c6fb3cf.png)
 
 ## Contributing
 
