@@ -191,7 +191,14 @@ export default function Compare() {
             />
           </div>
         ) : length > 0 ? (
-          <CircularProgress className="self-center" size="10rem" />
+          <div>
+            <div className="hidden lg:block">
+              <CircularProgress className="self-center" size="37rem" />
+            </div>
+            <div className="block lg:hidden">
+              <CircularProgress className="self-center" size="15rem" />
+            </div>
+          </div>
         ) : null}
       </div>
 
