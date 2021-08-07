@@ -217,7 +217,7 @@ export default function Compare() {
               >
                 x
               </span>
-              {index + 1}
+              <span className="w-4">{index + 1}</span>
             </div>
 
             <div className={`ml-2`}>
