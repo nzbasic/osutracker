@@ -94,7 +94,7 @@ export default function Search({ header, open, select, item }) {
             debounceTimeout={250}
             onFocus={() => inFocus(true)}
             onBlur={() => inFocus(false)}
-            className="bg-white xl:w-full w-52 h-10 px-5 pr-10 rounded-full border-gray-400 border text-sm focus:outline-none"
+            className="bg-white xl:w-full w-52 h-10 px-5 z-0 pr-10 rounded-full border-gray-400 border text-sm focus:outline-none"
           />
           <div className="absolute right-0 top-0 mt-3 mr-4">
             <svg
@@ -114,7 +114,7 @@ export default function Search({ header, open, select, item }) {
             <CircularProgress className="self-center" size="5rem" />
           </div>
         ) : !(header && !focused) ? (
-          <div className="w-full mt-2">
+          <div className="w-full mt-2 z-50">
             <TrackedContainer
               items={items}
               open={open}
