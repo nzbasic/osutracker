@@ -21,6 +21,7 @@ export default function Compare() {
   const [length, setLength] = useState(0);
   const [graphType, setGraphType] = useState("pp");
   const [reversed, setReversed] = useState(false);
+  const maxCompare = 10;
 
   useEffect(() => {
     document.title = "Compare";
@@ -31,18 +32,27 @@ export default function Compare() {
       parseNumbers: true,
     });
 
-    console.log(urlParams);
+    let params = [];
 
-    let params = urlParams["u[]"] ? urlParams["u[]"] : urlParams?.u;
+    for (let i = 0; i < maxCompare; i++) {
+      if (urlParams[`${i}`]) {
+        params.push(urlParams[`${i}`]);
+      }
+    }
+
+    if (params.length === 0) {
+      params.push("");
+    }
 
     if (Array.isArray(params ?? 0)) {
       params = Array.from(new Set(params));
 
       const data = [];
       params.forEach((item) => {
-        if (!Number.isNaN(item)) {
+        if (!Number.isNaN(parseInt(item))) {
           item = parseInt(item);
         }
+        console.log(item);
 
         const value = {
           name: item,
@@ -60,7 +70,7 @@ export default function Compare() {
         data.push(value);
       });
 
-      setCompare(data.slice(0, 5));
+      setCompare(data.slice(0, maxCompare));
       setGraphType("pp");
     } else {
       setLoading(false);
@@ -72,8 +82,10 @@ export default function Compare() {
   useEffect(() => {
     if (compare.length) {
       let string = "?";
-      compare.forEach((item) => {
-        string += `u[]=${item.name ?? ""}&`;
+
+      compare.forEach((item, index) => {
+        item.name = item.name ?? "";
+        string += index + 1 + "=" + item.name + "&";
       });
 
       window.history.replaceState(null, "Compare", string);
@@ -201,7 +213,7 @@ export default function Compare() {
               {index + 1}
             </div>
 
-            <div className={`z-${(5 - index) * 10} ml-2`}>
+            <div className={`ml-2`}>
               <Search header={true} open={false} select={select} item={item} />
             </div>
 
@@ -247,13 +259,13 @@ export default function Compare() {
           </div>
         ))}
 
-        {compare.length + adding < 5 ? (
-          <div className="flex flex-row w-full justify-center mt-4">
+        {compare.length + adding < maxCompare ? (
+          <div className="flex flex-row mt-4 lg:ml-8">
             <span
               onClick={addNew}
-              className="cursor-pointer select-none bg-main-four px-2 py-1 rounded-md hover:bg-blue-400"
+              className="z-0 cursor-pointer select-none bg-main-four px-2 rounded-md hover:bg-blue-400 font-semibold"
             >
-              + Add New to Compare
+              +
             </span>
           </div>
         ) : (
