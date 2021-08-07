@@ -34,6 +34,14 @@ export default function Compare() {
 
     let params = [];
 
+    // migrate old params
+    const oldParams = ["one", "two", "three", "four", "five"];
+    oldParams.forEach((param) => {
+      if (urlParams[param]) {
+        params.push(urlParams[param]);
+      }
+    });
+
     for (let i = 0; i < maxCompare; i++) {
       if (urlParams[`${i}`]) {
         params.push(urlParams[`${i}`]);
