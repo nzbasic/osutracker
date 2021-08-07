@@ -21,7 +21,7 @@ export default function Compare() {
   const [length, setLength] = useState(0);
   const [graphType, setGraphType] = useState("pp");
   const [reversed, setReversed] = useState(false);
-  const maxCompare = 10;
+  const maxCompare = 50;
 
   useEffect(() => {
     document.title = "Compare";
@@ -221,7 +221,11 @@ export default function Compare() {
               className="h-4 w-4 mt-4 ml-2"
               style={{
                 backgroundColor: stc(
-                  item.data ? item.data[item.data.length - 1].player : item.name
+                  item.user
+                    ? item.data
+                      ? item.data[item.data.length - 1].player
+                      : item.name
+                    : item.name
                 ),
               }}
             ></div>
