@@ -279,7 +279,7 @@ export default function Compare() {
         ))}
 
         {compare.length + adding < maxCompare ? (
-          <div className="flex flex-row mt-4 lg:ml-8">
+          <div className="flex flex-row mt-4 mb-4 lg:ml-8">
             <span
               onClick={addNew}
               className="z-0 cursor-pointer select-none bg-main-four px-2 rounded-md hover:bg-blue-400 font-semibold"
