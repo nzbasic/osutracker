@@ -59,6 +59,7 @@
     "react-multi-clamp": "^2.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-select": "^4.3.1",
     "react-toastify": "^7.0.3",
     "react-virtualized": "^9.22.3",
     "recharts": "^1.8.5",
