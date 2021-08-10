@@ -62,7 +62,7 @@ export default function Header() {
         <div
           ref={wrapperRef}
           id={menuWillDeactivate ? "drawerInactive" : "drawerActive"}
-          className="bg-main-one w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-10"
+          className="bg-main-one w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-50"
         >
           <Button
             link="/allusers"
@@ -101,7 +101,7 @@ export default function Header() {
   }
 
   return (
-    <div className="z-10">
+    <div className="z-50">
       <div className="h-12 w-full bg-main-one fixed top-0 lg:static shadow z-50">
         <div className="flex justify-between xl:px-10 px-2 items-center h-full">
           <a className="text-lg font-semibold flex flex-row" href="/">
@@ -113,7 +113,7 @@ export default function Header() {
             <div className="hidden lg:block self-center px-2">osuTracker</div>
           </a>
           <div className="flex flex-row items-center fixed right-2 lg:relative">
-            <div className="z-20 static -top-p5 lg:-top-p75 absolute">
+            <div className="z-0 static -top-p5 lg:-top-p75 absolute">
               <Search header={true} open={true} />
             </div>
             <div className="hidden lg:flex xl:space-x-2 lg:pl-56 xl:pl-72 select-none">
@@ -146,7 +146,9 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <Menu active={menu} />
+      <div className="z-50">
+        <Menu active={menu} />
+      </div>
     </div>
   );
 }

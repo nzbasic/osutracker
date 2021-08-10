@@ -77,7 +77,7 @@ export default function Search({ header, open, select, item }) {
   };
 
   return (
-    <div className="flex flex-col items-center z-20">
+    <div className="flex flex-col items-center z-0">
       <div className="flex flex-col w-full p-1 rounded items-center">
         <div className="relative text-gray-600">
           <InputWithDebouncing
@@ -114,7 +114,7 @@ export default function Search({ header, open, select, item }) {
             <CircularProgress className="self-center" size="5rem" />
           </div>
         ) : !(header && !focused) ? (
-          <div className="w-full mt-2 z-50">
+          <div className="w-full mt-2 z-10">
             <TrackedContainer
               items={items}
               open={open}

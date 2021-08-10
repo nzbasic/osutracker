@@ -3,7 +3,7 @@ import Tracked from "../atoms/Tracked.js";
 
 export default function TrackedContainer({ items, open, select, item }) {
   return (
-    <div className="w-full flex p-2 flex-col items-center bg-main-one rounded-md space-y-1 shadow z-50">
+    <div className="w-full flex p-2 flex-col items-center bg-main-one rounded-md space-y-1 shadow z-0">
       {items.map((name) => (
         <Tracked
           name={name}
