@@ -17,7 +17,10 @@ export default function AllCountries() {
       country.acc = (country.acc * 100).toFixed(2);
       country.range = parseFloat(country.range).toFixed(2);
       country.averageObjects = parseInt(country.averageObjects);
+      country.playerWeighting = parseFloat(country.playerWeighting).toFixed(2);
     });
+
+    //console.log(data);
 
     setData(countries);
     setLoading(false);
@@ -35,8 +38,9 @@ export default function AllCountries() {
     { title: "#", sortBy: "rank", mobile: true },
     { title: "Country", sortBy: "name", mobile: true },
     { title: "pp", sortBy: "pp", mobile: true },
+    { title: "Player pp", sortBy: "playerWeighting", mobile: true },
     { title: "Acc", sortBy: "acc", mobile: true },
-    { title: "Farm", sortBy: "farm", mobile: true },
+    { title: "Farm", sortBy: "farm", mobile: false },
     { title: "Range", sortBy: "range", mobile: true },
     { title: "Objects/Play", sortBy: "averageObjects", mobile: false },
   ];

@@ -9,6 +9,7 @@ let countrySchema = new mongoose.Schema({
   farm: Number,
   scoresCurrent: Array,
   range: String,
+  playerWeighted: Number,
 });
 
 const Country = mongoose.model("country", countrySchema);

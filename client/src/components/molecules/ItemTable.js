@@ -122,7 +122,7 @@ export default function UserTable({
           Next
         </div>
       </div>
-      <div className="flex space-x-2 m-4 text-xs md:text-base">
+      <div className="flex space-x-1 m-4 text-xs md:text-base">
         {headers.map((header) => (
           <div
             key={header.title}
@@ -156,7 +156,12 @@ export default function UserTable({
                         href={"/country/" + user.name}
                         className="hover:text-main-four"
                       >
-                        {preventOverflow(user[header.sortBy], 15)}
+                        <span className="lg:hidden">
+                          {preventOverflow(user[header.sortBy], 6)}
+                        </span>
+                        <span className="hidden lg:block">
+                          {preventOverflow(user[header.sortBy], 12)}
+                        </span>
                       </a>
                     ) : (
                       user[header.sortBy]

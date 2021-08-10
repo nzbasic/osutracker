@@ -62,6 +62,7 @@ router.route("/limitedAll").get((req, res) => {
       farm: 1,
       range: 1,
       averageObjects: 1,
+      playerWeighting: 1,
     }
   )
     .then((countries) => res.json(countries))
