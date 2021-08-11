@@ -84,7 +84,10 @@ export default function Country(props) {
           id="secondDiv"
           className="w-smgraph lg:w-graph flex justify-center items-center flex flex-col"
         >
-          <CountryGraphs stats={countryStats} />
+          <CountryGraphs
+            stats={countryStats}
+            playerWeightingCurrent={countryDetails.playerWeighting ?? 0}
+          />
           <CountryContributors contributors={countryDetails.contributors} />
         </div>
 

@@ -5,6 +5,7 @@ let countryStatSchema = new mongoose.Schema({
   date: Number,
   pp: String,
   acc: Number,
+  playerWeighting: Number,
 });
 
 const CountryStat = mongoose.model("countryStat", countryStatSchema);

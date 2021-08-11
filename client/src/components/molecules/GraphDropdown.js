@@ -1,18 +1,7 @@
 import React from "react";
 import Select from "react-select";
 
-const options = [
-  { value: "pp", label: "Performance", reversed: false },
-  { value: "rank", label: "Rank", reversed: true },
-  { value: "acc", label: "Accuracy", reversed: false },
-  { value: "plays", label: "Play Count", reversed: false },
-  { value: "farm", label: "Farm", reversed: false },
-  { value: "range", label: "Range", reversed: false },
-  { value: "score", label: "Score", reversed: false },
-  { value: "countryRank", label: "Country Rank", reversed: true },
-];
-
-export default function GraphDropdown({ onChange, selected }) {
+export default function GraphDropdown({ onChange, selected, options }) {
   const select = (event) => {
     onChange(event);
   };

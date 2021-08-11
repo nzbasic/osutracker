@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from "react";
 import TimeSeriesChart from "../molecules/TimeSeriesChart";
+import GraphDropdown from "../molecules/GraphDropdown.js";
 
-export default function CountryGraphs({ stats }) {
-  const [buttonIndex, setButtonIndex] = useState(0);
+const options = [
+  { value: "pp", label: "Performance", reversed: false },
+  { value: "acc", label: "Accuracy", reversed: false },
+  { value: "farm", label: "Farm", reversed: false },
+  { value: "range", label: "Range", reversed: false },
+  { value: "playerWeighting", label: "Player Weighted pp", reversed: false },
+];
+
+export default function CountryGraphs({ stats, playerWeightingCurrent }) {
+  const [graphType, setGraphType] = useState("pp");
+  const [reversed, setReversed] = useState(false);
+
   const [ppPoints, setPpPoints] = useState([]);
   const [accPoints, setAccPoints] = useState([]);
   const [farmPoints, setFarmPoints] = useState([]);
   const [rangePoints, setRangePoints] = useState([]);
+  const [playerWeightingPoints, setPlayerWeightingPoints] = useState([]);
 
   useEffect(() => {
     let pp = [];
     let acc = [];
     let farm = [];
     let range = [];
+    let playerWeighting = [];
 
     for (let i = 0; i < stats.length; i++) {
       pp.push({
@@ -38,50 +51,66 @@ export default function CountryGraphs({ stats }) {
           y: stats[i].range.toFixed(2),
         });
       }
+
+      if (stats[i].playerWeighting) {
+        playerWeighting.push({
+          x: stats[i].date,
+          y: stats[i].playerWeighting,
+        });
+      }
     }
 
+    if (!playerWeighting.length) {
+      playerWeighting.push({
+        x: new Date().getTime(),
+        y: playerWeightingCurrent,
+      });
+    }
+
+    setPlayerWeightingPoints(playerWeighting.sort((a, b) => a.x - b.x));
     setPpPoints(pp.sort((a, b) => a.x - b.x));
     setAccPoints(acc.sort((a, b) => a.x - b.x));
     setFarmPoints(farm.sort((a, b) => a.x - b.x));
     setRangePoints(range.sort((a, b) => a.x - b.x));
-  }, [stats]);
+  }, [stats, playerWeightingCurrent]);
 
-  let arr = ["Pp", "Acc", "Farm", "Range"];
+  const graphChange = (e) => {
+    setGraphType(e.value);
+    setReversed(e.reversed);
+  };
 
   return (
     <div className="inline-flex flex-col items-center py-2">
-      <div className="flex space-x-1 bg-main-one p-2 rounded-md shadow-lg">
-        {arr.map((name, index) => (
-          <GraphButton
-            key={name}
-            text={name}
-            onClick={() => setButtonIndex(index)}
-            active={buttonIndex === index}
-          />
-        ))}
+      <div className="">
+        <GraphDropdown onChange={graphChange} options={options} />
       </div>
       <div className="inline-flex justify-center">
         <div className="">
           <div className="bg-main-one inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
             <ToggleGraph
               data={ppPoints}
-              active={buttonIndex === 0}
+              active={graphType === "pp"}
               reversed={false}
             />
             <ToggleGraph
               data={accPoints}
-              active={buttonIndex === 1}
+              active={graphType === "acc"}
               reversed={false}
             />
             <ToggleGraph
               data={farmPoints}
-              active={buttonIndex === 2}
+              active={graphType === "farm"}
               reversed={false}
             />
             <ToggleGraph
               data={rangePoints}
-              active={buttonIndex === 3}
-              reversed={false}
+              active={graphType === "range"}
+              reversed={true}
+            />
+            <ToggleGraph
+              data={playerWeightingPoints}
+              active={graphType === "playerWeighting"}
+              reversed={true}
             />
           </div>
         </div>

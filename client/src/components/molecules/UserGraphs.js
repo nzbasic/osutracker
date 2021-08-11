@@ -2,6 +2,17 @@ import React, { useState, useEffect } from "react";
 import TimeSeriesChart from "./TimeSeriesChart.js";
 import GraphDropdown from "../molecules/GraphDropdown.js";
 
+const options = [
+  { value: "pp", label: "Performance", reversed: false },
+  { value: "rank", label: "Rank", reversed: true },
+  { value: "acc", label: "Accuracy", reversed: false },
+  { value: "plays", label: "Play Count", reversed: false },
+  { value: "farm", label: "Farm", reversed: false },
+  { value: "range", label: "Range", reversed: false },
+  { value: "score", label: "Score", reversed: false },
+  { value: "countryRank", label: "Country Rank", reversed: true },
+];
+
 export default function UserGraphs({ data }) {
   const [graphType, setGraphType] = useState("pp");
   const [reversed, setReversed] = useState(false);
@@ -92,7 +103,7 @@ export default function UserGraphs({ data }) {
   return (
     <div className="inline-flex flex-col items-center py-2">
       <div className="">
-        <GraphDropdown onChange={graphChange} />
+        <GraphDropdown onChange={graphChange} options={options} />
       </div>
       <div className="inline-flex justify-center">
         <div className="">

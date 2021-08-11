@@ -17,7 +17,9 @@ export default function AllCountries() {
       country.acc = (country.acc * 100).toFixed(2);
       country.range = parseFloat(country.range).toFixed(2);
       country.averageObjects = parseInt(country.averageObjects);
-      country.playerWeighting = parseFloat(country.playerWeighting).toFixed(2);
+      country.playerWeighting = parseFloat(
+        country.playerWeighting ?? 0
+      ).toFixed(2);
     });
 
     //console.log(data);
