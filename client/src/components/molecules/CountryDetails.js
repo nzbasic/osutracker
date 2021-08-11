@@ -7,7 +7,7 @@ export default function CountryDetails({ details }) {
   return (
     <div className="bg-main-one rounded-md shadow-lg inline-flex flex-wrap m-4 p-4 font-semibold text-xs lg:text-lg mt-16 lg:mt-4">
       <div className="flex">
-        <div className="outline-inner w-32 md:w-40 lg:w-auto">
+        <div className="outline-inner w-40 lg:w-auto">
           {details.abbreviation === "" ? (
             <Image
               link={
