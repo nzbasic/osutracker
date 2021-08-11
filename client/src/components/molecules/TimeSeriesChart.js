@@ -31,7 +31,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 const TimeSeriesChart = (props) => {
   return (
     <div className="w-full h-full flex flex-col items-center">
-      <ResponsiveContainer width="100%" height="95%">
+      <ResponsiveContainer width="95%" height="95%">
         <LineChart data={props.chartData} margin={{ top: 25 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
