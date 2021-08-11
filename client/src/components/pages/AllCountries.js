@@ -43,7 +43,7 @@ export default function AllCountries() {
     { title: "pp (Players)", sortBy: "playerWeighting", mobile: true },
     { title: "Acc", sortBy: "acc", mobile: true },
     { title: "Farm", sortBy: "farm", mobile: false },
-    { title: "Range", sortBy: "range", mobile: true },
+    { title: "Range", sortBy: "range", mobile: false },
     { title: "Objects/Play", sortBy: "averageObjects", mobile: false },
   ];
 

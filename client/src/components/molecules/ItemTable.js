@@ -157,7 +157,7 @@ export default function UserTable({
                         className="hover:text-main-four"
                       >
                         <span className="lg:hidden">
-                          {preventOverflow(user[header.sortBy], 6)}
+                          {preventOverflow(user[header.sortBy], 12)}
                         </span>
                         <span className="hidden lg:block">
                           {preventOverflow(user[header.sortBy], 12)}
