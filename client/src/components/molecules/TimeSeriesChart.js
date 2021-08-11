@@ -30,38 +30,40 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const TimeSeriesChart = (props) => {
   return (
-    <ResponsiveContainer width="95%" height="90%">
-      <LineChart data={props.chartData} margin={{ top: 25 }}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="x"
-          domain={["auto", "auto"]}
-          name="Date"
-          tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
-          type="number"
-        />
-        <YAxis
-          reversed={props.reversed}
-          dataKey="y"
-          name="pp"
-          domain={["dataMin-0.1", "auto"]}
-        />
-        <Brush
-          dataKey="x"
-          height={30}
-          travellerWidth={50}
-          tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
-        />
-        <Tooltip content={<CustomTooltip />} />
-        <Line
-          strokeWidth={2}
-          dataKey="y"
-          type="monotone"
-          stroke="#c91a34"
-          dot={false}
-        />
-      </LineChart>
-    </ResponsiveContainer>
+    <div className="w-full h-full flex flex-col items-center">
+      <ResponsiveContainer width="100%" height="95%">
+        <LineChart data={props.chartData} margin={{ top: 25 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="x"
+            domain={["auto", "auto"]}
+            name="Date"
+            tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
+            type="number"
+          />
+          <YAxis
+            reversed={props.reversed}
+            dataKey="y"
+            name="pp"
+            domain={["dataMin-0.1", "auto"]}
+          />
+          <Brush
+            dataKey="x"
+            height={30}
+            travellerWidth={50}
+            tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
+          />
+          <Tooltip content={<CustomTooltip />} />
+          <Line
+            strokeWidth={2}
+            dataKey="y"
+            type="monotone"
+            stroke="#c91a34"
+            dot={false}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
