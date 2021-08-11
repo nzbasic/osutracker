@@ -39,8 +39,8 @@ export default function AllCountries() {
   let headers = [
     { title: "#", sortBy: "rank", mobile: true },
     { title: "Country", sortBy: "name", mobile: true },
-    { title: "pp", sortBy: "pp", mobile: true },
-    { title: "Player pp", sortBy: "playerWeighting", mobile: true },
+    { title: "pp (Plays)", sortBy: "pp", mobile: true },
+    { title: "pp (Players)", sortBy: "playerWeighting", mobile: true },
     { title: "Acc", sortBy: "acc", mobile: true },
     { title: "Farm", sortBy: "farm", mobile: false },
     { title: "Range", sortBy: "range", mobile: true },

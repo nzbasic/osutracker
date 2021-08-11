@@ -7,7 +7,7 @@ export default function CountryDetails({ details }) {
   return (
     <div className="bg-main-one rounded-md shadow-lg inline-flex flex-wrap m-4 p-4 font-semibold text-xs lg:text-lg mt-16 lg:mt-4">
       <div className="flex">
-        <div className="outline-inner w-28 md:w-40 lg:w-auto">
+        <div className="outline-inner w-32 md:w-40 lg:w-auto">
           {details.abbreviation === "" ? (
             <Image
               link={
@@ -29,7 +29,8 @@ export default function CountryDetails({ details }) {
         </div>
         <div className="flex flex-col justify-between ml-2 lg:m-2 lg:ml-2">
           <div>{details.name}</div>
-          <div>{parseFloat(details.pp).toFixed(2) + "pp"}</div>
+          <div>{parseFloat(details.pp).toFixed(2) + "pp (Plays)"}</div>
+          <div>{parseInt(details.playerWeighting ?? 0) + "pp (Players)"}</div>
           <div>{parseFloat(details.acc * 100).toFixed(2) + "%"}</div>
           <div className="flex">
             <div>{"Range: " + Math.round(details.range) + "pp"}</div>

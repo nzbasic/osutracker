@@ -55,7 +55,7 @@ export default function CountryGraphs({ stats, playerWeightingCurrent }) {
       if (stats[i].playerWeighting) {
         playerWeighting.push({
           x: stats[i].date,
-          y: stats[i].playerWeighting,
+          y: parseInt(stats[i].playerWeighting),
         });
       }
     }
@@ -63,7 +63,7 @@ export default function CountryGraphs({ stats, playerWeightingCurrent }) {
     if (!playerWeighting.length) {
       playerWeighting.push({
         x: new Date().getTime(),
-        y: playerWeightingCurrent,
+        y: parseInt(playerWeightingCurrent),
       });
     }
 
