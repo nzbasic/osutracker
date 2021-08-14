@@ -46,6 +46,17 @@ const TimeSeriesChart = (props) => {
             dataKey="y"
             name="pp"
             domain={["dataMin-0.1", "auto"]}
+            tickFormatter={(data) => {
+              if (parseInt(data) / 10e8 > 1) {
+                return data / 10e8 + "B";
+              } else if (parseInt(data) / 10e5 > 1) {
+                return data / 10e5 + "M";
+              } else if (parseInt(data) / 10e2 > 1) {
+                return data / 10e2 + "K";
+              } else {
+                return data;
+              }
+            }}
           />
           <Brush
             dataKey="x"
