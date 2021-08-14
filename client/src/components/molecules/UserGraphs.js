@@ -3,19 +3,18 @@ import TimeSeriesChart from "./TimeSeriesChart.js";
 import GraphDropdown from "../molecules/GraphDropdown.js";
 
 const options = [
-  { value: "pp", label: "Performance", reversed: false },
-  { value: "rank", label: "Rank", reversed: true },
-  { value: "acc", label: "Accuracy", reversed: false },
-  { value: "plays", label: "Play Count", reversed: false },
-  { value: "farm", label: "Farm", reversed: false },
-  { value: "range", label: "Range", reversed: false },
-  { value: "score", label: "Score", reversed: false },
-  { value: "countryRank", label: "Country Rank", reversed: true },
+  { value: "pp", label: "Performance" },
+  { value: "rank", label: "Rank" },
+  { value: "acc", label: "Accuracy" },
+  { value: "plays", label: "Play Count" },
+  { value: "farm", label: "Farm" },
+  { value: "range", label: "Range" },
+  { value: "score", label: "Score" },
+  { value: "countryRank", label: "Country Rank" },
 ];
 
 export default function UserGraphs({ data }) {
   const [graphType, setGraphType] = useState("pp");
-  const [reversed, setReversed] = useState(false);
 
   const [ppPoints, setPpPoints] = useState([]);
   const [accPoints, setAccPoints] = useState([]);
@@ -97,7 +96,6 @@ export default function UserGraphs({ data }) {
 
   const graphChange = (e) => {
     setGraphType(e.value);
-    setReversed(e.reversed);
   };
 
   return (
@@ -146,7 +144,7 @@ export default function UserGraphs({ data }) {
             <ToggleGraph
               data={countryRankPoints}
               active={graphType === "countryRank"}
-              reversed={false}
+              reversed={true}
             />
           </div>
         </div>
