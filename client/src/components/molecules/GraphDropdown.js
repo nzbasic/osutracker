@@ -18,6 +18,7 @@ export default function GraphDropdown({ onChange, selected, options }) {
               : options[0]
           }
           onChange={select}
+          isSearchable={false}
         />
       </div>
     </div>
