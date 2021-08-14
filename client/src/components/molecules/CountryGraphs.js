@@ -10,7 +10,7 @@ const options = [
   { value: "playerWeighting", label: "Player Weighted pp", reversed: false },
 ];
 
-export default function CountryGraphs({ stats, playerWeightingCurrent }) {
+export default function CountryGraphs({ stats }) {
   const [graphType, setGraphType] = useState("pp");
   const [reversed, setReversed] = useState(false);
 
@@ -60,10 +60,10 @@ export default function CountryGraphs({ stats, playerWeightingCurrent }) {
       }
     }
 
-    if (!playerWeighting.length) {
+    if (playerWeighting.length === 0) {
       playerWeighting.push({
         x: new Date().getTime(),
-        y: parseInt(playerWeightingCurrent),
+        y: 0,
       });
     }
 
@@ -72,7 +72,7 @@ export default function CountryGraphs({ stats, playerWeightingCurrent }) {
     setAccPoints(acc.sort((a, b) => a.x - b.x));
     setFarmPoints(farm.sort((a, b) => a.x - b.x));
     setRangePoints(range.sort((a, b) => a.x - b.x));
-  }, [stats, playerWeightingCurrent]);
+  }, [stats]);
 
   const graphChange = (e) => {
     setGraphType(e.value);
