@@ -20,12 +20,43 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="text-main-three">
         <p className="label">
-          {moment(label).format("DD M YY") + " : " + payload[0].value}
+          {moment(label).format("DD M YY") + " : " + truncate(payload[0].value)}
         </p>
       </div>
     );
   }
   return null;
+};
+
+const truncate = (data) => {
+  data = parseFloat(data);
+
+  const billion = 10e8;
+  const million = 10e5;
+  const thousand = 10e2;
+  let divisor = 1;
+  let extension = "";
+
+  if (data / billion > 1) {
+    divisor = billion;
+    extension = "B";
+  } else if (data / million > 1) {
+    divisor = million;
+    extension = "M";
+  } else if (data / thousand > 1) {
+    divisor = thousand;
+    extension = "K";
+  }
+
+  if (divisor !== 1) {
+    data = data / divisor;
+  }
+
+  if (!Number.isInteger(data)) {
+    data = data.toFixed(2);
+  }
+
+  return data + extension;
 };
 
 const TimeSeriesChart = (props) => {
@@ -46,17 +77,7 @@ const TimeSeriesChart = (props) => {
             dataKey="y"
             name="pp"
             domain={["dataMin-0.1", "auto"]}
-            tickFormatter={(data) => {
-              if (parseInt(data) / 10e8 > 1) {
-                return data / 10e8 + "B";
-              } else if (parseInt(data) / 10e5 > 1) {
-                return data / 10e5 + "M";
-              } else if (parseInt(data) / 10e2 > 1) {
-                return data / 10e2 + "K";
-              } else {
-                return data;
-              }
-            }}
+            tickFormatter={truncate}
           />
           <Brush
             dataKey="x"
