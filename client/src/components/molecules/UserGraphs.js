@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TimeSeriesChart from "./TimeSeriesChart.js";
 import GraphDropdown from "../molecules/GraphDropdown.js";
 
-const options = [
+export const userOptions = [
   { value: "pp", label: "Performance" },
   { value: "rank", label: "Rank" },
   { value: "acc", label: "Accuracy" },
@@ -101,7 +101,7 @@ export default function UserGraphs({ data }) {
   return (
     <div className="inline-flex flex-col items-center py-2">
       <div className="">
-        <GraphDropdown onChange={graphChange} options={options} />
+        <GraphDropdown onChange={graphChange} options={userOptions} />
       </div>
       <div className="inline-flex justify-center">
         <div className="">

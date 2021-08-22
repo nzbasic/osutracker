@@ -7,6 +7,8 @@ import axios from "axios";
 import CompareGraph from "../molecules/CompareGraph.js";
 import { CircularProgress } from "@material-ui/core";
 import GraphDropdown from "../molecules/GraphDropdown.js";
+import { userOptions } from "../molecules/UserGraphs.js";
+import { countryOptions } from "../molecules/CountryGraphs.js";
 
 const defaultCompare = [
   { name: "", added: false, id: uuidv4() },
@@ -190,7 +192,15 @@ export default function Compare() {
         {!isLoading && length > 0 ? (
           <div className="flex flex-col items-center">
             <div className="mb-4">
-              <GraphDropdown onChange={graphChange} selected={graphType} />
+              <GraphDropdown
+                onChange={graphChange}
+                selected={graphType}
+                options={
+                  compare.find((item) => item.user)
+                    ? userOptions
+                    : countryOptions
+                }
+              />
             </div>
             <CompareGraph
               compare={compare}
@@ -219,12 +229,17 @@ export default function Compare() {
             className="flex flex-row lg:ml-8 py-2 max-h-12 overflow-visible"
           >
             <div className="flex flex-row items-center mt-3">
-              <span
+              <button
                 onClick={() => remove(item)}
-                className="mr-2 text-center text-white bg-red-500 hover:bg-red-700 rounded-sm px-2 cursor-pointer"
+                disabled={index === 0}
+                className={`${
+                  index === 0
+                    ? "bg-gray-500 cursor-default"
+                    : "bg-red-500 hover:bg-red-700 cursor-pointer"
+                } mr-2 text-center text-white rounded-sm px-2 `}
               >
                 x
-              </span>
+              </button>
               <span className="w-4">{index + 1}</span>
             </div>
 

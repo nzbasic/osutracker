@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TimeSeriesChart from "../molecules/TimeSeriesChart";
 import GraphDropdown from "../molecules/GraphDropdown.js";
 
-const options = [
+export const countryOptions = [
   { value: "pp", label: "Performance", reversed: false },
   { value: "acc", label: "Accuracy", reversed: false },
   { value: "farm", label: "Farm", reversed: false },
@@ -82,7 +82,7 @@ export default function CountryGraphs({ stats }) {
   return (
     <div className="inline-flex flex-col items-center py-2">
       <div className="">
-        <GraphDropdown onChange={graphChange} options={options} />
+        <GraphDropdown onChange={graphChange} options={countryOptions} />
       </div>
       <div className="inline-flex justify-center">
         <div className="">
