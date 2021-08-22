@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../../css/Main.css";
 import Search from "../molecules/Search.js";
 import { CircularProgress } from "@material-ui/core";
+import Ad from "../molecules/Ad.js";
 
 export default function Main() {
   const [userNumber, setUsers] = useState(0);
@@ -61,6 +62,8 @@ export default function Main() {
             </div>
           </div>
         </div>
+
+        <Ad></Ad>
       </div>
     </div>
   );
