@@ -28,7 +28,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const truncate = (data) => {
+export const truncate = (data) => {
   data = parseFloat(data);
 
   const billion = 10e8;

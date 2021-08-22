@@ -14,6 +14,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { truncate } from "./TimeSeriesChart.js";
 
 export default function CompareGraph({ compare, type, reversed }) {
   const [points, setPoints] = useState([]);
@@ -44,7 +45,7 @@ export default function CompareGraph({ compare, type, reversed }) {
             {moment(label).format("DD M YY")}
             {table.map((data, index) => (
               <div style={{ color: stc(data.name) }} key={uuidv4()}>
-                {data.name + " " + data[type]}
+                {data.name + " " + truncate(data[type])}
               </div>
             ))}
           </div>
@@ -108,7 +109,7 @@ export default function CompareGraph({ compare, type, reversed }) {
 
   return (
     <div className="w-smgraph lg:w-graph h-graph bg-main-one p-0 lg:p-2 rounded-md shadow-lg">
-      <ResponsiveContainer width="95%" height="90%">
+      <ResponsiveContainer width="95%" height="95%">
         <LineChart data={points} margin={{ top: 25 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
@@ -123,6 +124,7 @@ export default function CompareGraph({ compare, type, reversed }) {
             name={type}
             domain={["dataMin", "dataMax"]}
             reversed={reversed}
+            tickFormatter={truncate}
           />
           <Brush
             dataKey="date"
