@@ -35,9 +35,9 @@ export default function Main() {
   ) : (
     <div className="flex flex-col justify-center bg-main-four top-12 relative lg:static">
       <div id="firstDiv" className="w-full my-4 flex flex-col items-center">
-        <div className="inline-block bg-main-one shadow rounded-lg self-center lg:text-7xl text-2xl text-center md:text-6xl font-bold m-4 p-4">
+        <h1 className="inline-block bg-main-one shadow rounded-lg self-center lg:text-7xl text-2xl text-center md:text-6xl font-bold m-4 p-4">
           Welcome to osuTracker.
-        </div>
+        </h1>
       </div>
       <div className="bg-main-two h-full  flex flex-col">
         <div

@@ -11,7 +11,7 @@ export default function Ad() {
           <span className="mt-2">Features:</span>
           <span>- Create/Edit collections</span>
           <span>- Inbuilt Stream/Farm filters</span>
-          <span>- Create custom filters using javascript</span>
+          <span>- Create custom filters using JavaScript</span>
           <span>- Automatic practice diff generator</span>
           <span>- Import/Export collections with beatmaps included</span>
           <span>- Mass download maps (stream, farm, loved etc.)</span>

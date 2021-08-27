@@ -9,6 +9,7 @@ import usersRouter from "./routes/users.js";
 import countryRouter from "./routes/countries.js";
 import statsRouter from "./routes/stats.js";
 import searchRouter from "./routes/search.js";
+import fs from "fs";
 dotenv.config();
 
 const app = express();
@@ -51,6 +52,10 @@ app.use("/api/stats", statsRouter);
 app.use("/api/search", searchRouter);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+app.get("/sitemap.xml", function (req, res) {
+  res.sendFile(path.join(__dirname, "client/build/sitemap.xml"));
+});
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"), function (err) {
