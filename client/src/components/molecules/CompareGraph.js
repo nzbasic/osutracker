@@ -96,8 +96,6 @@ export default function CompareGraph({ compare, type, reversed }) {
       });
     });
 
-    console.log(lowestPoint);
-
     dataPoints = dataPoints
       .filter((item) => item[item.name] !== lowestPoint)
       .sort((a, b) => a.date - b.date);
