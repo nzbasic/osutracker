@@ -67,7 +67,7 @@ const TimeSeriesChart = (props) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="x"
-            domain={["auto", "auto"]}
+            domain={["dataMin", "dataMax"]}
             name="Date"
             tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
             type="number"
