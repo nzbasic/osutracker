@@ -52,7 +52,13 @@ export default function AllCountries() {
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="">
+    <div className="flex flex-col items-center">
+      <a
+        href="/compare/topCountries"
+        className="mt-4 bg-main-four hover:bg-blue-500 cursor-pointer py-1 px-2 font-semibold rounded-md"
+      >
+        Compare Top 20
+      </a>
       <ItemTable items={data} headers={headers} serverSidePagination={false} />
     </div>
   );
