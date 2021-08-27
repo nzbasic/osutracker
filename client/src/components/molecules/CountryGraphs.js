@@ -110,7 +110,7 @@ export default function CountryGraphs({ stats }) {
             <ToggleGraph
               data={playerWeightingPoints}
               active={graphType === "playerWeighting"}
-              reversed={true}
+              reversed={false}
             />
           </div>
         </div>
