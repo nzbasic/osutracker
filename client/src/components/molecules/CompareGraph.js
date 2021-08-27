@@ -38,6 +38,8 @@ export default function CompareGraph({ compare, type, reversed }) {
       }
     });
 
+    table = table.sort((a, b) => parseFloat(b[type]) - parseFloat(a[type]));
+
     if (active) {
       return (
         <div className="text-main-three bg-main-one rounded-md shadow-md p-2">
@@ -61,6 +63,7 @@ export default function CompareGraph({ compare, type, reversed }) {
     const clone = clonedeep(compare);
     let count = 0;
 
+    let lowestPoint = Number.MAX_VALUE;
     clone.forEach((item) => {
       if (!item.added || !item.data) {
         return;
@@ -73,10 +76,19 @@ export default function CompareGraph({ compare, type, reversed }) {
         const name = item.user ? point.player : point.name;
 
         point["acc"] = item.user ? point["acc"] : point["acc"] * 100;
+        if (point["acc"] === 0) {
+          return;
+        }
+
+        const value = parseFloat(parseFloat(point[type]).toFixed(2));
+
+        if (value < lowestPoint) {
+          lowestPoint = value;
+        }
 
         point[type] = dataPoints.push({
           date: point.date,
-          [name]: parseFloat(parseFloat(point[type]).toFixed(2)),
+          [name]: value,
           name: name,
         });
 
@@ -84,7 +96,11 @@ export default function CompareGraph({ compare, type, reversed }) {
       });
     });
 
-    dataPoints = dataPoints.sort((a, b) => a.date - b.date);
+    console.log(lowestPoint);
+
+    dataPoints = dataPoints
+      .filter((item) => item[item.name] !== lowestPoint)
+      .sort((a, b) => a.date - b.date);
 
     if (count > 1) {
       let lastName = dataPoints[0].name;
@@ -114,7 +130,7 @@ export default function CompareGraph({ compare, type, reversed }) {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="date"
-            domain={["auto", "auto"]}
+            domain={["dataMin", "dataMax"]}
             name="Date"
             tickFormatter={(unixTime) => moment(unixTime).format("MMM Do YY")}
             type="number"
