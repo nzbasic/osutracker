@@ -57,7 +57,7 @@ export default function AllCountries() {
         href="/compare/topCountries"
         className="mt-4 bg-main-four hover:bg-blue-500 cursor-pointer py-1 px-2 font-semibold rounded-md"
       >
-        Compare Top 20
+        Compare Top 10
       </a>
       <ItemTable items={data} headers={headers} serverSidePagination={false} />
     </div>
