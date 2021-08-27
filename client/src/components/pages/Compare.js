@@ -23,82 +23,106 @@ export default function Compare() {
   const [length, setLength] = useState(0);
   const [graphType, setGraphType] = useState("pp");
   const [reversed, setReversed] = useState(false);
+  const [fixedLink, setFixedLink] = useState(false);
   const maxCompare = 50;
 
   useEffect(() => {
     document.title = "Compare";
 
-    const urlParams = queryString.parse(window.location.search, {
-      arrayFormatSeparator: ",",
-      arrayFormat: "bracket-separator",
-      parseNumbers: true,
-    });
-
-    let params = [];
-
-    // migrate old params
-    const oldParams = ["one", "two", "three", "four", "five"];
-    oldParams.forEach((param) => {
-      if (urlParams[param]) {
-        params.push(urlParams[param]);
-      }
-    });
-
-    for (let i = 0; i < maxCompare; i++) {
-      if (urlParams[`${i}`]) {
-        params.push(urlParams[`${i}`]);
-      }
-    }
-
-    if (params.length === 0) {
-      params.push("");
-    }
-
-    if (Array.isArray(params ?? 0)) {
-      params = Array.from(new Set(params));
-
-      const data = [];
-      params.forEach((item) => {
-        if (!Number.isNaN(parseInt(item))) {
-          item = parseInt(item);
-        }
-        console.log(item);
-
-        const value = {
-          name: item,
-          user: false,
-          added: true,
-          id: uuidv4(),
-        };
-
-        if (typeof item == "number") {
-          value.user = true;
-        } else {
-          value.added = item !== "";
-        }
-
-        data.push(value);
+    if (window.location.pathname.endsWith("topCountries")) {
+      setFixedLink(true);
+      axios.get("/api/countries/limitedAll").then((res) => {
+        const data = res.data
+          .sort(
+            (a, b) =>
+              parseFloat(b.playerWeighting) - parseFloat(a.playerWeighting)
+          )
+          .slice(1, 11);
+        setCompare(
+          data.map((country) => ({
+            name: country.name,
+            user: false,
+            added: true,
+            id: uuidv4(),
+          }))
+        );
+      });
+    } else if (window.location.pathname.endsWith("topUsers")) {
+      setFixedLink(true);
+    } else {
+      const urlParams = queryString.parse(window.location.search, {
+        arrayFormatSeparator: ",",
+        arrayFormat: "bracket-separator",
+        parseNumbers: true,
       });
 
-      setCompare(data.slice(0, maxCompare));
-      setGraphType("pp");
-    } else {
-      setLoading(false);
-      setCompare(defaultCompare);
-      setAdding(false);
+      let params = [];
+
+      // migrate old params
+      const oldParams = ["one", "two", "three", "four", "five"];
+      oldParams.forEach((param) => {
+        if (urlParams[param]) {
+          params.push(urlParams[param]);
+        }
+      });
+
+      for (let i = 0; i < maxCompare; i++) {
+        if (urlParams[`${i}`]) {
+          params.push(urlParams[`${i}`]);
+        }
+      }
+
+      if (params.length === 0) {
+        params.push("");
+      }
+
+      if (Array.isArray(params ?? 0)) {
+        params = Array.from(new Set(params));
+
+        const data = [];
+        params.forEach((item) => {
+          if (!Number.isNaN(parseInt(item))) {
+            item = parseInt(item);
+          }
+
+          const value = {
+            name: item,
+            user: false,
+            added: true,
+            id: uuidv4(),
+          };
+
+          if (typeof item == "number") {
+            value.user = true;
+          } else {
+            value.added = item !== "";
+          }
+
+          data.push(value);
+        });
+
+        setCompare(data.slice(0, maxCompare));
+        setGraphType("pp");
+      } else {
+        setLoading(false);
+        setCompare(defaultCompare);
+        setAdding(false);
+      }
     }
   }, []);
 
   useEffect(() => {
     if (compare.length) {
-      let string = "?";
+      if (!fixedLink) {
+        let string = "?";
 
-      compare.forEach((item, index) => {
-        item.name = item.name ?? "";
-        string += index + 1 + "=" + item.name + "&";
-      });
+        compare.forEach((item, index) => {
+          item.name = item.name ?? "";
+          string += index + 1 + "=" + item.name + "&";
+        });
 
-      window.history.replaceState(null, "Compare", string);
+        window.history.replaceState(null, "Compare", string);
+      }
 
       if (!noGet) {
         const promises = [];
@@ -186,6 +210,20 @@ export default function Compare() {
     setReversed(e.reversed);
   };
 
+  const options = () => {
+    const table = [];
+
+    if (compare.find((item) => item.user)) {
+      table.push(...userOptions);
+    }
+
+    if (compare.find((item) => !item.user)) {
+      table.push(...countryOptions);
+    }
+
+    return table;
+  };
+
   return (
     <div className="flex flex-col w-full items-center">
       <div className="lg:mt-4 mt-16">
@@ -195,11 +233,7 @@ export default function Compare() {
               <GraphDropdown
                 onChange={graphChange}
                 selected={graphType}
-                options={
-                  compare.find((item) => item.user)
-                    ? userOptions
-                    : countryOptions
-                }
+                options={options()}
               />
             </div>
             <CompareGraph
@@ -231,9 +265,9 @@ export default function Compare() {
             <div className="flex flex-row items-center mt-3">
               <button
                 onClick={() => remove(item)}
-                disabled={index === 0}
+                disabled={index === 0 && compare.length === 1}
                 className={`${
-                  index === 0
+                  index === 0 && compare.length === 1
                     ? "bg-gray-500 cursor-default"
                     : "bg-red-500 hover:bg-red-700 cursor-pointer"
                 } mr-2 text-center text-white rounded-sm px-2 `}
