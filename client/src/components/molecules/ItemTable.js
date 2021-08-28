@@ -100,7 +100,7 @@ export default function UserTable({
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="mt-16 lg:mt-4 flex flex-col w-full items-center">
+    <div className=" flex flex-col w-full items-center">
       <div className="bg-main-one shadow-md rounded-md p-2 font-semibold flex space-x-2 items-center">
         <div
           className={`${

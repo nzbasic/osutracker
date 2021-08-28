@@ -52,10 +52,10 @@ export default function AllCountries() {
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="flex flex-col items-center">
+    <div className="mt-16 lg:mt-4 flex flex-col items-center">
       <a
         href="/compare/topCountries"
-        className="mt-4 bg-main-four hover:bg-blue-500 cursor-pointer py-1 px-2 font-semibold rounded-md"
+        className="mb-4 bg-main-four hover:bg-blue-500 cursor-pointer py-1 px-2 font-semibold rounded-md"
       >
         Compare Top 10
       </a>
