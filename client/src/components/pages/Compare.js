@@ -49,6 +49,17 @@ export default function Compare() {
       });
     } else if (window.location.pathname.endsWith("topUsers")) {
       setFixedLink(true);
+      axios.get("/api/users/topUserIds").then((res) => {
+        const data = res.data;
+        setCompare(
+          data.map((user) => ({
+            name: parseInt(user.id),
+            user: true,
+            added: true,
+            id: uuidv4(),
+          }))
+        );
+      });
     } else {
       const urlParams = queryString.parse(window.location.search, {
         arrayFormatSeparator: ",",
@@ -173,7 +184,7 @@ export default function Compare() {
       }
       setNoGet(false);
     }
-  }, [compare, noGet]);
+  }, [compare, noGet, fixedLink]);
 
   const addNew = () => {
     const newItem = {

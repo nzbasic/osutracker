@@ -19,7 +19,13 @@ export default function AllUsers() {
   ];
 
   return (
-    <div className="">
+    <div className="flex flex-col items-center">
+      <a
+        href="/compare/topUsers"
+        className="mt-4 bg-main-four hover:bg-blue-500 cursor-pointer py-1 px-2 font-semibold rounded-md"
+      >
+        Compare Top 10
+      </a>
       <ItemTable
         headers={headers}
         serverSidePagination={true}

@@ -16,6 +16,25 @@ const osuApi = new osu.Api(process.env.OSU_API_KEY, {
 
 const router = express.Router();
 
+router.route("/limitedAll").get((req, res) => {
+  User.find({}, { name: 1, pp: 1, acc: 1, farm: 1, range: 1 })
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => res.status(400).json("Error: " + err + req.params.id));
+});
+
+router.route("/topUserIds").get((req, res) => {
+  User.find({}, { id: 1 })
+    .sort({ pp: "desc" })
+    .collation({ locale: "en_US", numericOrdering: true })
+    .limit(10)
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => res.status(400).json("Error: " + err + req.params.id));
+});
+
 router.route("/allFilter").get(async (req, res) => {
   const page = req.query.page;
   const order = { [req.query.name]: req.query.order };
