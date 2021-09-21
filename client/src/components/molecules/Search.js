@@ -79,7 +79,7 @@ export default function Search({ header, open, select, item }) {
   return (
     <div className="flex flex-col items-center z-0">
       <div className="flex flex-col w-full p-1 rounded items-center">
-        <div className="relative text-gray-600">
+        <div className="relative text-gray-600 dark:text-white">
           <InputWithDebouncing
             type="search"
             placeholder={
@@ -94,7 +94,7 @@ export default function Search({ header, open, select, item }) {
             debounceTimeout={250}
             onFocus={() => inFocus(true)}
             onBlur={() => inFocus(false)}
-            className="bg-white xl:w-full w-52 h-10 px-5 z-0 pr-10 rounded-full border-gray-400 border text-sm focus:outline-none"
+            className="bg-white dark:bg-gray-700 xl:w-full w-52 h-10 px-5 z-0 pr-10 rounded-full border-gray-400 dark:border-black border text-sm focus:outline-none"
           />
           <div className="absolute right-0 top-0 mt-3 mr-4">
             <svg
@@ -124,11 +124,11 @@ export default function Search({ header, open, select, item }) {
           </div>
         ) : null}
         {!header && !isLoading ? (
-          <div className="bg-main-one flex mt-2 w-40 justify-between items-center p-1 rounded shadow">
+          <div className="bg-main-one dark:bg-gray-700 dark:text-white flex mt-2 w-40 justify-between items-center p-1 rounded shadow">
             <div
               className={`${
                 page > 1 ? "block" : "invisible"
-              } hover:bg-blue-500 bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
+              } hover:bg-blue-500 bg-main-four dark:bg-blue-600 dark:hover:bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
               onClick={() => pageChange(-1)}
             >
               Prev
@@ -139,7 +139,7 @@ export default function Search({ header, open, select, item }) {
             <div
               className={`${
                 page * 5 < resultLength ? "block" : "invisible"
-              } hover:bg-blue-500 bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
+              } hover:bg-blue-500 bg-main-four dark:bg-blue-600 dark:hover:bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
               onClick={() => pageChange(1)}
             >
               Next

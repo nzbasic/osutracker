@@ -7,9 +7,9 @@ export default function GraphDropdown({ onChange, selected, options }) {
   };
 
   return (
-    <div className=" bg-main-one p-4 rounded-md shadow-md flex flex-row items-center w-smgraph lg:w-graph">
+    <div className=" bg-main-one dark:bg-gray-700 dark:text-white p-4 rounded-md shadow-md flex flex-row items-center w-smgraph lg:w-graph">
       <span>Graph: </span>
-      <div className="w-72 ml-4">
+      <div className="w-72 ml-4 text-black">
         <Select
           options={options}
           defaultValue={

@@ -151,7 +151,7 @@ export default function UserPlays({ plays, currentTop, country }) {
             ? "bg-green-500 text-main-one"
             : data.removed
             ? "bg-red-600 text-main-one"
-            : "bg-main-one"
+            : "bg-main-one dark:bg-gray-700 dark:text-white"
         } flex rounded-md shadow-md p-2 my-2 justify-between w-full text-xs md:text-sm lg:text-base`}
       >
         <div className="flex">
@@ -222,7 +222,7 @@ export default function UserPlays({ plays, currentTop, country }) {
   return (
     <div className="w-full max-w-full flex flex-col">
       <div className="flex w-full justify-center items-center mb-4 text-sm md:text-base">
-        <div className="p-2 bg-main-one rounded-md shadow-md flex">
+        <div className="p-2 bg-main-one dark:bg-gray-700 dark:text-white rounded-md shadow-md flex">
           <div
             className={`${
               currentIndex > 0 ? "block" : "invisible"
@@ -246,7 +246,7 @@ export default function UserPlays({ plays, currentTop, country }) {
         <div>
           {country ? (
             <div
-              className="bg-main-one text-xs md:text-base outline-inner shadow-md text-center ml-4 p-2 hover:bg-main-two cursor-pointer"
+              className="bg-main-one dark:bg-gray-700 dark:text-white text-xs md:text-base outline-inner shadow-md text-center ml-4 p-2 hover:bg-main-two cursor-pointer"
               onClick={handleUnique}
             >
               {unique ? "See All Scores" : "See Unique Maps"}

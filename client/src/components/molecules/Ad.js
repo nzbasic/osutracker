@@ -3,7 +3,7 @@ import logo from "../../collection-helper.png";
 
 export default function Ad() {
   return (
-    <div className="bg-main-one shadow-md fixed bottom-5 left-5 rounded-md p-3 w-64 lg:block hidden text-sm">
+    <div className="bg-main-one dark:bg-gray-700 dark:text-white shadow-md fixed bottom-5 left-5 rounded-md p-3 w-64 lg:block hidden text-sm">
       <div className="flex flex-col items-center">
         <img src={logo} alt="Collection Helper Logo" className="lg:w-32"></img>
         <div className="flex flex-col mt-2">

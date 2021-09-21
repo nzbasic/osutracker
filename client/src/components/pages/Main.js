@@ -35,11 +35,11 @@ export default function Main() {
   ) : (
     <div className="flex flex-col justify-center bg-main-four top-12 relative lg:static">
       <div id="firstDiv" className="w-full my-4 flex flex-col items-center">
-        <h1 className="inline-block bg-main-one shadow rounded-lg self-center lg:text-7xl text-2xl text-center md:text-6xl font-bold m-4 p-4">
+        <h1 className="inline-block bg-main-one dark:bg-gray-700 dark:text-white shadow rounded-lg self-center lg:text-7xl text-2xl text-center md:text-6xl font-bold m-4 p-4">
           Welcome to osuTracker.
         </h1>
       </div>
-      <div className="bg-main-two h-full  flex flex-col">
+      <div className="bg-main-two dark:bg-gray-900 h-full flex flex-col">
         <div
           id="firstDiv"
           className="self-center m-4 md:m-10 lg:m-14 md:w-72 h-80 mb-12"
@@ -50,7 +50,7 @@ export default function Main() {
         <div className="mt-6 lg:mt-14 mb-12 lg:mb-0 inline-flex flex-col self-center z-0">
           <div
             id="thirdDiv"
-            className="flex flex-col w-full self-center bg-main-one shadow rounded-lg p-2 md:p-4 font-semibold md:text-lg text-sm"
+            className="flex flex-col w-full self-center bg-main-one dark:bg-gray-700 dark:text-white shadow rounded-lg p-2 md:p-4 font-semibold md:text-lg text-sm"
           >
             <div className="text-center py-2">
               Tracks user stats, country stats, and global stats.

@@ -4,7 +4,7 @@ export default function CountryContributors({ contributors }) {
   contributors.sort((a, b) => parseInt(b.pp) - parseInt(a.pp));
 
   const Contributor = ({ data }) => (
-    <div className="flex justify-between w-full bg-main-one shadow-md rounded-md p-2 ">
+    <div className="flex justify-between w-full bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 ">
       <a
         className={`${
           data.name === "Bonus pp" && data.pp === 416.667
@@ -25,7 +25,7 @@ export default function CountryContributors({ contributors }) {
 
   return (
     <div className="flex flex-col w-full mb-6">
-      <div className="self-center mb-6 bg-main-one rounded-md shadow-md p-2 font-semibold">
+      <div className="self-center mb-6 bg-main-one dark:bg-gray-700 dark:text-white rounded-md shadow-md p-2 font-semibold">
         Total PP Contributors
       </div>
       <div className="w-full flex flex-col items-center space-y-2">

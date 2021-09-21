@@ -76,13 +76,13 @@ export default function Country(props) {
         >
           View Player List
         </a>
-        <div id="firstDiv" className="text-center">
+        <div id="firstDiv" className="text-center dark:text-white">
           Country stats are based on the Top 100 plays made by the Top 50
           players. (Global is 150 + some outliers)
         </div>
         <div
           id="secondDiv"
-          className="w-smgraph lg:w-graph flex justify-center items-center flex flex-col"
+          className="w-smgraph lg:w-graph justify-center items-center flex flex-col"
         >
           <CountryGraphs stats={countryStats} />
           <CountryContributors contributors={countryDetails.contributors} />
@@ -90,7 +90,7 @@ export default function Country(props) {
 
         <div
           id="secondDiv"
-          className="bg-main-one rounded-md font-semibold shadow-md p-2 mb-6"
+          className="bg-main-one dark:bg-gray-700 dark:text-white rounded-md font-semibold shadow-md p-2 mb-6"
         >
           Top 10 Tracker
         </div>

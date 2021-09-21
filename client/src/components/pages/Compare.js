@@ -265,7 +265,7 @@ export default function Compare() {
         ) : null}
       </div>
 
-      <div className="flex flex-col bg-white lg:w-graph w-smgraph mt-4 p-4 shadow-md rounded-md">
+      <div className="flex flex-col bg-white dark:bg-gray-700 dark:text-white lg:w-graph w-smgraph mt-4 p-4 shadow-md rounded-md">
         <span className="text-xl mb-4 w-full text-center">Comparing:</span>
 
         {compare.map((item, index) => (

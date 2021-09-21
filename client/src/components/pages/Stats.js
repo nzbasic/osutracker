@@ -35,7 +35,7 @@ export default function Stats() {
       <div className="inline-flex flex-col w-smgraph lg:w-3/5 items-center mt-12 lg:mt-0">
         <div className="w-full flex flex-wrap justify-center">
           <div className="m-2">
-            <div className="mt-4 bg-main-one shadow-md rounded-md p-2 font-bold text-center">
+            <div className="mt-4 bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">
               Average Tracked User
             </div>
             <div>
@@ -44,7 +44,7 @@ export default function Stats() {
           </div>
 
           <div className="h-full flex flex-col m-2">
-            <div className="mt-4 bg-main-one shadow-md rounded-md p-2 font-bold text-center">
+            <div className="mt-4 bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">
               Average Tracked Country
             </div>
             <div className="h-full">
@@ -53,12 +53,12 @@ export default function Stats() {
           </div>
         </div>
 
-        <div className="my-4 rounded-md shadow-md bg-main-one p-2 text-center">
+        <div className="my-4 rounded-md shadow-md bg-main-one dark:bg-gray-700 dark:text-white p-2 text-center">
           For the following stats, the number refers to the number of times that
           item is seen among the top 100 plays of all tracked users.
         </div>
 
-        <div className="mt-2 w-full bg-main-one shadow-md rounded-md p-2 font-bold text-center">
+        <div className="mt-2 w-full bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">
           Average Top Play
         </div>
 
@@ -66,21 +66,21 @@ export default function Stats() {
           <TopPlay id={stats.userStats.topPlay} />
         </div>
 
-        <div className="mt-4 w-full bg-main-one shadow-md rounded-md p-2 font-bold text-center">
+        <div className="mt-4 w-full bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">
           Top 10 Mods
         </div>
         <div className="w-full">
           <TopMods data={stats.userStats.modsCount.slice(0, 10)} />
         </div>
 
-        <div className="mt-4 w-full bg-main-one shadow-md rounded-md p-2 font-bold text-center">
+        <div className="mt-4 w-full bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">
           Top 50 Mappers
         </div>
         <div className="w-full">
           <TopMappers data={stats.mapperCount.slice(0, 50)} />
         </div>
 
-        <div className="mt-4 w-full bg-main-one shadow-md rounded-md p-2 font-bold text-center">
+        <div className="mt-4 w-full bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">
           Top 727 Map Sets
         </div>
         <div className="w-full">

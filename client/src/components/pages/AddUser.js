@@ -76,11 +76,12 @@ export default function AddUser() {
   ) : (
     <div className="flex flex-col justify-center items-center mt-12 lg:mt-0">
       <ToastContainer />
-      <div className="bg-main-one font-bold text-2xl rounded-md shadow-md p-4 mt-4 mb-6">
+      <div className="bg-main-one dark:bg-gray-700 dark:text-white font-bold text-2xl rounded-md shadow-md p-4 mt-4 mb-6">
         Add a new player.
       </div>
       <div className="flex">
         <TextField
+          className="dark:bg-gray-700 rounded-lg dark:text-white"
           variant="outlined"
           label="Player name"
           onChange={editSearchTerm}
@@ -88,7 +89,7 @@ export default function AddUser() {
         />
         <div
           onClick={addUser}
-          className="bg-main-one hover:bg-main-four  shadow-md cursor-pointer border-gray-900 border-2 self-center rounded-md p-2 ml-2"
+          className="bg-main-one dark:bg-blue-500 dark:text-white dark:hover:bg-main-four hover:bg-main-four  shadow-md cursor-pointer border-gray-900 border-2 self-center rounded-md p-2 ml-2"
         >
           Submit
         </div>

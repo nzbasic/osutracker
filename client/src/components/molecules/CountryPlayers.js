@@ -75,11 +75,12 @@ export default function CountryPlayers({ players }) {
   }, [players]);
 
   return (
-    <div className="w-smgraph lg:w-graph h-graph bg-main-one p-0 lg:p-2 rounded-md shadow-lg">
+    <div className="w-smgraph lg:w-graph h-graph bg-main-one dark:bg-gray-700 dark:text-white p-0 lg:p-2 rounded-md shadow-lg">
       <ResponsiveContainer width="95%" height="90%">
         <LineChart data={playerPoints} margin={{ top: 25 }}>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" stroke="black" />
           <XAxis
+            stroke="black"
             dataKey="date"
             domain={["auto", "auto"]}
             name="Date"
@@ -87,8 +88,9 @@ export default function CountryPlayers({ players }) {
             type="number"
           />
 
-          <YAxis name="pp" domain={["dataMin", "dataMax"]} />
+          <YAxis name="pp" domain={["dataMin", "dataMax"]} stroke="black" />
           <Brush
+            stroke="black"
             dataKey="date"
             height={30}
             travellerWidth={50}

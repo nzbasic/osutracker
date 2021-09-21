@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./css/App.css";
 
@@ -16,6 +16,12 @@ import UserRedirect from "./components/pages/UserRedirect";
 import Compare from "./components/pages/Compare";
 
 function App() {
+  useEffect(() => {
+    if (localStorage.getItem("dark") === "true") {
+      document.documentElement.classList.add("dark");
+    }
+  });
+
   return (
     <BrowserRouter>
       <div className="flex flex-col max-w-screen">

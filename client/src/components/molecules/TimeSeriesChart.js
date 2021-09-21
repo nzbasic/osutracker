@@ -18,7 +18,7 @@ import {
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
-      <div className="text-main-three">
+      <div className="text-main-three bg-main-one p-2 rounded-md">
         <p className="label">
           {moment(label).format("DD M YY") + " : " + truncate(payload[0].value)}
         </p>
@@ -64,8 +64,9 @@ const TimeSeriesChart = (props) => {
     <div className="w-full h-full flex flex-col items-center">
       <ResponsiveContainer width="95%" height="95%">
         <LineChart data={props.chartData} margin={{ top: 25 }}>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" stroke="black" />
           <XAxis
+            stroke="black"
             dataKey="x"
             domain={["dataMin", "dataMax"]}
             name="Date"
@@ -73,6 +74,7 @@ const TimeSeriesChart = (props) => {
             type="number"
           />
           <YAxis
+            stroke="black"
             reversed={props.reversed}
             dataKey="y"
             name="pp"
@@ -80,6 +82,7 @@ const TimeSeriesChart = (props) => {
             tickFormatter={truncate}
           />
           <Brush
+            stroke="black"
             dataKey="x"
             height={30}
             travellerWidth={50}
@@ -87,7 +90,7 @@ const TimeSeriesChart = (props) => {
           />
           <Tooltip content={<CustomTooltip />} />
           <Line
-            strokeWidth={2}
+            strokeWidth={3}
             dataKey="y"
             type="monotone"
             stroke="#c91a34"

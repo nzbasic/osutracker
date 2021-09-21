@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TopMappers({ data }) {
   return (
-    <div className="bg-main-one mt-4 p-2 shadow-md rounded-md flex flex-col">
+    <div className="bg-main-one dark:bg-gray-700 dark:text-white mt-4 p-2 shadow-md rounded-md flex flex-col">
       {data.map((mapper, index) => (
         <a
           key={mapper.mapper}

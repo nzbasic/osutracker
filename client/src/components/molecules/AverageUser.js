@@ -3,7 +3,7 @@ import moment from "moment";
 
 export default function AverageUser({ data }) {
   return (
-    <div className="rounded-md shadow-md p-2 bg-main-one mt-4 inline-flex flex-col w-64">
+    <div className="rounded-md shadow-md p-2 bg-main-one dark:bg-gray-700 dark:text-white mt-4 inline-flex flex-col w-64">
       <div>{"Performance: " + Math.round(data.pp) + "pp"}</div>
       <div>{"Accuracy: " + parseFloat(data.acc).toFixed(2) + "%"}</div>
       <div>{"Join Date: " + new Date(data.timeJoined).toDateString()}</div>

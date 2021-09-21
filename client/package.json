@@ -30,6 +30,7 @@
     "material-table": "^1.69.2",
     "moment": "^2.29.1",
     "mongoose": "^5.10.14",
+    "node-sass": "^6.0.1",
     "postcss": "^7.0.35",
     "query-string": "^7.0.1",
     "react": "^17.0.1",

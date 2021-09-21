@@ -21,7 +21,7 @@ export default function TopPlay({ id }) {
     </div>
   ) : (
     <a
-      className="flex shadow-md rounded-md bg-main-one mt-4 p-2 text-xs md:text-base hover:text-main-four"
+      className="flex shadow-md rounded-md bg-main-one dark:bg-gray-700 dark:text-white mt-4 p-2 text-xs md:text-base hover:text-main-four"
       href={"https://osu.ppy.sh/beatmaps/" + map.setId}
       target="_blank"
       rel="noreferrer"

@@ -24,7 +24,7 @@ export default function UserDetails({ data }) {
   }
 
   return (
-    <div className="bg-main-one flex-wrap rounded-md p-4 lg:mt-4 mb-2 mx-2 shadow-lg flex mt-14 md:mt-16 text-xs md:text-sm">
+    <div className="bg-main-one dark:bg-gray-700 dark:text-white flex-wrap rounded-md p-4 lg:mt-4 mb-2 mx-2 shadow-lg flex mt-14 md:mt-16 text-xs md:text-sm">
       <div className="hidden off:block outline-inner w-28 md:w-40 lg:w-auto">
         <Image link={data.url} height={320} width={320} />
       </div>

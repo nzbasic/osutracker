@@ -25,14 +25,14 @@ export default function TopMapSets({ data }) {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [data]);
 
   return isLoading ? (
     <div className="mt-2 w-full flex flex-col items-center">
       <CircularProgress />
     </div>
   ) : (
-    <div className="bg-main-one shadow-md rounded-md mt-4 p-2 flex flex-col text-xs md:text-base">
+    <div className="bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md mt-4 p-2 flex flex-col text-xs md:text-base">
       {mapSets.map((map, index) => (
         <a
           key={index}

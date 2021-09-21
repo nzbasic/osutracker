@@ -102,12 +102,12 @@ export default function Header() {
 
   return (
     <div className="z-50">
-      <div className="h-12 w-full bg-main-one fixed top-0 lg:static shadow z-50">
+      <div className="h-12 w-full bg-main-one dark:bg-black dark:text-white fixed top-0 lg:static shadow z-50">
         <div className="flex justify-between xl:px-10 px-2 items-center h-full">
           <a className="text-lg font-semibold flex flex-row" href="/">
             <img
               className="object-contain h-10 "
-              src="https://cdn.discordapp.com/attachments/627267590862929961/790060983229612062/ot.png"
+              src="https://cdn.discordapp.com/attachments/627267590862929961/889763083776577546/ot.png"
               alt=""
             ></img>
             <div className="hidden lg:block self-center px-2">osuTracker</div>

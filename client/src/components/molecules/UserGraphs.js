@@ -4,13 +4,13 @@ import GraphDropdown from "../molecules/GraphDropdown.js";
 
 export const userOptions = [
   { value: "pp", label: "Performance" },
-  { value: "rank", label: "Rank" },
+  { value: "rank", label: "Rank", reversed: true },
   { value: "acc", label: "Accuracy" },
   { value: "plays", label: "Play Count" },
   { value: "farm", label: "Farm" },
   { value: "range", label: "Range" },
   { value: "score", label: "Score" },
-  { value: "countryRank", label: "Country Rank" },
+  { value: "countryRank", label: "Country Rank", reversed: true },
 ];
 
 export default function UserGraphs({ data }) {
@@ -105,7 +105,7 @@ export default function UserGraphs({ data }) {
       </div>
       <div className="inline-flex justify-center">
         <div className="">
-          <div className="bg-main-one inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
+          <div className="bg-main-one dark:bg-gray-700 dark:text-white inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
             <ToggleGraph
               data={ppPoints}
               active={graphType === "pp"}

@@ -101,11 +101,11 @@ export default function UserTable({
     </div>
   ) : (
     <div className=" flex flex-col w-full items-center">
-      <div className="bg-main-one shadow-md rounded-md p-2 font-semibold flex space-x-2 items-center">
+      <div className="bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-semibold flex space-x-2 items-center">
         <div
           className={`${
             page > 1 ? "block" : "invisible"
-          } hover:bg-blue-500 bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
+          } hover:bg-blue-500 bg-main-four dark:bg-blue-500 dark:hover:bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
           onClick={() => changePage(-1)}
         >
           Prev
@@ -116,7 +116,7 @@ export default function UserTable({
         <div
           className={`${
             page * 50 < numberResults ? "block" : "invisible"
-          } hover:bg-blue-500 bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
+          } hover:bg-blue-500 bg-main-four dark:bg-blue-500 dark:hover:bg-main-four cursor-pointer select-none text-sm rounded py-1 px-2 font-semibold`}
           onClick={() => changePage(1)}
         >
           Next
@@ -132,7 +132,7 @@ export default function UserTable({
           >
             <div
               className={
-                "hover:underline cursor-pointer bg-main-one shadow-md rounded-md px-2 py-1 text-center"
+                "hover:underline cursor-pointer bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md px-2 py-1 text-center"
               }
               onClick={() => handleSort(header.sortBy)}
             >
@@ -141,7 +141,7 @@ export default function UserTable({
             <div>
               {data.map((user, index) => (
                 <div key={uuidv4()} className="text-center">
-                  <div className="bg-main-one rounded-sm shadow-md mb-1 px-2 py-1">
+                  <div className="bg-main-one dark:bg-gray-700 dark:text-white rounded-sm shadow-md mb-1 px-2 py-1">
                     {header.title === "Name" ? (
                       <a
                         href={"/user/" + user.id}
