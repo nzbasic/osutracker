@@ -5,7 +5,10 @@ const router = express.Router();
 
 router.route("/all").get(async (req, res) => {
   const page = req.query.page;
-  const text = req.query.text;
+  const text = req.query.text.replace(
+    /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,
+    "\\$&"
+  );
   const regex = new RegExp(text, "i");
 
   let countries = [];
