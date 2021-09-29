@@ -122,7 +122,7 @@ export default function CompareGraph({ compare, type, reversed }) {
   }, [compare, type]);
 
   return (
-    <div className="w-smgraph lg:w-graph h-graph bg-main-one dark:bg-gray-700 dark:text-white p-0 lg:p-2 rounded-md shadow-lg">
+    <div className="w-smgraph lg:w-graph h-graph bg-main-one dark:bg-gray-400 dark:text-white p-0 lg:p-2 rounded-md shadow-lg">
       <ResponsiveContainer width="95%" height="95%">
         <LineChart data={points} margin={{ top: 25 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="black" />

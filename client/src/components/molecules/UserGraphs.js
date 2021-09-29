@@ -105,7 +105,7 @@ export default function UserGraphs({ data }) {
       </div>
       <div className="inline-flex justify-center">
         <div className="">
-          <div className="bg-main-one dark:bg-gray-700 dark:text-white inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
+          <div className="bg-main-one dark:bg-gray-400 dark:text-white inline-flex rounded-md pt-2 lg:w-graph w-smgraph md:px-2 my-4 h-96 shadow-lg">
             <ToggleGraph
               data={ppPoints}
               active={graphType === "pp"}
