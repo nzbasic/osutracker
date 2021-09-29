@@ -94,7 +94,9 @@ export default function Search({ header, open, select, item }) {
             debounceTimeout={250}
             onFocus={() => inFocus(true)}
             onBlur={() => inFocus(false)}
-            className="bg-white dark:bg-gray-700 xl:w-full w-52 h-10 px-5 z-0 pr-10 rounded-full border-gray-400 dark:border-black border text-sm focus:outline-none"
+            className={`bg-white dark:bg-gray-700 ${
+              header ? "w-full md:w-56" : "w-72"
+            } h-10 px-5 z-0 pr-10 rounded-full border-gray-400 dark:border-black border text-sm focus:outline-none`}
           />
           <div className="absolute right-0 top-0 mt-3 mr-4">
             <svg
