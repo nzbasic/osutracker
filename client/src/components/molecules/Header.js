@@ -8,6 +8,7 @@ import FlagIcon from "@material-ui/icons/Flag";
 import DescriptionIcon from "@material-ui/icons/Description";
 import CompareIcon from "@material-ui/icons/Compare";
 import InfoIcon from "@material-ui/icons/Info";
+import MenuIcon from "@material-ui/icons/Menu";
 import Search from "./Search.js";
 
 export default function Header() {
@@ -53,16 +54,16 @@ export default function Header() {
     </div>
   );
 
-  function Menu(props) {
+  const Menu = ({ active }) => {
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef);
 
-    if (props.active) {
+    if (active) {
       return (
         <div
           ref={wrapperRef}
           id={menuWillDeactivate ? "drawerInactive" : "drawerActive"}
-          className="bg-main-one w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-50"
+          className="bg-main-one dark:bg-gray-700 dark:text-white w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-50"
         >
           <Button
             link="/allusers"
@@ -98,7 +99,7 @@ export default function Header() {
     } else {
       return <div></div>;
     }
-  }
+  };
 
   return (
     <div className="z-50">
@@ -133,15 +134,7 @@ export default function Header() {
               className="lg:hidden ml-56 cursor-pointer hover:bg-main-two rounded-md p-1"
               onClick={menuToggle}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-              </svg>
+              <MenuIcon fontSize="medium" />
             </div>
           </div>
         </div>

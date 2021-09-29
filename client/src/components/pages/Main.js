@@ -33,7 +33,7 @@ export default function Main() {
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="flex flex-col justify-center bg-main-four top-12 relative lg:static">
+    <div className="flex flex-col justify-center bg-main-four dark:bg-blue-600 top-12 relative lg:static">
       <div id="firstDiv" className="w-full my-4 flex flex-col items-center">
         <h1 className="inline-block bg-main-one dark:bg-gray-700 dark:text-white shadow rounded-lg self-center lg:text-7xl text-2xl text-center md:text-6xl font-bold m-4 p-4">
           Welcome to osuTracker.
