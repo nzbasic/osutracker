@@ -16,7 +16,7 @@ export default function Tracked({ name, open, select, item }) {
           select(name, item);
         }
       }}
-      className="w-full text-xs xl:text-base h-12 text-center justify-start px-2 rounded-sm border-gray-400 hover:bg-main-four cursor-pointer flex"
+      className="w-full truncate h-12 text-center justify-start px-2 rounded-sm border-gray-400 hover:bg-main-four cursor-pointer flex"
     >
       <div className="self-center outline-inner">
         <Image height={30} width={30} link={name.url} />
