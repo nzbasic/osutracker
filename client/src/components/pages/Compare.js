@@ -237,7 +237,7 @@ export default function Compare() {
 
   return (
     <div className="flex flex-col w-full items-center">
-      <div className="lg:mt-4 mt-16">
+      <div className="xl:mt-4 mt-16">
         {!isLoading && length > 0 ? (
           <div className="flex flex-col items-center">
             <div className="mb-4">

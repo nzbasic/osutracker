@@ -71,7 +71,7 @@ export default function Country(props) {
           id="firstDiv"
           className={`${
             props.match.params.name === "Global" ? "hidden" : "block"
-          } bg-main-one rounded-md shadow-md p-2 mb-2 cursor-pointer hover:text-main-four`}
+          } bg-main-one dark:bg-gray-700 dark:text-white rounded-md shadow-md p-2 mb-2 cursor-pointer hover:text-main-four`}
           href={"/allusers/" + props.match.params.name}
         >
           View Player List

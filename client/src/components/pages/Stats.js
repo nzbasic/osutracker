@@ -32,7 +32,7 @@ export default function Stats() {
     </div>
   ) : (
     <div className="flex flex-col w-full items-center">
-      <div className="inline-flex flex-col w-smgraph lg:w-3/5 items-center mt-12 lg:mt-0">
+      <div className="inline-flex flex-col w-smgraph lg:w-3/5 items-center mt-12 xl:mt-0">
         <div className="w-full flex flex-wrap justify-center">
           <div className="m-2">
             <div className="mt-4 bg-main-one dark:bg-gray-700 dark:text-white shadow-md rounded-md p-2 font-bold text-center">

@@ -63,7 +63,7 @@ export default function Header() {
         <div
           ref={wrapperRef}
           id={menuWillDeactivate ? "drawerInactive" : "drawerActive"}
-          className="bg-main-one dark:bg-gray-700 dark:text-white w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 lg:hidden h-full shadow-leftShadow z-50"
+          className="bg-main-one dark:bg-gray-700 dark:text-white w-60 flex flex-col space-y-1 items-center py-2 fixed top-12 xl:hidden h-full shadow-leftShadow z-50"
         >
           <Button
             link="/allusers"
@@ -103,7 +103,7 @@ export default function Header() {
 
   return (
     <div className="z-50">
-      <div className="h-12 w-full bg-main-one dark:bg-black dark:text-white fixed top-0 lg:static shadow z-50">
+      <div className="h-12 w-full bg-main-one dark:bg-black dark:text-white fixed top-0 xl:static shadow z-50">
         <div className="flex justify-between xl:px-10 px-2 items-center h-full">
           <a className="text-lg font-semibold flex flex-row" href="/">
             <img
@@ -113,11 +113,11 @@ export default function Header() {
             ></img>
             <div className="hidden lg:block self-center px-2">osuTracker</div>
           </a>
-          <div className="flex flex-row items-center fixed right-2 lg:relative">
-            <div className="z-0 static -top-p5 lg:-top-p75 absolute">
+          <div className="flex flex-row items-center fixed right-2 xl:relative">
+            <div className="z-0 absolute -top-p5 xl:-top-p75 right-10 xl:right-auto">
               <Search header={true} open={true} />
             </div>
-            <div className="hidden lg:flex xl:space-x-2 lg:pl-56 xl:pl-72 select-none">
+            <div className="hidden xl:flex xl:space-x-2 lg:pl-56 xl:pl-72 select-none">
               <Button link="/allusers" text="All Players" />
               <Button link="/allcountries" text="All Countries" />
               <Button link="/compare" text="Compare" />
@@ -131,7 +131,7 @@ export default function Header() {
               />
             </div>
             <div
-              className="lg:hidden ml-56 cursor-pointer hover:bg-main-two rounded-md p-1"
+              className="xl:hidden ml-56 cursor-pointer hover:bg-main-two dark:hover:bg-gray-700 rounded-md p-1"
               onClick={menuToggle}
             >
               <MenuIcon fontSize="medium" />

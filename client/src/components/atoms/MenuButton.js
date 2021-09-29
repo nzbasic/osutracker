@@ -6,7 +6,7 @@ export default function MenuButton({ text, style, link, target }) {
       style={style}
       href={link}
       target={target ? target : ""}
-      className="py-4 text-xl lg:text-base font-semibold lg:py-0 w-full lg:w-auto text-left px-4 lg:px-2 cursor-pointer lg:hover:text-main-four "
+      className="py-4 text-xl xl:text-base font-semibold xl:py-0 w-full xl:w-auto text-left px-4 xl:px-2 cursor-pointer xl:hover:text-main-four "
     >
       {text}
     </a>

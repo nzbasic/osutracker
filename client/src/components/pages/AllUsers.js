@@ -19,7 +19,7 @@ export default function AllUsers() {
   ];
 
   return (
-    <div className="mt-16 lg:mt-4 flex flex-col items-center">
+    <div className="mt-16 xl:mt-4 flex flex-col items-center">
       <a
         href="/compare/topUsers"
         className="bg-main-four mb-4 hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-main-four dark:text-white cursor-pointer py-1 px-2 font-semibold rounded-md"

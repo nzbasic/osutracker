@@ -74,7 +74,7 @@ export default function AddUser() {
       <CircularProgress className="self-center" size="10rem" />
     </div>
   ) : (
-    <div className="flex flex-col justify-center items-center mt-12 lg:mt-0">
+    <div className="flex flex-col justify-center items-center mt-12 xl:mt-0">
       <ToastContainer />
       <div className="bg-main-one dark:bg-gray-700 dark:text-white font-bold text-2xl rounded-md shadow-md p-4 mt-4 mb-6">
         Add a new player.

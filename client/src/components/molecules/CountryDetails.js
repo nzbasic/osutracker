@@ -5,7 +5,7 @@ import Zoom from "@material-ui/core/Zoom";
 
 export default function CountryDetails({ details }) {
   return (
-    <div className="bg-main-one dark:bg-gray-700 dark:text-white rounded-md shadow-lg inline-flex flex-wrap m-4 p-4 font-semibold text-xs lg:text-lg mt-16 lg:mt-4">
+    <div className="bg-main-one dark:bg-gray-700 dark:text-white rounded-md shadow-lg inline-flex flex-wrap m-4 p-4 font-semibold text-xs lg:text-lg mt-16 xl:mt-4">
       <div className="flex">
         <div className="outline-inner w-40 lg:w-auto">
           {details.abbreviation === "" ? (
