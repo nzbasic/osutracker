@@ -57,7 +57,7 @@ export default function User(props) {
             <UserPlays plays={userPlays} currentTop={userData.currentTop} />
           </div>
         ) : (
-          <div className="text-center">
+          <div className="text-center dark:text-white">
             Please wait up to 24 hours for new profiles to fully start tracking.
           </div>
         )}
