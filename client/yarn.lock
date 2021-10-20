@@ -3987,6 +3987,11 @@
     "path-type" "^4.0.0"
     "yaml" "^1.10.0"
 
+"countries-and-timezones@^3.2.3":
+  "integrity" "sha512-0thBj2T0cFndkCSRAmcMdUXISgX4lZIwqyPg3XfstNy5zT2EGgy5Hx+J4k5GU6X5ZLlveRW8KF7WhLH3/qMp4g=="
+  "resolved" "https://registry.npmjs.org/countries-and-timezones/-/countries-and-timezones-3.2.3.tgz"
+  "version" "3.2.3"
+
 "create-ecdh@^4.0.0":
   "integrity" "sha512-mf+TCx8wWc9VpuxfP2ht0iSISLZnt0JgWlrOKZiNqyUZWnjIaCIVNQArMHnCZKfEYRg6IM7A+NeJoN8gf/Ws0A=="
   "resolved" "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.4.tgz"
@@ -8526,7 +8531,14 @@
   "resolved" "https://registry.npmjs.org/modern-normalize/-/modern-normalize-1.0.0.tgz"
   "version" "1.0.0"
 
-"moment@^2.29.1":
+"moment-timezone@^0.5.27":
+  "integrity" "sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w=="
+  "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.33.tgz"
+  "version" "0.5.33"
+  dependencies:
+    "moment" ">= 2.9.0"
+
+"moment@^2.29.1", "moment@>= 2.9.0":
   "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
   "version" "2.29.1"
@@ -13103,6 +13115,13 @@
   "integrity" "sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ=="
   "resolved" "https://registry.npmjs.org/use/-/use-3.1.1.tgz"
   "version" "3.1.1"
+
+"utc-local@^1.0.4":
+  "integrity" "sha512-ND+m5UvIqaFKpuL3JOiinwrWIbq8pAL/HR23zxxwgTh/nhkg68DOJwuzSjLn/rvU+i30Kvqnm1zWApk2Mo/iIA=="
+  "resolved" "https://registry.npmjs.org/utc-local/-/utc-local-1.0.4.tgz"
+  "version" "1.0.4"
+  dependencies:
+    "moment-timezone" "^0.5.27"
 
 "util-deprecate@^1.0.1", "util-deprecate@^1.0.2", "util-deprecate@~1.0.1":
   "integrity" "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8="

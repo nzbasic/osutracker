@@ -22,6 +22,7 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.0",
     "cors": "^2.8.5",
+    "countries-and-timezones": "^3.2.3",
     "date-fns": "^2.16.1",
     "debounce": "^1.2.1",
     "dotenv": "^8.2.0",
@@ -53,6 +54,7 @@
     "semantic-ui-react": "^2.0.3",
     "string-to-color": "^2.2.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
+    "utc-local": "^1.0.4",
     "uuid": "^8.3.1",
     "victory": "^35.4.3",
     "web-vitals": "^0.2.4"
