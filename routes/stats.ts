@@ -2,6 +2,8 @@ import express from "express";
 import { OverallStatsModel } from "../models/OverallStats.model";
 import { HistoricTopModel } from '../models/HistoricTop.model'
 import { BeatmapModel } from "../models/Beatmap.model";
+import { PPBarrierRes } from "../interfaces/stats";
+import { PPBarrier, PPBarrierModel } from "../models/PPBarrier.model";
 export const statsRouter = express.Router();
 
 statsRouter.route("/historicTop").get((req, res) => {
@@ -28,6 +30,26 @@ statsRouter.route("/mapset/:id").get((req, res) => {
     .then((map) => res.json(map))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+statsRouter.route("/ppBarrier").get(async (req, res) => {
+  const barriers = await PPBarrierModel.find()
+  const output: PPBarrierRes[] = []
+
+  for (const barrier of barriers) {
+    const list: { name: string, id: string, count: number }[] = []
+    const number = barrier.number
+    const limit = barrier.list.slice(0, 100)
+    for (const count of limit) {
+      const beatmap = await BeatmapModel.findOne({ id: count.setId })
+      if (beatmap) {
+        list.push({ name: beatmap.name, id: count.setId, count: count.count })
+      }
+    }
+    output.push({ number: number.valueOf(), list })
+  }
+
+  res.json(output)
+})
 
 statsRouter.route("/mapsets").get(async (req, res) => {
   let result = [];

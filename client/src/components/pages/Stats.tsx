@@ -6,6 +6,7 @@ import { SimpleSummaryAccordion } from "../misc/SimpleSummaryAccordion"
 import { TopMapsets } from "../stats/TopMapsets"
 import { TopPlay } from "../stats/TopPlay"
 import { Helmet } from "react-helmet";
+import { PPBarriers } from "../stats/PPBarriers"
 
 export const Stats = () => {
     const [stats, setStats] = useState<OverallStats | undefined>()
@@ -70,6 +71,11 @@ export const Stats = () => {
             <div className="pt-8 px-8">
                 <span className="text-3xl">Most Common Top Play</span>
                 <TopPlay id={stats.userStats.topPlay} />
+            </div>
+
+            <div className="pt-8 px-8">
+                <span className="text-3xl">Most Common x pp Plays</span>
+                <PPBarriers />
             </div>
 
             <div className="pt-8 px-8 flex flex-col gap-2">

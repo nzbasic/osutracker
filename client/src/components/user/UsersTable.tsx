@@ -38,12 +38,10 @@ export const UsersTable = ({ country }: { country?: string }) => {
     useEffect(() => {
         document.title = "All Users"
         const link = "/api/" + (country ? "countries/" : "users/") + "allFilter" + (country ? "/" + country : "")
-        console.log(link)
 
         axios
             .get<FilterUserRes>(link, { params: { name: sorting, order: order, page: page },})
             .then((res) => {
-                console.log(res)
                 setData(res.data.data.filter(item => item.rank !== "0" && item.farm !== -1));
                 setNumberResults(res.data.numberResults);
             });
