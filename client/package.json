@@ -1,0 +1,78 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "dependencies": {
+    "@craco/craco": "^6.3.0",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.6",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/cors": "^2.8.12",
+    "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.176",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.32",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-helmet": "^6.1.4",
+    "@types/react-router-dom": "^5.3.1",
+    "@types/recharts": "^1.8.23",
+    "@types/uuid": "^8.3.1",
+    "axios": "^0.23.0",
+    "hamburger-react": "^2.4.1",
+    "history": "^5.0.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
+    "query-string": "^7.0.1",
+    "react": "^17.0.2",
+    "react-animated-css": "^1.2.1",
+    "react-contextmenu": "^2.14.0",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.0.0-beta.8",
+    "react-scripts": "4.0.3",
+    "react-select": "^5.1.0",
+    "react-toastify": "^8.0.3",
+    "recharts": "^2.1.5",
+    "string-to-color": "^2.2.2",
+    "typescript": "^4.1.2",
+    "use-debounce": "^7.0.0",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.8",
+    "postcss": "^7.0.39",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+  }
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "version": "2.0",
+        "date": "Nov 1 2021",
+        "newFeatures": [
+            "Full UI Redesign",
+            "Added history page and data",
+            "New API documentation using GitBook",
+            "Added changelog",
+            "Graph brushes replaced with zooming via dragging"
+        ],
+        "bugFixes": [
+            "Fixed top play history displaying incorrectly",
+            "Fixed some map names being incorrectly cut off"
+        ]
+    }
+]

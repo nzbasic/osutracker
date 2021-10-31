@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: black;
+}
+
+#root {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  @apply dark:text-white
+}
+
+.recharts-text tspan {
+  font-size: 0.75rem;
+  @apply bg-white
+}
+
+svg.recharts-surface tspan {
+	font-size: 0.8rem !important;
+	color: white !important;
+	font-family:  Arial;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 0.1px black;
+}
+
+.main-width {
+  @apply max-w-5xl
+}
+
+.z-search {
+  z-index: 5000;
+}
+
+.min-w-60 {
+  min-width: 15rem;
+}
+
+.main-container {
+  min-height: calc(100vh - 4rem - 4rem);
+  position: relative;
+  margin-top: -320px;
+  z-index: 25;
+
+  @apply w-full max-w-5xl relative bg-gray-50 dark:bg-dark01 md:rounded-t -mt-72;
+}
+
+.xpad {
+  @apply px-4 md:px-8 xl:px-24
+}
+
+.text-tiny {
+  font-size: 0.6rem;
+}
+
+.centered td {
+  text-align: center;
+}
+
+.force-w16 {
+  min-width: 4rem;
+  width: 4rem;
+}
+
+.button {
+  @apply transition ease-in duration-200 px-4 py-1 rounded h-10 shadow-md text-white
+}
+
+.button-green {
+  @apply bg-green-400 dark:bg-green-500 hover:bg-green-300 dark:hover:bg-green-400
+}
+
+.button-red {
+  @apply bg-red-500 hover:bg-red-400
+}
+
+.header-button {
+  @apply text-white pt-5 px-2 lg:px-4;
+}
+
+.header-button-active {
+  @apply border-b-4 border-gray-800;
+}
+
+.header-button:hover {
+  transition-property: border, color !important;
+  @apply text-gray-800 border-b-4 border-gray-800 transition ease-in duration-200;
+}
+
+.header-menu-button {
+  @apply text-gray-900 px-4 py-2 dark:text-white;
+}
+
+.header-menu-button-active {
+  @apply text-blue-500 border-l-4 border-blue-400 px-3 bg-blue-50 dark:bg-transparent;
+}
+
+.header-menu-button:hover {
+  @apply text-blue-500 border-l-4 border-blue-400 px-3 bg-blue-50 dark:bg-transparent transition ease-in duration-200;
+}
