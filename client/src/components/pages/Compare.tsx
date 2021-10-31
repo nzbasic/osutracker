@@ -48,7 +48,6 @@ export const Compare = () => {
   useEffect(() => {
     document.title = "Compare";
     const urlOptions = parseUrl();
-    console.log(urlOptions);
 
     if (urlOptions.topUsers) {
       setFixedLink(true);
@@ -179,7 +178,6 @@ export const Compare = () => {
             );
 
             if (item) {
-              console.log(data);
               item.data = data;
             }
           }
@@ -317,7 +315,7 @@ export const Compare = () => {
                     ></div>
                     {item.user && <span className="w-8 hidden lg:block">#{item.data[item.data.length - 1].rank}</span>}
                   </div>
-                  <div className="flex items-center gap-2 hidden lg:block">
+                  <div className="items-center gap-2 hidden lg:flex">
                     <span className="w-16">
                       {parseFloat(item.data[item.data.length - 1].pp).toFixed(0)}pp
                     </span>
@@ -356,7 +354,7 @@ export const Compare = () => {
             </div>
             <div className="w-full h-full pb-1 flex flex-col items-center justify-center px-2 z-10">
                 {isLoading ? (
-                  <div className="py-4"><CircularProgress /></div>
+                  <div className="py-4 mt-2"><CircularProgress /></div>
                 ) : (
                   <CompareGraph
                     compare={compare}
