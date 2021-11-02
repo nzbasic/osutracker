@@ -70,6 +70,18 @@ svg.recharts-surface tspan {
   width: 4rem;
 }
 
+.force-w8 {
+  min-width: 2rem;
+}
+
+.force-w6 {
+  min-width: 1.5rem;
+}
+
+.rtl {
+  direction: rtl;
+}
+
 .button {
   @apply transition ease-in duration-200 px-4 py-1 rounded h-10 shadow-md text-white
 }

@@ -19,10 +19,10 @@ export const PPBarriers = () => {
                 <SimpleSummaryAccordion key={index} title={item.number + "pp"}>
                     <div className="flex flex-col min-w-0">
                         {item.list.map((barrier, index) => (
-                            <div key={index} className="flex flex-row gap-2 items-center min-w-0 dark:text-white">
-                                <span className="w-8">#{index+1}</span>
-                                <a target="_blank" rel="noreferrer" href={"https://osu.ppy.sh/beatmaps/" + barrier.id} className="truncate hover:underline">{barrier.name}</a>
-                                <div className="">{barrier.count}</div>
+                            <div key={index} className="flex flex-row gap-2 items-center min-w-0 dark:text-white text-xs md:text-base">
+                                <span className="force-w6 md:force-w8">#{index+1}</span>
+                                <a target="_blank" rel="noreferrer" href={"https://osu.ppy.sh/beatmaps/" + barrier.id} className="w-full truncate hover:underline">{barrier.name}</a>
+                                <div className="md:force-w8">{barrier.count}</div>
                             </div>
                         ))}
                     </div>
