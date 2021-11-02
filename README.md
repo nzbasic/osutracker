@@ -7,7 +7,7 @@
 </h1>
 
 <div align="center">
-  <a href="https://wiki.nzbasic.com/docs/osuTracker/aboutOsuTracker">API Docs</a>
+  <a href="https://james-46.gitbook.io/api-docs/">API Docs</a>
   ·
   <a href="https://github.com/nzbasic/osutracker/issues/new?assignees=&labels=&template=bug_report.md&title=Bug%3A+">Report a Bug</a>
   ·
@@ -21,7 +21,7 @@
   [![stars](https://img.shields.io/github/stars/nzbasic/osutracker?style=flat-square)](https://github.com/nzbasic/osutracker)
   [![lastcommit](https://img.shields.io/github/last-commit/nzbasic/osutracker)](https://github.com/nzbasic/osutracker)
 
-
+  
   [![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/microsoft/TypeScript)
   [![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://github.com/facebook/react)
   [![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://github.com/mongodb/mongo)
