@@ -39,12 +39,15 @@ export const TopMapsets = ({ sets }: { sets: SetCount[] }) => {
                         target="_blank"
                         rel="noreferrer" 
                         href={"https://osu.ppy.sh/beatmapsets/" + sets[index].setId}
-                        className="hover:underline flex gap-1 min-w-0 dark:text-white"
+                        className="hover:underline flex gap-1 min-w-0 dark:text-white text-xs md:text-base"
                     >
-                        <span className="w-8">{index+1}</span>
-                        <span className="truncate">{item.mapper} -</span>
-                        <span className="truncate">{item.name.replace(/(\[(.*?)\])$/g, "")}</span>
-                        <span className="">{sets[index].count}</span>
+                        <span className="force-w8 md:force-w8">#{index+1}</span>
+                        <div className="flex gap-1 min-w-0 w-full">
+                            <span className="truncate">{item.mapper} -</span>
+                            <span className="truncate">{item.name.replace(/(\[(.*?)\])$/g, "")}</span>
+                        </div>
+                       
+                        <span className="force-w8">{sets[index].count}</span>
                     </a>
                 ))
             ) : <CircularProgress />}
