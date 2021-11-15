@@ -41,7 +41,7 @@ export const TopMapsets = ({ sets }: { sets: SetCount[] }) => {
                         href={"https://osu.ppy.sh/beatmapsets/" + sets[index].setId}
                         className="hover:underline flex gap-1 min-w-0 dark:text-white text-xs md:text-base"
                     >
-                        <span className="force-w8 md:force-w8">#{index+1}</span>
+                        <span className="force-w8 md:force-w12">#{index+1}</span>
                         <div className="flex gap-1 min-w-0 w-full">
                             <span className="truncate">{item.mapper} -</span>
                             <span className="truncate">{item.name.replace(/(\[(.*?)\])$/g, "")}</span>
