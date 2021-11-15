@@ -96,6 +96,8 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
                 />
             </div>
 
+            <span className="w-full text-center text-xs italic">Note: At the time of a pp rework, many plays will be green</span>
+
             {country && 
                 <button onClick={() => setUnique(!unique)} className="button button-green">
                     {unique ? "Show All Plays" : "Hide Duplicate Maps"}
