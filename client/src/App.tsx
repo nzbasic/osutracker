@@ -12,7 +12,7 @@ import { User } from "./components/pages/User";
 import ThemeProvider from "./ThemeProvider";
 
 export const App = () => {
-
+  
   return (
     <ThemeProvider>
       <BrowserRouter>

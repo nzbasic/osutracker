@@ -33,7 +33,7 @@ svg.recharts-surface tspan {
 }
 
 .main-width {
-  @apply max-w-5xl
+  @apply max-w-6xl
 }
 
 .z-search {
@@ -50,7 +50,7 @@ svg.recharts-surface tspan {
   margin-top: -320px;
   z-index: 25;
 
-  @apply w-full max-w-5xl relative bg-gray-50 dark:bg-dark01 md:rounded-t -mt-72;
+  @apply w-full main-width relative bg-gray-50 dark:bg-dark01 md:rounded-t -mt-72;
 }
 
 .xpad {
