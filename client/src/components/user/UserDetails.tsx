@@ -14,7 +14,7 @@ export const UserDetails = ({ details }: { details: User }) => {
 
     return (
         <div className="flex items-center w-full">
-            <img src={"https://a.ppy.sh/" + details.id} alt="player" className="w-36 md:w-auto border border-black" />
+            <img src={"https://a.ppy.sh/" + details.id} alt="player" className="w-32 md:w-64 border border-black" />
             <div className="flex flex-col ml-2 md:ml-4 min-w-0">
                 <div className="flex items-center gap-2 min-w-0">
                     <a href={"https://osu.ppy.sh/users/" + details.id} target="_blank" rel="noreferrer" className="text-base md:text-3xl font-medium hover:underline truncate mr-6">{details.name}</a>
