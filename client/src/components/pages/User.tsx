@@ -62,7 +62,7 @@ export const User = () => {
                 <div className="flex flex-col h-full border border-black rounded dark:bg-dark03">
                     <div className="border-b py-2 border-black flex items-center gap-2 justify-center font-medium z-20">
                         <span className="text-xs sm:text-base md:text-base">Top Play Time Scatter</span>
-                        <div className="w-32 sm:md-52 md:w-72">
+                        <div className="w-32 sm:md-52 md:w-72 text-black">
                             <TimezoneSelect
                                 value={timezone}
                                 onChange={(tz) => {

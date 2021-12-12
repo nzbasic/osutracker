@@ -27,9 +27,9 @@ export const TimeScatterGraph = ({ chartData, tz }: { chartData: { date: string,
     const CustomTooltip = ({ active, payload, label }: any) => {
         if (active) {
           return (
-            <div className="bg-white border border-black rounded flex flex-col p-2">
+            <div className="bg-white dark:bg-dark01 border border-black rounded flex flex-col p-2">
                 <span>Time: {payload && formatTickTime(payload[0].value)}</span>
-                <span>pp: {payload && payload[1].value}pp</span>
+                <span>{payload && payload[1].value}pp</span>
             </div>
           );
         }
@@ -83,7 +83,7 @@ export const TimeScatterGraph = ({ chartData, tz }: { chartData: { date: string,
                         name="pp"
                     />
                     <Tooltip content={<CustomTooltip />}/>
-                    <Scatter data={data} />
+                    <Scatter data={data} stroke={theme?.mode === "light" ? "black" : "white"} />
                 </ScatterChart>
             </CustomResponsiveContainer>
         </div>
