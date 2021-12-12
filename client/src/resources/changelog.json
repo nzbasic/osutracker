@@ -1,5 +1,17 @@
 [
     {
+        "version": "2.1",
+        "date": "Dec 12 2021",
+        "newFeatures": [
+            "Added scatter plot for users to show the time of day of each play in their top 100",
+            "Changed home page history to be over the past 90 days",
+            "Increased width of main website container"
+        ],
+        "bugFixes": [
+            "Fixed some user avatars displaying at the incorrect size"
+        ]
+    },
+    {
         "version": "2.0",
         "date": "Nov 1 2021",
         "newFeatures": [
