@@ -17,6 +17,7 @@ export interface User {
     farm: number,
     averageLength: number,
     averageObjects: number,
+    timesList: { date: string, pp: string }[]
 }
 
 const userSchema = new Schema<User>({
@@ -35,6 +36,7 @@ const userSchema = new Schema<User>({
     farm: Number,
     averageLength: Number,
     averageObjects: Number,
+    timesList: Array
 });
 
 export const UserModel = model<User>("user", userSchema);
