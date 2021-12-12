@@ -22,7 +22,7 @@ export const Home = () => {
     useEffect(() => {
         document.title = "osuTracker"
         axios.get<CountryPlayers[]>("/api/countries/Global/players").then(res => {
-            setPlayerData(res.data)
+            setPlayerData(res.data.slice(-90))
             setLoading(false)
         })
 
@@ -99,7 +99,7 @@ export const Home = () => {
                 </div>
                 <div className="border-2 border-gray-400 dark:border-black dark:bg-dark03 rounded h-60 md:h-auto w-full flex-col hidden lg:flex">
                     <div className="border-b-2 border-gray-400 dark:border-black h-10 flex items-center justify-center font-medium">
-                        <span>Global Top 10 History</span>
+                        <span>90 Day Global Top 10 History</span>
                     </div>
                     <div className="w-full h-full flex flex-col items-center justify-center px-2">
                         {isLoading ? <CircularProgress /> : <CountryPlayersGraph players={playerData} /> }
