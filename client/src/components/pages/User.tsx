@@ -58,7 +58,7 @@ export const User = () => {
             <div className="w-full h-72 md:h-96">
                 <UserGraphs id={id} /> 
             </div>
-            <div className="w-full h-72 md:h-96 px-4 pt-4">
+            <div className="w-full h-72 md:h-96 px-4 pt-4 hidden md:block">
                 <div className="flex flex-col h-full border border-black rounded dark:bg-dark03">
                     <div className="border-b py-2 border-black flex items-center gap-2 justify-center font-medium z-20">
                         <span className="text-xs sm:text-base md:text-base">Top Play Time Scatter</span>
