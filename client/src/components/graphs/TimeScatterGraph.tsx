@@ -55,7 +55,7 @@ export const TimeScatterGraph = ({ chartData, tz }: { chartData: { date: string,
 
         const ampm = hours >= 12 ? 'pm' : 'am'
         const hour = hours % 12
-        return `${hour === 0 ? 12 : hour}:${minute}${ampm}`
+        return `${hour === 0 ? 12 : hour}:${minute}${hours === 24 ? "am" : ampm}`
     }
 
     return (
