@@ -91,7 +91,7 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
                     className={`${index===0 && 'invisible'} cursor-pointer hover:text-red-500 transition duration-200 ease-in`}
                 />
 
-                <TopPlaysDatePicker onClick={(i: number) => { console.log(i); setIndex(i) }} selected={new Date(playsHistory[index].date)} dates={playsHistory.map(item => item.date)} />
+                <TopPlaysDatePicker onClick={(i: number) => setIndex(i === -1 ? index : i)} selected={new Date(playsHistory[index].date)} dates={playsHistory.map(item => item.date)} />
 
                 <ArrowForwardIcon 
                     onClick={() => setIndex(index+1)} 
