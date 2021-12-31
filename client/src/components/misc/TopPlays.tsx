@@ -4,6 +4,7 @@ import { UserPlays as UserPlaysModel } from '../../../../models/UserPlays.model'
 import { Score } from "../../../../models/Score";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { TopPlaysDatePicker } from './TopPlaysDatePicker'
 
 interface PlaysHistory {
     scores: Score[]
@@ -81,7 +82,7 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
             setLoading(false)
         })
     }, [currentTop, path, unique, index])
-
+//<span className="w-28 text-center">{new Date(playsHistory[index].date).toLocaleDateString()}</span>
     return !isLoading ? (
         <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2 self-center text-xl py-2">
@@ -89,7 +90,9 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
                     onClick={() => setIndex(index-1)} 
                     className={`${index===0 && 'invisible'} cursor-pointer hover:text-red-500 transition duration-200 ease-in`}
                 />
-                <span className="w-28 text-center">{new Date(playsHistory[index].date).toLocaleDateString()}</span>
+
+                <TopPlaysDatePicker onClick={(i: number) => { console.log(i); setIndex(i) }} selected={new Date(playsHistory[index].date)} dates={playsHistory.map(item => item.date)} />
+
                 <ArrowForwardIcon 
                     onClick={() => setIndex(index+1)} 
                     className={`${index===(playsHistory.length-1) && 'invisible'} cursor-pointer hover:text-green-500 transition duration-200 ease-in`}
