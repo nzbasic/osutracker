@@ -9,7 +9,7 @@ export const CountryPlayers = ({ name }: { name: string }) => {
 
     useEffect(() => { 
         axios.get<CountryPlayersModel[]>(`/api/countries/${name}/players`).then(res => {
-            setData(res.data)
+            setData(res.data.filter(item => !item.listPlayers.find(player => player.name === undefined)))
         })
     }, [name])
 

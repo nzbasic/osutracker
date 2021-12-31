@@ -6,7 +6,9 @@
             "Added a calendar date picker for top play history",
             "Increased width of player names in country top plays"
         ],
-        "bugFixes": []
+        "bugFixes": [
+            "Fixed issue where undefined data appeared on country top 10 players graph"
+        ]
     },
     {
         "version": "2.1",
