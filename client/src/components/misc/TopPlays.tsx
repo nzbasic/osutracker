@@ -115,7 +115,7 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
                             {country && (
                                 <div className="flex items-center mr-4 " >
                                     <span className="w-5 md:w-8">{index+1}</span>
-                                    <a className="hover:underline w-8 md:w-16 truncate" href={"/redirect/" + item.player}>{item.player}</a>
+                                    <a className="hover:underline w-12 md:w-24 truncate" href={"/redirect/" + item.player}>{item.player}</a>
                                 </div>
                             )}
                             <a target="_blank" rel="noreferrer" href={"https://osu.ppy.sh/beatmaps/" + item.id} className="min-w-0 flex flex-col hover:underline ">
