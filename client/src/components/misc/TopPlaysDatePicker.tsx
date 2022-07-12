@@ -21,7 +21,7 @@ export const TopPlaysDatePicker = ({ selected, dates, onClick }: { selected: Dat
     }
 
     return (
-        <div className="text-black w-32 z-50">
+        <div className="text-black w-32 z-10">
             <DatePicker
                 selected={selected}
                 onChange={onChange}

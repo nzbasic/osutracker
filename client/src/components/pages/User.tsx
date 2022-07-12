@@ -55,7 +55,7 @@ export const User = () => {
             <div className="p-4">
                 {details && <UserDetails details={details} /> }
             </div>
-            <div className="w-full h-72 md:h-96">
+            <div className="w-full h-72 md:h-96 z-50">
                 <UserGraphs id={id} /> 
             </div>
             <div className="w-full h-72 md:h-96 px-4 pt-4 hidden md:block">

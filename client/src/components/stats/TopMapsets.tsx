@@ -15,40 +15,42 @@ export const TopMapsets = ({ sets }: { sets: SetCount[] }) => {
         const setIdArray = sets.map(item => item.setId)
         const batchNumber = 100
         const batches = Math.ceil(setIdArray.length / batchNumber)
-        const allMaps: Beatmap[] = []
-
+        
         const fetchData = async () => {
+            const allMaps: Beatmap[] = []
             for (let i = 0; i < batches; i++) {
                 const data = await axios.get<Beatmap[]>("/api/stats/mapsets", {
                     params: { arr: setIdArray.slice(i * batchNumber, (i + 1) * batchNumber) }
                 })
                 allMaps.push(...data.data)
             }
+
+            return allMaps
         }
 
         fetchData().then(res => {
-            setFullSets(allMaps)
+            setFullSets(res)
         })
     }, [sets])
-
+    
     return  (
-        <div className="flex flex-col gap-1 min-w-0">
+        <div className="maps-grid min-w-0 text-xs md:text-base">
             {fullSets.length ? (
                 fullSets.map((item, index) => (
-                    <a 
-                        target="_blank"
-                        rel="noreferrer" 
-                        href={"https://osu.ppy.sh/beatmapsets/" + sets[index].setId}
-                        className="hover:underline flex gap-1 min-w-0 dark:text-white text-xs md:text-base"
-                    >
-                        <span className="force-w8 md:force-w12">#{index+1}</span>
-                        <div className="flex gap-1 min-w-0 w-full">
-                            <span className="truncate">{item.mapper} -</span>
+                    <>
+                        <span>#{index+1}</span>
+                        <a 
+                            target="_blank"
+                            rel="noreferrer" 
+                            href={"https://osu.ppy.sh/beatmapsets/" + sets[index].setId}
+                            className="hover:underline flex gap-1 w-full min-w-0 dark:text-white"
+                        >
+                            <span className="truncate hidden md:block">{item.mapper} -</span>
                             <span className="truncate">{item.name.replace(/(\[(.*?)\])$/g, "")}</span>
-                        </div>
+                        </a>
                        
-                        <span className="force-w8">{sets[index].count}</span>
-                    </a>
+                        <span className="flex justify-end">{sets[index].count}</span>
+                    </>
                 ))
             ) : <CircularProgress />}
         </div>

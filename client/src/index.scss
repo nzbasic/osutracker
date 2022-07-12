@@ -122,3 +122,8 @@ svg.recharts-surface tspan {
 .header-menu-button:hover {
   @apply text-blue-500 border-l-4 border-blue-400 px-3 bg-blue-50 dark:bg-transparent transition ease-in duration-200;
 }
+
+.maps-grid {
+  display: grid;
+  grid-template-columns: 45px 1fr 45px;
+}
