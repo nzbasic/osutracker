@@ -5,7 +5,6 @@ import moment from "moment";
 import {
   CartesianGrid,
   Line,
-  Brush,
   Tooltip,
   LineChart,
   XAxis,
@@ -17,18 +16,18 @@ import { CustomResponsiveContainer } from "./CustomResponsiveContainer";
 import { ThemeContext } from "../../ThemeProvider";
 
 interface TooltipTableItem {
-    name: string
-    data: {
-        [property: string]: number
-    }
+  name: string
+  data: {
+    [property: string]: number
+  }
 }
 
 interface DataPoint {
-    date: number;
-    name: string;
-    data: {
-        [property: string]: number
-    }
+  date: number;
+  name: string;
+  data: {
+    [property: string]: number
+  }
 }
 
 export default function CompareGraph({ compare, type, reversed }: { compare: CompareData[], type: string, reversed: boolean }) {

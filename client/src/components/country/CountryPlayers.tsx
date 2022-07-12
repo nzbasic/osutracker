@@ -5,24 +5,24 @@ import { CountryPlayers as CountryPlayersModel } from "../../../../models/Countr
 import CountryPlayersGraph from "../graphs/CountryPlayersGraph";
 
 export const CountryPlayers = ({ name }: { name: string }) => { 
-    const [data, setData] = useState<CountryPlayersModel[]>([])
+  const [data, setData] = useState<CountryPlayersModel[]>([])
 
-    useEffect(() => { 
-        axios.get<CountryPlayersModel[]>(`/api/countries/${name}/players`).then(res => {
-            setData(res.data.filter(item => !item.listPlayers.find(player => player.name === undefined)))
-        })
-    }, [name])
+  useEffect(() => { 
+    axios.get<CountryPlayersModel[]>(`/api/countries/${name}/players`).then(res => {
+      setData(res.data.filter(item => !item.listPlayers.find(player => player.name === undefined)))
+    })
+  }, [name])
 
-    return (
-        <div className="w-full h-full">
-            <div className="flex flex-col h-full border border-black rounded dark:bg-dark03">
-                <div className="border-b py-2 border-black flex items-center justify-center font-medium z-20">
-                    Top 10 Players
-                </div>
-                <div className="w-full h-full pb-1 flex flex-col items-center justify-center px-2 z-10">
-                    {!data.length ? <CircularProgress /> : <CountryPlayersGraph players={data} /> }
-                </div>
-            </div>
+  return (
+    <div className="w-full h-full">
+      <div className="flex flex-col h-full border border-black rounded dark:bg-dark03">
+        <div className="border-b py-2 border-black flex items-center justify-center font-medium z-20">
+          Top 10 Players
         </div>
-    )
+        <div className="w-full h-full pb-1 flex flex-col items-center justify-center px-2 z-10">
+          {!data.length ? <CircularProgress /> : <CountryPlayersGraph players={data} /> }
+        </div>
+      </div>
+    </div>
+  )
 }
