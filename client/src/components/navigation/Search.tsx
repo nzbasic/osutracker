@@ -31,7 +31,7 @@ export const Search = ({ alwaysFocused, text, select, item }: Props) => {
 
   const toggleFocus = (on: boolean) => {
     if (!alwaysFocused) {
-        setTimeout(() => setFocused(on), 150);
+        setTimeout(() => setFocused(on), 250);
     }
   }
 
@@ -62,25 +62,25 @@ export const Search = ({ alwaysFocused, text, select, item }: Props) => {
   };
 
   return (
-      <div className="flex flex-col w-full relative">
-        <div className="flex items-center -ml-5 z-0">
-            <SearchIcon
-                className="relative left-8 z-10 text-blue-400 dark:text-blue-500"
-                fontSize="small"
-            />
-            <input
-                className={`${alwaysFocused ? 'dark:bg-dark02' : 'dark:bg-dark01'} z-0 rounded-md h-9 border-gray-200 border-2 pl-9 text-gray-900 dark:text-white dark:border-transparent w-full`}
-                onFocus={() => toggleFocus(true)}
-                onBlur={() => toggleFocus(false)}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder={text ? text : "Search..."}
-            />
-        </div>
-        <Animated className="z-50" animationIn={"fadeIn"} animationOut={"fadeOut"} isVisible={focused} animateOnMount={false} animationOutDuration={250} animationInDuration={250} >
-            <div className={`${alwaysFocused ? 'static mt-2' : 'absolute'} bg-white rounded-md shadow-md top-10 w-60 z-50`}>
-                <SearchResults select={select} item={item} results={results} loading={isLoading} />
-            </div>
-        </Animated>
+    <div className="flex flex-col w-full relative">
+      <div className="flex items-center -ml-5 z-0">
+        <SearchIcon
+          className="relative left-8 z-10 text-blue-400 dark:text-blue-500"
+          fontSize="small"
+        />
+        <input
+          className={`${alwaysFocused ? 'dark:bg-dark02' : 'dark:bg-dark01'} z-0 rounded-md h-9 border-gray-200 border pl-9 text-gray-900 dark:text-white dark:border-transparent w-full`}
+          onFocus={() => toggleFocus(true)}
+          onBlur={() => toggleFocus(false)}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={text ? text : "Search..."}
+        />
       </div>
+      <Animated className="z-50" animationIn={"fadeIn"} animationOut={"fadeOut"} isVisible={focused} animateOnMount={false} animationOutDuration={250} animationInDuration={250} >
+        <div className={`${alwaysFocused ? 'static mt-2' : 'absolute'} bg-white rounded-md shadow-md top-10 w-60 z-50`}>
+          <SearchResults select={select} item={item} results={results} loading={isLoading} />
+        </div>
+      </Animated>
+    </div>
   );
 };

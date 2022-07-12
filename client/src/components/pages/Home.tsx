@@ -105,8 +105,8 @@ export const Home = () => {
                         <Search alwaysFocused={true} />
                     </div>
                 </div>
-                <div className="border-2 border-gray-400 dark:border-black dark:bg-dark03 rounded h-60 md:h-auto w-full flex-col hidden lg:flex">
-                    <div className="border-b-2 border-gray-400 dark:border-black h-10 flex items-center justify-center font-medium">
+                <div className="shadow-sm border dark:border-black dark:bg-dark03 rounded h-60 md:h-auto w-full flex-col hidden lg:flex">
+                    <div className="border-b dark:border-black h-10 flex items-center justify-center font-medium">
                         <span>90 Day Global Top 10 History</span>
                     </div>
                     <div className="w-full h-full flex flex-col items-center justify-center px-2">
