@@ -46,6 +46,10 @@ app.get("/sitemap.xml", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/sitemap.xml"));
 });
 
+app.get("/favicon.ico", function (req, res) {
+  res.sendFile(path.join(__dirname, "client/build/favicon.ico"));
+});
+
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "client/build/index.html"), function (err) {
     if (err) {
