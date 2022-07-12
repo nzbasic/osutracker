@@ -50,20 +50,20 @@ export const All = () => {
           content="See a list of all tracked users/countries and sort them by performance, rank, accuracy and more."
         />
       </Helmet>
-      <div className="border-2 rounded border-black w-full h-full flex flex-col">
+      <div className="border border-gray-300 shadow-sm rounded-md dark:border-black w-full h-full flex flex-col">
         {mode === Mode.COUNTRY_USERS ? (
           <UsersTable country={country} />
         ) : (
           <div className="w-full h-full flex-col">
-            <div className="flex w-full border-b-2 border-black text-lg font-medium">
+            <div className="flex w-full border-b border-gray-300 dark:border-black text-lg font-medium">
               {modes.map((m, index) => (
                 <button 
                   key={m}
                   onClick={() => setMode(m)}
                   className={`
                     ${m === mode && 'bg-blue-400 dark:text-blue-500 dark:bg-transparent text-white'} 
-                    ${index === 0 && 'border-r-2'} 
-                    py-2 w-full text-center border-black hover:bg-blue-400 dark:hover:bg-transparent dark:hover:text-blue-500 transition duration-100 ease-in 
+                    ${index === 0 ? 'border-r rounded-tl-md' : 'rounded-tr-md'} 
+                    py-2 w-full text-center border-gray-300 dark:border-black hover:bg-blue-400 dark:hover:bg-transparent dark:hover:text-blue-500 transition duration-100 ease-in 
                   `}
                 >{m}</button>
               ))}

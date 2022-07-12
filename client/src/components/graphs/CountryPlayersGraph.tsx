@@ -47,7 +47,7 @@ export default function CountryPlayersGraph({ players }: { players: CountryPlaye
 
     if (active) {
       return (
-        <div className="bg-white dark:bg-gray-700 rounded-md shadow-md p-2">
+        <div className="bg-white dark:bg-dark01 rounded-md shadow-md p-2">
           <div className="label flex flex-col">
             {moment(label).format("DD M YY")}
             {table.map((data, index) => (

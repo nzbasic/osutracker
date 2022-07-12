@@ -101,7 +101,7 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
       <span className="w-full text-center text-xs italic">Note: At the time of a pp rework, many plays will be green</span>
 
       {country && 
-        <button onClick={() => setUnique(!unique)} className="button button-green">
+        <button onClick={() => setUnique(!unique)} className="button button-green shadow-sm">
           {unique ? "Show All Plays" : "Hide Duplicate Maps"}
         </button>
       }
@@ -110,7 +110,10 @@ export const TopPlays = ({ currentTop, path, country }: { path: string, currentT
         {playsHistory[index].scores.sort((a,b) => parseFloat(b.pp) - parseFloat(a.pp)).map((item, index) => (
           <div
             key={index} 
-            className={`${item.added && 'dark:text-green-400 bg-green-400'} flex  justify-between dark:bg-dark03 border border-black rounded p-1 text-tiny md:text-base`}
+            className={
+              `${item.added && 'dark:text-green-400 bg-green-500 text-white'} 
+              hover:border-blue-400 transition-colors flex justify-between dark:bg-dark03 border shadow-sm border-gray-300 dark:border-black rounded p-1 text-tiny md:text-base`
+            }
           >
             <div className="flex items-center min-w-0">
               {country && (

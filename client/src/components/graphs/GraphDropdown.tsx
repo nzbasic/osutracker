@@ -4,15 +4,15 @@ import { ThemeContext } from "../../ThemeProvider";
 import { getTheme } from "../../util/selectTheme";
 
 export interface Option {
-    value: string,
-    label: string,
-    reversed?: boolean
+  value: string,
+  label: string,
+  reversed?: boolean
 }
 
 export default function GraphDropdown({ onChange, selected, options }: {
-    onChange: (option: Option | null) => void,
-    selected: Option,
-    options: Option[]
+  onChange: (option: Option | null) => void,
+  selected: Option,
+  options: Option[]
 }) {
   const select = (event: SingleValue<Option | null>) => {
     onChange(event);

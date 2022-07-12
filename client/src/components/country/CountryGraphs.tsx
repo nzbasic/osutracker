@@ -56,8 +56,8 @@ export const CountryGraphs = ({ name }: { name: string }) => {
 
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col h-full border border-black rounded dark:bg-dark03">
-        <div className="border-b py-2 border-black flex items-center justify-center font-medium z-20">
+      <div className="flex flex-col h-full border border-gray-300 dark:border-black shadow-sm rounded dark:bg-dark03">
+        <div className="border-b border-gray-300 dark:border-black py-2 flex items-center justify-center font-medium z-20">
           <GraphDropdown onChange={graphChange} options={countryOptions} selected={graphType} />
         </div>
         <div className="w-full h-full pb-1 flex flex-col items-center justify-center px-2 z-10">

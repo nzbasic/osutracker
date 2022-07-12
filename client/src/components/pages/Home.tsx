@@ -105,8 +105,8 @@ export const Home = () => {
             <Search alwaysFocused={true} />
           </div>
         </div>
-        <div className="shadow-sm border dark:border-black dark:bg-dark03 rounded h-60 md:h-auto w-full flex-col hidden lg:flex">
-          <div className="border-b dark:border-black h-10 flex items-center justify-center font-medium">
+        <div className="shadow-sm border border-gray-300 dark:border-black dark:bg-dark03 rounded h-60 md:h-auto w-full flex-col hidden lg:flex">
+          <div className="border-b border-gray-300 dark:border-black h-10 flex items-center justify-center font-medium">
             <span>90 Day Global Top 10 History</span>
           </div>
           <div className="w-full h-full flex flex-col items-center justify-center px-2">
@@ -161,6 +161,7 @@ export const Home = () => {
           <span className="text-lg font-medium">Check out Batch Beatmap Downloader!</span>
           <span className="mt-2">Features:</span>
           <span>- Mass download osu! beatmaps</span>
+          <span>- Most ranked, loved, and tournament maps</span>
           <span>- Inbuilt Stream/Farm filters</span>
           <span>- Add downloaded maps to new collections</span>
           <span>- Advanced query builder</span>

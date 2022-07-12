@@ -12,5 +12,5 @@ export const Redirect = () => {
     });
   }, [name]);
   
-  return <div></div>;
+  return <div className="main-container"></div>;
 }

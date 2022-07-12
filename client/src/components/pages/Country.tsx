@@ -18,9 +18,12 @@ export const Country = () => {
 
   useEffect(() => {
     document.title = name + "'s Profile"
-    axios.get<CountryDetailsModel>(`/api/countries/${name}/details`).then(res => {
-        setCountry(res.data)
-    })
+    const fetchData = async () => {
+      const { data } = await axios.get<CountryDetailsModel>(`/api/countries/${name}/details`)
+      setCountry(data)
+    }
+
+    fetchData()
   }, [name])
 
   return country !== undefined ? (
