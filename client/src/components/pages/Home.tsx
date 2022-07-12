@@ -5,11 +5,19 @@ import CountryPlayersGraph from '../graphs/CountryPlayersGraph'
 import { CountryPlayers } from "../../../../models/CountryPlayers.model";
 import { CircularProgress } from '@material-ui/core';
 import { ChangeLog } from '../misc/ChangeLog'
-import { ToastContainer, toast, ToastOptions } from "react-toastify";
+import { toast, ToastOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
 
 toast.configure()
+
+const showcases = [
+    { title: "Countries", description: "See a countries' overall performance, accuracy, top 100 plays and more." },
+    { title: "Farm", description: "See what percentage of your plays are from the most played mapsets." },
+    { title: "Global Stats", description: "See the top 10 player history, top plays history, overall performance and more using data from all top players." },
+    { title: "Top Plays", description: "See an in depth view of how your top plays have changed over time." },
+    { title: "Historic Top 50 Players", description: "Old screenshots and website archives have been searched through to construct a view of the top 50 throughout osu! history." }
+]
 
 export const Home = () => {
     const [isLoading, setLoading] = useState(true)
@@ -21,18 +29,18 @@ export const Home = () => {
 
     useEffect(() => {
         document.title = "osuTracker"
-        axios.get<CountryPlayers[]>("/api/countries/Global/players").then(res => {
-            setPlayerData(res.data.slice(-90))
+
+        const fetchData = async () => {
+            const { data: numberUsers } = await axios.get<number>("/api/users/number")
+            const { data: numberCountries } = await axios.get<number>("/api/countries/number")
+            const { data: countryPlayers } = await axios.get<CountryPlayers[]>("/api/countries/Global/players")
+            setPlayerData(countryPlayers.slice(-90))
+            setNumberUsers(numberUsers)
+            setNumberCountries(numberCountries)
             setLoading(false)
-        })
+        }
 
-        axios.get<number>("/api/users/number").then(res => {
-            setNumberUsers(res.data)
-        })
-
-        axios.get<number>("/api/countries/number").then(res => {
-            setNumberCountries(res.data)
-        })
+        fetchData()
     }, [])
 
     const toastSetting: ToastOptions = {
@@ -44,7 +52,7 @@ export const Home = () => {
         draggable: true,
         progress: undefined,
         className: "",
-      };
+    };
 
     const add = async () => {
         setAdding(true)
@@ -129,31 +137,12 @@ export const Home = () => {
 
             <div className="py-4 lg:py-8 px-4 md:px-8 ">
                 <h2 className="text-2xl font-medium">Unique data sets</h2>
-                
-                <div className="flex flex-col mt-4 border-l-4 border-blue-400 dark:border-blue-500 -ml-3 pl-2">
-                    <h2 className="text-xl md:text-2xl">Countries</h2>
-                    <h3 className="text-base md:text-lg">See a countries' overall performance, accuracy, top 100 plays and more.</h3>
-                </div>
-                
-                <div className="flex flex-col mt-4 border-l-4 border-blue-400 dark:border-blue-500 -ml-3 pl-2">
-                    <h2 className="text-xl md:text-2xl">Farm</h2>
-                    <h3 className="text-base md:text-lg">See what percentage of your plays are from the most played mapsets.</h3>
-                </div>
-
-                <div className="flex flex-col mt-4 border-l-4 border-blue-400 dark:border-blue-500 -ml-3 pl-2">
-                    <h2 className="text-xl md:text-2xl">Global Stats</h2>
-                    <h3 className="text-base md:text-lg">See the top 10 player history, top plays history, overall performance and more using data from all top players.</h3>
-                </div>
-
-                <div className="flex flex-col mt-4 border-l-4 border-blue-400 dark:border-blue-500 -ml-3 pl-2">
-                    <h2 className="text-xl md:text-2xl">Top Plays</h2>
-                    <h3 className="text-base md:text-lg">See an in depth view of how your top plays have changed over time.</h3>
-                </div>
-
-                <div className="flex flex-col mt-4 border-l-4 border-blue-400 dark:border-blue-500 -ml-3 pl-2">
-                    <h2 className="text-xl md:text-2xl">Historic Top 50 Players</h2>
-                    <h3 className="text-base md:text-lg">Old screenshots and website archives have been searched through to construct a view of the top 50 throughout osu! history.</h3>
-                </div>
+                {showcases.map(showcase => (
+                    <div key={showcase.title} className="flex flex-col mt-4 border-l-4 border-blue-400 dark:border-blue-500 -ml-3 pl-2">
+                        <h2 className="text-xl md:text-2xl">{showcase.title}</h2>
+                        <h3 className="text-base md:text-lg">{showcase.description}</h3>
+                    </div>
+                ))}
             </div>
 
             <div className="dark:bg-blue-500 bg-blue-400 py-4 lg:py-8 px-4 md:px-8 text-white">
@@ -169,16 +158,14 @@ export const Home = () => {
 
             <div className="px-4 md:px-8 flex flex-col items-start py-4">
                 <div className="flex flex-col mt-2">
-                    <span className="text-lg font-medium">Check out Collection Helper!</span>
+                    <span className="text-lg font-medium">Check out Batch Beatmap Downloader!</span>
                     <span className="mt-2">Features:</span>
-                    <span>- Create/Edit collections</span>
+                    <span>- Mass download osu! beatmaps</span>
                     <span>- Inbuilt Stream/Farm filters</span>
-                    <span>- Create custom filters using JavaScript</span>
-                    <span>- Automatic practice diff generator</span>
-                    <span>- Import/Export collections with beatmaps included</span>
-                    <span>- Mass download maps (stream, farm, loved etc.)</span>
+                    <span>- Add downloaded maps to new collections</span>
+                    <span>- Advanced query builder</span>
                     <a
-                        href="https://github.com/nzbasic/Collection-Helper"
+                        href="https://github.com/nzbasic/batch-beatmap-downloader"
                         target="_blank"
                         rel="noreferrer"
                         className="text-blue-400 mt-4"
@@ -187,8 +174,6 @@ export const Home = () => {
                     </a>
                 </div>
             </div>
-           
-
         </div>
     )
 }
