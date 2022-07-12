@@ -4,7 +4,16 @@ import { HistoricTopModel } from '../models/HistoricTop.model'
 import { BeatmapModel } from "../models/Beatmap.model";
 import { PPBarrierRes } from "../interfaces/stats";
 import { PPBarrier, PPBarrierModel } from "../models/PPBarrier.model";
+import { BeatmapCountModel } from "../models/BeatmapCount.model";
 export const statsRouter = express.Router();
+
+const parseValidInteger = (number: string): number => {
+  const parsed = parseInt(number);
+  if (isNaN(parsed)) {
+    return 0;
+  }
+  return parsed;
+}
 
 statsRouter.route("/historicTop").get((req, res) => {
     HistoricTopModel.find().then(top => res.json(top))
@@ -32,7 +41,37 @@ statsRouter.route("/mapset/:id").get((req, res) => {
 });
 
 statsRouter.route("/ppBarrier").get(async (req, res) => {
-  const barriers = await PPBarrierModel.find()
+  const numberQuery = req.query?.number as string
+  let number: number = 0
+
+  const possibleNumbers: number[] = []
+  const numbers = await PPBarrierModel.find({}, { number: 1 })
+  for (const number of numbers) {
+    possibleNumbers.push(number.number.valueOf())
+  }
+  possibleNumbers.sort((a, b) => a - b)
+
+  if (numberQuery) {  
+    const validation = parseValidInteger(numberQuery)
+    if (!validation) {
+      res.status(400).json("Invalid number, expected non zero integer")
+      return
+    } else {
+      number = validation
+      if (!possibleNumbers.includes(number)) {
+        res.status(400).json("Invalid number, not found in database. Possible values are " + possibleNumbers.join(", "))
+        return
+      }
+    }
+  } 
+
+  let barriers: PPBarrier[]  = []
+  if (number) {
+    barriers = await PPBarrierModel.find({ number })
+  } else {
+    barriers = await PPBarrierModel.find({})
+  }
+
   const output: PPBarrierRes[] = []
 
   for (const barrier of barriers) {
@@ -48,7 +87,63 @@ statsRouter.route("/ppBarrier").get(async (req, res) => {
     output.push({ number: number.valueOf(), list })
   }
 
-  res.json(output)
+  if (number) {
+    res.json(output.pop())
+  } else {
+    res.json(output)
+  }
+})
+
+statsRouter.route("/idCounts").get(async (req, res) => {
+  const limit = req.query?.limit as string
+  const offset = req.query?.offset as string
+  let limitNum: number = 100
+  let offsetNum: number = 0
+
+  if (limit) {
+    const validation = parseValidInteger(limit)
+    if (!validation) {
+      res.status(400).json("Invalid limit, expected non zero integer")
+      return
+    } else {
+      limitNum = validation
+    }
+  }
+
+  if (offset) {
+    const validation = parseValidInteger(offset)
+    if (!validation) {
+      res.status(400).json("Invalid offset, expected non zero integer")
+      return
+    } else {
+      offsetNum = validation
+    }
+  }
+
+  if (!limit) {
+    limitNum = await BeatmapCountModel.countDocuments()
+  }
+
+  const counts = await BeatmapCountModel
+    .find({}, { _id: 0, id: 1, count: 1 })
+    .sort({ count: -1 })
+    .skip(offsetNum)
+    .limit(limitNum)
+
+  res.json(counts)
+})
+
+statsRouter.route("/idCount/:id").get(async (req, res) => { 
+  // get number from id param
+  const id = req.params.id as string
+  const number = parseInt(id)
+  if (isNaN(number)) {
+    res.status(400).json("Invalid id, expected non zero integer")
+    return
+  }
+
+  const count = await BeatmapCountModel.findOne({ id: number })
+  res.json(count?.count??0)
 })
 
 statsRouter.route("/mapsets").get(async (req, res) => {

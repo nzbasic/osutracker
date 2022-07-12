@@ -6,6 +6,16 @@ import { CountryPlaysModel } from "../models/CountryPlays.model";
 import { CountryPlayersModel } from "../models/CountryPlayers.model";
 export const countryRouter = express.Router();
 
+const parseName = (name: string) => {
+    let query: any
+    if (name.length == 2) {
+        query = { abbreviation: { $regex : new RegExp(name, "i") } }
+    } else {
+        query = { name: { $regex : new RegExp(name, "i") } }
+    }
+    return query
+}
+
 countryRouter.route("/all").get((req, res) => {
     CountryModel.find()
         .then((countries) => res.json(countries))
@@ -67,35 +77,39 @@ countryRouter.route("/limitedAll").get((req, res) => {
 });
 
 countryRouter.route("/:name/details").get((req, res) => {
-    CountryModel.findOne({ name: req.params.name })
+    const query = parseName(req.params.name)
+    CountryModel.findOne(query)
         .then((details) => {
             res.json(details);
         }).catch((err) => res.status(400).json("Error: " + err + req.params.name));
 });
 
 countryRouter.route("/:name/stats").get((req, res) => {
-    CountryStatModel.find({ name: req.params.name })
+    const query = parseName(req.params.name)
+    CountryStatModel.find(query)
         .then((stats) => {
             res.json(stats);
         }).catch((err) => res.status(400).json("Error: " + err + req.params.name));
 });
 
 countryRouter.route("/:name/players").get((req, res) => {
-    CountryPlayersModel.find({ name: req.params.name })
+    const query = parseName(req.params.name)
+    CountryPlayersModel.find(query)
         .then((players) => {
             res.json(players);
         }).catch((err) => res.status(400).json("Error: " + err + req.params.name));
 });
 
 countryRouter.route("/:name/plays").get((req, res) => {
-    CountryPlaysModel.find({ name: req.params.name })
+    const query = parseName(req.params.name)
+    CountryPlaysModel.find(query)
         .then((plays) => {
             res.json(plays);
         }).catch((err) => res.status(400).json("Error: " + err + req.params.name));
 });
 
 countryRouter.route("/:abbreviation").get((req, res) => {
-    CountryModel.findOne({ abbreviation: req.params.abbreviation }, { name: 1 })
+    CountryModel.findOne({ abbreviation: { $regex: new RegExp(req.params.abbreviation, "i") } }, { name: 1 })
         .then((country) => {
             res.json(country?.name);
         }).catch((err) => res.status(400).json("Error: " + err + req.params.abbreviation));
