@@ -4,8 +4,8 @@ import { Score, ScoreSchema } from '../score.schema';
 
 @Schema({ collection: 'countryplays' })
 export class CountryPlays {
-  @Prop() name: string;
-  @Prop() date: number;
+  @Prop({ type: String }) name: string;
+  @Prop({ type: Number }) date: number;
   @Prop({ type: [ScoreSchema] }) added: Types.Array<Score>;
   @Prop({ type: [ScoreSchema] }) removed: Types.Array<Score>;
 }

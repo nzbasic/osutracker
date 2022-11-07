@@ -3,8 +3,8 @@ import { Document, Model } from 'mongoose';
 
 @Schema({ collection: 'beatmapcounts' })
 export class BeatmapCount {
-  @Prop() id: string;
-  @Prop() count: number;
+  @Prop({ type: String }) id: string;
+  @Prop({ type: Number }) count: number;
 }
 
 export type BeatmapCountDocument = BeatmapCount & Document;

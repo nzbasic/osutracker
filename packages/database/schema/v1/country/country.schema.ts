@@ -6,17 +6,17 @@ import { Score, ScoreSchema } from '../score.schema';
 
 @Schema({ collection: 'countries' })
 export class Country {
-  @Prop() name: string;
-  @Prop() abbreviation: string;
-  @Prop() acc: number;
-  @Prop() pp: string;
-  @Prop() farm: number;
-  @Prop() range: string;
-  @Prop() playerWeighting: number;
-  @Prop() averageObjects: number;
-  @Prop() averageLength: number;
+  @Prop({ type: String }) name: string;
+  @Prop({ type: String }) abbreviation: string;
+  @Prop({ type: Number }) acc: number;
+  @Prop({ type: String }) pp: string;
+  @Prop({ type: Number }) farm: number;
+  @Prop({ type: String }) range: string;
+  @Prop({ type: Number }) playerWeighting: number;
+  @Prop({ type: Number }) averageObjects: number;
+  @Prop({ type: Number }) averageLength: number;
   @Prop({ type: [ModCountSchema] }) modsCount: Types.Array<ModCount>;
-  @Prop({ required: false }) rank?: number;
+  @Prop({ type: Number, required: false }) rank?: number;
   @Prop({ type: [ScoreSchema] }) scoresCurrent: Types.Array<Score>;
   @Prop({ type: [ContributorSchema] }) contributors: Types.Array<Contributor>;
 }

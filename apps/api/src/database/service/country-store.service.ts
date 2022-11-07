@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery } from 'mongoose';
-import { CountryPlayersCollection } from '../schema/country/country-players.schema';
-import { CountryPlaysCollection } from '../schema/country/country-plays.schema';
-import { CountryStatCollection } from '../schema/country/country-stat.schema';
-import { CountryCollection } from '../schema/country/country.schema';
+import {
+  CountryPlayersCollection,
+  CountryPlaysCollection,
+  CountryStatCollection,
+  CountryCollection,
+} from 'database';
 
 @Injectable()
 export class CountryStoreService {

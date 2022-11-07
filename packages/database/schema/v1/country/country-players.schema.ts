@@ -3,15 +3,15 @@ import { Document, Model, Types } from 'mongoose';
 
 @Schema()
 class CountryPlayer {
-  @Prop() name: string;
-  @Prop() pp: string;
+  @Prop({ type: String }) name: string;
+  @Prop({ type: String }) pp: string;
 }
 
 const CountryPlayerSchema = SchemaFactory.createForClass(CountryPlayer);
 
 @Schema({ collection: 'countryplayers' })
 export class CountryPlayers {
-  @Prop() date: number;
+  @Prop({ type: Number }) date: number;
   @Prop({ type: [CountryPlayerSchema] })
   listPlayers: Types.Array<CountryPlayer>;
 }

@@ -1,11 +1,13 @@
-import { PPBarrierCollection } from './../schema/stats/pp-barrier.schema';
-import { HistoricTopCollection } from './../schema/historic/historic-top.schema';
+import {
+  PPBarrierCollection,
+  HistoricTopCollection,
+  OverallStatsCollection,
+  BeatmapSetCollection,
+  BeatmapCollection,
+  BeatmapCountCollection,
+} from 'database/schema/v1';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { OverallStatsCollection } from '../schema/stats/overall-stats.schema';
-import { BeatmapSetCollection } from '../schema/beatmap-set.schema';
-import { BeatmapCollection } from '../schema/beatmap.schema';
-import { BeatmapCountCollection } from '../schema/beatmap-count.schema';
 
 @Injectable()
 export class StatStoreService {

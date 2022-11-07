@@ -3,8 +3,8 @@ import { Document, Model } from 'mongoose';
 
 @Schema({ collection: 'topplaycounts' })
 export class TopPlayCount {
-  @Prop() id: number;
-  @Prop() count: number;
+  @Prop({ type: Number }) id: number;
+  @Prop({ type: Number }) count: number;
 }
 
 export type TopPlayCountDocument = TopPlayCount & Document;

@@ -5,35 +5,35 @@ import { ModCount, ModCountSchema } from './mod-count.schema';
 
 @Schema()
 class CountriesStats {
-  range: number;
-  farm: number;
-  pp: number;
-  acc: number;
-  lengthPlay: number;
-  objectsPlay: number;
+  @Prop({ type: Number }) range: number;
+  @Prop({ type: Number }) farm: number;
+  @Prop({ type: Number }) pp: number;
+  @Prop({ type: Number }) acc: number;
+  @Prop({ type: Number }) lengthPlay: number;
+  @Prop({ type: Number }) objectsPlay: number;
   @Prop({ type: [ModCountSchema] }) modsCount: Types.Array<ModCount>;
 }
 const CountriesStatsSchema = SchemaFactory.createForClass(CountriesStats);
 
 @Schema()
 class MapperCount {
-  @Prop() mapper: string;
-  @Prop() count: number;
+  @Prop({ type: String }) mapper: string;
+  @Prop({ type: Number }) count: number;
 }
 const MapperCountSchema = SchemaFactory.createForClass(MapperCount);
 
 @Schema()
 class UsersStats {
-  @Prop() range: number;
-  @Prop() acc: number;
-  @Prop() plays: number;
-  @Prop() timeJoined: number;
-  @Prop() farm: number;
-  @Prop() topPlay: string;
-  @Prop() pp: number;
-  @Prop() level: number;
-  @Prop() lengthPlay: number;
-  @Prop() objectsPlay: number;
+  @Prop({ type: Number }) range: number;
+  @Prop({ type: Number }) acc: number;
+  @Prop({ type: Number }) plays: number;
+  @Prop({ type: Number }) timeJoined: number;
+  @Prop({ type: Number }) farm: number;
+  @Prop({ type: String }) topPlay: string;
+  @Prop({ type: Number }) pp: number;
+  @Prop({ type: Number }) level: number;
+  @Prop({ type: Number }) lengthPlay: number;
+  @Prop({ type: Number }) objectsPlay: number;
   @Prop({ type: [ModCountSchema] }) modsCount: Types.Array<ModCount>;
 }
 const UsersStatsSchema = SchemaFactory.createForClass(UsersStats);

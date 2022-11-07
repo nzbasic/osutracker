@@ -1,21 +1,23 @@
 import { CountryStoreService } from './country-store.service';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserSchema } from '../schema/user/user.schema';
 import { UserStoreService } from './user-store.service';
-import { CountrySchema } from '../schema/country/country.schema';
 import { UtilityModule } from 'src/services/utility.module';
-import { UserPlaysSchema } from '../schema/user/user-plays.schema';
-import { UserStatSchema } from '../schema/user/user-stat.schema';
-import { CountryStatSchema } from '../schema/country/country-stat.schema';
-import { CountryPlaysSchema } from '../schema/country/country-plays.schema';
-import { CountryPlayersSchema } from '../schema/country/country-players.schema';
-import { OverallStatsSchema } from '../schema/stats/overall-stats.schema';
-import { HistoricTopSchema } from '../schema/historic/historic-top.schema';
-import { BeatmapSchema } from '../schema/beatmap.schema';
-import { PPBarrierSchema } from '../schema/stats/pp-barrier.schema';
-import { BeatmapCountSchema } from '../schema/beatmap-count.schema';
-import { BeatmapSetSchema } from '../schema/beatmap-set.schema';
+import {
+  CountrySchema,
+  UserPlaysSchema,
+  UserStatSchema,
+  CountryStatSchema,
+  CountryPlaysSchema,
+  CountryPlayersSchema,
+  OverallStatsSchema,
+  HistoricTopSchema,
+  BeatmapSchema,
+  PPBarrierSchema,
+  BeatmapCountSchema,
+  BeatmapSetSchema,
+  UserSchema,
+} from 'database';
 
 @Module({
   controllers: [],

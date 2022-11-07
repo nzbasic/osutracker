@@ -3,8 +3,8 @@ import { Document, Model } from 'mongoose';
 
 @Schema()
 export class Contributor {
-  @Prop() name: string;
-  @Prop() pp: number;
+  @Prop({ type: String }) name: string;
+  @Prop({ type: Number }) pp: number;
 }
 
 export type ContributorDocument = Contributor & Document;

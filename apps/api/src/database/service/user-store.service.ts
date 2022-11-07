@@ -1,10 +1,12 @@
-import { UserStatCollection } from './../schema/user/user-stat.schema';
+import {
+  UserStatCollection,
+  UserCollection,
+  UserPlaysCollection,
+} from 'database/schema/v1';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FilterQuery, SortOrder } from 'mongoose';
-import { UserCollection } from '../schema/user/user.schema';
+import { SortOrder } from 'mongoose';
 import { CountryStoreService } from './country-store.service';
-import { UserPlaysCollection } from '../schema/user/user-plays.schema';
 
 @Injectable()
 export class UserStoreService {

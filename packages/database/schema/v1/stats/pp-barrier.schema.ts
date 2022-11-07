@@ -3,15 +3,15 @@ import { Document, Model, Types } from 'mongoose';
 
 @Schema()
 class PPBarrierCount {
-  @Prop() setId: string;
-  @Prop() count: number;
+  @Prop({ type: String }) setId: string;
+  @Prop({ type: Number }) count: number;
 }
 
 const PPBarrierCountSchema = SchemaFactory.createForClass(PPBarrierCount);
 
 @Schema({ collection: 'ppbarriers' })
 export class PPBarrier {
-  @Prop() number: number;
+  @Prop({ type: Number }) number: number;
   @Prop({ type: [PPBarrierCountSchema] }) list: Types.Array<PPBarrierCount>;
 }
 

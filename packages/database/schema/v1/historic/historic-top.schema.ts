@@ -3,8 +3,8 @@ import { Document, Model, Types } from 'mongoose';
 
 @Schema()
 class HistoricTopPlayerPoint {
-  @Prop() name: string;
-  @Prop() pp: number;
+  @Prop({ type: String }) name: string;
+  @Prop({ type: Number }) pp: number;
 }
 
 const HistoricTopPlayerPointSchema = SchemaFactory.createForClass(
@@ -13,9 +13,9 @@ const HistoricTopPlayerPointSchema = SchemaFactory.createForClass(
 
 @Schema({ collection: 'historictops' })
 export class HistoricTop {
-  @Prop() year: number;
-  @Prop() month: string;
-  @Prop() monthNumber: number;
+  @Prop({ type: Number }) year: number;
+  @Prop({ type: String }) month: string;
+  @Prop({ type: Number }) monthNumber: number;
   @Prop({ type: [HistoricTopPlayerPointSchema] })
   top: Types.Array<HistoricTopPlayerPoint>;
 }

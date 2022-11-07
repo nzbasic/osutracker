@@ -1,0 +1,17 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@nestjs/mongoose": "^9.2.1",
+    "@types/mongoose": "^5.11.97",
+    "mongoose": "^6.7.1",
+    "typescript": "^4.8.4"
+  }
+}
