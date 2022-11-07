@@ -1,11 +1,4 @@
-import {
-  PPBarrierCollection,
-  HistoricTopCollection,
-  OverallStatsCollection,
-  BeatmapSetCollection,
-  BeatmapCollection,
-  BeatmapCountCollection,
-} from 'database/schema/v1';
+import { v1 } from 'database';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -13,17 +6,17 @@ import { InjectModel } from '@nestjs/mongoose';
 export class StatStoreService {
   constructor(
     @InjectModel('OverallStats')
-    private readonly overallStatsModel: OverallStatsCollection,
+    private readonly overallStatsModel: v1.OverallStatsCollection,
     @InjectModel('HistoricTop')
-    private readonly historicTopModel: HistoricTopCollection,
+    private readonly historicTopModel: v1.HistoricTopCollection,
     @InjectModel('BeatmapSet')
-    private readonly beatmapSetModel: BeatmapSetCollection,
+    private readonly beatmapSetModel: v1.BeatmapSetCollection,
     @InjectModel('Beatmap')
-    private readonly beatmapModel: BeatmapCollection,
+    private readonly beatmapModel: v1.BeatmapCollection,
     @InjectModel('PPBarrier')
-    private readonly ppBarrierModel: PPBarrierCollection,
+    private readonly ppBarrierModel: v1.PPBarrierCollection,
     @InjectModel('BeatmapCount')
-    private readonly beatmapCountModel: BeatmapCountCollection,
+    private readonly beatmapCountModel: v1.BeatmapCountCollection,
   ) {}
 
   getOverallStats() {

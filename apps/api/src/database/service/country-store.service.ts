@@ -1,23 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery } from 'mongoose';
-import {
-  CountryPlayersCollection,
-  CountryPlaysCollection,
-  CountryStatCollection,
-  CountryCollection,
-} from 'database';
+import { v1 } from 'database';
 
 @Injectable()
 export class CountryStoreService {
   constructor(
-    @InjectModel('Country') private readonly countryModel: CountryCollection,
+    @InjectModel('Country') private readonly countryModel: v1.CountryCollection,
     @InjectModel('CountryStat')
-    private readonly countryStatModel: CountryStatCollection,
+    private readonly countryStatModel: v1.CountryStatCollection,
     @InjectModel('CountryPlays')
-    private readonly countryPlaysModel: CountryPlaysCollection,
+    private readonly countryPlaysModel: v1.CountryPlaysCollection,
     @InjectModel('CountryPlayers')
-    private readonly countryPlayersModel: CountryPlayersCollection,
+    private readonly countryPlayersModel: v1.CountryPlayersCollection,
   ) {}
 
   private parseName<T>(name: string) {

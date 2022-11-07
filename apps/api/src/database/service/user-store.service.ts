@@ -1,8 +1,4 @@
-import {
-  UserStatCollection,
-  UserCollection,
-  UserPlaysCollection,
-} from 'database/schema/v1';
+import { v1 } from 'database';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { SortOrder } from 'mongoose';
@@ -11,11 +7,11 @@ import { CountryStoreService } from './country-store.service';
 @Injectable()
 export class UserStoreService {
   constructor(
-    @InjectModel('User') private readonly userModel: UserCollection,
+    @InjectModel('User') private readonly userModel: v1.UserCollection,
     @InjectModel('UserStat')
-    private readonly userStatsModel: UserStatCollection,
+    private readonly userStatsModel: v1.UserStatCollection,
     @InjectModel('UserPlays')
-    private readonly userPlaysModel: UserPlaysCollection,
+    private readonly userPlaysModel: v1.UserPlaysCollection,
     private readonly countryStoreService: CountryStoreService,
   ) {}
 

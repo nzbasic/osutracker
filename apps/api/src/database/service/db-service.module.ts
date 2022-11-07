@@ -3,21 +3,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserStoreService } from './user-store.service';
 import { UtilityModule } from 'src/services/utility.module';
-import {
-  CountrySchema,
-  UserPlaysSchema,
-  UserStatSchema,
-  CountryStatSchema,
-  CountryPlaysSchema,
-  CountryPlayersSchema,
-  OverallStatsSchema,
-  HistoricTopSchema,
-  BeatmapSchema,
-  PPBarrierSchema,
-  BeatmapCountSchema,
-  BeatmapSetSchema,
-  UserSchema,
-} from 'database';
+import { v1 } from 'database';
 
 @Module({
   controllers: [],
@@ -25,19 +11,19 @@ import {
   exports: [UserStoreService, CountryStoreService],
   imports: [
     MongooseModule.forFeature([
-      { name: 'User', schema: UserSchema },
-      { name: 'UserStat', schema: UserStatSchema },
-      { name: 'UserPlays', schema: UserPlaysSchema },
-      { name: 'Country', schema: CountrySchema },
-      { name: 'CountryStat', schema: CountryStatSchema },
-      { name: 'CountryPlays', schema: CountryPlaysSchema },
-      { name: 'CountryPlayers', schema: CountryPlayersSchema },
-      { name: 'OverallStats', schema: OverallStatsSchema },
-      { name: 'HistoricTop', schema: HistoricTopSchema },
-      { name: 'BeatmapSet', schema: BeatmapSetSchema },
-      { name: 'Beatmap', schema: BeatmapSchema },
-      { name: 'PPBarrier', schema: PPBarrierSchema },
-      { name: 'BeatmapCount', schema: BeatmapCountSchema },
+      { name: 'User', schema: v1.UserSchema },
+      { name: 'UserStat', schema: v1.UserStatSchema },
+      { name: 'UserPlays', schema: v1.UserPlaysSchema },
+      { name: 'Country', schema: v1.CountrySchema },
+      { name: 'CountryStat', schema: v1.CountryStatSchema },
+      { name: 'CountryPlays', schema: v1.CountryPlaysSchema },
+      { name: 'CountryPlayers', schema: v1.CountryPlayersSchema },
+      { name: 'OverallStats', schema: v1.OverallStatsSchema },
+      { name: 'HistoricTop', schema: v1.HistoricTopSchema },
+      { name: 'BeatmapSet', schema: v1.BeatmapSetSchema },
+      { name: 'Beatmap', schema: v1.BeatmapSchema },
+      { name: 'PPBarrier', schema: v1.PPBarrierSchema },
+      { name: 'BeatmapCount', schema: v1.BeatmapCountSchema },
     ]),
     UtilityModule,
   ],
