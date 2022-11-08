@@ -19,5 +19,18 @@
     "tailwindcss": "^3.2.2",
     "tsconfig": "*",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.0.13",
+    "@visx/gradient": "^2.10.0",
+    "@visx/group": "^2.10.0",
+    "@visx/mock-data": "^2.15.1",
+    "@visx/responsive": "^2.10.0",
+    "@visx/scale": "^2.2.2",
+    "@visx/shape": "^2.12.2",
+    "classnames": "^2.3.2",
+    "react-tsparticles": "^2.5.3",
+    "tsparticles": "^2.5.3",
+    "tsparticles-engine": "^2.5.2"
   }
 }
