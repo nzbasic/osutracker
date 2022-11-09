@@ -5,6 +5,7 @@ import { Document, Model } from 'mongoose';
 export class BeatmapCount {
   @Prop({ type: String }) id: string;
   @Prop({ type: Number }) count: number;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type BeatmapCountDocument = BeatmapCount & Document;

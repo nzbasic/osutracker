@@ -12,6 +12,7 @@ export class Beatmap {
   @Prop({ type: String }) length: string;
   @Prop({ type: String }) mapper: string;
   @Prop({ type: Number }) count: number;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type BeatmapDocument = Beatmap & Document;

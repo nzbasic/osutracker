@@ -35,6 +35,7 @@ class UsersStats {
   @Prop({ type: Number }) lengthPlay: number;
   @Prop({ type: Number }) objectsPlay: number;
   @Prop({ type: [ModCountSchema] }) modsCount: Types.Array<ModCount>;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 const UsersStatsSchema = SchemaFactory.createForClass(UsersStats);
 

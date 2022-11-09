@@ -5,6 +5,7 @@ import { Document, Model } from 'mongoose';
 export class TopPlayCount {
   @Prop({ type: Number }) id: number;
   @Prop({ type: Number }) count: number;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type TopPlayCountDocument = TopPlayCount & Document;

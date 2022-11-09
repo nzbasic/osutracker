@@ -10,6 +10,7 @@ export class CountryStat {
   @Prop({ type: Number, required: false }) range?: number;
   @Prop({ type: Number, required: false }) farm?: number;
   @Prop({ type: Number, required: false }) playerWeighting?: number;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type CountryStatDocument = CountryStat & Document;

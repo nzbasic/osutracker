@@ -19,6 +19,7 @@ export class Country {
   @Prop({ type: Number, required: false }) rank?: number;
   @Prop({ type: [ScoreSchema] }) scoresCurrent: Types.Array<Score>;
   @Prop({ type: [ContributorSchema] }) contributors: Types.Array<Contributor>;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type CountryDocument = Country & Document;

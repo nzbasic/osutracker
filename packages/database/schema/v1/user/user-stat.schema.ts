@@ -14,6 +14,7 @@ export class UserStat {
   @Prop({ type: Number, required: false }) farm?: number;
   @Prop({ type: Number, required: false }) range?: number;
   @Prop({ type: Number, required: false }) score?: number;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type UserStatDocument = UserStat & Document;

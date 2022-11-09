@@ -14,6 +14,7 @@ export class CountryPlayers {
   @Prop({ type: Number }) date: number;
   @Prop({ type: [CountryPlayerSchema] })
   listPlayers: Types.Array<CountryPlayer>;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type CountryPlayersDocument = CountryPlayers & Document;

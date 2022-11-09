@@ -8,6 +8,7 @@ export class UserPlays {
   @Prop({ type: Number }) date: number;
   @Prop({ type: [ScoreSchema] }) added: Types.Array<Score>;
   @Prop({ type: [ScoreSchema] }) removed: Types.Array<Score>;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type UserPlaysDocument = UserPlays & Document;

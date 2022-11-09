@@ -18,6 +18,7 @@ export class HistoricTop {
   @Prop({ type: Number }) monthNumber: number;
   @Prop({ type: [HistoricTopPlayerPointSchema] })
   top: Types.Array<HistoricTopPlayerPoint>;
+  @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type HistoricTopDocument = HistoricTop & Document;

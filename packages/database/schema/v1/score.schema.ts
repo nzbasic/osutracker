@@ -13,6 +13,7 @@ export class Score {
   @Prop({ type: String }) mapper: string;
   @Prop({ type: String }) length: string;
   @Prop({ type: Number }) objects: number;
+  @Prop({ type: String }) time: string;
   @Prop({ type: String, required: false }) player?: string;
   @Prop({ type: Boolean, required: false }) added?: boolean;
 }
