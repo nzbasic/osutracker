@@ -6,8 +6,8 @@ import { Score, ScoreSchema } from '../score.schema';
 
 @Schema({ collection: 'countries' })
 export class Country {
-  @Prop({ type: String }) name: string;
-  @Prop({ type: String }) abbreviation: string;
+  @Prop({ type: String, unique: true }) name: string;
+  @Prop({ type: String, unique: true }) abbreviation: string;
   @Prop({ type: Number }) acc: number;
   @Prop({ type: Number }) pp: number;
   @Prop({ type: Number }) farm: number;

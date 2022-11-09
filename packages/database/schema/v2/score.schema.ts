@@ -9,11 +9,8 @@ export class Score {
   @Prop({ type: [String] }) mods: Types.Array<string>;
   @Prop({ type: Number }) pp: number;
   @Prop({ type: Number }) countMiss: number;
-  @Prop({ type: Number }) count50: number;
-  @Prop({ type: Number }) count100: number;
-  @Prop({ type: Number }) count300: number;
+  @Prop({ type: Date }) time: Date;
   @Prop({ type: String, required: false }) player?: string;
-  @Prop({ type: Boolean, required: false }) added?: boolean;
 }
 
 export type ScoreDocument = Score & Document;
