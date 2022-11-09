@@ -13,8 +13,8 @@ export const Header = () => {
           <p className="text-white text-xl font-bold leading-none">osuTracker</p>
         </Link>
         <div className="flex items-center gap-8 text-white text-lg font-semibold">
-          <Link href="/app/meta">Meta</Link>
           <Link href="/app/tracking">Tracking</Link>
+          <Link href="/app/meta">Meta</Link>
           <Link href="/app/query">Query</Link>
           <Link href="/app/api">API</Link>
         </div>
