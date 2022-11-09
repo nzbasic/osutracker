@@ -1,13 +1,15 @@
+import React from "react";
+import Link from "next/link";
+import { Sidebar } from "./sidebar";
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex justify-center w-screen">
-      <div className="flex w-col">
-        <aside className="flex flex-col bg-gray-500 h-screen w-72">
-          
+    <div className="flex w-screen justify-center bg-neutral-800">
+      <div className="w-col flex">
+        <aside className="flex h-screen w-72 flex-col bg-neutral-900">
+          <Sidebar />
         </aside>
-        <main className="bg-red-500 w-full">
-          {children}
-        </main>
+        <main className="w-full bg-neutral-900">{children}</main>
       </div>
     </div>
   );

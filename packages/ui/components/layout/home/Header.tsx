@@ -2,20 +2,14 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const iconWidth = 50;
-const iconHeight = 50;
+import { Logo } from "../../util/Logo";
 
 export const Header = () => {
   return (
     <header className="flex h-24 w-screen bg-blue-800">
       <div className="flex items-center justify-between w-full h-full p-8">
         <Link href="/" className="flex items-center gap-4">
-          <Image
-            alt="logo"
-            src="/logo512.png"
-            width={iconWidth}
-            height={iconHeight}
-          />
+          <Logo width={50} height={50} />
           <p className="text-white text-xl font-bold leading-none">osuTracker</p>
         </Link>
         <div className="flex items-center gap-8 text-white text-lg font-semibold">
