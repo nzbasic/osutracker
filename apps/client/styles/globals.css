@@ -30,6 +30,14 @@ h6 {
   @apply max-w-7xl w-full;
 }
 
-#tsparticles {
-  @apply absolute top-0 left-0 w-full h-full;
+.border-edge {
+  @apply border-gray-300;
+}
+
+.button-active {
+  @apply bg-gray-50 text-black;
+}
+
+.button-inactive {
+  @apply bg-white text-gray-500 hover:bg-blue-500 hover:text-white; 
 }

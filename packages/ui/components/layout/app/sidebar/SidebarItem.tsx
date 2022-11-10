@@ -52,7 +52,7 @@ export const SidebarItem = ({
             exit={{ height: 0, transition: { duration: parentDuration + itemDuration }}}
             className="ml-2 flex gap-2"
           >
-            <span className="mt-2 border-l-2 border-zinc-200" />
+            <span className="mt-2 border-l-2 border-edge" />
             <div className="mt-2 flex flex-grow flex-col gap-2">
               {subItems.map((subItem, i) => (
                 <motion.div

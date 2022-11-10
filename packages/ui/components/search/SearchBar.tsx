@@ -30,7 +30,7 @@ export const SearchBar = () => {
         >
           <MagnifyingGlassIcon className="mr-3 flex-none w-6 h-6" />
           Quick search...
-          <div className="ml-auto text-xs text-gray-500 border hover:border-gray-300 rounded py-0.5 px-2" onClick={close}>
+          <div className="ml-auto text-xs text-gray-500 border hover:border-edge rounded py-0.5 px-2" onClick={close}>
             /
           </div>
         </button>
