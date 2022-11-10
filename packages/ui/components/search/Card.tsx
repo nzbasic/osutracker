@@ -6,10 +6,12 @@ interface CardProps {
   children: JSX.Element;
   name: string;
   value: string;
+  onClick?: () => void;
 }
 
-const Card = ({ name, value, href, children }: CardProps) => (
+const Card = ({ name, value, href, children, onClick }: CardProps) => (
   <Link 
+    onClick={onClick}
     href={href}
     className="group flex items-center gap-2 p-2 text-gray-800 bg-gray-50 rounded-md hover:bg-sky-500 hover:text-white transition-all"
   >

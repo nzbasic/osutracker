@@ -8,7 +8,8 @@ interface Player {
 }
 
 interface PlayersProps {
-  players: Player[]
+  onNavigate: () => void;
+  players?: Player[]
 }
 
 const players: Player[] = [
@@ -24,7 +25,7 @@ const players: Player[] = [
   },
 ]
 
-const Players = () => {
+const Players = ({ onNavigate }: PlayersProps) => {
   return (
     <>
       {players.map(({ id, name, pp }) => (
@@ -32,7 +33,8 @@ const Players = () => {
           key={id}
           href={`/app/tracking/user/${id}`}
           name={name} 
-          value={pp + " pp"}            
+          value={pp + " pp"} 
+          onClick={onNavigate}           
         >
           <Image src={`https://a.ppy.sh/${id}`} alt="dp" width="50" height="50" className="rounded" />
         </Card>

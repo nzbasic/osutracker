@@ -8,7 +8,8 @@ interface Country {
 }
 
 interface CountriesProps {
-  countries: Country[]
+  onNavigate: () => void;
+  countries?: Country[]
 }
 
 const countries: Country[] = [
@@ -24,7 +25,7 @@ const countries: Country[] = [
   },
 ]
 
-const Countries = () => {
+const Countries = ({ onNavigate }: CountriesProps) => {
   return (
     <>
       {countries.map(({ abbreviation, name, pp }) => (
@@ -33,6 +34,7 @@ const Countries = () => {
           name={name}
           value={pp + " pp"}
           href={`/app/tracking/country/${name}`}
+          onClick={onNavigate}
         >
           <ReactCountryFlag countryCode={abbreviation} svg className="rounded-md" style={{ width: '4em', height: '3em' }} />
         </Card>

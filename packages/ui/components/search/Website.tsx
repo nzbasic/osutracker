@@ -8,8 +8,9 @@ interface Article {
   id: number;
 }
 
-interface DocsProps {
-  articles: Article[]
+interface WebsiteProps {
+  onNavigate: () => void;
+  articles?: Article[]
 }
 
 const articles: Article[] = [
@@ -21,7 +22,7 @@ const articles: Article[] = [
   }
 ]
 
-const Website = () => {
+const Website = ({ onNavigate }: WebsiteProps) => {
   return (
     <>
       {articles.map(({ page, content, id, link }) => (
@@ -30,6 +31,7 @@ const Website = () => {
           name={page}
           value={content}
           href={link}
+          onClick={onNavigate}
         >
           <div className="w-8 h-8 flex items-center justify-center font-semibold">
             <DocumentTextIcon />
