@@ -30,6 +30,7 @@
     "@visx/shape": "^2.12.2",
     "classnames": "^2.3.2",
     "framer-motion": "^7.6.5",
+    "react-country-flag": "^3.0.2",
     "react-tsparticles": "^2.5.3",
     "tsparticles": "^2.5.3",
     "tsparticles-engine": "^2.5.2"
