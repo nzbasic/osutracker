@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion";
 import { MouseEventHandler, useEffect, useRef } from "react";
 
 interface ModalWrapperProps {
@@ -24,12 +25,20 @@ export const ModalWrapper = ({ close, children }: ModalWrapperProps) => {
   }
 
   return (
-    <div 
+    <div
       ref={ref}
       className="absolute z-50 top-0 left-0 h-screen w-screen bg-gray-400/30 flex items-center justify-center" 
       onClick={handleClick}
     >
-      {children(close)}
+      <motion.div 
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0 }}
+        className="max-w-2xl w-full"
+      >
+        {children(close)}
+      </motion.div>
+      
     </div>
   )
 }
