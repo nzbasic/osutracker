@@ -1,62 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { SidebarItem, SidebarSubItem, Logo, SearchBar } from "ui";
+import { Logo, SearchBar } from "ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  ArrowTrendingUpIcon,
-  MagnifyingGlassIcon,
-  BookOpenIcon,
-  CodeBracketIcon,
-  HomeIcon,
-  ArrowsRightLeftIcon,
-  Square3Stack3DIcon,
-} from "@heroicons/react/24/outline";
-import classNames from "classnames";
-
-const menuItems = [
-  {
-    title: "Tracking",
-    link: "/app/tracking",
-    Icon: ArrowTrendingUpIcon,
-    subItems: [
-      {
-        title: "Home",
-        link: "",
-        Icon: HomeIcon,
-      },
-      {
-        title: "Historic",
-        link: "/historic",
-        Icon: BookOpenIcon,
-      },
-      {
-        title: "Compare",
-        link: "/compare",
-        Icon: ArrowsRightLeftIcon,
-      },
-    ],
-  },
-  {
-    title: "Meta",
-    link: "/app/meta",
-    Icon: Square3Stack3DIcon,
-    subItems: [],
-  },
-  {
-    title: "Query",
-    link: "/app/query",
-    Icon: MagnifyingGlassIcon,
-    subItems: [],
-  },
-  {
-    title: "API",
-    link: "/app/api",
-    Icon: CodeBracketIcon,
-    subItems: [],
-  },
-];
+import { menuItems, SidebarItem } from "ui";
 
 export const Sidebar = () => {
   const [active, setActive] = React.useState(usePathname() ?? "");
@@ -77,7 +25,7 @@ export const Sidebar = () => {
             link={link}
             Icon={Icon}
             subItems={subItems}
-            active={active}
+            currentActive={active}
             setActive={setActive}
           />
         ))}
