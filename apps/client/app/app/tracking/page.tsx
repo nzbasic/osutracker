@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1>Tracking Home</h1>;
+  return <h1>Tracking/</h1>;
 }
