@@ -9,11 +9,6 @@ export default function Page() {
       <div className="relative flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-blue-800 to-blue-900 w-screen h-96 text-white">
         {/* <ParticlesComponent /> */}
         <h1>osuTracker</h1>
-        <SearchBar query="getUser">
-          {(items) => (
-            <div></div>
-          )}
-        </SearchBar>
       </div>
       
       <div className="flex flex-col w-col h-screen border border-red-500">

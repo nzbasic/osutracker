@@ -4,18 +4,27 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import Countries from "./Countries";
 import Website from "./Website";
 import Players from "./Players";
+import { useEffect, useRef } from "react";
 
 interface ModalProps {
   close: () => void;
 }
 
 const Modal = ({ close }: ModalProps) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (!inputRef.current) return;
+    inputRef.current.focus();
+  }, [])
+
   return (
-    <div className="max-w-2xl w-full bg-white rounded-xl border-gray-300 shadow-lg pb-4">
-      <div className="flex justify-between p-4 border-b">
+    <div className="w-full max-h-[calc(100vh-8rem)] bg-white rounded-xl border-gray-300 shadow-lg">
+      <div className="flex justify-between p-4 border-b ">
         <div className="flex w-full items-center gap-4">
           <MagnifyingGlassIcon className="w-5 h-5" />
           <input 
+            ref={inputRef}
             className="w-full  border-none focus:outline-none"
             placeholder="Search players, countries, pages, documentation..." 
           />
@@ -25,9 +34,14 @@ const Modal = ({ close }: ModalProps) => {
         </button>
       </div>
 
-      <Players />
-      <Countries />
-      <Website />
+      <div className="overflow-y-auto max-h-[calc(100vh-16rem)] p-4 flex flex-col gap-1 font-semibold text-lg">
+        <div>Players</div>
+        <Players />
+        <div className="mt-2">Countries</div>
+        <Countries />
+        <div className="mt-2">Pages</div>
+        <Website />        
+      </div>
     </div>
   )
 }
