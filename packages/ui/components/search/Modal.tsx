@@ -1,21 +1,21 @@
 "use client"
 
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import Countries from "./Countries";
-import Website from "./Website";
-import Players from "./Players";
-import { useEffect, useRef } from "react";
+import { ModalWrapper } from 'ui';
+import { useEffect, useRef } from 'react';
+import Players from './Players';
+import Countries from './Countries';
+import Website from './Website';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
 interface ModalProps {
-  close: () => void;
+  showModal: boolean;
+  setShowModal: (val: boolean) => void;
 }
 
-const Modal = ({ close }: ModalProps) => {
+const Content = ({ close }: { close: () => void }) => {
   const inputRef = useRef<HTMLInputElement>(null)
-
   useEffect(() => {
-    if (!inputRef.current) return;
-    inputRef.current.focus();
+    inputRef?.current?.focus();
   }, [])
 
   return (
@@ -43,7 +43,15 @@ const Modal = ({ close }: ModalProps) => {
         <Website onNavigate={close} />        
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Modal;
+export const SearchModal = ({ showModal, setShowModal }: ModalProps) => {
+  return (
+    <ModalWrapper show={showModal} close={() => setShowModal(false)}>
+      {(close) => (
+        <Content close={close} />
+      )} 
+    </ModalWrapper>
+  );
+};

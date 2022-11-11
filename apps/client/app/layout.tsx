@@ -1,13 +1,19 @@
 import '../styles/globals.css'
-import { Inter } from '@next/font/google';
+import { Inter, Poppins } from '@next/font/google';
+import { Header } from 'ui';
 
-const inter = Inter();
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700', '800', '900']
+});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head className={inter.className} />
-      <body>{children}</body>
+    <html lang="en" className={poppins.className}>
+      <head />
+      <body className="flex flex-col subpixel-antialiased">
+        <Header />
+        {children}
+      </body>
     </html>  
   );
 }

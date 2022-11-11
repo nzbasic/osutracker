@@ -4,8 +4,6 @@ import ParticlesComponent from "./particles"
 export default function Page() {
   return (
     <div className="flex flex-col items-center">
-      <Header />
-
       <div className="relative flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-blue-800 to-blue-900 w-screen h-96 text-white">
         {/* <ParticlesComponent /> */}
         <h1>osuTracker</h1>
