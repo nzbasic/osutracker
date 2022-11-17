@@ -6,12 +6,13 @@ import { v1 } from 'database';
 @Injectable()
 export class CountryStoreService {
   constructor(
-    @InjectModel('Country') private readonly countryModel: v1.CountryCollection,
-    @InjectModel('CountryStat')
+    @InjectModel(v1.Country.name, 'v1')
+    private readonly countryModel: v1.CountryCollection,
+    @InjectModel(v1.CountryStat.name, 'v1')
     private readonly countryStatModel: v1.CountryStatCollection,
-    @InjectModel('CountryPlays')
+    @InjectModel(v1.CountryPlays.name, 'v1')
     private readonly countryPlaysModel: v1.CountryPlaysCollection,
-    @InjectModel('CountryPlayers')
+    @InjectModel(v1.CountryPlayers.name, 'v1')
     private readonly countryPlayersModel: v1.CountryPlayersCollection,
   ) {}
 

@@ -31,7 +31,6 @@ export class User {
   @Prop({ type: [PlayTimeSchema] }) timesList: Types.Array<PlayTime>;
   @Prop({ type: [ModCountSchema] }) modsCount: Types.Array<ModCount>;
   @Prop({ type: Boolean, required: false }) migrated?: boolean;
-
 }
 
 export type UserDocument = User & Document;

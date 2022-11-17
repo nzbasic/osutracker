@@ -5,17 +5,17 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class StatStoreService {
   constructor(
-    @InjectModel('OverallStats')
+    @InjectModel(v1.OverallStats.name, 'v1')
     private readonly overallStatsModel: v1.OverallStatsCollection,
-    @InjectModel('HistoricTop')
+    @InjectModel(v1.HistoricTop.name, 'v1')
     private readonly historicTopModel: v1.HistoricTopCollection,
-    @InjectModel('BeatmapSet')
+    @InjectModel(v1.BeatmapSet.name, 'v1')
     private readonly beatmapSetModel: v1.BeatmapSetCollection,
-    @InjectModel('Beatmap')
+    @InjectModel(v1.Beatmap.name, 'v1')
     private readonly beatmapModel: v1.BeatmapCollection,
-    @InjectModel('PPBarrier')
+    @InjectModel(v1.PPBarrier.name, 'v1')
     private readonly ppBarrierModel: v1.PPBarrierCollection,
-    @InjectModel('BeatmapCount')
+    @InjectModel(v1.BeatmapCount.name, 'v1')
     private readonly beatmapCountModel: v1.BeatmapCountCollection,
   ) {}
 

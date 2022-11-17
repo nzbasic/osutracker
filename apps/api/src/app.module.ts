@@ -1,30 +1,39 @@
-import { UtilityModule } from './services/utility.module';
-import { SearchModule } from './resources/search/search.module';
-import { CountryModule } from './resources/country/country.module';
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { DbModule } from './database/database.module';
-import { UserModule } from './resources/user/user.module';
-import { StatModule } from './resources/stat/stat.module';
-import { ConfigModule } from '@nestjs/config';
-import { DbServiceModule } from './database/service/db-service.module';
+
+import { DatabaseModule } from './database/database.module';
+import { ApiModuleV1 } from './resources/v1/api.module';
+import { ApiModuleV2 } from './resources/v2/api.module';
+import { UtilityModule } from './services/utility.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env['ATLAS'] ?? '', {
+    MongooseModule.forRoot(process.env['V1'] ?? '', {
+      connectionName: 'v1',
       authSource: 'admin',
       readPreference: 'primary',
       ssl: false,
     }),
-    DbModule,
-    DbServiceModule,
-    CountryModule,
-    UserModule,
-    StatModule,
-    SearchModule,
+    MongooseModule.forRoot(process.env['V2'] ?? '', {
+      connectionName: 'v2',
+      readPreference: 'primary',
+      directConnection: true,
+      ssl: false,
+    }),
+    MongooseModule.forRoot(process.env['PROXY'] ?? '', {
+      connectionName: 'proxy',
+      authSource: 'admin',
+      readPreference: 'primary',
+      ssl: false,
+    }),
+    DatabaseModule,
+    ApiModuleV1,
+    ApiModuleV2,
     UtilityModule,
   ],
   controllers: [AppController],

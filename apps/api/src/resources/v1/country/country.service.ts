@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CountryStoreService } from 'src/database/service/country-store.service';
+import { CountryStoreService } from 'src/database/v1/country-store.service';
 
 @Injectable()
-export class CountryService {
+export class CountryServiceV1 {
   constructor(private readonly countryStoreService: CountryStoreService) {}
 
   async getAll() {

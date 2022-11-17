@@ -7,10 +7,11 @@ import { CountryStoreService } from './country-store.service';
 @Injectable()
 export class UserStoreService {
   constructor(
-    @InjectModel('User') private readonly userModel: v1.UserCollection,
-    @InjectModel('UserStat')
+    @InjectModel(v1.User.name, 'v1')
+    private readonly userModel: v1.UserCollection,
+    @InjectModel(v1.UserStat.name, 'v1')
     private readonly userStatsModel: v1.UserStatCollection,
-    @InjectModel('UserPlays')
+    @InjectModel(v1.UserPlays.name, 'v1')
     private readonly userPlaysModel: v1.UserPlaysCollection,
     private readonly countryStoreService: CountryStoreService,
   ) {}

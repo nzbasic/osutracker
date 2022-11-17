@@ -6,11 +6,11 @@ import {
   ParseIntPipe,
   Query,
 } from '@nestjs/common';
-import { CountryService } from './country.service';
+import { CountryServiceV1 } from './country.service';
 
-@Controller('countries')
-export class CountryController {
-  constructor(private readonly countryService: CountryService) {}
+@Controller({ version: '1', path: 'countries' })
+export class CountryControllerV1 {
+  constructor(private readonly countryService: CountryServiceV1) {}
 
   @Get('all')
   async getAll() {

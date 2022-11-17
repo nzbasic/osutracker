@@ -3,6 +3,7 @@ import { Document, Model, Types } from 'mongoose';
 
 @Schema()
 export class Score {
+  @Prop({ type: Number }) id: number;
   @Prop({ type: Number }) beatmapId: number;
   @Prop({ type: Number }) beatmapSetId: number;
   @Prop({ type: Number }) acc: number;

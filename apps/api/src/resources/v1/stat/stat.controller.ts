@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 
-@Controller('stats')
-export class StatController {
+@Controller({ version: '1', path: 'stats' })
+export class StatControllerV1 {
   @Get()
   findAll(): string {
     return 'This action returns all stats';
