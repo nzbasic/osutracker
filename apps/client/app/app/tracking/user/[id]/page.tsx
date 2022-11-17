@@ -64,10 +64,12 @@ export default async function Page({ params }: { params: { id: number } }) {
       <h3>v2 History</h3>
       <div className="space-y-1">
         {scores.map((score, index) => (
-          <Score 
+          <Score
             key={score.id}
             number={index + 1}
-            rank={score.rank} 
+            rank={score.rank}
+            setId={score.beatmap.beatmapset_id}
+            id={score.beatmap.id}
             title={score.beatmapset.title} 
             artist={score.beatmapset.artist} 
             difficulty={score.beatmap.version} 

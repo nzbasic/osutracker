@@ -1,9 +1,12 @@
 import Mods from "./Mods";
-import Number from './Number';
+import Number from "./Number";
 import { Rank } from "./Rank";
+import Link from "next/link";
 
 interface ScoreProps {
   rank: string;
+  setId: number;
+  id: number;
   title: string;
   artist: string;
   difficulty: string;
@@ -17,23 +20,49 @@ interface ScoreProps {
   number: number;
 }
 
-export const Score = ({ rank, title, artist, difficulty, mods, acc, pp, count50, count100, count300, countMiss, number }: ScoreProps) => {
+export const Score = ({
+  rank,
+  setId,
+  id,
+  title,
+  artist,
+  difficulty,
+  mods,
+  acc,
+  pp,
+  count50,
+  count100,
+  count300,
+  countMiss,
+  number,
+}: ScoreProps) => {
   return (
-    <div className="flex justify-between items-center gap-2 p-2 bg-gray-50 font-medium">
-      <div className="flex gap-2 items-center">
+    <div className="flex items-center justify-between gap-2 bg-gray-50 p-2 font-medium">
+      <div className="flex items-center gap-2">
         <Number number={number} />
         <Rank letter={rank} />
-        <div className="flex flex-col truncate max-w-lg">
-          <span className="text-sm truncate">{artist} - {title}</span>
-          <span className="text-xs leading-0">[{difficulty}]</span>
+        <div className="flex max-w-lg flex-col truncate">
+          <Link
+            href={`https://osu.ppy.sh/beatmapsets/${setId}/#osu/${id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition-all"
+          >
+            <span className="truncate text-sm">
+              {artist} - {title}
+            </span>
+          </Link>
+          <span className="leading-0 text-xs">{difficulty}</span>
         </div>
       </div>
 
-      <div className="flex items-center shrink-0 gap-4">
+      <div className="flex shrink-0 items-center gap-4">
         <Mods mods={mods} />
-        <span className="w-14">{acc === 1 ? 100 : (acc*100).toFixed(2)}%</span>
+        <span className="w-14">
+          {acc === 1 ? 100 : (acc * 100).toFixed(2)}%
+        </span>
         <span className="w-14">{Math.round(pp)}pp</span>
       </div>
     </div>
-  )
+  );
 };
