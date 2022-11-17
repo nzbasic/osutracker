@@ -1,13 +1,18 @@
 import { Types } from "mongoose";
 import { User as UserV1 } from "database/schema/v1";
 import { ModCount as ModCountV2 } from "database/schema/v2";
+import { UserStat as UserStatV1 } from "database/schema/v1";
+import { UserStat as UserStatV2 } from "database/schema/v2";
 
+/*********************************************************************************************/
 // Notes:
 // All these functions/interfaces should be deleted once real DTOs for Scores and Users are
 // available from the V2 API.
 //
 // UserV2 schema is currently missing a field for profile picture (url).
+/*********************************************************************************************/
 
+/** BEGIN UserCard and ScoreCard */
 export interface BeatmapV2 {
   id: number;
   title: string;
@@ -75,3 +80,33 @@ export function convertV1UserToV2Dto(v1User: UserV1) {
   };
   return v2User;
 }
+/** END UserCard and ScoreCard **/
+
+/** BEGIN UserStatGraph */
+export type NextUserStatV2 = Omit<UserStatV2, 'date'> & { date: number }
+
+function convertUserStatV1ToV2(userStatV1: UserStatV1): NextUserStatV2 {
+  const userStatV2: NextUserStatV2 = {
+    rank: Number(userStatV1.rank),
+    pp: Number(userStatV1.pp),
+    plays: Number(userStatV1.plays),
+    acc: Number(userStatV1.acc),
+    playerId: Number(userStatV1.id),
+    player: userStatV1.player,
+    date: userStatV1.date,
+    countryRank: userStatV1.countryRank,
+    farm: userStatV1.farm,
+    range: userStatV1.range,
+    score: userStatV1.score,
+  };
+  return userStatV2;
+}
+
+export function convertUserStatsV1ToV2(userStatsV1: UserStatV1[]): NextUserStatV2[] {
+  const userStatsV2: NextUserStatV2[] = [];
+  for (let i = 0; i < userStatsV1.length; i++) {
+    userStatsV2.push(convertUserStatV1ToV2(userStatsV1[i]));
+  }
+  return userStatsV2;
+}
+/** END UserStatGraph */
