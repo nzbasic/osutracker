@@ -43,7 +43,7 @@ const LineGraph = <T extends object>({
   yAccessor,
 }: LineGraphProps<T>) => {
   return (
-    <XYChart height={height} width={width} margin={{ top: 10, bottom: 20, right: 0, left: 35 }}>
+    <XYChart height={height} width={width} margin={{ top: 10, bottom: 20, right: 0, left: 45 }}>
       <AnimatedAxis
         orientation="bottom"
         tickFormat={fmtDate}
