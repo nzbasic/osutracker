@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidebar } from "./sidebar";
+import { Sidebar } from "ui";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -1,10 +1,11 @@
 "use client";
 
-import * as React from "react";
-import { SearchBar } from "ui";
+import React from "react";
 import { usePathname } from "next/navigation";
-import { menuItems, SidebarItem } from "ui";
-import { SearchModal } from "ui";
+import { SearchBar } from "../../../search/SearchBar";
+import { menuItems } from "./items";
+import { SidebarItem } from './SidebarItem';
+import { SearchModal } from "../../../search/Modal";
 
 export const Sidebar = () => {
   const [active, setActive] = React.useState(usePathname() ?? "");

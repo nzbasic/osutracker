@@ -1,6 +1,6 @@
 "use client"
 
-import { ModalWrapper } from 'ui';
+import { ModalWrapper } from '../util/ModalWrapper';
 import { useEffect, useRef } from 'react';
 import Players from './Players';
 import Countries from './Countries';
