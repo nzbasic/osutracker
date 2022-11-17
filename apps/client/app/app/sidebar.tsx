@@ -12,9 +12,9 @@ export const Sidebar = () => {
 
   return (
     <>
-      <nav className="fixed top-20 h-full flex flex-col shrink-0 w-72 bg-white overflow-y-auto">
+      <nav className="fixed top-24 h-full flex flex-col shrink-0 w-64 bg-white overflow-y-auto">
         <div className="flex w-full flex-col justify-between gap-4 p-1 h-full">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-8">
             <SearchBar onOpen={() => setShowModal(true)} />
 
             <div className="flex flex-col gap-2">
