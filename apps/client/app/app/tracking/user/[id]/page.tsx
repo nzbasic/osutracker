@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { User as UserV1, UserStat as UserStatV1 } from "database/schema/v1";
+import { proxy } from 'database';
 import {
   UserCard,
   Score,
   convertV1UserToV2Dto,
   convertUserStatsV1ToV2,
-  StatsLineGraphWithDropdown
+  StatsLineGraphWithDropdown,
+  PlaysScatterGraph,
+  ScoreList
 } from "ui";
-import { proxy } from 'database';
+import ReactCountryFlag from "react-country-flag";
 
 // TODO: Replace this with a call to the db that returns UserV2Dto
 async function getUser(id: number): Promise<UserV1> {
@@ -44,45 +47,19 @@ export default async function Page({ params }: { params: { id: number } }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <h2>{v1User.name}&apos;s Profile</h2>
+      <div className="flex">
+        <h2>{v2UserDto.name}</h2>
+        <ReactCountryFlag countryCode={v2UserDto.country} svg />
+      </div>
       </Link>
-      <UserCard v1User={v1User} v2UserDto={v2UserDto} />
+      <UserCard v2UserDto={v2UserDto} />
 
       <StatsLineGraphWithDropdown data={v2UserStats} />
       
-      <div className="border-edge rounded border">
-        [Graph Top Play Time Scatter]
-      </div>
-
-      {/* <h3>Top Play History</h3>
-      <div className="flex flex-col gap-2 font-medium">
-        {v2UserDto.currentTop.slice(0, 10).map((score, index) => (
-          <ScoreCard score={score} key={index} />
-        ))}
-      </div> */}
+      <PlaysScatterGraph data={scores} />
 
       <h3>v2 History</h3>
-      <div className="space-y-1">
-        {scores.map((score, index) => (
-          <Score
-            key={score.id}
-            number={index + 1}
-            rank={score.rank}
-            setId={score.beatmap.beatmapset_id}
-            id={score.beatmap.id}
-            title={score.beatmapset.title} 
-            artist={score.beatmapset.artist} 
-            difficulty={score.beatmap.version} 
-            mods={score.mods}
-            acc={score.accuracy}
-            pp={score.pp ?? 0}
-            countMiss={score.statistics.count_miss}
-            count300={score.statistics.count_300}
-            count100={score.statistics.count_100}
-            count50={score.statistics.count_50}
-          />
-        ))}
-      </div>
+      <ScoreList scores={scores} />
     </div>
   );
 };
