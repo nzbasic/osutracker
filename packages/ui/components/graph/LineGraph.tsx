@@ -25,7 +25,7 @@ const fmtYAxisNumber = (num: any) => {
   }).format(num);
 };
 
-function fmtTooltipNumber(num: any) {
+function fmtTooltipNumber(num: number) {
   return new Intl.NumberFormat("en", {
     maximumFractionDigits: 2,
   }).format(num);

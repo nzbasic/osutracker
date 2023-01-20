@@ -7,17 +7,16 @@ import Link from "next/link";
 import ReactCountryFlag from "react-country-flag";
 
 interface UserCardProps {
-  v1User: UserV1;
   v2UserDto: UserV2Dto;
 }
 
-export const UserCard = ({ v1User, v2UserDto }: UserCardProps) => {
+export const UserCard = ({ v2UserDto }: UserCardProps) => {
   return (
     <div className="flex gap-4">
       <Image
         className="rounded-md"
         alt="profile-picture"
-        src={v1User.url}
+        src={`https://a.ppy.sh/${v2UserDto.id}`}
         width="156"
         height="156"
       />

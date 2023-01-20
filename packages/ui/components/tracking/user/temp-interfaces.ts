@@ -8,8 +8,6 @@ import { UserStat as UserStatV2 } from "database/schema/v2";
 // Notes:
 // All these functions/interfaces should be deleted once real DTOs for Scores and Users are
 // available from the V2 API.
-//
-// UserV2 schema is currently missing a field for profile picture (url).
 /*********************************************************************************************/
 
 /** BEGIN UserCard and ScoreCard */
@@ -82,7 +80,7 @@ export function convertV1UserToV2Dto(v1User: UserV1) {
 }
 /** END UserCard and ScoreCard **/
 
-/** BEGIN UserStatGraph */
+/** BEGIN StatsLineGraphWithDropdown */
 export type NextUserStatV2 = Omit<UserStatV2, 'date'> & { date: number }
 
 function convertUserStatV1ToV2(userStatV1: UserStatV1): NextUserStatV2 {

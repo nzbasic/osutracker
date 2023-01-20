@@ -45,7 +45,7 @@ export function Dropdown({
   };
 
   return (
-    <div className={classNames(className, "relative flex flex-col")}>
+    <div className={classNames(className, "relative flex flex-col cursor-pointer")}>
       <div
         className={classNames(
           "flex gap-2 p-2 items-center justify-center border border-edge rounded font-semibold select-none",
