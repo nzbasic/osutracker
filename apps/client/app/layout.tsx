@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={poppins.className}>
       <head />
-      <body className="flex flex-col subpixel-antialiased">
+      <body id="root" className="flex flex-col subpixel-antialiased">
         <Header />
         {children}
       </body>

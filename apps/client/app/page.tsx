@@ -1,5 +1,4 @@
-import { Header, PageDescriptor, SearchBar } from "ui"
-import ParticlesComponent from "./particles"
+import { PageDescriptor } from "ui"
 
 export default function Page() {
   return (
