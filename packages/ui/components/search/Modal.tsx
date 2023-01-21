@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import Players from './Players';
 import Countries from './Countries';
 import Website from './Website';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { HiMagnifyingGlass } from 'react-icons/hi2';
 
 interface ModalProps {
   showModal: boolean;
@@ -22,11 +22,11 @@ const Content = ({ close }: { close: () => void }) => {
     <div className="w-full max-h-[calc(100vh-8rem)] bg-white rounded-xl border-edge shadow-lg">
       <div className="flex justify-between p-4 border-b ">
         <div className="flex w-full items-center gap-4">
-          <MagnifyingGlassIcon className="w-5 h-5" />
+          <HiMagnifyingGlass className="w-5 h-5" />
           <input 
             ref={inputRef}
-            className="w-full border-none focus:outline-none"
-            placeholder="Search players, countries, pages, documentation..." 
+            className="w-full border-none focus:outline-none text-sm"
+            placeholder="Search players or countries" 
           />
         </div>
         <button className="text-xs text-gray-500 border hover:border-edge rounded py-0.5 px-1 hover:shadow transition-all" onClick={close}>
@@ -39,8 +39,8 @@ const Content = ({ close }: { close: () => void }) => {
         <Players onNavigate={close} />
         <div className="mt-2">Countries</div>
         <Countries onNavigate={close} />
-        <div className="mt-2">Pages</div>
-        <Website onNavigate={close} />        
+        {/* <div className="mt-2">Pages</div>
+        <Website onNavigate={close} />         */}
       </div>
     </div>
   );

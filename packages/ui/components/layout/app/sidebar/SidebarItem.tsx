@@ -4,12 +4,13 @@ import React from "react";
 import Button from "./Button";
 import { MenuItem } from "./items";
 import { motion, AnimatePresence } from 'framer-motion';
+import { IconType } from "react-icons";
 
 interface SidebarItemProps {
   title: string;
   link: string;
   subItems?: MenuItem[]
-  Icon: Icon;
+  Icon: IconType;
   currentActive: string;
   setActive: React.Dispatch<React.SetStateAction<string>>;
 }

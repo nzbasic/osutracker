@@ -21,7 +21,6 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.13",
     "@react-spring/web": "^9.5.5",
     "@types/d3-time-format": "^4.0.0",
     "@visx/gradient": "^2.10.0",
@@ -35,6 +34,7 @@
     "d3-time-format": "^4.1.0",
     "framer-motion": "^7.6.5",
     "react-country-flag": "^3.0.2",
+    "react-icons": "^4.7.1",
     "react-tsparticles": "^2.5.3",
     "tsparticles": "^2.5.3",
     "tsparticles-engine": "^2.5.2"

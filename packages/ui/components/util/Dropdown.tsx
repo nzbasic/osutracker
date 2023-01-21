@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { HiChevronDown } from "react-icons/hi2";
 import classNames from "classnames";
 
 interface DropdownProps {
@@ -56,7 +56,7 @@ export function Dropdown({
         onClick={handleButtonClick}
       >
         <div>{selected.label}</div>
-        <ChevronDownIcon
+        <HiChevronDown
           width={22}
           className={classNames(
             { "rotate-180": isOpen },
