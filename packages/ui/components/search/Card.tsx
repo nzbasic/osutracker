@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { HiChevronRight } from 'react-icons/hi2';
 
 interface CardProps {
   href: string;
@@ -13,14 +13,14 @@ const Card = ({ name, value, href, children, onClick }: CardProps) => (
   <Link 
     onClick={onClick}
     href={href}
-    className="group flex items-center gap-2 p-2 text-gray-800 bg-gray-50 rounded-md hover:bg-sky-500 hover:text-white transition-all"
+    className="group flex gap-2 p-2 text-gray-800 bg-gray-50 rounded-md hover:bg-sky-500 hover:text-white transition-all border"
   >
     {children}
-    <div className="flex flex-col items-start text-base">
-      <span className="group-hover:bg-sky-400 bg-gray-100 rounded-md p-0.5 font-semibold px-2 transition-all">{name}</span>
-      <span className="ml-2 font-normal">{value}</span>
+    <div className="flex flex-col items-start gap-1 text-base h-full">
+      <span className="group-hover:bg-sky-400 group-hover:text-white bg-gray-100 rounded-md p-0.25 font-semibold px-2 transition-all">{name}</span>
+      <span className="ml-2 font-normal py-0.25 text-sm">{value}</span>
     </div>
-    <ChevronRightIcon className="w-5 h-5 ml-auto" />
+    <HiChevronRight className="w-5 h-5 ml-auto" />
   </Link>
 )
 

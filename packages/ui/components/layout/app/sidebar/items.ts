@@ -1,17 +1,18 @@
+import { IconType } from "react-icons";
 import {
-  ArrowTrendingUpIcon,
-  MagnifyingGlassIcon,
-  BookOpenIcon,
-  CodeBracketIcon,
-  HomeIcon,
-  ArrowsRightLeftIcon,
-  Square3Stack3DIcon,
-} from "@heroicons/react/24/outline";
+  HiArrowTrendingUp,
+  HiMagnifyingGlass,
+  HiBookOpen,
+  HiCodeBracket,
+  HiHome,
+  HiArrowsRightLeft,
+  HiOutlinePuzzlePiece
+} from "react-icons/hi2";
 
 export interface MenuItem {
   title: string;
   link: string;
-  Icon: Icon;
+  Icon: IconType;
   subItems?: MenuItem[];
 }
 
@@ -19,41 +20,41 @@ export const menuItems: MenuItem[] = [
   {
     title: "Tracking",
     link: "/app/tracking",
-    Icon: ArrowTrendingUpIcon,
+    Icon: HiArrowTrendingUp,
     subItems: [
       {
         title: "Home",
         link: "/app/tracking",
-        Icon: HomeIcon,
+        Icon: HiHome,
       },
       {
         title: "Historic",
         link: "/app/tracking/historic",
-        Icon: BookOpenIcon,
+        Icon: HiBookOpen,
       },
       {
         title: "Compare",
         link: "/app/tracking/compare",
-        Icon: ArrowsRightLeftIcon,
+        Icon: HiArrowsRightLeft,
       },
     ],
   },
   {
     title: "Meta",
     link: "/app/meta",
-    Icon: Square3Stack3DIcon,
+    Icon: HiOutlinePuzzlePiece,
     subItems: [],
   },
   {
     title: "Query",
     link: "/app/query",
-    Icon: MagnifyingGlassIcon,
+    Icon: HiMagnifyingGlass,
     subItems: [],
   },
   {
     title: "API",
     link: "/app/api",
-    Icon: CodeBracketIcon,
+    Icon: HiCodeBracket,
     subItems: [],
   },
 ];

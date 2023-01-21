@@ -1,6 +1,6 @@
 "use client"
 
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { useEffect } from 'react';
 
 interface SearchBarProps {
@@ -22,12 +22,12 @@ export const SearchBar = ({ onOpen }: SearchBarProps) => {
 
   return (
     <>
-      <div className="bg-white relative pointer-events-auto">
+      <div className="bg-gray-50 relative pointer-events-auto">
         <button 
           onClick={() => onOpen()}
           className="hidden w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300"
         >
-          <MagnifyingGlassIcon className="mr-3 flex-none w-6 h-6" />
+          <HiMagnifyingGlass className="mr-3 flex-none w-6 h-6" />
           Quick search...
           <div className="ml-auto text-xs text-gray-500 border hover:border-edge rounded py-0.5 px-2">
             /
