@@ -34,7 +34,7 @@ export const ModalWrapper = ({ show, close, children }: ModalWrapperProps) => {
       {show && (
         <div
           ref={ref}
-          className="absolute z-50 top-0 left-0 h-screen w-screen bg-gray-400/30 flex items-center justify-center" 
+          className="absolute z-50 top-0 left-0 h-screen w-screen bg-gray-400/30 backdrop-blur-sm flex items-center justify-center" 
           onClick={handleClick}
         >
           <motion.div 

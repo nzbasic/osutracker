@@ -35,9 +35,9 @@ h6 {
 }
 
 .button-active {
-  @apply bg-gray-50 text-black;
+  @apply bg-gray-50 border border-blue-500 text-black cursor-default;
 }
 
 .button-inactive {
-  @apply bg-white text-gray-600 hover:bg-blue-500 hover:text-white; 
+  @apply bg-gray-50 border text-gray-600 hover:bg-blue-500 hover:border-blue-700 hover:text-white; 
 }
