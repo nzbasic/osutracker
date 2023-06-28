@@ -1,3 +1,3 @@
-export * from './Button';
-export * from './Logo';
-export * from './ModalWrapper';
+export { default as Button } from './Button';
+export { default as Logo } from './Logo';
+export { default as ModalWrapper } from './ModalWrapper';

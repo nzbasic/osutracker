@@ -13,22 +13,25 @@ import { UtilityModule } from './services/utility.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env['V1'] ?? '', {
+    MongooseModule.forRoot(process.env.V1 ?? '', {
       connectionName: 'v1',
       authSource: 'admin',
-      readPreference: 'primary',
-      ssl: false,
-    }),
-    MongooseModule.forRoot(process.env['V2'] ?? '', {
-      connectionName: 'v2',
-      readPreference: 'primary',
       directConnection: true,
+      tls: false,
       ssl: false,
     }),
-    MongooseModule.forRoot(process.env['PROXY'] ?? '', {
+    MongooseModule.forRoot(process.env.V2 ?? '', {
+      connectionName: 'v2',
+      authSource: 'admin',
+      directConnection: true,
+      tls: false,
+      ssl: false,
+    }),
+    MongooseModule.forRoot(process.env.PROXY ?? '', {
       connectionName: 'proxy',
       authSource: 'admin',
-      readPreference: 'primary',
+      directConnection: true,
+      tls: false,
       ssl: false,
     }),
     DatabaseModule,

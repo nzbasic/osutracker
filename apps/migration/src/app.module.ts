@@ -4,15 +4,27 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './resources/user/user.module';
+import { MigrationModule } from './services/migration/migration.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb://localhost/v2', { connectionName: 'v2' }),
-    MongooseModule.forRoot(process.env.MONGO ?? '', { connectionName: 'v1' }),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/v2', {
+      connectionName: 'v2',
+      authSource: 'admin',
+      ssl: false,
+    }),
+    MongooseModule.forRoot(process.env.V1 ?? '', {
+      connectionName: 'v1',
+      authSource: 'admin',
+      directConnection: true,
+      tls: false,
+      ssl: false,
+    }),
     DatabaseModule,
     BeatmapModule,
     UserModule,
+    MigrationModule,
   ],
   controllers: [],
   providers: [],

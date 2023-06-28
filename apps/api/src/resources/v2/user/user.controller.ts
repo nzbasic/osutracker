@@ -5,8 +5,18 @@ import { UserServiceV2 } from './user.service';
 export class UserControllerV2 {
   constructor(private readonly userService: UserServiceV2) {}
 
+  @Get(':id')
+  getUser(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.getUser(id);
+  }
+
   @Get(':id/top')
-  findAll(@Param('id', ParseIntPipe) id: number) {
+  getUserTopPlays(@Param('id', ParseIntPipe) id: number) {
     return this.userService.getUserTopPlays(id);
+  }
+
+  @Get(':id/stats')
+  getUserStats(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.getUserStats(id);
   }
 }

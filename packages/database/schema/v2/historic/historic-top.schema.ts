@@ -1,23 +1,23 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Model, Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Model, Types } from "mongoose";
 
 @Schema()
 class HistoricTopPlayerPoint {
-  @Prop({ type: String }) name: string;
-  @Prop({ type: Number }) pp: number;
+    @Prop({ type: String }) name: string;
+    @Prop({ type: Number }) pp: number;
 }
 
 const HistoricTopPlayerPointSchema = SchemaFactory.createForClass(
-  HistoricTopPlayerPoint,
+    HistoricTopPlayerPoint
 );
 
-@Schema({ collection: 'historictops' })
+@Schema({ collection: "historictops" })
 export class HistoricTop {
-  @Prop({ type: Number }) year: number;
-  @Prop({ type: String }) month: string;
-  @Prop({ type: Number }) monthNumber: number;
-  @Prop({ type: [HistoricTopPlayerPointSchema] })
-  top: Types.Array<HistoricTopPlayerPoint>;
+    @Prop({ type: Number }) year: number;
+    @Prop({ type: String }) month: string;
+    @Prop({ type: Number }) monthNumber: number;
+    @Prop({ type: [HistoricTopPlayerPointSchema] })
+    top: Types.Array<HistoricTopPlayerPoint>;
 }
 
 export type HistoricTopDocument = HistoricTop & Document;

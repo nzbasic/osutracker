@@ -6,7 +6,20 @@ module.exports = {
     '../../packages/ui/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#2563EB',
+          light: '#eef4fe',
+          dark: '#030a1b',
+        },
+        secondary: {
+          DEFAULT: '#f6af3b',
+          light: '#fff',
+          dark: '#c07b09',
+        }
+      }
+    },
   },
   plugins: [],
 }

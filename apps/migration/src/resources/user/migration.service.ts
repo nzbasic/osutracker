@@ -36,42 +36,40 @@ export class UserMigrationService {
         .limit(groupSize)
         .skip(i * groupSize);
       for (const user of group) {
-        const migratedCurrentTop: v2.Score[] = user.currentTop100.map(
-          (score) => {
-            return {
-              beatmapId: Number(score.id),
-              beatmapSetId: Number(score.setId),
-              mods: score.mods,
-              acc: score.acc * 100,
-              pp: Number(score.pp),
-              time: new Date(score.time),
-              player: score.player,
-              countMiss: Number(score.missCount),
-            };
-          },
-        );
-
-        try {
-          await this.v2UserModel.create({
-            id: Number(user.id),
-            name: user.name,
-            country: user.country,
-            pp: user.pp,
-            rank: Number(user.rank),
-            acc: Number(user.acc),
-            joined: new Date(user.joined),
-            level: user.level,
-            plays: Number(user.plays),
-            range: Number(user.range),
-            farm: user.farm,
-            averageLength: user.averageLength,
-            averageObjects: user.averageObjects,
-            modsCount: user.modsCount,
-            currentTop: migratedCurrentTop,
-          });
-        } catch {}
-
-        await user.updateOne({ migrated: true });
+        // const migratedCurrentTop: v2.Score[] = user.currentTop100.map(
+        //   (score) => {
+        //     return {
+        //       beatmapId: Number(score.id),
+        //       beatmapSetId: Number(score.setId),
+        //       mods: score.mods,
+        //       acc: score.acc * 100,
+        //       pp: Number(score.pp),
+        //       time: new Date(score.time),
+        //       player: score.player,
+        //       countMiss: Number(score.missCount),
+        //     };
+        //   },
+        // );
+        // try {
+        //   await this.v2UserModel.create({
+        //     id: Number(user.id),
+        //     name: user.name,
+        //     country: user.country,
+        //     pp: user.pp,
+        //     rank: Number(user.rank),
+        //     acc: Number(user.acc),
+        //     joined: new Date(user.joined),
+        //     level: user.level,
+        //     plays: Number(user.plays),
+        //     range: Number(user.range),
+        //     farm: user.farm,
+        //     averageLength: user.averageLength,
+        //     averageObjects: user.averageObjects,
+        //     modsCount: user.modsCount,
+        //     currentTop: migratedCurrentTop,
+        //   });
+        // } catch {}
+        // await user.updateOne({ migrated: true });
       }
 
       console.log(`Migrated ${(i + 1) * groupSize}/${count} users`);

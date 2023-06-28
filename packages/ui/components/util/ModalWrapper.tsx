@@ -1,52 +1,54 @@
-"use client"
+"use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { MouseEventHandler, useEffect, useRef } from "react";
 
 interface ModalWrapperProps {
-  show: boolean;
-  close: () => void;
-  children: (close: () => void) => JSX.Element;
+    show: boolean;
+    close: () => void;
+    children: (close: () => void) => JSX.Element;
 }
 
-export const ModalWrapper = ({ show, close, children }: ModalWrapperProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+function ModalWrapper({ show, close, children }: ModalWrapperProps) {
+    const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('overflow-hidden', show)
-  }, [show])
+    useEffect(() => {
+        document.documentElement.classList.toggle("overflow-hidden", show);
+    }, [show]);
 
-  useEffect(() => {
-    const listener = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close();
-    }
+    useEffect(() => {
+        const listener = (e: KeyboardEvent) => {
+            if (e.key === "Escape") close();
+        };
 
-    document.addEventListener('keydown', listener)
-    return () => document.removeEventListener('keydown', listener)
-  }, [close])
+        document.addEventListener("keydown", listener);
+        return () => document.removeEventListener("keydown", listener);
+    }, [close]);
 
-  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (e.target === ref?.current) close();
-  }
+    const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+        if (e.target === ref?.current) close();
+    };
 
-  return (
-    <AnimatePresence>
-      {show && (
-        <div
-          ref={ref}
-          className="absolute z-50 top-0 left-0 h-screen w-screen bg-gray-400/30 backdrop-blur-sm flex items-center justify-center" 
-          onClick={handleClick}
-        >
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            className="max-w-2xl w-full"
-          >
-            {children(close)}
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
+    return (
+        <AnimatePresence>
+            {show && (
+                <div
+                    ref={ref}
+                    className="fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-gray-400/30 backdrop-blur-sm"
+                    onClick={handleClick}
+                >
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        className="w-full max-w-2xl"
+                    >
+                        {children(close)}
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
+    );
 };
+
+export default ModalWrapper;

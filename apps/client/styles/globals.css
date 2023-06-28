@@ -2,20 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.main {
+  @apply w-full max-w-full md:mx-auto md:max-w-5xl;
+}
+
+.keyline {
+  @apply mb-2 border-b-2 border-primary-dark;
+}
+
 h1 {
-  @apply text-6xl font-black;
+  @apply text-5xl font-extrabold;
 }
 
 h2 {
-  @apply text-3xl font-bold;
+  @apply text-4xl font-extrabold;
 }
 
 h3 {
-  @apply text-2xl font-semibold;
+  @apply text-3xl font-semibold;
 }
 
 h4 {
-  @apply text-xl font-medium;
+  @apply text-2xl font-medium;
 }
 
 h5 {
@@ -26,8 +34,20 @@ h6 {
   @apply text-base;
 }
 
+button {
+  @apply flex cursor-default items-center justify-center gap-2 rounded-md bg-blue-600 py-3 px-6 text-center text-sm text-white transition-colors hover:brightness-95;
+}
+
+button.secondary {
+  @apply bg-gray-200 text-gray-700;
+}
+
+button.small {
+  @apply gap-1 p-2 px-3 text-xs;
+}
+
 .w-col {
-  @apply max-w-7xl w-full;
+  @apply w-full max-w-7xl;
 }
 
 .border-edge {
@@ -35,9 +55,13 @@ h6 {
 }
 
 .button-active {
-  @apply bg-gray-50 border border-blue-500 text-black cursor-default;
+  @apply cursor-default border border-blue-500 bg-gray-50 text-black;
 }
 
 .button-inactive {
-  @apply bg-gray-50 border text-gray-600 hover:bg-blue-500 hover:border-blue-700 hover:text-white; 
+  @apply border bg-gray-50 text-gray-600 hover:border-blue-700 hover:bg-blue-500 hover:text-white;
+}
+
+rect.visx-brush-selection:hover {
+  stroke: red;
 }

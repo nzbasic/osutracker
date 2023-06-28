@@ -1,4 +1,2 @@
-export * from "./UserCard";
-export * from "./ScoreCard";
 export * from "./temp-interfaces";
-export * from './ScoreList';
+export { default as ScoreList } from './ScoreList';

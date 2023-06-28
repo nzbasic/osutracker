@@ -1,11 +1,11 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Model } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Model } from "mongoose";
 
-@Schema({ collection: 'topplaycounts' })
+@Schema({ collection: "topplaycounts" })
 export class TopPlayCount {
-  @Prop({ type: Number }) id: number;
-  @Prop({ type: Number }) count: number;
-  @Prop({ type: Boolean, required: false }) migrated?: boolean;
+    @Prop({ type: Number }) id: number;
+    @Prop({ type: Number }) count: number;
+    @Prop({ type: Boolean, required: false }) migrated?: boolean;
 }
 
 export type TopPlayCountDocument = TopPlayCount & Document;
